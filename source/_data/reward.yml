@@ -1,0 +1,8 @@
+- class_name: 赞赏
+  reward_list:
+    - name: 鹿啵包
+      amount: 10
+      datatime: 2022-11-08
+    - name: 疾速k
+      amount: 50
+      datatime: 2022-09-20
