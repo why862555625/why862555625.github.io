@@ -12,16 +12,16 @@ aside: false
 
 
 >1. 博客名称：biubiu
->2. 博客链接：https://blog.4t.pw/
->3. logo地址：https://blog.4t.pw/img/favicon.webp
+>2. 博客链接：https://why862555625.github.io/
+>3. logo地址：https://why862555625.github.io/img/favicon.webp
 >4. 博客介绍：千里之行，始于足下。
 
 邮箱：1400000222@qq.com
 
 ~~~html
     - name: biubiu
-      link: https://blog.4t.pw/
-      avatar: https://blog.4t.pw/img/favicon.webp
+      link: https://why862555625.github.io/
+      avatar: https://why862555625.github.io/img/favicon.webp
       descr: 千里之行，始于足下。
 ~~~
 

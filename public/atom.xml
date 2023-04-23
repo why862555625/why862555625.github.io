@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>biubiu</title>
+  <icon>https://why862555625.github.io/icon.png</icon>
+  <subtitle>旭</subtitle>
+  <link href="https://why862555625.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://why862555625.github.io/"/>
+  <updated>2023-04-20T07:25:21.275Z</updated>
+  <id>https://why862555625.github.io/</id>
+  
+  <author>
+    <name>王海运</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>5分钟搭一个hexo博客</title>
+    <link href="https://why862555625.github.io/posts/b9dc5266.html"/>
+    <id>https://why862555625.github.io/posts/b9dc5266.html</id>
+    <published>2023-04-20T07:25:21.275Z</published>
+    <updated>2023-04-20T07:25:21.275Z</updated>
+    
+    
+    <summary type="html">搭建hexo博客快速入门教程</summary>
+    
+    
+    
+    <category term="基础" scheme="https://why862555625.github.io/categories/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="教程" scheme="https://why862555625.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="Hexo" scheme="https://why862555625.github.io/tags/Hexo/"/>
+    
+    <category term="基础教程" scheme="https://why862555625.github.io/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+</feed>

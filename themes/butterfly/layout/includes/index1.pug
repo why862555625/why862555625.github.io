@@ -50,10 +50,10 @@ if is_home()
                                 li.new.fa-fw.fa.fa-link
                                   a(href=url_for(article.path) title=article.title)!= index+_p('、') + article.title
                                   span!=date(article.date, config.date_format)
-                          #todayCard.todayCard(onclick="javascript:window.open('https://blog.zhheo.com/p/671f98c8.html')" style='z-index: 1;')
+                          #todayCard.todayCard(onclick="javascript:window.open('https://why862555625.github.io/')" style='z-index: 1;')
                             .todayCard-info
                               .todayCard-tips 重磅更新
-                              .todayCard-title 今年过年，来放电子鞭炮
+                              .todayCard-title 免费图床
                             .todayCard-cover(style="background: url('/img/bt.webp') no-repeat center /cover")
                             .banner-button-group
                               a.banner-button(onclick='window.event.cancelBubble=true;buttonClick();' data-pjax-state='external')
@@ -76,11 +76,11 @@ if is_home()
                           .categoryGroup
                             .categoryItem(style='box-shadow: var(--heo-shadow-blue);')
                                 a.categoryButton.bikan(href='/posts/c6050a1d/', data-pjax-state)
-                                    span.categoryButtonText 魔改锦囊
+                                    span.categoryButtonText js
                                     i.fas.fa-dove
                             .categoryItem(style='box-shadow: var(--heo-shadow-red);')
                                 a.categoryButton.remen(href='/tags/魔改/', data-pjax-state)
-                                    span.categoryButtonText 热门魔改
+                                    span.categoryButtonText c++
                                     i.fas.fa-burn
                             .categoryItem(style='box-shadow: var(--heo-shadow-green);')
                                 a.categoryButton.shiyong.touying(href='/tags/教程/', data-pjax-state)

@@ -6,8 +6,9 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server -p 5207",
-    "write":"hexo new  new_article"
+    "server": "hexo server -p 5209",
+    "write": "hexo new  new_article",
+    "display": "hexo d "
   },
   "hexo": {
     "version": "5.4.2"
@@ -19,6 +20,7 @@
     "hexo-blog-encrypt": "^3.1.6",
     "hexo-browsersync": "^0.3.0",
     "hexo-butterfly-envelope": "^1.0.15",
+    "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
     "hexo-generator-category": "^1.0.0",

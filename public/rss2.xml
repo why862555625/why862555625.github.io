@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>biubiu</title>
+    <link>https://why862555625.github.io/</link>
+    
+    <image>
+      <url>https://why862555625.github.io/icon.png</url>
+      <title>biubiu</title>
+      <link>https://why862555625.github.io/</link>
+    </image>
+    
+    <atom:link href="https://why862555625.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>UI设计、静态博客、个人博客、互联网干货分享、学习笔记记录。你可以在这里面找到很多关于UI设计相关的工具教程、思维技巧。还可以找到一些开发的小技巧。</description>
+    <pubDate>Thu, 20 Apr 2023 07:25:21 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>5分钟搭一个hexo博客</title>
+      <link>https://why862555625.github.io/posts/b9dc5266.html</link>
+      <guid>https://why862555625.github.io/posts/b9dc5266.html</guid>
+      <pubDate>Thu, 20 Apr 2023 07:25:21 GMT</pubDate>
+      
+      <description>搭建hexo博客快速入门教程</description>
+      
+      
+      
+      
+      <category domain="https://why862555625.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      
+      
+      <category domain="https://why862555625.github.io/tags/%E6%95%99%E7%A8%8B/">教程</category>
+      
+      <category domain="https://why862555625.github.io/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://why862555625.github.io/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">基础教程</category>
+      
+      
+      <comments>https://why862555625.github.io/posts/b9dc5266.html#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -41,11 +41,12 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  iconfont icon-liulanqi1: https://4t.pw || 浏览器
-  iconfont icon-email: mailto:1400000222@qq.com || 邮箱
-  iconfont icon-QQ: tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1400000222&website=4t.pw || QQ
+  iconfont icon-liulanqi1: https://why862555625.github.io/ || 浏览器
+  iconfont icon-email: 862555625@qq.com || 邮箱
+  iconfont icon-QQ: tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=862555625 || QQ
   iconfont icon-weixin: /about/ || 微信
-  iconfont icon-douyin: https://v.douyin.com/rJq4VdC/ || 抖音
+  # https://v.douyin.com/rJq4VdC/
+  iconfont icon-douyin: https://why862555625.github.io/ || 抖音
 
 # search (搜索)
 # see https://butterfly.js.org/posts/ceeb73f/#搜索系統
@@ -98,35 +99,35 @@ avatar:
 disable_top_img: false
 
 # 首页横幅图片视频
-index_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+index_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 # 视频地址
 index_video: false
 
 # https://api.ixiaoi.cn/api/api.php
 
 # 无横幅显示图片
-default_top_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+default_top_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 
 # 存档页面的横幅图像
-archive_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+archive_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 
 # 如果标签页面的横幅未设置，则会显示top_img
 # 注意：标记页，而不是标记页 (子标签页面的 top_img)
-tag_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+tag_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 
 # 标签页面的横幅图像（设置格式）
 # format:
 #  - tag name: xxxxx
-tag_per_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+tag_per_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 
 # 如果类别页面的横幅未设置，它将显示top_img
 # 注意：类别页面，而不是类别页面(子分類頁面的 top_img)
-category_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+category_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 
 # 类别页面的横幅图像
 # format:
 #  - category name: xxxxx
-category_per_img: https://s2.loli.net/2022/11/04/GOKblJF1BMpWvYf.webp
+category_per_img: https://raw.githubusercontent.com/why862555625/images/main/images/20115853_380680b35f.jpeg
 
 cover:
   # 显示封面与否 （是否显示文章封面）指数 旁白 档案
@@ -701,7 +702,7 @@ aside:
       enable: true
       icon: fab fa-github
       text: 主题开源地址
-      link: https://github.com/plasx520/blog-butterfly
+      link: https://github.com/why862555625/why862555625.github.io/tree/source
   card_announcement:
     enable: false
     content: 主题以开源
@@ -1026,11 +1027,11 @@ businesscard:
   enable: true #总开关
   QR_code: https://s2.loli.net/2022/11/09/NuQ3V6fehArJl2E.webp #加群二维码
   master: 退役老兵 #群主ID
-  group: QQ：1400000222 #QQ群号
+  group: 862555625 #QQ群号
   created: 06/18/1993 #建群时间
   front: 62262419930628356221 #卡面正面描述语
   back1: 初次来到人间 #背面从上到下四行文字内容自定义
-  back2: <a href="https://blog.4t.pw">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a>
+  back2: <a href="https://https://why862555625.github.io/">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a>
   back3: 如果上天不给你机会，那你就自己创造机会，杀出重围 .
   back4: 再厉害的英雄也需要夫人的陪伴，所以我很爱我的夫人.
 #主页设置
