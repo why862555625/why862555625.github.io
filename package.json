@@ -6,8 +6,8 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server -p 5209",
-    "write": "hexo new  new_article",
+    "server": "hexo clean && hexo generate && hexo server -p 5210",
+    "write": "hexo new  new_article && typora source/_posts/new_article",
     "display": "hexo d "
   },
   "hexo": {

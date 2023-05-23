@@ -6,7 +6,7 @@
   <link href="https://why862555625.github.io/atom.xml" rel="self"/>
   
   <link href="https://why862555625.github.io/"/>
-  <updated>2023-04-20T07:25:21.275Z</updated>
+  <updated>2023-05-23T09:26:07.224Z</updated>
   <id>https://why862555625.github.io/</id>
   
   <author>
@@ -20,15 +20,15 @@
     <title>5分钟搭一个hexo博客</title>
     <link href="https://why862555625.github.io/posts/b9dc5266.html"/>
     <id>https://why862555625.github.io/posts/b9dc5266.html</id>
-    <published>2023-04-20T07:25:21.275Z</published>
-    <updated>2023-04-20T07:25:21.275Z</updated>
+    <published>2023-05-23T09:26:07.224Z</published>
+    <updated>2023-05-23T09:26:07.224Z</updated>
     
     
     <summary type="html">搭建hexo博客快速入门教程</summary>
     
     
     
-    <category term="基础" scheme="https://why862555625.github.io/categories/%E5%9F%BA%E7%A1%80/"/>
+    <category term="hexo基础" scheme="https://why862555625.github.io/categories/hexo%E5%9F%BA%E7%A1%80/"/>
     
     
     <category term="教程" scheme="https://why862555625.github.io/tags/%E6%95%99%E7%A8%8B/"/>
@@ -36,6 +36,48 @@
     <category term="Hexo" scheme="https://why862555625.github.io/tags/Hexo/"/>
     
     <category term="基础教程" scheme="https://why862555625.github.io/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vela快应用框架</title>
+    <link href="https://why862555625.github.io/posts/d9795d89.html"/>
+    <id>https://why862555625.github.io/posts/d9795d89.html</id>
+    <published>2023-04-25T07:27:56.000Z</published>
+    <updated>2023-04-25T07:27:56.000Z</updated>
+    
+    
+    <summary type="html">quickjs对接devtools</summary>
+    
+    
+    
+    <category term="c" scheme="https://why862555625.github.io/categories/c/"/>
+    
+    
+    <category term="quickjs" scheme="https://why862555625.github.io/tags/quickjs/"/>
+    
+    <category term="devtools" scheme="https://why862555625.github.io/tags/devtools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>quickjs调试器</title>
+    <link href="https://why862555625.github.io/posts/d9795d88.html"/>
+    <id>https://why862555625.github.io/posts/d9795d88.html</id>
+    <published>2023-04-25T07:00:13.000Z</published>
+    <updated>2023-04-25T07:00:13.000Z</updated>
+    
+    
+    <summary type="html">quickjs对接devtools</summary>
+    
+    
+    
+    <category term="c" scheme="https://why862555625.github.io/categories/c/"/>
+    
+    
+    <category term="quickjs" scheme="https://why862555625.github.io/tags/quickjs/"/>
+    
+    <category term="devtools" scheme="https://why862555625.github.io/tags/devtools/"/>
     
   </entry>
   

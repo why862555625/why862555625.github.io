@@ -15,21 +15,21 @@
     <atom:link href="https://why862555625.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>UI设计、静态博客、个人博客、互联网干货分享、学习笔记记录。你可以在这里面找到很多关于UI设计相关的工具教程、思维技巧。还可以找到一些开发的小技巧。</description>
-    <pubDate>Thu, 20 Apr 2023 07:25:21 GMT</pubDate>
+    <pubDate>Tue, 23 May 2023 09:26:07 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
       <title>5分钟搭一个hexo博客</title>
       <link>https://why862555625.github.io/posts/b9dc5266.html</link>
       <guid>https://why862555625.github.io/posts/b9dc5266.html</guid>
-      <pubDate>Thu, 20 Apr 2023 07:25:21 GMT</pubDate>
+      <pubDate>Tue, 23 May 2023 09:26:07 GMT</pubDate>
       
       <description>搭建hexo博客快速入门教程</description>
       
       
       
       
-      <category domain="https://why862555625.github.io/categories/%E5%9F%BA%E7%A1%80/">基础</category>
+      <category domain="https://why862555625.github.io/categories/hexo%E5%9F%BA%E7%A1%80/">hexo基础</category>
       
       
       <category domain="https://why862555625.github.io/tags/%E6%95%99%E7%A8%8B/">教程</category>
@@ -40,6 +40,52 @@
       
       
       <comments>https://why862555625.github.io/posts/b9dc5266.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>vela快应用框架</title>
+      <link>https://why862555625.github.io/posts/d9795d89.html</link>
+      <guid>https://why862555625.github.io/posts/d9795d89.html</guid>
+      <pubDate>Tue, 25 Apr 2023 07:27:56 GMT</pubDate>
+      
+      <description>quickjs对接devtools</description>
+      
+      
+      
+      
+      <category domain="https://why862555625.github.io/categories/c/">c</category>
+      
+      
+      <category domain="https://why862555625.github.io/tags/quickjs/">quickjs</category>
+      
+      <category domain="https://why862555625.github.io/tags/devtools/">devtools</category>
+      
+      
+      <comments>https://why862555625.github.io/posts/d9795d89.html#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>quickjs调试器</title>
+      <link>https://why862555625.github.io/posts/d9795d88.html</link>
+      <guid>https://why862555625.github.io/posts/d9795d88.html</guid>
+      <pubDate>Tue, 25 Apr 2023 07:00:13 GMT</pubDate>
+      
+      <description>quickjs对接devtools</description>
+      
+      
+      
+      
+      <category domain="https://why862555625.github.io/categories/c/">c</category>
+      
+      
+      <category domain="https://why862555625.github.io/tags/quickjs/">quickjs</category>
+      
+      <category domain="https://why862555625.github.io/tags/devtools/">devtools</category>
+      
+      
+      <comments>https://why862555625.github.io/posts/d9795d88.html#disqus_thread</comments>
       
     </item>
     

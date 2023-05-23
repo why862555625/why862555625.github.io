@@ -7,15 +7,12 @@ menu:
   归档: /archives/ || fa fa-archive
   关于: /about/ || fa fa-sitemap
   娱乐 || fa fa-heartbeat:
-    音乐: /music/music.html || fas fa-music
-    照片: /tuku/ || fas fa-images
     相册: /xiance/ || fas fa-video
     视频: /video/ || fas fa-video
   菜单 || fa fa-list:
     标签: /tags/ || fa fa-tags
     分类: /categories/ || fa fa-folder-open
     日志: /timeline/ || fa fa-bell
-    myself: /myself/ || fa fa-id-card
     留言: /messageboard/ || fa fa-paper-plane
     友链: /link/ || fa fa-link
 
@@ -219,12 +216,12 @@ post_copyright:
 reward:
   enable: true
   QR_code:
-    - img: /img/wechat.webp
+    - img: /img/wechat.jpg
       link:
       text: 微信
-    - img: /img/alipay.webp
+    - img: /img/wechat.jpg
       link:
-      text: 支付宝
+      text: 微信
 
 #发布编辑
 #轻松在线浏览和编辑博客源代码。
@@ -684,9 +681,8 @@ preloader:
 
 # aside 侧边栏
 # --------------------------------------
-
 aside:
-  enable: true
+  enable: true 
   hide: false #隐藏
   button: true #按钮
   mobile: true # 在移动设备上显示
@@ -695,14 +691,14 @@ aside:
     archive: true
     tag: true
     category: true
-  card_author:
+  card_author: 
     enable: true
     description: 众里寻他千百度
     button:
       enable: true
       icon: fab fa-github
       text: 主题开源地址
-      link: https://github.com/why862555625/why862555625.github.io/tree/source
+      link: https://github.com/plasx520/blog-butterfly
   card_announcement:
     enable: false
     content: 主题以开源
@@ -917,9 +913,7 @@ css_prefix: true
 inject:
   head:
     # 导航必备
-    - <link rel="stylesheet" href="/css/glb.css">
     - <link rel="preload" href="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.css" as="style" onload="this.rel='stylesheet'">
-    - <link rel="stylesheet" href="/css/mouse.css">
   bottom:
     #欢迎光临
     # - <script src="/js/hygl.js"></script>
@@ -1026,10 +1020,10 @@ CDN:
 businesscard:
   enable: true #总开关
   QR_code: https://s2.loli.net/2022/11/09/NuQ3V6fehArJl2E.webp #加群二维码
-  master: 退役老兵 #群主ID
+  master: 王海运 #群主ID
   group: 862555625 #QQ群号
-  created: 06/18/1993 #建群时间
-  front: 62262419930628356221 #卡面正面描述语
+  created: 06/06/1995 #建群时间
+  front: 13011477115 #卡面正面描述语
   back1: 初次来到人间 #背面从上到下四行文字内容自定义
   back2: <a href="https://https://why862555625.github.io/">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a>
   back3: 如果上天不给你机会，那你就自己创造机会，杀出重围 .
