@@ -697,8 +697,8 @@ aside:
     button:
       enable: true
       icon: fab fa-github
-      text: 主题开源地址
-      link: https://github.com/plasx520/blog-butterfly
+      text: about me
+      link: https://why862555625.github.io/about/
   card_announcement:
     enable: false
     content: 主题以开源
