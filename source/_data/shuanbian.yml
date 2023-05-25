@@ -1,25 +1,25 @@
  # 双边栏手动配置文件可以自动
 
 - cover: https://cloud-image-host.oss-cn-beijing.aliyuncs.com/background/45663c9f2ce54eb2ae8628efb0c43390.jpg
-  link: /
-  title: 大学课程 - 计算机网络
+  link: /posts/d9795d10.html
+  title: quickjs调试器
   xiao: 梅花
   riqi: 2022.01.01
 
 - cover: https://cloud-image-host.oss-cn-beijing.aliyuncs.com/background/fe86174cbe99485e85f43b37c16622da.jpg
-  link: /
-  title: 大学课程 - 计算机组成原理
+  link: /posts/d9795d88.html
+  title: HTML & CSS复习
   xiao: 落叶
 
 - cover: https://cloud-image-host.oss-cn-beijing.aliyuncs.com/background/v2-8e40cc0dbad304617ad773d0f256d339_r.jpg
-  link: /
-  title: 大学课程 - 操作系统
+  link: /posts/d9795d86.html
+  title: js复习
   xiao: 球手
   riqi: 2022.01.01
 
 - cover: https://cloud-image-host.oss-cn-beijing.aliyuncs.com/background/63233ec9893f4.webp
-  link: /
-  title: Fiddler抓包 - 功能非常强大的web调试利器
+  link: /posts/d9795d89.html
+  title: vela快应用框架
   xiao: 精品
   riqi: 2022.01.01
 

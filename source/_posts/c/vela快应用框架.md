@@ -3,7 +3,7 @@ title: vela快应用框架
 tags:
   - quickjs
   - devtools
-categories: c
+categories: C
 keywords: 'quickjs ts c++'
 description: quickjs对接devtools
 top_img: 设置false不显示顶部图片
