@@ -136,13 +136,13 @@ cover:
   position: both
   # 未设置封面时，将显示默认封面（遮沒有封面置盖，默認的封面顯示）
   default_cover:
-    - https://s2.loli.net/2022/11/09/E9WRrMAYvmKDxnl.webp
-    - https://s2.loli.net/2022/11/09/UhA2W3QejrwzcLn.webp
-    - https://s2.loli.net/2022/11/09/SRi7l6jNZkD2Bmy.webp
-    - https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp
-    - https://s2.loli.net/2022/11/09/VbopOwvGhfdmy1M.webp
-    - https://s2.loli.net/2022/11/09/Et3Yh7GslKX8FwA.webp
-    - https://s2.loli.net/2022/11/09/9getUWqvxTjHcbl.webp
+    - https://raw.githubusercontent.com/why862555625/images/main/images/13.jpg
+    - https://raw.githubusercontent.com/why862555625/images/main/images/12.jpg
+    - https://raw.githubusercontent.com/why862555625/images/main/images/112.jpg
+    - https://raw.githubusercontent.com/why862555625/images/main/images/77.jpg
+    - https://raw.githubusercontent.com/why862555625/images/main/images/66.jpg
+    - https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg
+    - https://raw.githubusercontent.com/why862555625/images/main/images/333.jpg
 
 # 没图片时显示的图片
 error_img:
@@ -894,7 +894,7 @@ pangu:
 lazyload:
   enable: true
   field: site # site/post
-  placeholder: https://cdn.4t.pw/file/14237530/741480498/72a3ca/img/index/lazyload.webp
+  placeholder: https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp
   blur: false
 
 # PWA

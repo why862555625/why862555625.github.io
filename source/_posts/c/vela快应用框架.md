@@ -8,7 +8,7 @@ keywords: 'quickjs ts c++'
 description: quickjs对接devtools
 top_img: 设置false不显示顶部图片
 sticky: 100
-cover: 首页封面
+cover: "https://raw.githubusercontent.com/why862555625/images/main/images/17.png"
 comments: true评论
 abbrlink: d9795d89
 date: 2023-04-25 15:27:56

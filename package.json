@@ -8,7 +8,7 @@
     "deploy": "hexo deploy",
     "server": "hexo clean && hexo generate && hexo server -p 5210",
     "write": "hexo new  new_article && typora source/_posts/new_article",
-    "display": "hexo d "
+    "display": "hexo clean && hexo generate && hexo d "
   },
   "hexo": {
     "version": "5.4.2"
