@@ -937,8 +937,8 @@ inject:
 
       # 复制提示
     - <script charset="utf-8" data-pjax="" src="/js/copy.js"></script>
-      #  随机雪花
-    - <script src="/js/snowflake.js"></script>
+    #   #  随机雪花
+    # - <script src="/js/snowflake.js"></script>
     # 标签时间轴# 随机主题颜色
     - <script defer src="https://npm.elemecdn.com/blog12.8@1.0.1/categoryBar.js"></script> # https://cdn.jsdelivr.net/npm/js-heo@1.0.11/categoryBar/categoryBar.js
     # 夜间模式切换，css后半段代码为背景切换
