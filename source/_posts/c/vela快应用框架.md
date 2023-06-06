@@ -259,67 +259,6 @@ bool DomForFragment::render(jse_context_ref ctx) {
     return isBindingEffect();
 }
 ```
-
-dom_update_for_fragment是C++端的节点更新函数，它最终会触发节点的render函数更新子节点：
-
-```c++
-bool DomForFragment::render(jse_context_ref ctx) {
-    // 递归构造
-    jse_value_t exp_obj = jse_call(ctx, exp_, JSE_UNDEFINED, 0, {});
-    jse_value_t expValue = JSE_UNDEFINED;
-    const char* str_tid = nullptr;
-
-    // 调用JS端的求值函数获取for循环对应的list对象 expValue
-    expValue = get_from_js_expression();
-    
-    ....
-
-    //遍历数组
-    jse_size_t len = jse_get_array_length(ctx, expValue);
-    for(jse_size_t i = 0; i < len; i++) {
-        //为每个element分别调用render函数
-        jse_value_t idx = jse_uint(ctx, i);
-        jse_value_t args[] = {
-            idx,
-            item
-        };
-        jse_value_t res = jse_call(ctx, render_, JSE_UNDEFINED, 2, args);
-        if (jse_is_number(res)) {
-            unsigned int cid = jse_to_uint_def(ctx, res, 0);
-            DomEntity* ent = p->entity(cid);
-            AIOTJS_CHECK_NE(ent, nullptr);
-            ent->setDiffOperationType(DomEntityDiffOperationType::Add);
-            addChild(ent);
-            if(!jse_is_undefined(tid_value)) {
-                jse_value_t v_tid = jse_dup_value(ctx, tid_value);
-                ent->setTid(v_tid);
-            }
-        } else if (jse_is_array(ctx, res)) {
-            jse_size_t childlen = jse_get_array_length(ctx, res);
-            for(size_t j=0; j<childlen; j++) {
-                unsigned int cid = jse_get_array_idx_uint(ctx, res, j, 0);
-                DomEntity* ent = p->entity(cid);
-                AIOTJS_CHECK_NE(ent, nullptr);
-                ent->setDiffOperationType(DomEntityDiffOperationType::Add);
-                addChild(ent);
-            }
-        }
-        jse_free_value(ctx, res);
-        jse_free_value(ctx, idx);
-    }
-    jse_free_value(ctx, item);
-
-    jse_free_value(ctx, expValue);
-    AIOTJS_LOG_DEBUG("DomForFragment::build finished - <%u>", uid());
-    // 只有初始化的时候返回true表示需要flush，其它情况下延迟flush
-    return isBindingEffect();
-}
-```
-
-
-
-
-
 # 框架线程模型
 
 框架采用多线程模式，主要有如下两类线程：
