@@ -27,7 +27,7 @@ js面试手写
 思路：将传入的对象作为原型
 
 ```javascript
-javascript复制代码function create(obj) {
+function create(obj) {
   function F() {}
   F.prototype = obj
   return new F()
@@ -47,7 +47,7 @@ instanceof 运算符用于判断构造函数的 prototype 属性是否出现在�
 具体实现：
 
 ```javascript
-javascript复制代码function myInstanceof(left, right) {
+function myInstanceof(left, right) {
   let proto = Object.getPrototypeOf(left), // 获取对象的原型
       prototype = right.prototype; // 获取构造函数的 prototype 对象
 
@@ -74,7 +74,7 @@ javascript复制代码function myInstanceof(left, right) {
 （4）判断函数的返回值类型，如果是值类型，返回创建的对象。如果是引用类型，就返回这个引用类型的对象。
 
 ```javascript
-javascript复制代码function objectFactory() {
+function objectFactory() {
   let newObject = null;
   let constructor = Array.prototype.shift.call(arguments);
   let result = null;
@@ -930,7 +930,7 @@ const promisifyAll = (target) =>{
 函数防抖是指在事件被触发 n 秒后再执行回调，如果在这 n 秒内事件又被触发，则重新计时。这可以使用在一些点击请求的事件上，避免因为用户的多次点击向后端发送多次请求。
 
 ```javascript
-javascript复制代码// 函数防抖的实现
+// 函数防抖的实现
 function debounce(fn, wait) {
   let timer = null;
 
@@ -957,7 +957,7 @@ function debounce(fn, wait) {
 函数节流是指规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。节流可以使用在 scroll 函数的事件监听上，通过事件节流来降低事件调用的频率。
 
 ```javascript
-javascript复制代码// 函数节流的实现;
+// 函数节流的实现;
 function throttle(fn, delay) {
   let curTime = Date.now();
 
@@ -978,7 +978,7 @@ function throttle(fn, delay) {
 ### 7. 手写类型判断函数
 
 ```javascript
-javascript复制代码function getType(value) {
+function getType(value) {
   // 判断数据是 null 的情况
   if (value === null) {
     return value + "";
@@ -1009,7 +1009,7 @@ call 函数的实现步骤：
 7. 返回结果。
 
 ```javascript
-javascript复制代码// call函数实现
+// call函数实现
 Function.prototype.myCall = function(context) {
   // 判断调用对象
   if (typeof this !== "function") {
@@ -1043,7 +1043,7 @@ apply 函数的实现步骤：
 7. 返回结果
 
 ```javascript
-javascript复制代码// apply 函数实现
+// apply 函数实现
 Function.prototype.myApply = function(context) {
   // 判断调用对象是否为函数
   if (typeof this !== "function") {
@@ -1076,7 +1076,7 @@ bind 函数的实现步骤：
 4. 函数内部使用 apply 来绑定函数调用，需要判断函数作为构造函数的情况，这个时候需要传入当前函数的 this 给 apply 调用，其余情况都传入指定的上下文对象。
 
 ```javascript
-javascript复制代码// bind 函数实现
+// bind 函数实现
 Function.prototype.myBind = function(context) {
   // 判断调用对象是否为函数
   if (typeof this !== "function") {
@@ -1100,7 +1100,7 @@ Function.prototype.myBind = function(context) {
 函数柯里化指的是一种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。
 
 ```javascript
-javascript复制代码function curry(fn, args) {
+function curry(fn, args) {
   // 获取函数需要的参数长度
   let length = fn.length;
 
@@ -1143,7 +1143,7 @@ AJAX是 Asynchronous JavaScript and XML 的缩写，指的是通过 JavaScript �
 - 当对象的属性和监听函数设置完成后，最后调**用 sent 方法来向服务器发起请求**，可以传入参数作为发送的数据体。
 
 ```javascript
-javascript复制代码const SERVER_URL = "/server";
+const SERVER_URL = "/server";
 let xhr = new XMLHttpRequest();
 // 创建 Http 请求
 xhr.open("GET", SERVER_URL, true);
@@ -1171,7 +1171,7 @@ xhr.send(null);
 ### 13. 使用Promise封装AJAX请求
 
 ```javascript
-javascript复制代码// promise 封装实现：
+// promise 封装实现：
 function getJSON(url) {
   // 创建一个 promise 对象
   let promise = new Promise(function(resolve, reject) {
@@ -1218,7 +1218,7 @@ function getJSON(url) {
 - 因为`null` 和 `undefined` 不能转化为对象，所以第一个参数不能为`null`或 `undefined`，会报错。
 
 ```javascript
-javascript复制代码let target = {a: 1};
+let target = {a: 1};
 let object2 = {b: 2};
 let object3 = {c: 3};
 Object.assign(target,object2,object3);  
@@ -1230,7 +1230,7 @@ console.log(target);  // {a: 1, b: 2, c: 3}
 使用扩展运算符可以在构造字面量对象的时候，进行属性的拷贝。语法：`let cloneObj = { ...obj };`
 
 ```javascript
-javascript复制代码let obj1 = {a:1,b:{c:1}}
+let obj1 = {a:1,b:{c:1}}
 let obj2 = {...obj1};
 obj1.a = 2;
 console.log(obj1); //{a:2,b:{c:1}}
@@ -1248,7 +1248,7 @@ console.log(obj2); //{a:1,b:{c:2}}
 - 该方法有两个参数，两个参数都可选，如果两个参数都不写，就可以实现一个数组的浅拷贝。
 
 ```javascript
-javascript复制代码let arr = [1,2,3,4];
+let arr = [1,2,3,4];
 console.log(arr.slice()); // [1,2,3,4]
 console.log(arr.slice() === arr); //false
 ```
@@ -1259,7 +1259,7 @@ console.log(arr.slice() === arr); //false
 - 该方法有两个参数，两个参数都可选，如果两个参数都不写，就可以实现一个数组的浅拷贝。
 
 ```javascript
-javascript复制代码let arr = [1,2,3,4];
+let arr = [1,2,3,4];
 console.log(arr.concat()); // [1,2,3,4]
 console.log(arr.concat() === arr); //false
 ```
@@ -1267,7 +1267,7 @@ console.log(arr.concat() === arr); //false
 #### （4）手写实现浅拷贝
 
 ```javascript
-javascript复制代码// 浅拷贝的实现;
+// 浅拷贝的实现;
 
 function shallowCopy(object) {
   // 只拷贝对象
@@ -1328,7 +1328,7 @@ function shallowCopy(object) {
 - 这个方法可以简单粗暴的实现深拷贝，但是还存在问题，拷贝的对象中如果有函数，undefined，symbol，当使用过`JSON.stringify()`进行处理之后，都会消失。
 
 ```javascript
-javascript复制代码let obj1 = {  a: 0,
+let obj1 = {  a: 0,
               b: {
                  c: 0
                  }
@@ -1345,7 +1345,7 @@ console.log(obj2); // {a: 0, b: {c: 0}}
 该函数库也有提供_.cloneDeep用来做 Deep Copy
 
 ```javascript
-javascript复制代码var _ = require('lodash');
+var _ = require('lodash');
 var obj1 = {
     a: 1,
     b: { f: { g: 1 } },
@@ -1358,7 +1358,7 @@ console.log(obj1.b.f === obj2.b.f);// false
 #### （3）手写实现深拷贝函数
 
 ```javascript
-javascript复制代码// 深拷贝的实现
+// 深拷贝的实现
 function deepCopy(object) {
   if (!object || typeof object !== "object") return;
 
@@ -1382,10 +1382,10 @@ function deepCopy(object) {
 输入：
 
 ```javascript
-javascript复制代码dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd') // 2020/12/01
+dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd') // 2020/12/01
 dateFormat(new Date('2020-04-01'), 'yyyy/MM/dd') // 2020/04/01
 dateFormat(new Date('2020-04-01'), 'yyyy年MM月dd日') // 2020年04月01日
-javascript复制代码const dateFormat = (dateInput, format)=>{
+const dateFormat = (dateInput, format)=>{
     var day = dateInput.getDate() 
     var month = dateInput.getMonth() + 1  
     var year = dateInput.getFullYear()   
@@ -1401,7 +1401,7 @@ javascript复制代码const dateFormat = (dateInput, format)=>{
 巧妙的利用两个数的和、差：
 
 ```javascript
-javascript复制代码a = a + b
+a = a + b
 b = a - b
 a = a - b
 ```
@@ -1415,7 +1415,7 @@ a = a - b
 - 按照上面的规律执行，直到遍历完成
 
 ```javascript
-javascript复制代码var arr = [1,2,3,4,5,6,7,8,9,10];
+var arr = [1,2,3,4,5,6,7,8,9,10];
 for (var i = 0; i < arr.length; i++) {
   const randomIndex = Math.round(Math.random() * (arr.length - 1 - i)) + i;
   [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
@@ -1426,7 +1426,7 @@ console.log(arr)
 还有一方法就是倒序遍历：
 
 ```javascript
-javascript复制代码var arr = [1,2,3,4,5,6,7,8,9,10];
+var arr = [1,2,3,4,5,6,7,8,9,10];
 let length = arr.length,
     randomIndex,
     temp;
@@ -1444,7 +1444,7 @@ console.log(arr)
 - arr=[1,2,3,4,5,6,7,8,9,10]，求和
 
 ```javascript
-javascript复制代码let arr=[1,2,3,4,5,6,7,8,9,10]
+let arr=[1,2,3,4,5,6,7,8,9,10]
 let sum = arr.reduce( (total,i) => total += i,0);
 console.log(sum);
 ```
@@ -1452,7 +1452,7 @@ console.log(sum);
 - arr=[1,2,3,[[4,5],6],7,8,9]，求和
 
 ```javascript
-javascript复制代码var = arr=[1,2,3,[[4,5],6],7,8,9]
+var = arr=[1,2,3,[[4,5],6],7,8,9]
 let arr= arr.toString().split(',').reduce( (total,i) => total += Number(i),0);
 console.log(arr);
 ```
@@ -1460,7 +1460,7 @@ console.log(arr);
 递归实现：
 
 ```javascript
-javascript复制代码let arr = [1, 2, 3, 4, 5, 6] 
+let arr = [1, 2, 3, 4, 5, 6] 
 
 function add(arr) {
     if (arr.length == 1) return arr[0] 
@@ -1476,7 +1476,7 @@ console.log(add(arr)) // 21
 普通的递归思路很容易理解，就是通过循环递归的方式，一项一项地去遍历，如果每一项还是一个数组，那么就继续往下遍历，利用递归程序的方法，来实现数组的每一项的连接：
 
 ```javascript
-javascript复制代码let arr = [1, [2, [3, 4, 5]]];
+let arr = [1, [2, [3, 4, 5]]];
 function flatten(arr) {
   let result = [];
 
@@ -1497,7 +1497,7 @@ flatten(arr);  //  [1, 2, 3, 4，5]
 从上面普通的递归函数中可以看出，其实就是对数组的每一项进行处理，那么其实也可以用reduce 来实现数组的拼接，从而简化第一种方法的代码，改造后的代码如下所示：
 
 ```javascript
-javascript复制代码let arr = [1, [2, [3, 4]]];
+let arr = [1, [2, [3, 4]]];
 function flatten(arr) {
     return arr.reduce(function(prev, next){
         return prev.concat(Array.isArray(next) ? flatten(next) : next)
@@ -1511,7 +1511,7 @@ console.log(flatten(arr));//  [1, 2, 3, 4，5]
 这个方法的实现，采用了扩展运算符和 some 的方法，两者共同使用，达到数组扁平化的目的：
 
 ```javascript
-javascript复制代码let arr = [1, [2, [3, 4]]];
+let arr = [1, [2, [3, 4]]];
 function flatten(arr) {
     while (arr.some(item => Array.isArray(item))) {
         arr = [].concat(...arr);
@@ -1526,7 +1526,7 @@ console.log(flatten(arr)); //  [1, 2, 3, 4，5]
 可以通过 split 和 toString 两个方法来共同实现数组扁平化，由于数组会默认带一个 toString 的方法，所以可以把数组直接转换成逗号分隔的字符串，然后再用 split 方法把字符串重新转换为数组，如下面的代码所示：
 
 ```javascript
-javascript复制代码let arr = [1, [2, [3, 4]]];
+let arr = [1, [2, [3, 4]]];
 function flatten(arr) {
     return arr.toString().split(',');
 }
@@ -1542,7 +1542,7 @@ console.log(flatten(arr)); //  [1, 2, 3, 4，5]
 其中 depth 是 flat 的参数，depth 是可以传递数组的展开深度（默认不填、数值是 1），即展开一层数组。如果层数不确定，参数可以传进 Infinity，代表不论多少层都要展开：
 
 ```javascript
-javascript复制代码let arr = [1, [2, [3, 4]]];
+let arr = [1, [2, [3, 4]]];
 function flatten(arr) {
   return arr.flat(Infinity);
 }
@@ -1552,7 +1552,7 @@ console.log(flatten(arr)); //  [1, 2, 3, 4，5]
 可以看出，一个嵌套了两层的数组，通过将 flat 方法的参数设置为 Infinity，达到了我们预期的效果。其实同样也可以设置成 2，也能实现这样的效果。在编程过程中，如果数组的嵌套层数不确定，最好直接使用 Infinity，可以达到扁平化。 **（6）正则和 JSON 方法** 在第4种方法中已经使用 toString 方法，其中仍然采用了将 JSON.stringify 的方法先转换为字符串，然后通过正则表达式过滤掉字符串中的数组的方括号，最后再利用 JSON.parse 把它转换成数组：
 
 ```javascript
-javascript复制代码let arr = [1, [2, [3, [4, 5]]], 6];
+let arr = [1, [2, [3, [4, 5]]], 6];
 function flatten(arr) {
   let str = JSON.stringify(arr);
   str = str.replace(/(\[|\])/g, '');
@@ -1569,7 +1569,7 @@ console.log(flatten(arr)); //  [1, 2, 3, 4，5]
 ES6方法（使用数据结构集合）：
 
 ```javascript
-javascript复制代码const array = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+const array = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
 
 Array.from(new Set(array)); // [1, 2, 3, 5, 9, 8]
 ```
@@ -1577,7 +1577,7 @@ Array.from(new Set(array)); // [1, 2, 3, 5, 9, 8]
 ES5方法：使用map存储不重复的数字
 
 ```javascript
-javascript复制代码const array = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
+const array = [1, 2, 3, 5, 1, 5, 9, 1, 2, 8];
 
 uniqueArray(array); // [1, 2, 3, 5, 9, 8]
 
@@ -1597,7 +1597,7 @@ function uniqueArray(array) {
 ### 7. 实现数组的flat方法
 
 ```javascript
-javascript复制代码function _flat(arr, depth) {
+function _flat(arr, depth) {
   if(!Array.isArray(arr) || depth <= 0) {
     return arr;
   }
@@ -1614,7 +1614,7 @@ javascript复制代码function _flat(arr, depth) {
 ### 8. 实现数组的push方法
 
 ```javascript
-javascript复制代码let arr = [];
+let arr = [];
 Array.prototype.push = function() {
 	for( let i = 0 ; i < arguments.length ; i++){
 		this[this.length] = arguments[i] ;
@@ -1626,7 +1626,7 @@ Array.prototype.push = function() {
 ### 9. 实现数组的filter方法
 
 ```javascript
-javascript复制代码Array.prototype._filter = function(fn) {
+Array.prototype._filter = function(fn) {
     if (typeof fn !== "function") {
         throw Error('参数必须是一个函数');
     }
@@ -1641,7 +1641,7 @@ javascript复制代码Array.prototype._filter = function(fn) {
 ### 10. 实现数组的map方法
 
 ```javascript
-javascript复制代码Array.prototype._map = function(fn) {
+Array.prototype._map = function(fn) {
    if (typeof fn !== "function") {
         throw Error('参数必须是一个函数');
     }
@@ -1658,7 +1658,7 @@ javascript复制代码Array.prototype._map = function(fn) {
 输入字符串s，以及其重复的次数，输出重复的结果，例如输入abc，2，输出abcabc。
 
 ```javascript
-javascript复制代码function repeat(s, n) {
+function repeat(s, n) {
     return (new Array(n + 1)).join(s);
 }
 ```
@@ -1666,7 +1666,7 @@ javascript复制代码function repeat(s, n) {
 递归：
 
 ```javascript
-javascript复制代码function repeat(s, n) {
+function repeat(s, n) {
     return (n > 0) ? s.concat(repeat(s, --n)) : "";
 }
 ```
@@ -1676,7 +1676,7 @@ javascript复制代码function repeat(s, n) {
 在字符串的原型链上添加一个方法，实现字符串翻转：
 
 ```javascript
-javascript复制代码String.prototype._reverse = function(a){
+String.prototype._reverse = function(a){
     return a.split("").reverse().join("");
 }
 var obj = new String();
@@ -1691,7 +1691,7 @@ console.log(res);    // olleh
 **数字有小数版本：**
 
 ```javascript
-javascript复制代码let format = n => {
+let format = n => {
     let num = n.toString() // 转成字符串
     let decimals = ''
         // 判断是否有小数
@@ -1716,7 +1716,7 @@ format(12323.33)  // '12,323.33'
 **数字无小数版本：**
 
 ```javascript
-javascript复制代码let format = n => {
+let format = n => {
     let num = n.toString() 
     let len = num.length
     if (len <= 3) {
@@ -1738,7 +1738,7 @@ format(1232323)  // '1,232,323'
 JavaScript对数值有范围的限制，限制如下：
 
 ```javascript
-javascript复制代码Number.MAX_VALUE // 1.7976931348623157e+308
+Number.MAX_VALUE // 1.7976931348623157e+308
 Number.MAX_SAFE_INTEGER // 9007199254740991
 Number.MIN_VALUE // 5e-324
 Number.MIN_SAFE_INTEGER // -9007199254740991
@@ -1749,7 +1749,7 @@ Number.MIN_SAFE_INTEGER // -9007199254740991
 实现一个算法进行大数的相加：
 
 ```javascript
-javascript复制代码function sumBigNumber(a, b) {
+function sumBigNumber(a, b) {
   let res = '';
   let temp = 0;
   
@@ -1780,7 +1780,7 @@ javascript复制代码function sumBigNumber(a, b) {
 1）粗暴版
 
 ```javascript
-javascript复制代码function add (a) {
+function add (a) {
 return function (b) {
  	return function (c) {
       return a + b + c;
@@ -1795,7 +1795,7 @@ console.log(add(1)(2)(3)); // 6
 - 参数长度固定
 
 ```javascript
-javascript复制代码var add = function (m) {
+var add = function (m) {
   var temp = function (n) {
     return add(m + n);
   }
@@ -1818,7 +1818,7 @@ console.log(add(3)(6)(9)(25)); // 43
 - 参数长度不固定
 
 ```javascript
-javascript复制代码function add (...args) {
+function add (...args) {
     //求和
     return args.reduce((a, b) => a + b)
 }
@@ -1881,21 +1881,21 @@ javascript
 arr = [1,2,3,4,5,6,7,8,9,10]，求和
 
 ```javascript
-javascript复制代码let arr = [1,2,3,4,5,6,7,8,9,10]
+let arr = [1,2,3,4,5,6,7,8,9,10]
 arr.reduce((prev, cur) => { return prev + cur }, 0)
 ```
 
 arr = [1,2,3,[[4,5],6],7,8,9]，求和
 
 ```javascript
-javascript复制代码let arr = [1,2,3,4,5,6,7,8,9,10]
+let arr = [1,2,3,4,5,6,7,8,9,10]
 arr.flat(Infinity).reduce((prev, cur) => { return prev + cur }, 0)
 ```
 
 arr = [{a:1, b:3}, {a:2, b:3, c:4}, {a:3}]，求和
 
 ```javascript
-javascript复制代码let arr = [{a:9, b:3, c:4}, {a:1, b:3}, {a:3}] 
+let arr = [{a:9, b:3, c:4}, {a:1, b:3}, {a:3}] 
 
 arr.reduce((prev, cur) => {
     return prev + cur["a"];
@@ -1905,7 +1905,7 @@ arr.reduce((prev, cur) => {
 ### 16. 将js对象转化为树形结构
 
 ```javascript
-javascript复制代码// 转换前：
+// 转换前：
 source = [{
             id: 1,
             pid: 0,
@@ -1940,7 +1940,7 @@ tree = [{
 代码实现：
 
 ```javascript
-javascript复制代码function jsonToTree(data) {
+function jsonToTree(data) {
   // 初始化结果数组，并判断输入数据的格式
   let result = []
   if(!Array.isArray(data)) {
@@ -1969,7 +1969,7 @@ javascript复制代码function jsonToTree(data) {
 ES5：
 
 ```javascript
-javascript复制代码function sum() {
+function sum() {
     let sum = 0
     Array.prototype.forEach.call(arguments, function(item) {
         sum += item * 1
@@ -1981,7 +1981,7 @@ javascript复制代码function sum() {
 ES6：
 
 ```javascript
-javascript复制代码function sum(...nums) {
+function sum(...nums) {
     let sum = 0
     nums.forEach(function(item) {
         sum += item * 1
@@ -1993,7 +1993,7 @@ javascript复制代码function sum(...nums) {
 ### 18. 解析 URL Params 为对象
 
 ```javascript
-javascript复制代码let url = 'http://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&enabled';
+let url = 'http://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&enabled';
 parseParam(url)
 /* 结果
 { user: 'anonymous',
@@ -2002,7 +2002,7 @@ parseParam(url)
   enabled: true, // 未指定值得 key 约定为 true
 }
 */
-javascript复制代码function parseParam(url) {
+function parseParam(url) {
   const paramsStr = /.+\?(.+)$/.exec(url)[1]; // 将 ? 后面的字符串取出来
   const paramsArr = paramsStr.split('&'); // 将字符串以 & 分割后存到数组中
   let paramsObj = {};
@@ -2034,7 +2034,7 @@ javascript复制代码function parseParam(url) {
 三个亮灯函数：
 
 ```javascript
-javascript复制代码function red() {
+function red() {
     console.log('red');
 }
 function green() {
@@ -2050,7 +2050,7 @@ function yellow() {
 #### （1）用 callback 实现
 
 ```javascript
-javascript复制代码const task = (timer, light, callback) => {
+const task = (timer, light, callback) => {
     setTimeout(() => {
         if (light === 'red') {
             red()
@@ -2076,7 +2076,7 @@ task(3000, 'red', () => {
 上面提到过递归，可以递归亮灯的一个周期：
 
 ```javascript
-javascript复制代码const step = () => {
+const step = () => {
     task(3000, 'red', () => {
         task(2000, 'green', () => {
             task(1000, 'yellow', step)
@@ -2091,7 +2091,7 @@ step()
 #### （2）用 promise 实现
 
 ```javascript
-javascript复制代码const task = (timer, light) => 
+const task = (timer, light) => 
     new Promise((resolve, reject) => {
         setTimeout(() => {
             if (light === 'red') {
@@ -2120,7 +2120,7 @@ step()
 #### （3）用 async/await 实现
 
 ```javascript
-javascript复制代码const taskRunner =  async () => {
+const taskRunner =  async () => {
     await task(3000, 'red')
     await task(2000, 'green')
     await task(2100, 'yellow')
@@ -2132,7 +2132,7 @@ taskRunner()
 ### 2. 实现每隔一秒打印 1,2,3,4
 
 ```javascript
-javascript复制代码// 使用闭包实现
+// 使用闭包实现
 for (var i = 0; i < 5; i++) {
   (function(i) {
     setTimeout(function() {
@@ -2153,7 +2153,7 @@ for (let i = 0; i < 5; i++) {
 有30个小孩儿，编号从1-30，围成一圈依此报数，1、2、3 数到 3 的小孩儿退出这个圈， 然后下一个小孩 重新报数 1、2、3，问最后剩下的那个小孩儿的编号是多少?
 
 ```javascript
-javascript复制代码function childNum(num, count){
+function childNum(num, count){
     let allplayer = [];    
     for(let i = 0; i < num; i++){
         allplayer[i] = i + 1;
@@ -2188,7 +2188,7 @@ childNum(30, 3)
 ### 4. 用Promise实现图片的异步加载
 
 ```javascript
-javascript复制代码let imageAsync=(url)=>{
+let imageAsync=(url)=>{
             return new Promise((resolve,reject)=>{
                 let img = new Image();
                 img.src = url;
@@ -2213,7 +2213,7 @@ imageAsync("url").then(()=>{
 ### 5. 实现发布-订阅模式
 
 ```javascript
-javascript复制代码class EventCenter{
+class EventCenter{
   // 1. 定义事件容器，用来装事件数组
 	let handlers = {}
 
@@ -2265,7 +2265,7 @@ javascript复制代码class EventCenter{
 ### 6. 查找文章中出现频率最高的单词
 
 ```javascript
-javascript复制代码function findMostWord(article) {
+function findMostWord(article) {
   // 合法性判断
   if (!article) return;
   // 参数处理
@@ -2295,7 +2295,7 @@ javascript复制代码function findMostWord(article) {
 ### 7. 封装异步的fetch，使用async await方式来使用
 
 ```javascript
-javascript复制代码(async () => {
+(async () => {
     class HttpRequestUtil {
         async get(url) {
             const res = await fetch(url);
@@ -2347,7 +2347,7 @@ javascript复制代码(async () => {
 所谓的原型链继承就是让新实例的原型等于父类的实例：
 
 ```javascript
-javascript复制代码//父方法
+//父方法
 function SupperFunction(flag1){
     this.flag1 = flag1;
 }
@@ -2373,7 +2373,7 @@ subInstance.flag2;   // false
 ### 9. 实现双向数据绑定
 
 ```javascript
-javascript复制代码let obj = {}
+let obj = {}
 let input = document.getElementById('input')
 let span = document.getElementById('span')
 // 数据劫持
@@ -2398,7 +2398,7 @@ input.addEventListener('keyup', function(e) {
 ### 10. 实现简单路由
 
 ```javascript
-javascript复制代码// hash路由
+// hash路由
 class Route{
   constructor(){
     // 路由存储对象
@@ -2426,7 +2426,7 @@ class Route{
 ### 11. 实现斐波那契数列
 
 ```javascript
-javascript复制代码// 递归
+// 递归
 function fn (n){
     if(n==0) return 0
     if(n==1) return 1
@@ -2472,7 +2472,7 @@ function fn(n) {
 用一个滑动窗口装没有重复的字符，枚举字符记录最大值即可。用 map 维护字符的索引，遇到相同的字符，把左边界移动过去即可。挪动的过程中记录最大长度：
 
 ```javascript
-javascript复制代码var lengthOfLongestSubstring = function (s) {
+var lengthOfLongestSubstring = function (s) {
     let map = new Map();
     let i = -1
     let res = 0
@@ -2497,7 +2497,7 @@ setInterval 的作用是每隔一段指定时间执行一个函数，但是这�
 实现思路是使用递归函数，不断地去执行 setTimeout 从而达到 setInterval 的效果
 
 ```javascript
-javascript复制代码function mySetInterval(fn, timeout) {
+function mySetInterval(fn, timeout) {
   // 控制器，控制定时器是否继续执行
   var timer = {
     flag: true
@@ -2519,7 +2519,7 @@ javascript复制代码function mySetInterval(fn, timeout) {
 ### 14. 实现 jsonp
 
 ```javascript
-javascript复制代码// 动态的加载js文件
+// 动态的加载js文件
 function addScript(src) {
   const script = document.createElement('script');
   script.src = src;
@@ -2542,7 +2542,7 @@ handleRes({a: 1, b: 2});
 下面方法可以用来判断一个对象中是否已存在循环引用：
 
 ```javascript
-javascript复制代码const isCycleObject = (obj,parent) => {
+const isCycleObject = (obj,parent) => {
     const parentArr = parent || [obj];
     for(let i in obj) {
         if(typeof obj[i] === 'object') {
@@ -2572,7 +2572,7 @@ console.log(isCycleObject(o)
 查找有序二维数组的目标值：
 
 ```javascript
-javascript复制代码var findNumberIn2DArray = function(matrix, target) {
+var findNumberIn2DArray = function(matrix, target) {
     if (matrix == null || matrix.length == 0) {
         return false;
     }
@@ -2594,7 +2594,7 @@ javascript复制代码var findNumberIn2DArray = function(matrix, target) {
 二维数组斜向打印：
 
 ```javascript
-javascript复制代码function printMatrix(arr){
+function printMatrix(arr){
   let m = arr.length, n = arr[0].length
 	let res = []
   
