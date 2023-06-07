@@ -1,0 +1,710 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>算法总结 | biubiu</title><meta name="author" content="王海运"><meta name="copyright" content="王海运"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="算法总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法总结">
+<meta property="og:url" content="https://why862555625.github.io/posts/1213ac56.html">
+<meta property="og:site_name" content="biubiu">
+<meta property="og:description" content="算法总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://why862555625.github.io/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2">
+<meta property="article:published_time" content="2023-05-31T12:18:34.000Z">
+<meta property="article:modified_time" content="2023-05-31T12:18:34.000Z">
+<meta property="article:author" content="王海运">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://why862555625.github.io/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2"><link rel="shortcut icon" href="https://unpkg.com/plasx@1.0.3/img/favicon.webp"><link rel="canonical" href="https://why862555625.github.io/posts/1213ac56"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="https://npm.elemecdn.com/blog2023@1.0.2/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/swiper@8.4.2/swiper-bundle.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"KPAKI5YHZ8","apiKey":"031790ee5a399a40981430251606ff78","indexName":"hexo","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":150},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":2000,"languages":{"author":"作者: 王海运","link":"链接: ","source":"来源: biubiu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"rgb(0 199 255 / 70%)","bgDark":"rgb(0 199 255 / 70%)","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '算法总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-31 20:18:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preload" href="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.css" as="style" onload="this.rel='stylesheet'"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="biubiu" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="biubiu" type="application/rss+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img iconfont icon-apple-fill"><div class="loading-image-dot iconfont icon-jiazai"></div></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://unpkg.com/plasx@1.0.3/css/progress_bar.css"/><script src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: 设置false不显示顶部图片"><nav id="nav"><span id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon fas fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="主线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/GcgMjo5lNUfbrFW.webp"/><span class="back-menu-item-text">主线路</span></a><a class="back-menu-item" href="https://why862555625.github.io/" rel="external nofollow" title="备用线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/XxmYTFzsacq9EbL.webp"/><span class="back-menu-item-text">备用线路</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">biubiu</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="biubiu" target="_blank" rel="noopener nofollow" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/12/YBMzJhbXEPprU87.webp"/><span class="back-menu-item-text">biubiu</span></a></div></div></div></div><a id="site-name" href="/"><div class="title">biubiu</div><i class="fa-solid fa-house"></i></a></span><div class="mask-name-container"><center id="name-container"><a id="page-name" href="javascript:btf.scrollToDest(0,500)">PAGE_NAME</a></center></div><div id="menus"><div class="nav-button" id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" title="浅色和深色模式转换" onclick="switchNightMode()"><i class="fas fa-adjust"></i></a></div><div class="nav-button" id="modeicon"><a class="darkmode_switchbutton" type="button" title="切换壁纸" onclick="toggleWinbox()"><i class="fa-solid fa-image"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn"><i class="fas fa-arrow-up"></i><span id="percent" onclick="btf.scrollToDest(0,500)">0</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><div id="post-meta"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><h1 class="post-title">算法总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-31T12:18:34.000Z" title="发表于 2023-05-31 20:18:34">2023-05-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-31T12:18:34.000Z" title="更新于 2023-05-31 20:18:34">2023-05-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/">JS</a></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>算法总结</p>
+<span id="more"></span>
+
+<h1 id="1-动态规划"><a href="#1-动态规划" class="headerlink" title="1. 动态规划"></a>1. 动态规划</h1><h4 id="传统递归-vs-DP"><a href="#传统递归-vs-DP" class="headerlink" title="传统递归 vs. DP"></a>传统递归 vs. DP</h4><p>先用一个被大佬们举例举到烂的🌰，这个栗子很烂，但是真的<strong>很香</strong>：必须着重<strong>强调</strong>.</p>
+<p><strong>《斐波那契（Fibonacci）数列的第n项》</strong></p>
+<p><strong>举荐理由：</strong>在我自己看来Fibonacci是动态规划设计中的入门级案例，就好比说编程中的“hello world”，大数据中的“word count”.</p>
+<p>Fibonacci几乎完美的诠释了<strong>动态规划带来的思想和技巧</strong>然而没有任何其他的要考虑的细枝末节，这种很清晰的方法看起来很适合整个的动态规划的思维方式，很适合入门来进行的思考方式.</p>
+<p>接下来咱们先来看题目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">题目复制代码写一个函数，输入n，求斐波那契（Fibonacci）数列的第 n 项。斐波那契数列的定义如下：</span><br><span class="line"></span><br><span class="line">F(0) = 0, F(1) = 1</span><br><span class="line">F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.</span><br><span class="line">斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。</span><br></pre></td></tr></table></figure>
+
+<p>比较一下传统递归解法和动态规划思想下的解决对比</p>
+<h4 id="1-先-递归解决"><a href="#1-先-递归解决" class="headerlink" title="1. 先 递归解决"></a>1. 先 递归解决</h4><p>传统对于这种题目的思考方式会利用递归求解，做起来比较简单，就是不断的去递归调用，看下面代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fib_recur</span>(<span class="params">N</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">    <span class="keyword">if</span> N &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> N</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">fib_recur</span>(N-<span class="number">1</span>) + <span class="title function_">fib_recur</span>(N-<span class="number">2</span>)  # 递归输出  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">F( <span class="number">1</span> ) =  <span class="number">3</span></span><br><span class="line">F( <span class="number">2</span> ) =  <span class="number">2</span></span><br><span class="line">F( <span class="number">3</span> ) =  <span class="number">1</span></span><br><span class="line">F( <span class="number">4</span> ) =  <span class="number">0</span></span><br><span class="line">F( <span class="number">5</span> ) =  <span class="number">1</span></span><br><span class="line">F( <span class="number">6</span> ) =  <span class="number">2</span></span><br><span class="line">F( <span class="number">7</span> ) =  <span class="number">1</span></span><br><span class="line">F( <span class="number">8</span> ) =  <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>重复计算</strong></p>
+<p>明显可以看到，总计 8 次的计算过程中，相同的计算结果有三对进行了<strong>重复计算</strong>（下图中同色项，不包含灰色），也就是说在递归的过程中，把曾经计算过的项进行了<strong>又一次的重复计算</strong>，这样对于时间效率是比较低的，唯一的好处可能就是代码看起来比较好懂，但是终归不是一个好的算法设计方法。</p>
+<p>代码中，在计算N的时候就去递归计算 <code>fib(N-1) + fib(N-2)</code>，那么，这种情况下的计算过程中。会是下面图中的一个计算过程。</p>
+<p>可以发现，会有相当一部分的重复计算，这样对于时间都是重复的消耗。</p>
+<blockquote>
+<p>参考图中相同颜色的项，比如说粉色的重复计算、黄色的重复计算等</p>
+<p>注意：递归中没有对空间进行了增加，始终都是同样的长度，仅仅是不断的弹出和压入</p>
+</blockquote>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605114156368.png" alt="image-20230605114156368"></p>
+<p>为了更好的说明这种重复计算带来时间效率的低下。再比如说，相比上述图中的计算节点，再增加一个节点的计算，增加计算F(5)，那么由于递归的计算方式，会有更多的项（下图中线框中部分）进行了重复的计算。在计算<code>F(5)</code>的时候，会递归调用<code>F(4)</code>和<code>F(3)</code>，而在下图中，计算<code>F(4)</code>的时候，又会完整的去计算<code>F(3)</code>。这样，如果N很大的话，会有更大的时间消耗.</p>
+<p>这样，这棵树的规模进行进行成倍增加，时间复杂度很明显的进行了成倍的扩张。对于时间上来说是很恐怖的.</p>
+<p>时间复杂度带来的低效率严重超过了代码的可读性，所以我们可以想办法将<strong>过去计算</strong>过的节点<strong>进行保存</strong>。这样，我们就会用到下面要说的动态规划思想带来的时间上的高效.</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605114342318.png" alt="image-20230605114342318"></p>
+<blockquote>
+<p>时间复杂度：o(2**n) —&gt; 指数级</p>
+<p>空间复杂度：o(n)</p>
+</blockquote>
+<h4 id="2-后-动态规划解决"><a href="#2-后-动态规划解决" class="headerlink" title="2. 后 动态规划解决"></a>2. 后 动态规划解决</h4><p><strong>大概解释一下字面意思：</strong></p>
+<p><strong>动态规划：我们不直接去解决问题，而是在每一步解决问题的时候，达到每一步的最优情况。换句话说，就是在每一步解决问题过程中，利用过去的状态</strong>以及<strong>当前状态</strong>的情况而达到一个当前的最优状态.</p>
+<p><em>*规划：在一般解决该类问题的时候，会有一个“填表格”的过程，无论是简单情况下的**一维表格**还是复杂一点的</em>*二维表格<strong>，都是以</strong>开辟空间换时间**的思想，以争取最佳的时间效率. （保存过程中间值，方便后续直接使用）.</p>
+<p><strong>动态：</strong>用上面的案例来说，递归解决过程中的每一步都会从基本问题不断的“自顶向下”去求解，在每一步骤中，会有相同的计算逻辑进行了重复的计算。相比于递归思想，动态规划思想增加了对历史上计算结果的保存，逐步记录下中间的计算结果，在每一步求得最优值.</p>
+<p>因此，动态规划可以避免重复计算，达到了时间上的最优，从O(2N)O(2^N)O(2N)指数级变为O(N)O(N)O(N)常数级别，相较于开辟的一段内存空间存放中间过程值的开销，是非常值得的.</p>
+<p><strong>那么，接下来咱们依照动态规划的思路进行对Fibonacci进行下解决</strong></p>
+<p>依据题中的规则：</p>
+<p>F(0) = 0, F(1) = 1</p>
+<p>F(N) = F(N - 1) + F(N - 2),  when N &gt; 1</p>
+<p>那么，👇👇F(N) 的值只与他的前两个状态有关系👇👇</p>
+<p>a. 初始化值 : F(0) = 0, F(1) = 1 b. 想要计算得到F(2)， 那么F(2) = F(0) + F(1)   –&gt;  保存 F(2) c. 想要计算得到F(3)， 那么F(3) = F(2) + F(1)   –&gt;  保存 F(3) d. 想要计算得到F(3)， 那么F(4) = F(3) + F(2)   –&gt;  保存 F(4)</p>
+<p>利用动态规划思想，以一维数组辅助实现的Fibonacci，看下图</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605114740415.png" alt="image-20230605114740415"></p>
+<p>是不是很简单的思路，仅仅靠保存过程中的一些值就能很简单的利用循环就可以实现了，没必要用递归反复计算进行实现。</p>
+<p>想要计算得到第 n 个值的多少？那么，以下几点是我们必须要做到的</p>
+<p>​    a. <strong>定义一个一维数组</strong>   —&gt;  一般用dp来命名</p>
+<p>​    b. <strong>动态方程的设定</strong>   —&gt;  题中的F(N) = F(N - 1) + F(N - 2)</p>
+<p>​    c. <strong>初始化数值</strong>   —&gt;  F(0) = 0和F(1) = 1</p>
+<p>上述的 a、b 和 c 点就是动态规划思想的几个核心要素</p>
+<p>下面来看下要实现的代码（代码中，用dp来代替上面的F()）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fib</span>(<span class="params">self, N</span>):</span><br><span class="line">        <span class="keyword">if</span> N == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        dp = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(N+<span class="number">1</span>)] <span class="comment"># 1定义dp[i]保存第i个计算得到的数值</span></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>   	<span class="comment"># 2初始化</span></span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>			<span class="comment"># 2初始化</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, N+<span class="number">1</span>):	<span class="comment"># 3动态方程实现，由于0和1都实现了赋值，现在需要从第2个位置开始赋值</span></span><br><span class="line">            dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>]</span><br><span class="line">       </span><br><span class="line">        <span class="built_in">print</span> dp		 <span class="comment"># 记录计算过程中的次数，与上述递归形成对比</span></span><br><span class="line">        <span class="keyword">return</span> dp[N]</span><br></pre></td></tr></table></figure>
+
+<p>输出:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>以上，最重要的就是1 2 3 点，而执行过程参照<strong>输出</strong>对比递归算法，计算少了很多，同样的计算只计算了一次。</p>
+<blockquote>
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(N)</p>
+</blockquote>
+<p>介绍了上面的内容了，此处来条分割线吧，针对上述的 <strong>递归 vs. DP</strong></p>
+<hr>
+<p>既然动态规划的方案也介绍了，下面咱们再仔细看看，是否有优化的空间，毕竟对于一个算法方案的设计，都有找到其优化点，无论是时间还是空间的效率都想要达到一个理想的值。</p>
+<h4 id="3-动态规划-优化"><a href="#3-动态规划-优化" class="headerlink" title="3. 动态规划 + 优化"></a>3. 动态规划 + 优化</h4><p>咱们看下这张图解，发现每个计算节点都<strong>只与前两个项有关系</strong>。换句话说，咱们只要保存两个值就好了，计算新的节点值的时候，把新的值赋值给前两个值的第一个就好了</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605115233956.png" alt="image-20230605115233956"></p>
+<p>话说只要两个值，现在定义两个变量 dp1 和 dp2。那么，现在咱们一步一步模拟一下：</p>
+<p>a. 初始化值 : F(0) = 0, F(1) = 1</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605115254829.png" alt="image-20230605115254829"></p>
+<p>b. 想要计算得到F(2)， 那么F(2) = F(0) + F(1) –&gt; 保存 F(2)</p>
+<p> 顺带将F(1)赋值给dp1， f(2)赋值给dp2</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605115319902.png" alt="image-20230605115319902"></p>
+<p>c. 想要计算得到F(3)， 那么F(3) = F(2) + F(1) –&gt; 保存 F(3)</p>
+<p> 顺带将F(2)赋值给dp1， F(3)赋值给dp2</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605115336720.png" alt="image-20230605115336720"></p>
+<p>d. 想要计算得到F(3)， 那么F(4) = F(3) + F(2) –&gt; 保存 F(4)</p>
+<p> 顺带将F(3)赋值给dp1， F(4)赋值给dp2</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605115356096.png" alt="image-20230605115356096"></p>
+<p>至此为止，整个过程仅仅用到了两个变量来存储过程中产生的值，也就之前没有优化的空间效率得到了优化</p>
+<p>咱们把代码也贴一下吧，供参考</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fib_dp1</span>(<span class="params">self, N</span>):</span><br><span class="line">        <span class="keyword">if</span> N == <span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        dp1, dp2 = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, N+<span class="number">1</span>):</span><br><span class="line">            dp1 = dp1 + dp2</span><br><span class="line">            dp1, dp2 = dp2, dp1</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp2</span><br></pre></td></tr></table></figure>
+
+<p>看起来是不是更加简洁了。</p>
+<p>三点说明：<strong>1.定义dp数组 2.动态方程 3.初始化数值</strong></p>
+<p>这也说明了为什么用<strong>斐波那契数列</strong>来引入<strong>动态规划</strong>的，因为斐波那契数列本身就明确的告诉你动态方程是什么，初始化的值是什么，所以好好的体会这种思想，尤其是从传统递归 -&gt; 动态规划的思想解决，再到优化的方面，很值得深思。</p>
+<p>那接下来，咱们就找几个有代表性的栗子来尝尝鲜</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605115624586.png" alt="image-20230605115624586"></p>
+<h2 id="二、动态规划四大解题步骤处理问题"><a href="#二、动态规划四大解题步骤处理问题" class="headerlink" title="二、动态规划四大解题步骤处理问题"></a>二、动态规划四大解题步骤处理问题</h2><p>上面用斐波那契数列问题，引出了下面的几点，在这里再详细赘述一下</p>
+<p>在后面的案例中将会尽量严格按照这几个步骤进行解决问题</p>
+<blockquote>
+<p>步骤一：定义dp数组的含义</p>
+<p>步骤二：定义状态转移方程</p>
+<p>步骤三：初始化过程转移的初始值</p>
+<p>步骤四：可优化点(可选)</p>
+</blockquote>
+<h4 id="步骤一：定义dp数组的含义"><a href="#步骤一：定义dp数组的含义" class="headerlink" title="步骤一：定义dp数组的含义"></a>步骤一：定义dp数组的含义</h4><p>绝大部分情况下，我们需要定义一维数组或者二维数组进行存储在计算过程中产生的最优值，这里为什么是最优值呢？是因为在解决问题过程中，一般情况dp数组用来保存<strong>从开始到当前情况的最优值</strong>，故而保存的是截止到目前的最优值，避免重复计算（这里看起来思维有混乱的同学们，想想上面Fibonacci 递归解法和动态规划的对比）</p>
+<p><strong>所以，dp无论是一维的还是二维的，要想清楚代表什么，一般来说代表的是截止到目前情况下的最优值</strong></p>
+<h4 id="步骤二：定义状态转移方程"><a href="#步骤二：定义状态转移方程" class="headerlink" title="步骤二：定义状态转移方程"></a>步骤二：定义状态转移方程</h4><p>什么是动态转移方程？ 如果有一个问题摆在我们面前，然后这个问题在解决的过程中，会发现有很多的重叠的子问题，重叠子结构，而通过这些子问题的解决，最终将会把该问题进行解决</p>
+<p>通俗来说，在解决问题过程中，能够发现一个不断解决子问题的动态规律，比如说Fibonacci中的F(N) = F(N - 1) + F(N - 2)，而在其他的可以用动态规划解决的问题中，需要我们自己去发现这样的内在规律。这个是最难的也是最终于要的，只要这一步解决了，接下来我们解决这个问题基本就没问题了.</p>
+<h4 id="步骤三：初始化过程转移的初始值"><a href="#步骤三：初始化过程转移的初始值" class="headerlink" title="步骤三：初始化过程转移的初始值"></a>步骤三：初始化过程转移的初始值</h4><p>顺着步骤二的思路来，既然动态方程定义好了，是不是需要一个<strong>支点</strong>来撬动它进行不断的计算下去。</p>
+<p>那么，这个<strong>支点</strong>就需要我们来初始定义，将动态方程激活，进行计算。举例来说Fibonacci中的F(0) = 0和F(1) = 1，有了这两个值，它的动态方程F(N) = F(N - 1) + F(N - 2)就可以进行下去了</p>
+<p>这个就是我们要想好的初始值，实际问题可能还需要我们想想清楚.</p>
+<h4 id="步骤四：可优化点-可选"><a href="#步骤四：可优化点-可选" class="headerlink" title="步骤四：可优化点(可选)"></a>步骤四：可优化点(可选)</h4><p>可优化的这里，最重要的会是dp数组这块，也会有不同问题不同的优化点</p>
+<p>在例子中，我们会进行不同的优化.</p>
+<p>总之一点，建议大家动笔多画画图，很多细节慢慢就会出现了.</p>
+<h3 id="案例一：打家劫舍I-「来自leetcode198」"><a href="#案例一：打家劫舍I-「来自leetcode198」" class="headerlink" title="案例一：打家劫舍I 「来自leetcode198」"></a>案例一：打家劫舍I 「来自leetcode198」</h3><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">代码输入: [1,2,3,1]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。</span><br><span class="line">     偷窃到的最高金额 = 1 + 3 = 4 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例2：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">1</span>]</span><br><span class="line">输出: <span class="number">12</span></span><br><span class="line">解释: 偷窃 <span class="number">1</span> 号房屋 (金额 = <span class="number">2</span>), 偷窃 <span class="number">3</span> 号房屋 (金额 = <span class="number">9</span>)，接着偷窃 <span class="number">5</span> 号房屋 (金额 = <span class="number">1</span>)。</span><br><span class="line">     偷窃到的最高金额 = <span class="number">2</span> + <span class="number">9</span> + <span class="number">1</span> = <span class="number">12</span> 。</span><br></pre></td></tr></table></figure>
+
+<p>把经典案例系列拆分开讨论下吧，咱们首先将「打家劫舍I」来看看</p>
+<p>该题可以用动态规划的思想来解决的原因是，在小偷不断偷取的过程中，始终想要偷得的物品价值最大，最优，每一步骤都与之前的偷取情况有关系，而且每一步都要考虑是否能偷，是否会带来最大利益，这就使得我们可以用动态规划的思想来解决问题。  然后严格按照四步骤进行解题.</p>
+<h5 id="步骤一：-定义dp数组的含义"><a href="#步骤一：-定义dp数组的含义" class="headerlink" title="步骤一： 定义dp数组的含义"></a>步骤一： 定义dp数组的含义</h5><p>​    之前提到的，dp数组存储的值一般代表截止目前的最优值，在该题目中，我们定义：</p>
+<p>​    <strong>dp[i] 代表到达第 i 个房屋偷得的最高金额，也就是当前最大子序和</strong></p>
+<p>​    无论房屋有几间，最后我们取到dp数组的最后一个值就求得小偷偷得的最高金额</p>
+<h5 id="步骤二：找出关系元素间的动态方程"><a href="#步骤二：找出关系元素间的动态方程" class="headerlink" title="步骤二：找出关系元素间的动态方程"></a>步骤二：找出关系元素间的动态方程</h5><p>​    动态规划解决的问题，一般来说就是解决最优子问题，“自顶向下” 的去不断的计算每一步骤的最优值。</p>
+<p>​    也就是想要得到dp[i]的值，我们必须要知道dp[i-1]，dp[i-2]，dp[i-3] … 的每一步的最优值，在这个状态转移的过程中，我们必须要想清楚怎么去定义关系式。然而在每一步的计算中，都与前几项有关系，这个固定的关系就是我们要寻找的重叠子问题，也同样是接下来要详细定义的动态方程</p>
+<p>​    该题目中，当小偷到达第 i 个屋子的时候，他的选择有两种：一种是偷，另外一种是不偷， 然后选择价值较大者</p>
+<p>​    a. 偷的情况计算：必然是dp[3] = nums[2] + dp[1]，如果是偷取该屋子的话，相邻屋子是不能偷取的，因此，通项式子是：dp[i] =  nums[i-1] + dp[i-2]</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605123128436.png" alt="image-20230605123128436"></p>
+<p> b. 不偷的情况计算：必然是dp[3] = dp[2]，如果是不偷取该屋子的话，相邻屋子就是其最优值，因此，通项式子是：dp[i] = dp[i-1]</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605123322989.png" alt="image-20230605123322989"></p>
+<p>​    最后，要想偷得最高金额，那么，必须选取在偷与不偷之间的最大值作为我们是否选取的关键点。即：</p>
+<p>​    <strong>动态方程:</strong> dp[i] = max(dp[i-1], nums[i-1]+dp[i-2])</p>
+<h5 id="步骤三：初始化数值设定"><a href="#步骤三：初始化数值设定" class="headerlink" title="步骤三：初始化数值设定"></a>步骤三：初始化数值设定</h5><p>​    初始化: 给没有房子时，dp一个位置，即：dp[0]         1 当size=0时，没有房子，dp[0]=0；         2 当size=1时，有一间房子，偷即可：dp[1]=nums[0]</p>
+<p>那么，按照这个思路来整理一下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">self, nums</span>):</span><br><span class="line">      <span class="comment"># 1.dp[i] 代表当前最大子序和</span></span><br><span class="line">      <span class="comment"># 2.动态方程: dp[i] = max(dp[i-1], nums[i-1]+dp[i-2])</span></span><br><span class="line">      <span class="comment"># 3.初始化: 给没有房子时，dp一个位置，即：dp[0]</span></span><br><span class="line">      <span class="comment">#   3.1 当size=0时，没有房子，dp[0]=0；</span></span><br><span class="line">      <span class="comment">#   3.2 当size=1时，有一间房子，偷即可：dp[1]=nums[0]</span></span><br><span class="line">      size = <span class="built_in">len</span>(nums)</span><br><span class="line">      <span class="keyword">if</span> size == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">      dp = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(size+<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">      dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">      dp[<span class="number">1</span>] = nums[<span class="number">0</span>]</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, size+<span class="number">1</span>):</span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>], nums[i-<span class="number">1</span>]+dp[i-<span class="number">2</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[size]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(N)</p>
+</blockquote>
+<p>那下面想想看有没有可优化的地方，尽量的释放一部分计算机资源</p>
+<h5 id="步骤四：优化"><a href="#步骤四：优化" class="headerlink" title="步骤四：优化"></a>步骤四：优化</h5><p>​    从 dp[i] = max(dp[i-1], nums[i-1]+dp[i-2]) 关系来看，每一次动态变化，都与前两次状态有关系（dp[i-1], dp[i-2])，而前面的一些值是没有必要留存的.</p>
+<p>​    所以，dp只需要定义两个变量就好，将空间复杂度降为O(1)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rob_o</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="comment"># 依照上面的思路，其实我们用到的数据永远都是dp的dp[i-1]和dp[i-2]两个变量</span></span><br><span class="line">        <span class="comment"># 因此，我们可以使用两个变量来存放前两个状态值</span></span><br><span class="line">        <span class="comment"># 空间使用由O(N) -&gt; O(1)</span></span><br><span class="line"></span><br><span class="line">        size = <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> size == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        dp1 = <span class="number">0</span></span><br><span class="line">        dp2 = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, size+<span class="number">1</span>):</span><br><span class="line">            dp1 = <span class="built_in">max</span>(dp2, nums[i-<span class="number">1</span>]+dp1)</span><br><span class="line">            dp1, dp2 = dp2, dp1</span><br><span class="line">        <span class="keyword">return</span> dp2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(1)</p>
+</blockquote>
+<p>说完《打家劫舍I 》，中间穿插另外一道题目，利用二维dp来解决的一个问题。</p>
+<p>最后再说说《打家劫舍II 》和《打家劫舍III》，把这一系列的<strong>打家劫舍</strong>问题搞明白了，相信你对动态规划有一个较为深刻的入门体验</p>
+<h3 id="案例二：不同路径「来自leetcode62」"><a href="#案例二：不同路径「来自leetcode62」" class="headerlink" title="案例二：不同路径「来自leetcode62」"></a>案例二：不同路径「来自leetcode62」</h3><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605130822926.png" alt="image-20230605130822926"></p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: m = <span class="number">3</span>, n = <span class="number">2</span></span><br><span class="line">输出: <span class="number">3</span></span><br><span class="line">解释:</span><br><span class="line">从左上角开始，总共有 <span class="number">3</span> 条路径可以到达右下角。</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 向右 -&gt; 向右 -&gt; 向下</span><br><span class="line"><span class="number">2.</span> 向右 -&gt; 向下 -&gt; 向右</span><br><span class="line"><span class="number">3.</span> 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python复制代码输入: m = <span class="number">7</span>, n = <span class="number">3</span></span><br><span class="line">输出: <span class="number">28</span></span><br></pre></td></tr></table></figure>
+
+<p><em>提示：</em></p>
+<p>1 &lt;= m, n &lt;= 100 题目数据保证答案小于等于 2 * 10 ^ 9</p>
+<p>下面依然按照四个步骤来进行讨论：</p>
+<h5 id="步骤一：定义dp数组的含义-1"><a href="#步骤一：定义dp数组的含义-1" class="headerlink" title="步骤一：定义dp数组的含义"></a>步骤一：定义dp数组的含义</h5><p>​    当前这道题是从左上角到右下角的，题目中规定只能向右或者向下走，所以我们必须要定义一个二维数组来保存计算过程中的值。所以，这块定义：</p>
+<p>​    <strong>dp[i][j]: 代表到达位置 (i, j) 的所有路径的总数</strong></p>
+<p>​    即：机器人从左上角到右下角所有路径的总和，dp中每个位置的值代表行走到达 (i, j) 每个位置的总共的路径数</p>
+<h5 id="步骤二：找出关系元素间的动态方程-1"><a href="#步骤二：找出关系元素间的动态方程-1" class="headerlink" title="步骤二：找出关系元素间的动态方程"></a>步骤二：找出关系元素间的动态方程</h5><p>​    由于题目中规定只能向右或者向下走，所以在机器人行进的时候，只能是向右或向下.</p>
+<p>​    那么，分别讨论下两种情况，想要到达位置(i, j)，可以从位置(i-1, j)或者(i, j-1)出发到达。因此，到达位置(i, j) 的总的路径数一定是 <strong>到达位置(i-1, j)路径数</strong> + <strong>到达位置(i, j-1)路径数</strong>。那么，现在可以定义动态方程：</p>
+<p>​    <strong>动态方程：dp[i][j] = dp[i-1][j] + dp[i][j-1]</strong></p>
+<h5 id="步骤三：初始化数值设定-1"><a href="#步骤三：初始化数值设定-1" class="headerlink" title="步骤三：初始化数值设定"></a>步骤三：初始化数值设定</h5><p>​    很明显，在机器人走第 0 行，第 0 列的时候，无论怎么走，都只有 1 种走法。</p>
+<p>​    因此，初始化值的设定，一定是 dp[0..m][1] 或者 dp[1][0..n] 都等于1</p>
+<p>​    因此初始值如下：</p>
+<p>​    <strong>dp[0] [0….n-1] = 1;</strong>  // 机器人一直向右走，第 0 列统统为 1</p>
+<p>​    <strong>dp[0…m-1] [0] = 1;</strong>  // 机器人一直向下走，第 0 列统统为 1</p>
+<p>​    现在，按照这个思路来整理一下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">uniquePaths1</span>(<span class="params">self, m, n</span>):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 初始化表格，由于初始化0行 0列都为1。那么，先全部置为1</span></span><br><span class="line">        dp = [[<span class="number">1</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m):</span><br><span class="line">                dp[i][j] = dp[i-<span class="number">1</span>][j] + dp[i][j-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[n-<span class="number">1</span>][m-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中由于dp[[0..m][1] ][1]或者 dp[1][0..n] 都等于1，所以在定义二维数组dp时候，统统赋初始值为 1</p>
+<p>然后从位置(1, 1)开始计算每个位置的总路径数</p>
+<blockquote>
+<p>时间复杂度：O(M*N)</p>
+<p>空间复杂度：O(M*N)</p>
+</blockquote>
+<p>既然到这里了，下面再想想看有没有可优化的地方</p>
+<h5 id="步骤四：优化-1"><a href="#步骤四：优化-1" class="headerlink" title="步骤四：优化"></a>步骤四：优化</h5><p>​    可以依照前面的解决的思路，应该也可以从空间上进行一定的优化</p>
+<p>​    参照前面的案例，之前定义的是一维数组dp，优化点是每一步骤都只与前面的两个计算好的数值有关系，然后优化点就是将dp[N] -&gt; dp1和dp2，空间复杂度由 O(N) -&gt; O(1)，如果是很大规模的数据计算的话，空间效率提升了不少.</p>
+<p>​    现在这个例子中的动态方程是**dp[i][j] = dp[i-1][j] + dp[i][j-1]*<em>，很明显，每一步骤中的状态值只与左边相邻的值和上面的值相关。举例（为了方便，用 3</em>4 来举例）：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605131507215.png" alt="image-20230605131507215"></p>
+<p>​    这个完整的图片描述中，机器人从左上角的位置(1, 1)开始移动，逐渐每一步都根据动态方程进行前进，明显的可以看出机器人每移动一格，所得到的路径总和只与它的上方和左方数值有关系。也就是我们会发现，机器人移动到第2行的时候，第0行数据完全是没有用的状态。</p>
+<p>​    因此，这个优化点就出来了，在算法设计的时候，dp仅仅定义2行N列的数组就ok了，省去了m-2行的空间开销。这个代码如果大家想明白了请自行设计出来，自己写出来一定会有更加深刻的理解，再强调：多思考，形成潜移默化的思维方式.</p>
+<p>​    看完这个步骤之后，是不是很明显的优化点，为什么上面没有给出大家代码呢？是因为我看到貌似可以继续优化的点（粘住空间优化项了哈哈哈），那就继续在空间开销上做文章。</p>
+<p>​    <strong>引导：</strong>根据上述咱们的优化方案，说道 “机器人移动到第2行的时候，第0行数据完全是没有用的状态”，其实当前聪明的读者你想想，再看看，下面的图中（从上图截取过来）。 其实，不仅仅是第 0 行完全没用了，而且在第2 行做移动的时候，移动到位置(i, j)的时候，计算好位置(i, j)，那么接下来，位置(i-1, j)的数据也就没用了。换句话说，边走，第 1 行开始的某些数据也就没用了，还在占着空间</p>
+<p>​    <strong>这块大家一定多想想，多理解，多画图</strong></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605131650290.png" alt="image-20230605131650290"></p>
+<p>下面按照这种思路，看下图的步骤，也画好了用一维数组进行解决问题，也画出来每一步骤与上图的类比过程：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605131721361.png" alt="image-20230605131721361"></p>
+<p>在这里，有犯困的同学可以自己动手画一画，理解一下，个人感觉是一个很好的思维扩展</p>
+<p>接下来，就按照这样的思路进行代码实现，会发现码起来很简单</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">uniquePaths2</span>(<span class="params">self, m, n</span>):</span><br><span class="line">        <span class="keyword">if</span> m &gt; n:</span><br><span class="line">            m, n = n, m</span><br><span class="line"></span><br><span class="line">        dp = [<span class="number">1</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m):</span><br><span class="line">                dp[j] = dp[j] + dp[j-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[m-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度：O(m*n)</p>
+<p>空间复杂度：O(min(m ,n))</p>
+</blockquote>
+<p>是不是从思维方面简单干净了许多</p>
+<p>搞清楚上面的栗子之后呢，我们将上面的例题进行一个简单的难度增加，说白了，就是在路上打几个阻碍点</p>
+<p>来看:</p>
+<h3 id="案例三：不同路径II-「来自leetcode63」"><a href="#案例三：不同路径II-「来自leetcode63」" class="headerlink" title="案例三：不同路径II 「来自leetcode63」"></a>案例三：不同路径II 「来自leetcode63」</h3><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605131800138.png" alt="image-20230605131800138"></p>
+<blockquote>
+<p>说明：m 和 n 的值均不超过 100。</p>
+</blockquote>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">代码输入:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">]</span><br><span class="line">输出: <span class="number">2</span></span><br><span class="line">解释:</span><br><span class="line">3x3 网格的正中间有一个障碍物。</span><br><span class="line">从左上角到右下角一共有 <span class="number">2</span> 条不同的路径：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</span><br><span class="line"><span class="number">2.</span> 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</span><br></pre></td></tr></table></figure>
+
+<p><strong>咱们先看一下题中的两个关键点：</strong> 关键点1：只能向右或者向下 关键点2：有障碍物为1， 无障碍物为0</p>
+<p>根据 关键点1 和 关键点2 依然按照四个步骤来进行讨论：</p>
+<h5 id="步骤一：定义dp数组的含义-2"><a href="#步骤一：定义dp数组的含义-2" class="headerlink" title="步骤一：定义dp数组的含义"></a>步骤一：定义dp数组的含义</h5><p>这个题目中定义的dp数组是和上一个例题中定义的dp数组的含义是相同的，但由于该题中已经定义有数组obstacleGrid，可以直接利用，无需额外开辟空间 那么，就利用obstacleGrid作为动态规划中存储计算过程中的最优值</p>
+<h5 id="步骤二：找出关系元素间的动态方程-2"><a href="#步骤二：找出关系元素间的动态方程-2" class="headerlink" title="步骤二：找出关系元素间的动态方程"></a>步骤二：找出关系元素间的动态方程</h5><p>参照上一题目，规定动态方程: obstacleGrid[i][j] = obstacleGrid[i-1][j] + obstacleGrid[i][j-1] 由于机器人在移动过程中有障碍物，那么，对上面动态方程加一些限制条件 a.若当前 obstacleGrid[i][j] 为0。那么，直接计算动态方程下的计算过程 b.若当前 obstacleGrid[i][j] 不为0。那么，直接置该位置的值为0</p>
+<p>所以，在进行动态方程遍历的时候，先进行 obstacleGrid[i][j]的判断，再进行动态方程的计算执行</p>
+<h5 id="步骤三：初始化数值设定-2"><a href="#步骤三：初始化数值设定-2" class="headerlink" title="步骤三：初始化数值设定"></a>步骤三：初始化数值设定</h5><p>​    相比于上一题目，相似的是，在机器人走第 0 行，第 0 列的时候，无论怎么走，都只有 1 种走法     但由于有障碍物，那走到障碍物的时候，后面都是走不下去的（下图用第一行来举例）。</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605131926886.png" alt="image-20230605131926886"></p>
+<p>​    所以，初始化第 0 行，第 0 列的时候，障碍物 1 后面的都是不可达的。所以，初始化行和列的逻辑表达：</p>
+<p>​    <strong>该位置是否可达=前一个位置的状态and该位置能否可达 得到能否到达这个位置</strong></p>
+<p>​    只有前一个位置为1（可达，只有1种方式） ，当前位置为0（无障碍物）这种情况才能到达该位置，然后为该位置设 1 （可达，只有1种方式）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 0 行初始化表达式: </span></span><br><span class="line">obstacleGrid[<span class="number">0</span>][row] = <span class="built_in">int</span>(obstacleGrid[<span class="number">0</span>][row] == <span class="number">0</span> <span class="keyword">and</span> obstacleGrid[<span class="number">0</span>][row-<span class="number">1</span>] == <span class="number">1</span>)</span><br><span class="line"><span class="comment"># 0 列初始化表达式: </span></span><br><span class="line">obstacleGrid[clo][<span class="number">0</span>] = <span class="built_in">int</span>(obstacleGrid[clo][<span class="number">0</span>] == <span class="number">0</span> <span class="keyword">and</span> obstacleGrid[clo-<span class="number">1</span>][<span class="number">0</span>] == <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这些都准备就绪之后，按照相关思路进行编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">uniquePathsWithObstacles1</span>(<span class="params">self, obstacleGrid</span>):</span><br><span class="line">      	<span class="comment"># 行列长度</span></span><br><span class="line">        m = <span class="built_in">len</span>(obstacleGrid)</span><br><span class="line">        n = <span class="built_in">len</span>(obstacleGrid[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果在位置(0, 0)，哪里都去不了，直接返回0</span></span><br><span class="line">        <span class="keyword">if</span> obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 否则，位置(0, 0)可以到达</span></span><br><span class="line">        obstacleGrid[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 初始化 0 列</span></span><br><span class="line">        <span class="keyword">for</span> clo <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m):</span><br><span class="line">            obstacleGrid[clo][<span class="number">0</span>] = <span class="built_in">int</span>(obstacleGrid[clo][<span class="number">0</span>] == <span class="number">0</span> <span class="keyword">and</span> obstacleGrid[clo-<span class="number">1</span>][<span class="number">0</span>] == <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 初始化 0 行</span></span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">            obstacleGrid[<span class="number">0</span>][row] = <span class="built_in">int</span>(obstacleGrid[<span class="number">0</span>][row] == <span class="number">0</span> <span class="keyword">and</span> obstacleGrid[<span class="number">0</span>][row-<span class="number">1</span>] == <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 从位置(1, 1)根据动态方程开始计算</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">                <span class="keyword">if</span> obstacleGrid[i][j] == <span class="number">0</span>:</span><br><span class="line">                    obstacleGrid[i][j] = obstacleGrid[i-<span class="number">1</span>][j] + obstacleGrid[i][j-<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    obstacleGrid[i][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> obstacleGrid[m-<span class="number">1</span>][n-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>时间复杂度: O(mxn)</p>
+<p>空间复杂度: O(1)</p>
+</blockquote>
+<h5 id="步骤四：优化-2"><a href="#步骤四：优化-2" class="headerlink" title="步骤四：优化"></a>步骤四：优化</h5><p>​    这块的优化先不谈了，这里基本没有什么优化点，之前都是由于自己要开辟内存空间，通过空间的优化来进行，而本题是在给定的数组中进行操作的</p>
+<p>有了这几个案例的基础之后，咱们后面把经典的《打家劫舍》系列剩下的两个题目讨论完，就先告一段落，后面也希望以不同的方式与大家多多交流，互相学习</p>
+<p>如果有读者看着累了，可以先保存，收藏下来，待消化了前面的内容，方便再回来看看。</p>
+<h3 id="案例四：打家劫舍II-「来自leetcode213」"><a href="#案例四：打家劫舍II-「来自leetcode213」" class="headerlink" title="案例四：打家劫舍II 「来自leetcode213」"></a>案例四：打家劫舍II 「来自leetcode213」</h3><p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python复制代码输入: [<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>]</span><br><span class="line">输出: <span class="number">3</span></span><br><span class="line">解释: 你不能先偷窃 <span class="number">1</span> 号房屋（金额 = <span class="number">2</span>），然后偷窃 <span class="number">3</span> 号房屋（金额 = <span class="number">2</span>）, 因为他们是相邻的。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python复制代码输入: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]</span><br><span class="line">输出: <span class="number">4</span></span><br><span class="line">解释: 你可以先偷窃 <span class="number">1</span> 号房屋（金额 = <span class="number">1</span>），然后偷窃 <span class="number">3</span> 号房屋（金额 = <span class="number">3</span>）。</span><br><span class="line">     偷窃到的最高金额 = <span class="number">1</span> + <span class="number">3</span> = <span class="number">4</span> 。</span><br></pre></td></tr></table></figure>
+
+<p>与《打家劫舍I》不同的是，《打家劫舍I》的屋子是线性的，而《打家劫舍II》是环状的，所以要考虑的点会增加一些，因为首位相连接的情况，咱们分为下面三种情况进行设定：</p>
+<p>a. 不偷首偷尾</p>
+<p>b. 偷首不偷尾</p>
+<p>c. 首位都不偷 显然，c 种方式损失太大，不会获得最高的金额，故选取 a 和 b。 那么，下面分为两种情况，分别计算不包含首和不包含尾这两种情况来判断小偷哪种方式偷取的金额最高。</p>
+<p>下面依然按照之前的四个步骤来进行分析</p>
+<h5 id="步骤一：-定义dp数组的含义-1"><a href="#步骤一：-定义dp数组的含义-1" class="headerlink" title="步骤一： 定义dp数组的含义"></a>步骤一： 定义dp数组的含义</h5><p>​    dp[i] 代表的含义和之前一致，dp数组存储的值一般代表截止目前的最优值</p>
+<p>​    所以，<strong>dp[i] 代表到达第 i 个房屋偷得的最高金额，也就是当前最大子序和</strong></p>
+<p>​    但是最后会讨论<strong>不包含首</strong>和<strong>不包含尾</strong>这两种情况下得到的dp数组的最后一位，然后获取其中较大者，就是我们要取得的最高金额</p>
+<h5 id="步骤二：找出关系元素间的动态方程-3"><a href="#步骤二：找出关系元素间的动态方程-3" class="headerlink" title="步骤二：找出关系元素间的动态方程"></a>步骤二：找出关系元素间的动态方程</h5><p>​    动态方程可参照《打家劫舍I》，有很详细的图解过程，该例子动态方程的变化和之前是完全一致的：</p>
+<p>​    <strong>dp[i] = max(dp[i-1], nums[i-1]+dp[i-2])</strong></p>
+<h5 id="步骤三：初始化设定"><a href="#步骤三：初始化设定" class="headerlink" title="步骤三：初始化设定"></a>步骤三：初始化设定</h5><p>​    初始化: 给没有房子时，dp一个位置，即：dp[0]         a. 当size=0时，没有房子，小偷没办法偷：dp[0]=0；         b. 当size=1时，有一间房子，只要偷即可：dp[1]=nums[0]</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230605150914733.png" alt="image-20230605150914733"></p>
+<p>​    由于屋子首位相连接，所以在计算时候，直接分为两种情况。第一种略过第一个屋子，第二种略过第二个屋子，这样得到的两个数组结果。最后只要比较最后一位数值的大小就ok了。解决！</p>
+<p>该例子步骤三之后，感兴趣的同学可以自己写一下代码，和《打家劫舍I》的代码很类似，后面我写了优化后的代码，可能会更加的明白怎么写。咱们直接到步骤四，有了上面的案例，直接来看看优化后的方案:</p>
+<h5 id="步骤四：优化-3"><a href="#步骤四：优化-3" class="headerlink" title="步骤四：优化"></a>步骤四：优化</h5><p>​    同样从 dp[i] = max(dp[i-1], nums[i-1]+dp[i-2]) 关系来看，每一次动态变化，都与前两次状态有关系（dp[i-1], dp[i-2])，而前面的一些值是没有必要留存的，只要保存两个变量来保存过程最优值就好.</p>
+<p>​    代码中有详细的注释：</p>
+<pre><code>class Solution(object):
+def rob(self, nums):
+    # 点睛：与打家劫舍I的区别是屋子围成了一个环
+    #   那么，很明显可以分为三种情况：
+    #   1. 首位都不偷
+    #   2. 偷首不偷尾
+    #   3. 不偷首偷尾
+    # 显然，第1种方式损失太大，选取2、3。
+    # 那么，分为两种情况，分别计算不包含首和不包含尾这两种情况来判断哪个大哪个小
+
+    # 1.dp[i] 代表当前最大子序和
+    # 2.动态方程: dp[i] = max(dp[i-1] and , nums[i-1]+dp[i-2])
+    # 3.初始化: 给没有房子时，dp一个位置，即：dp[0]
+    #   3.1 当size=0时，没有房子，dp[0]=0；
+    #   3.2 当size=1时，有一间房子，偷即可：dp[1]=nums[0]
+
+    # 依照《打家劫舍I》的优化方案进行计算
+
+    # nums处理，分别切割出去首和去尾的子串
+    nums1 = nums[1:]
+    nums2 = nums[:-1]
+
+    size = len(nums)
+    if size == 0:
+        return 0
+    if size == 1:
+        return nums[0]
+
+    def handle(size, nums):
+        dp1 = 0
+        dp2 = nums[0]
+        for i in range(2, size+1):
+            dp1 = max(dp2, nums[i-1]+dp1)
+            dp1, dp2 = dp2, dp1
+        return dp2
+
+    res1 = handle(size-1, nums1)
+    res2 = handle(size-1, nums2)
+
+    return max(res1, res2)
+</code></pre>
+<blockquote>
+<p>时间复杂度：O(N)</p>
+<p>空间复杂度：O(1)</p>
+</blockquote>
+<p>再看看下面小偷遇到的情况，感叹：即使当小偷，也要步步规划才能拿到最高的金额啊…</p>
+<h3 id="案例五：打家劫舍III-「来自leetcode337」"><a href="#案例五：打家劫舍III-「来自leetcode337」" class="headerlink" title="案例五：打家劫舍III 「来自leetcode337」"></a>案例五：打家劫舍III 「来自leetcode337」</h3><p>在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。</p>
+<p>计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">代码输入: [<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,null,<span class="number">3</span>,null,<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">     <span class="number">3</span></span><br><span class="line">	/ \</span><br><span class="line">   <span class="number">2</span>   <span class="number">3</span></span><br><span class="line">    \   \ </span><br><span class="line">     <span class="number">3</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">输出: <span class="number">7</span> </span><br><span class="line">解释: 小偷一晚能够盗取的最高金额 = <span class="number">3</span> + <span class="number">3</span> + <span class="number">1</span> = <span class="number">7.</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">3</span>,null,<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"> 	 <span class="number">3</span></span><br><span class="line">	/ \</span><br><span class="line">   <span class="number">4</span>   <span class="number">5</span></span><br><span class="line">  / \   \ </span><br><span class="line"> <span class="number">1</span>   <span class="number">3</span>   <span class="number">1</span></span><br><span class="line">输出: <span class="number">9</span></span><br><span class="line">解释: 小偷一晚能够盗取的最高金额 = <span class="number">4</span> + <span class="number">5</span> = <span class="number">9.</span></span><br></pre></td></tr></table></figure>
+
+<p>题目出的很好，但是立马会给人一种小偷也不是好当的的赶脚…</p>
+<p>言归正传，咱们先来说说题目本身</p>
+<p>《打家劫舍》的小偷从一维线性到环形，再到二维矩形的屋子？是我想简单了，直接就干到树形了，是不是看着很香，而且很想，看下去，研究研究…</p>
+<p>来整理几点思路，再来按照四步走：</p>
+<p>1.由于房屋是树状的，因此，我们可以使用遍历树的传统方法进行遍历(前序、中序、后续) 2.简单的思路是，从树低进行往上遍历，拿到最优的打劫值。可以选用后续遍历 3.得到每一节点的最优值，最后选取最优的结果</p>
+<p>依然按照三个步骤来进行分析（无优化点）</p>
+<h5 id="步骤一：-定义dp数组的含义-2"><a href="#步骤一：-定义dp数组的含义-2" class="headerlink" title="步骤一： 定义dp数组的含义"></a>步骤一： 定义dp数组的含义</h5><p>​    dp[i]代表该节点及以下打最多的劫（拿到最多的钱）</p>
+<h5 id="步骤二：找出关系元素间的动态方程-4"><a href="#步骤二：找出关系元素间的动态方程-4" class="headerlink" title="步骤二：找出关系元素间的动态方程"></a>步骤二：找出关系元素间的动态方程</h5><p>​    根据我们每走到一个节点，都会有两种情况，那就是 <strong>偷(1)</strong> 与 **不偷(0)**。我们分开来讨论：</p>
+<p>​    a. 用 <strong>dp[0]</strong> 代表不偷取该节点到目前为止拿到最多的钱，那么儿子节点偷不偷都ok。</p>
+<p>​        所以： <strong>dp[0] = max(left[0], left[1]) + max(right[0], right[1])</strong></p>
+<p>​    b. 用 <strong>dp[1]</strong> 代表偷了该节点到目前为止拿到最多的钱，则儿子节点都不能被偷。</p>
+<p>​        所以：<strong>dp[1] = value + left[0] + right[0]</strong>  (value代表该节点的价值)</p>
+<p>​    有看不懂的地方吗？再紧接着解释一下：</p>
+<p>​        left[0]代表不偷取左孩子拿到最高的金额</p>
+<p>​        left[1]代表偷取左孩子拿到最高的金额</p>
+<p>​        right[0]代表不偷取右孩子拿到最高的金额</p>
+<p>​        right[1]代表偷取右孩子拿到最高的金额</p>
+<p>​    <em>如果还有不太懂的话，留言或者私信我联系我，随时骚扰我哈</em></p>
+<h5 id="步骤三：初始化设定-1"><a href="#步骤三：初始化设定-1" class="headerlink" title="步骤三：初始化设定"></a>步骤三：初始化设定</h5><p>​    该例子的初始化比较简单，就是当前树的形状为空的时候，直接返回dp[0, 0]</p>
+<p>下面贴出完整代码，其中包含<strong>树的初始化</strong>代码 &amp;&amp; 一大堆的注释：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x</span>):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.left = <span class="literal">None</span></span><br><span class="line">        self.right = <span class="literal">None</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="comment"># 说明：</span></span><br><span class="line">        <span class="comment"># 1.由于房屋是树状的，因此，我们可以使用遍历树的传统方法进行遍历(前序、中序、后续)</span></span><br><span class="line">        <span class="comment"># 2.简单的思路是，从树低进行往上遍历，拿到最优的打劫值。可以选用后续遍历</span></span><br><span class="line">        <span class="comment"># 3.得到每一节点的最优值，最后选取最优的结果</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1.dp[i]代表该节点及以下拿到的最多的钱</span></span><br><span class="line">        <span class="comment"># 2.动态方程：</span></span><br><span class="line">        <span class="comment">#   2.1 dp[0]代表不偷该节点拿到最多的钱，则儿子节点偷不偷都ok。dp[0] = max(left[0], left[1]) + max(right[0], right[1])</span></span><br><span class="line">        <span class="comment">#   2.2 dp[1]代表偷了该节点拿到最多的钱，则儿子节点都不能被偷。dp[1] = var + left[0] + right[0]</span></span><br><span class="line">        <span class="comment"># 3.初始化：当前树的形状为空的时候，直接返回dp[0, 0]</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">postTrasval</span>(<span class="params">root</span>):</span><br><span class="line">            dp = [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> dp</span><br><span class="line">            left = postTrasval(root.left)</span><br><span class="line">            right = postTrasval(root.right)</span><br><span class="line"></span><br><span class="line">            dp[<span class="number">0</span>] = <span class="built_in">max</span>(left[<span class="number">0</span>], left[<span class="number">1</span>]) + <span class="built_in">max</span>(right[<span class="number">0</span>], right[<span class="number">1</span>])</span><br><span class="line">            dp[<span class="number">1</span>] = root.val + left[<span class="number">0</span>] + right[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">return</span> dp</span><br><span class="line">        dp = postTrasval(root)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp[<span class="number">0</span>], dp[<span class="number">1</span>])</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment"># initial tree structure</span></span><br><span class="line">    T = TreeNode(<span class="number">3</span>)</span><br><span class="line">    T.left = TreeNode(<span class="number">2</span>)</span><br><span class="line">    T.right = TreeNode(<span class="number">3</span>)</span><br><span class="line">    T.left.right = TreeNode(<span class="number">3</span>)</span><br><span class="line">    T.right.right = TreeNode(<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># The solution to the Question</span></span><br><span class="line">    s = Solution()</span><br><span class="line">    <span class="built_in">print</span>(s.rob(T))</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-递归"><a href="#2-递归" class="headerlink" title="2. 递归"></a>2. 递归</h1></article><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/09/NuQ3V6fehArJl2E.webp" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">王海运</div><div class="business-section">862555625</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">06/06/1995</span></div><div class="business-card-holder">13011477115</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>初次来到人间</label><div><a target="_blank" rel="noopener" href="https://https://why862555625.github.io/">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a></div></div><div class="business-terms"><p>如果上天不给你机会，那你就自己创造机会，杀出重围 .</p><p>再厉害的英雄也需要夫人的陪伴，所以我很爱我的夫人.</p></div></div></div></div></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://why862555625.github.io">王海运</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://why862555625.github.io/posts/1213ac56.html">https://why862555625.github.io/posts/1213ac56.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://why862555625.github.io" target="_blank">biubiu</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-tools-left"><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul><a class="reward-main-btn" href="/about/" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/fa264d8c.html"><img class="prev-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">算法复习</div></div></a></div><div class="next-post pull-right"><a href="/posts/8857f1a4.html"><img class="next-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">加油</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/667b4089.html" title="react复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">react复习</div></div></a></div><div><a href="/posts/d9795d86.html" title="JS复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-23</div><div class="title">JS复习</div></div></a></div><div><a href="/posts/ab232981.html" title="前端安全问题"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">前端安全问题</div></div></a></div><div><a href="/posts/c9a941a3.html" title="vue复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/15.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">vue复习</div></div></a></div><div><a href="/posts/fa264d8c.html" title="算法复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">算法复习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="status-bar">&nbsp;<div class="fa fa-signal xiayi"></div><div id="camera"></div><div class="status-bar_clock">GPS  &nbsp;<div class="fakaozuo fa fa-wifi"> &nbsp;</div><div class="fa fa-battery-full"></div></div></div><div class="is-center"><div class="avatar-img"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="author-info__name">王海运</div><div class="author-info__description">众里寻他千百度</div></div><a id="card-info-btn" href="https://why862555625.github.io/about/"><i class="fab fa-github"></i><span>about me</span></a><div class="card-info-data site-data is-center"><a class="biaotou" href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a> <a class="biaotou" href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a> <a class="biaotou" href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="浏览器"><i class="iconfont icon-liulanqi1"></i></a><a class="social-icon" href="/862555625@qq.com" target="_blank" title="邮箱"><i class="iconfont icon-email"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=862555625" target="_blank" title="QQ"><i class="iconfont icon-QQ"></i></a><a class="social-icon" href="/about/" target="_blank" title="微信"><i class="iconfont icon-weixin"></i></a><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="抖音"><i class="iconfont icon-douyin"></i></a></div><div class="home-indicator"></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div class="about-statistic author-content-item2"><div class="card-content"><div class="lightning"><div class="lightning1"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://drfs.ctcontents.com/file/14237530/755647870/e44191/img/index/swordsmen.webp"></div><div class="lightning2"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://www.jiangweishan.com/demo/lightning2.png"></div></div><span class="author-content-item-title">文章归档  </span><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/archives/&quot;)" data-pjax-state="data-pjax-state"><span class="banner-button-text">文章隧道</span></a></div></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">1. 动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E9%80%92%E5%BD%92-vs-DP"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">传统递归 vs. DP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%88-%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">1. 先 递归解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%90%8E-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">2. 后 动态规划解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E4%BC%98%E5%8C%96"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">3. 动态规划 + 优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%9B%9B%E5%A4%A7%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">二、动态规划四大解题步骤处理问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E5%AE%9A%E4%B9%89dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">步骤一：定义dp数组的含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E5%AE%9A%E4%B9%89%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">步骤二：定义状态转移方程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B%E8%BD%AC%E7%A7%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">步骤三：初始化过程转移的初始值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E5%8F%AF%E4%BC%98%E5%8C%96%E7%82%B9-%E5%8F%AF%E9%80%89"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">步骤四：可优化点(可选)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E4%B8%80%EF%BC%9A%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DI-%E3%80%8C%E6%9D%A5%E8%87%AAleetcode198%E3%80%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">案例一：打家劫舍I 「来自leetcode198」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A-%E5%AE%9A%E4%B9%89dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.1.1.0.1.</span> <span class="toc-text">步骤一： 定义dp数组的含义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E6%89%BE%E5%87%BA%E5%85%B3%E7%B3%BB%E5%85%83%E7%B4%A0%E9%97%B4%E7%9A%84%E5%8A%A8%E6%80%81%E6%96%B9%E7%A8%8B"><span class="toc-number">1.1.1.0.2.</span> <span class="toc-text">步骤二：找出关系元素间的动态方程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.1.0.3.</span> <span class="toc-text">步骤三：初始化数值设定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E4%BC%98%E5%8C%96"><span class="toc-number">1.1.1.0.4.</span> <span class="toc-text">步骤四：优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E4%BA%8C%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84%E3%80%8C%E6%9D%A5%E8%87%AAleetcode62%E3%80%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">案例二：不同路径「来自leetcode62」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E5%AE%9A%E4%B9%89dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%AB%E4%B9%89-1"><span class="toc-number">1.1.2.0.1.</span> <span class="toc-text">步骤一：定义dp数组的含义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E6%89%BE%E5%87%BA%E5%85%B3%E7%B3%BB%E5%85%83%E7%B4%A0%E9%97%B4%E7%9A%84%E5%8A%A8%E6%80%81%E6%96%B9%E7%A8%8B-1"><span class="toc-number">1.1.2.0.2.</span> <span class="toc-text">步骤二：找出关系元素间的动态方程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A-1"><span class="toc-number">1.1.2.0.3.</span> <span class="toc-text">步骤三：初始化数值设定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E4%BC%98%E5%8C%96-1"><span class="toc-number">1.1.2.0.4.</span> <span class="toc-text">步骤四：优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E4%B8%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II-%E3%80%8C%E6%9D%A5%E8%87%AAleetcode63%E3%80%8D"><span class="toc-number">1.1.3.</span> <span class="toc-text">案例三：不同路径II 「来自leetcode63」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E5%AE%9A%E4%B9%89dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%AB%E4%B9%89-2"><span class="toc-number">1.1.3.0.1.</span> <span class="toc-text">步骤一：定义dp数组的含义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E6%89%BE%E5%87%BA%E5%85%B3%E7%B3%BB%E5%85%83%E7%B4%A0%E9%97%B4%E7%9A%84%E5%8A%A8%E6%80%81%E6%96%B9%E7%A8%8B-2"><span class="toc-number">1.1.3.0.2.</span> <span class="toc-text">步骤二：找出关系元素间的动态方程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E5%80%BC%E8%AE%BE%E5%AE%9A-2"><span class="toc-number">1.1.3.0.3.</span> <span class="toc-text">步骤三：初始化数值设定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.1.3.0.4.</span> <span class="toc-text">步骤四：优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%9B%9B%EF%BC%9A%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DII-%E3%80%8C%E6%9D%A5%E8%87%AAleetcode213%E3%80%8D"><span class="toc-number">1.1.4.</span> <span class="toc-text">案例四：打家劫舍II 「来自leetcode213」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A-%E5%AE%9A%E4%B9%89dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%AB%E4%B9%89-1"><span class="toc-number">1.1.4.0.1.</span> <span class="toc-text">步骤一： 定义dp数组的含义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E6%89%BE%E5%87%BA%E5%85%B3%E7%B3%BB%E5%85%83%E7%B4%A0%E9%97%B4%E7%9A%84%E5%8A%A8%E6%80%81%E6%96%B9%E7%A8%8B-3"><span class="toc-number">1.1.4.0.2.</span> <span class="toc-text">步骤二：找出关系元素间的动态方程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.4.0.3.</span> <span class="toc-text">步骤三：初始化设定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E4%BC%98%E5%8C%96-3"><span class="toc-number">1.1.4.0.4.</span> <span class="toc-text">步骤四：优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E4%BA%94%EF%BC%9A%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DIII-%E3%80%8C%E6%9D%A5%E8%87%AAleetcode337%E3%80%8D"><span class="toc-number">1.1.5.</span> <span class="toc-text">案例五：打家劫舍III 「来自leetcode337」</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A-%E5%AE%9A%E4%B9%89dp%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%AB%E4%B9%89-2"><span class="toc-number">1.1.5.0.1.</span> <span class="toc-text">步骤一： 定义dp数组的含义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E6%89%BE%E5%87%BA%E5%85%B3%E7%B3%BB%E5%85%83%E7%B4%A0%E9%97%B4%E7%9A%84%E5%8A%A8%E6%80%81%E6%96%B9%E7%A8%8B-4"><span class="toc-number">1.1.5.0.2.</span> <span class="toc-text">步骤二：找出关系元素间的动态方程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E5%AE%9A-1"><span class="toc-number">1.1.5.0.3.</span> <span class="toc-text">步骤三：初始化设定</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%80%92%E5%BD%92"><span class="toc-number">2.</span> <span class="toc-text">2. 递归</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/a09ef191.html" title="js面试手写"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="js面试手写"/></a><div class="content"><a class="title" href="/posts/a09ef191.html" title="js面试手写">js面试手写</a><time datetime="2023-06-07T05:58:38.000Z" title="发表于 2023-06-07 13:58:38">2023-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8857f1a4.html" title="加油"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="加油"/></a><div class="content"><a class="title" href="/posts/8857f1a4.html" title="加油">加油</a><time datetime="2023-06-06T04:56:20.000Z" title="发表于 2023-06-06 12:56:20">2023-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1213ac56.html" title="算法总结"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="算法总结"/></a><div class="content"><a class="title" href="/posts/1213ac56.html" title="算法总结">算法总结</a><time datetime="2023-05-31T12:18:34.000Z" title="发表于 2023-05-31 20:18:34">2023-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fa264d8c.html" title="算法复习"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="算法复习"/></a><div class="content"><a class="title" href="/posts/fa264d8c.html" title="算法复习">算法复习</a><time datetime="2023-05-31T12:18:34.000Z" title="发表于 2023-05-31 20:18:34">2023-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7db00131.html" title="前端工程化"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="前端工程化"/></a><div class="content"><a class="title" href="/posts/7db00131.html" title="前端工程化">前端工程化</a><time datetime="2023-05-26T07:59:17.000Z" title="发表于 2023-05-26 15:59:17">2023-05-26</time></div></div></div></div></div></div></main><div id="footer_deal"><a class="deal_link" href="" title="mail"><i class="fa-solid fa-envelope"></i></a><a class="deal_link" href="" title="qq" target="_blank"><i class="fa-brands fa-qq"></i></a><a class="deal_link" href="" title="微博" target="_blank"><i class="fa-brands fa-weibo"></i></a><a class="deal_link" href="https://github.com/jayhrn" title="github" target="_blank"><i class="fa-brands fa-github"></i></a><img class="footer_mini_logo entered loading" style="border-radius:50%" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://img.zhheo.com/i/2022/08/31/630ef3b505ef5.webp" onclick="btf.scrollToDest(0,500)" title="返回顶部"/><a class="deal_link" href="" title="dribbble"><i class="fa-brands fa-dribbble"></i></a><a class="deal_link" href="" title="微信" target="_blank"><i class="fa-brands fa-weixin"></i></a><a class="deal_link" href="" title="抖音" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a class="deal_link" href="" title="设置"><i class="fa-solid fa-bars"></i></a></div><div id="Jay-footer"><div class="footer-group"><h3 class="footer-title">直达</h3><div class="footer-links"><a class="footer-item" href="https://why862555625.github.io/" target="_blank">我的主页</a><a class="footer-item" href="/music">音乐欣赏</a><a class="footer-item" href="/about">关于我</a><a class="footer-item" onclick="toRandomPost()">随机文章</a></div></div><div class="footer-group"><h3 class="footer-title">分类</h3><div class="footer-links"><a class="footer-item" href="/categories/css/">css笔记</a><a class="footer-item" href="/categories/魔改/">魔改教程</a><a class="footer-item" href="/categories/辅助/">hexo工具</a><a class="footer-item" href="/categories/Docs文檔/">Docs文檔</a></div></div><div class="footer-group"><h3 class="footer-title">关于</h3><div class="footer-links"><a class="footer-item" href="/about/">关于我</a><a class="footer-item" href="/charts/">博客统计</a><a class="footer-item" href="/archives">文章归档</a><a class="footer-item" href="/update">更新记录</a></div></div><div class="footer-group"><h3 class="footer-title">友链</h3><div class="footer-links" id="friend-links-in-footer"><a class="footer-item" href="https://blog.zhheo.com/" target="_blank">张洪Heo</a><a class="footer-item" href="https://anzhiy.cn/" target="_blank">安知鱼</a><a class="footer-item" href="https://akilar.top/" target="_blank">Akilar</a><a class="footer-item" onclick="toRandomFlink()">随机友情</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/privacy/">隐私协议</a><a class="footer-item" href="/cookies/">Cookie</a><a class="footer-item" href="/cc/">版权协议</a></div></div></div><footer id="footer" style="background: var(--heo-theme);"><div id="footer-wrap"><div class="copyright">&copy;1993 - 2023 By 王海运</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button type="button" title="切换背景" onclick="toggleWinbox()"><i class="fas fa-display"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="https://npm.elemecdn.com/blog2023@1.0.2/utils.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://npm.elemecdn.com/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.1/instantsearch.production.min.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/algolia.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhheo.com',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script charset="utf-8" data-pjax="" src="/js/watchWorker.js"></script><script charset="utf-8" data-pjax="" src="/js/copy.js"></script><script defer src="https://npm.elemecdn.com/blog12.8@1.0.1/categoryBar.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/sun_moon.js" async></script><script src="https://unpkg.com/plasxhexo@1.0.2/js/winbox.bundle.min.js"></script><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?98d6c60617ee763b4f6708fedd7f50e5";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script><script charset="utf-8" data-pjax="" src="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.js"></script><script src="/zhheo/random.js"></script><script async src="https://at.alicdn.com/t/c/font_3855261_r5lzgvwjjsm.js"></script><script id="click-show-text" src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="我,喜,欢,你,你,喜,欢,我,不" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.js"></script><script src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show","#web_bg",".js-pjax",".video"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/video/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html><script>var flinks=["https://akilar.top/","https://blog.zhheo.com/","https://anzhiy.cn/","https://www.chuckle.top/","https://ichika.cc/","https://blog.leonus.cn/","https://sianx.com","https://www.fomal.cc/","https://www.webxc.ml","https://daiyu-233.top/","https://tzy1997.com/","https://www.qingyi1220.cn/","https://www.xiaozhuzi.xyz/","https://blog.xiaohua927.top/","https://wyblog1.eu.org","https://ezgx.tk/","https://wsbblog.cn","https://www.lyshark.com"];function toRandomFlink(){window.open(flinks[Math.floor(Math.random()*flinks.length)]);};</script>

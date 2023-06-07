@@ -1,0 +1,924 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>vue复习 | biubiu</title><meta name="author" content="王海运"><meta name="copyright" content="王海运"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vue复习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue复习">
+<meta property="og:url" content="https://why862555625.github.io/posts/c9a941a3.html">
+<meta property="og:site_name" content="biubiu">
+<meta property="og:description" content="vue复习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/why862555625/images/main/images/15.jpg">
+<meta property="article:published_time" content="2023-05-26T07:38:34.000Z">
+<meta property="article:modified_time" content="2023-05-26T07:38:34.000Z">
+<meta property="article:author" content="王海运">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/why862555625/images/main/images/15.jpg"><link rel="shortcut icon" href="https://unpkg.com/plasx@1.0.3/img/favicon.webp"><link rel="canonical" href="https://why862555625.github.io/posts/c9a941a3"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="https://npm.elemecdn.com/blog2023@1.0.2/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/swiper@8.4.2/swiper-bundle.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"KPAKI5YHZ8","apiKey":"031790ee5a399a40981430251606ff78","indexName":"hexo","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":150},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":2000,"languages":{"author":"作者: 王海运","link":"链接: ","source":"来源: biubiu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"rgb(0 199 255 / 70%)","bgDark":"rgb(0 199 255 / 70%)","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'vue复习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-26 15:38:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preload" href="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.css" as="style" onload="this.rel='stylesheet'"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="biubiu" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="biubiu" type="application/rss+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img iconfont icon-apple-fill"><div class="loading-image-dot iconfont icon-jiazai"></div></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://unpkg.com/plasx@1.0.3/css/progress_bar.css"/><script src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: 设置false不显示顶部图片"><nav id="nav"><span id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon fas fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="主线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/GcgMjo5lNUfbrFW.webp"/><span class="back-menu-item-text">主线路</span></a><a class="back-menu-item" href="https://why862555625.github.io/" rel="external nofollow" title="备用线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/XxmYTFzsacq9EbL.webp"/><span class="back-menu-item-text">备用线路</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">biubiu</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="biubiu" target="_blank" rel="noopener nofollow" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/12/YBMzJhbXEPprU87.webp"/><span class="back-menu-item-text">biubiu</span></a></div></div></div></div><a id="site-name" href="/"><div class="title">biubiu</div><i class="fa-solid fa-house"></i></a></span><div class="mask-name-container"><center id="name-container"><a id="page-name" href="javascript:btf.scrollToDest(0,500)">PAGE_NAME</a></center></div><div id="menus"><div class="nav-button" id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" title="浅色和深色模式转换" onclick="switchNightMode()"><i class="fas fa-adjust"></i></a></div><div class="nav-button" id="modeicon"><a class="darkmode_switchbutton" type="button" title="切换壁纸" onclick="toggleWinbox()"><i class="fa-solid fa-image"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn"><i class="fas fa-arrow-up"></i><span id="percent" onclick="btf.scrollToDest(0,500)">0</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><div id="post-meta"><a class="post-meta__tags" href="/tags/JS/">JS</a><a class="post-meta__tags" href="/tags/vue/">vue</a></div><h1 class="post-title">vue复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-26T07:38:34.000Z" title="发表于 2023-05-26 15:38:34">2023-05-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-26T07:38:34.000Z" title="更新于 2023-05-26 15:38:34">2023-05-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/">JS</a></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>vue复习</p>
+<span id="more"></span>
+
+<h3 id="MVVM模型？"><a href="#MVVM模型？" class="headerlink" title="MVVM模型？"></a>MVVM模型？</h3><p>MVVM，是<code>Model-View-ViewModel</code>的简写，其本质是<code>MVC</code>模型的升级版。其中 <code>Model</code> 代表数据模型，<code>View</code> 代表看到的页面，<code>ViewModel</code>是<code>View</code>和<code>Model</code>之间的桥梁，数据会绑定到<code>ViewModel</code>层并自动将数据渲染到页面中，视图变化的时候会通知<code>ViewModel</code>层更新数据。以前是通过操作<code>DOM</code>来更新视图，现在是<code>数据驱动视图</code>。</p>
+<h3 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h3><p>Vue 的生命周期可以分为8个阶段：创建前后、挂载前后、更新前后、销毁前后，以及一些特殊场景的生命周期。Vue 3 中还新增了是3个用于调试和服务端渲染的场景。</p>
+<table>
+<thead>
+<tr>
+<th>Vue 2中的生命周期钩子</th>
+<th>Vue 3选项式API的生命周期选项</th>
+<th>Vue 3 组合API中生命周期钩子</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>beforeCreate</code></td>
+<td><code>beforeCreate</code></td>
+<td><code>setup()</code></td>
+<td>创建前，此时<code>data</code>和 <code>methods</code>的数据都还没有初始化</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td><code>created</code></td>
+<td><code>setup()</code></td>
+<td>创建后，<code>data</code>中有值，尚未挂载，可以进行一些<code>Ajax</code>请求</td>
+</tr>
+<tr>
+<td><code>beforeMount</code></td>
+<td><code>beforeMount</code></td>
+<td><code>onBeforeMount</code></td>
+<td>挂载前，会找到虚拟<code>DOM</code>，编译成<code>Render</code></td>
+</tr>
+<tr>
+<td><code>mounted</code></td>
+<td><code>mounted</code></td>
+<td><code>onMounted</code></td>
+<td>挂载后，<code>DOM</code>已创建，可用于获取访问数据和<code>DOM</code>元素</td>
+</tr>
+<tr>
+<td><code>beforeUpdate</code></td>
+<td><code>beforeUpdate</code></td>
+<td><code>onBeforeUpdate</code></td>
+<td>更新前，可用于获取更新前各种状态</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td><code>updated</code></td>
+<td><code>onUpdated</code></td>
+<td>更新后，所有状态已是最新</td>
+</tr>
+<tr>
+<td><code>beforeDestroy</code></td>
+<td><code>beforeUnmount</code></td>
+<td><code>onBeforeUnmount</code></td>
+<td>销毁前，可用于一些定时器或订阅的取消</td>
+</tr>
+<tr>
+<td><code>destroyed</code></td>
+<td><code>unmounted</code></td>
+<td><code>onUnmounted</code></td>
+<td>销毁后，可用于一些定时器或订阅的取消</td>
+</tr>
+<tr>
+<td><code>activated</code></td>
+<td><code>activated</code></td>
+<td><code>onActivated</code></td>
+<td><code>keep-alive</code>缓存的组件激活时</td>
+</tr>
+<tr>
+<td><code>deactivated</code></td>
+<td><code>deactivated</code></td>
+<td><code>onDeactivated</code></td>
+<td><code>keep-alive</code>缓存的组件停用时</td>
+</tr>
+<tr>
+<td><code>errorCaptured</code></td>
+<td><code>errorCaptured</code></td>
+<td><code>onErrorCaptured</code></td>
+<td>捕获一个来自子孙组件的错误时调用</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>renderTracked</code></td>
+<td><code>onRenderTracked</code></td>
+<td>调试钩子，响应式依赖被收集时调用</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>renderTriggered</code></td>
+<td><code>onRenderTriggered</code></td>
+<td>调试钩子，响应式依赖被触发时调用</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>serverPrefetch</code></td>
+<td><code>onServerPrefetch</code></td>
+<td>组件实例在服务器上被渲染前调用</td>
+</tr>
+</tbody></table>
+<p><strong>关于Vue 3中的生命周期建议阅读官方文档!!!!</strong></p>
+<p><a href="https://link.juejin.cn/?target=https://cn.vuejs.org/api/composition-api-lifecycle.html">组合式 API：生命周期钩子–官方文档</a><br><a href="https://link.juejin.cn/?target=https://cn.vuejs.org/api/options-lifecycle.html">选项式 API：生命周期选项–官方文档</a></p>
+<p><strong>父子组件的生命周期：</strong></p>
+<ul>
+<li><code>加载渲染阶段</code>：父 beforeCreate -&gt; 父 created -&gt; 父 beforeMount -&gt; 子 beforeCreate -&gt; 子 created -&gt; 子 beforeMount -&gt; 子 mounted -&gt; 父 mounted</li>
+<li><code>更新阶段</code>：父 beforeUpdate -&gt; 子 beforeUpdate -&gt; 子 updated -&gt; 父 updated</li>
+<li><code>销毁阶段</code>：父 beforeDestroy -&gt; 子 beforeDestroy -&gt; 子 destroyed -&gt; 父 destroyed</li>
+</ul>
+<h3 id="Vue-nextTick"><a href="#Vue-nextTick" class="headerlink" title="Vue.$nextTick"></a>Vue.$nextTick</h3><p><strong>在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。</strong></p>
+<p><code>nextTick</code> 是 Vue 提供的一个全局 API，由于 Vue 的异步更新策略，导致我们对数据修改后不会直接体现在 DOM 上，此时如果想要立即获取更新后的 DOM 状态，就需要借助该方法。</p>
+<p>Vue 在更新 DOM 时是异步执行的。当数据发生变化，Vue 将开启一个异步更新队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 <code>watcher</code> 被多次触发，只会被推入队列一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。<code>nextTick</code>方法会在队列中加入一个回调函数，确保该函数在前面的 DOM 操作完成后才调用。</p>
+<p>使用场景：</p>
+<ol>
+<li>如果想要在修改数据后立刻得到更新后的<code>DOM</code>结构，可以使用<code>Vue.nextTick()</code></li>
+<li>在<code>created</code>生命周期中进行<code>DOM</code>操作</li>
+</ol>
+<h3 id="Vue-实例挂载过程中发生了什么？"><a href="#Vue-实例挂载过程中发生了什么？" class="headerlink" title="Vue 实例挂载过程中发生了什么？"></a>Vue 实例挂载过程中发生了什么？</h3><p>挂载过程指的是 <code>app.mount()</code>过程，这是一个初始化过程，整体上做了两件事情：<code>初始化</code>和<code>建立更新机制</code>。</p>
+<p>初始化会创建组件实例、初始化组件状态、创建各种响应式数据。</p>
+<p>建立更新机制这一步会立即执行一次组件的更新函数，这会首次执行组件渲染函数并执行<code>patch</code>将<code>vnode</code> 转换为 <code>dom</code>； 同时首次执行渲染函数会创建它内部响应式数据和组件更新函数之间的依赖关系，这使得以后数据发生变化时会执行对应的更新函数。</p>
+<h3 id="Vue-的模版编译原理"><a href="#Vue-的模版编译原理" class="headerlink" title="Vue 的模版编译原理"></a>Vue 的模版编译原理</h3><p>Vue 中有个独特的编译器模块，称为<code>compiler</code>，它的主要作用是将用户编写的<code>template</code>编译为js中可执行的<code>render</code>函数。<br> 在Vue 中，编译器会先对<code>template</code>进行解析，这一步称为<code>parse</code>，结束之后得到一个JS对象，称之为<code>抽象语法树AST</code>；然后是对<code>AST</code>进行深加工的转换过程，这一步称为<code>transform</code>，最后将前面得到的<code>AST</code>生成JS代码，也就是<code>render</code>函数。</p>
+<h3 id="Vue-的响应式原理"><a href="#Vue-的响应式原理" class="headerlink" title="Vue 的响应式原理"></a>Vue 的响应式原理</h3><ol>
+<li><p>Vue 2 中的数据响应式会根据数据类型做不同的处理。如果是对象，则通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(obj,key,descriptor)</span><br></pre></td></tr></table></figure>
+
+<p>拦截对象属性访问，当数据被访问或改变时，感知并作出反应；如果是数组，则通过覆盖数组原型的方法，扩展它的7个变更方法（push、pop、shift、unshift、splice、sort、reverse），使这些方法可以额外的做更新通知，从而做出响应。</p>
+<p>缺点：</p>
+<ul>
+<li>初始化时的递归遍历会造成性能损失；</li>
+<li>通知更新过程需要维护大量 <code>dep</code> 实例和 <code>watcher</code> 实例，额外占用内存较多；</li>
+<li>新增或删除对象属性无法拦截，需要通过 <code>Vue.set</code> 及 <code>delete</code> 这样的 API 才能生效；</li>
+<li>对于<code>ES6</code>中新产生的<code>Map</code>、<code>Set</code>这些数据结构不支持。</li>
+</ul>
+</li>
+<li><p>Vue 3 中利用<code>ES6</code>的<code>Proxy</code>机制代理需要响应化的数据。可以同时支持对象和数组，动态属性增、删都可以拦截，新增数据结构均支持，对象嵌套属性运行时递归，用到时才代理，也不需要维护特别多的依赖关系，性能取得很大进步。</p>
+</li>
+</ol>
+<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><ol>
+<li>概念：<br> 虚拟DOM，顾名思义就是虚拟的DOM对象，它本身就是一个JS对象，只不过是通过不同的属性去描述一个视图结构。</li>
+<li>虚拟DOM的好处：<br> (1) 性能提升<br> 直接操作DOM是有限制的，一个真实元素上有很多属性，如果直接对其进行操作，同时会对很多额外的属性内容进行了操作，这是没有必要的。如果将这些操作转移到JS对象上，就会简单很多。另外，操作DOM的代价是比较昂贵的，频繁的操作DOM容易引起页面的重绘和回流。如果通过抽象VNode进行中间处理，可以有效减少直接操作DOM次数，从而减少页面的重绘和回流。<br> (2) 方便跨平台实现<br> 同一VNode节点可以渲染成不同平台上对应的内容，比如：渲染在浏览器是DOM元素节点，渲染在Native（iOS、Android）变为对应的控件。Vue 3 中允许开发者基于VNode实现自定义渲染器（renderer），以便于针对不同平台进行渲染。</li>
+<li>结构：<br> 没有统一的标准，一般包括<code>tag</code>、<code>props</code>、<code>children</code>三项。<br> <code>tag</code>：必选。就是标签，也可以是组件，或者函数。<br> <code>props</code>：非必选。就是这个标签上的属性和方法。<br> <code>children</code>：非必选。就是这个标签的内容或者子节点。如果是文本节点就是字符串；如果有子节点就是数组。换句话说，如果判断<code>children</code>是字符串的话，就表示一定是文本节点，这个节点肯定没有子元素。</li>
+</ol>
+<h3 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h3><p>由于目前<code>Vue3</code>对于性能的优化做了很多的处理，所以其在更新时并不会对所有的节点都进行<code>diff</code>更新。目前会进行<code>diff</code>更新的有以下两种情况：</p>
+<ul>
+<li><code>v-for</code>容器节点</li>
+<li>自写的<code>render()</code>函数</li>
+</ul>
+<p>还有一种特殊情况会进行无<code>diff</code>的按序更新，这种更新是全替换模式，非常耗时：</p>
+<ul>
+<li>无<code>key</code>值的<code>v-for</code>语句，此时会打上<code>UNKEYED_FRAGMENT</code>标记</li>
+</ul>
+<p>注意，<code>Vue3</code>没有主动提供片段这个功能，仅会在出现以下写法时会生成片段：</p>
+<ul>
+<li>一个组件有多个根节点，会生成一个片段包裹，此时其为稳定片段(<code>STABLE_FRAGMENT</code>)</li>
+<li><code>v-for</code>语句，会生成一个片段包裹</li>
+<li><code>v-if</code>语句，有多个子节点或不为单个文本节点，会生成一个片段包裹(<code>STABLE_FRAGMENT</code>)</li>
+</ul>
+<blockquote>
+<p>本文上述论点都是基于浏览器环境，非<em>NodeJS</em>环境(<em>SSR</em>)。文中提供的代码进行了<strong>适当的简化</strong>。</p>
+</blockquote>
+<p>在我们使用<code>template</code>的情况下，更新基本上会通过<code>block</code>进行更新——即节点自更新</p>
+<h4 id="diff-更新"><a href="#diff-更新" class="headerlink" title="diff 更新"></a>diff 更新</h4><h5 id="VUE2"><a href="#VUE2" class="headerlink" title="VUE2"></a>VUE2</h5><p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528150909234.png" alt="image-20230528150909234"></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528150936549.png" alt="image-20230528150936549"></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528151019742.png" alt="image-20230528151019742"></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528151119230.png" alt="image-20230528151119230"></p>
+<p>第一次对比后结果</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528151309763.png" alt="image-20230528151309763"></p>
+<p>第二次</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528151400771.png" alt="image-20230528151400771"></p>
+<p>第三次</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528151428703.png" alt="image-20230528151428703"></p>
+<p>最后整理</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528151504941.png" alt="image-20230528151504941"></p>
+<h5 id="VUE3"><a href="#VUE3" class="headerlink" title="VUE3"></a>VUE3</h5><p><code>diff</code>更新调用的内部的<code>patchKeyedChildren</code>方法，其大致流程分为三步：</p>
+<ol>
+<li>对比新旧节点头部相同指针的节点，相同则进行<code>diff</code>，不同则跳转下一步。</li>
+<li>对比新旧节点尾部指针指向节点，相同则进行<code>diff</code>，不同则跳转下一步。</li>
+<li>此时剩余新旧节点，可能存在乱序、已移除或新增的情况，进行特殊处理来更新。</li>
+</ol>
+<p>下面是函数最开始做的初始化，其中<code>c1/c2</code>分别代表新旧节点的子节点数组；<code>i</code>表示两个新旧节点指向同步的指针，它们是同步的；<code>e1/e2</code>分别代表指向两个子节点数组尾部的指针：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">0</span></span><br><span class="line"><span class="keyword">const</span> l2 = c2.<span class="property">length</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变更前节点的尾下标</span></span><br><span class="line"><span class="keyword">let</span> e1 = c1.<span class="property">length</span> - <span class="number">1</span> <span class="comment">// prev ending index</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 变更后节点的尾下标</span></span><br><span class="line"><span class="keyword">let</span> e2 = l2 - <span class="number">1</span> <span class="comment">// next ending index</span></span><br></pre></td></tr></table></figure>
+
+<p>其中<code>patch()</code>函数用于对节点进行更新，<code>isSameVNodeType()</code>函数用于判断两个节点是否具有相同的类型，此时其需要满足类型一样且<code>key</code>值相等。</p>
+<blockquote>
+<p>这里的类型指，例如组件，则其为组件的配置对象，元素则为元素的标记。</p>
+</blockquote>
+<h4 id="1-对比头部等位指针节点"><a href="#1-对比头部等位指针节点" class="headerlink" title="1. 对比头部等位指针节点"></a>1. 对比头部等位指针节点</h4><p>首先其会从头部指针开始，对比新旧节点是否相同：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">js复制代码<span class="comment">// 1. sync from start</span></span><br><span class="line"><span class="comment">// 1. 从开始位置同步</span></span><br><span class="line"><span class="comment">// (a b) c</span></span><br><span class="line"><span class="comment">// (a b) d e</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= e1 &amp;&amp; i &lt;= e2) &#123;</span><br><span class="line">  <span class="keyword">const</span> n1 = c1[i]</span><br><span class="line">  <span class="keyword">const</span> n2 = c2[i]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 节点没有发生变更时，进行patch</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isSameVNodeType</span>(n1, n2)) &#123;</span><br><span class="line">    <span class="title function_">patch</span>(n1, n2)</span><br><span class="line">    <span class="comment">// 不同节点时，立刻结束</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">  i++</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注释中给出了一个例子，即如果存在下图的新旧队列：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527224906472.png" alt="image-20230527224906472"></p>
+<p>由于此时两个指针的<code>VNode</code>相同，那么可以复用则直接进行<code>patch()</code>更新。之后指针向右移动一位，对比两个数组下标为 <code>1</code> 的位置：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527225018797.png" alt="image-20230527225018797"></p>
+<p>同样的，节点相同，进行更新然后指针向后移动：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527225137121.png" alt="image-20230527225137121"></p>
+<p>此时两个节点不一样了，那么本次头部对比到此结束。到此我们排除了头部位置可复用的节点，接下来那么肯定是排除尾部位置的可复用节点。</p>
+<h3 id="2-对比尾部等位指针节点"><a href="#2-对比尾部等位指针节点" class="headerlink" title="2. 对比尾部等位指针节点"></a>2. 对比尾部等位指针节点</h3><p>尾部的可复用节点检查方法与头部一样，唯一一点不同的是，它们有各自的指针分别指向子节点数组尾部。所以此时要使用两个指针<code>e1/e2</code>。</p>
+<p>以此时要使用两个指针<code>e1/e2</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">js复制代码<span class="comment">// 2. sync from end</span></span><br><span class="line"><span class="comment">// 2. 从尾部位置开始查找</span></span><br><span class="line"><span class="comment">// a (b c)</span></span><br><span class="line"><span class="comment">// d e (b c)</span></span><br><span class="line"><span class="keyword">while</span> (i &lt;= e1 &amp;&amp; i &lt;= e2) &#123;</span><br><span class="line">  <span class="keyword">const</span> n1 = c1[e1]</span><br><span class="line">  <span class="keyword">const</span> n2 = c2[e2]</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isSameVNodeType</span>(n1, n2)) &#123;</span><br><span class="line">    <span class="title function_">patch</span>(n1, n2)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">  e1--</span><br><span class="line">  e2--</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还是按注释中的例子放图：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527225256542.png" alt="image-20230527225256542"></p>
+<p>当前指针指向节点相同，节点可复用，直接更新，同时指针向前一起移动：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527225417598.png" alt="image-20230527225417598"></p>
+<p>当前指针指向节点相同，节点可复用，直接更新，同时指针向前一起移动：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527225513256.png"></p>
+<p>此时，两个指针指向节点不再相同，停止此处的对比。</p>
+<hr>
+<p>经过前两步的处理，新旧队列已经进一步缩短了，此时剩下的节点就可能存在下面三种情况：</p>
+<ul>
+<li>有新增的节点</li>
+<li>有节点被删除了</li>
+<li>相同的节点，但是移动了位置</li>
+</ul>
+<p>在实际的场景中，那么就只能存在下面三种剩余情况：</p>
+<ul>
+<li>仅有新增的节点(此时一定<code>i &gt; e1</code>)</li>
+<li>仅进行了节点删除(此时一定<code>i &gt; e2</code>)</li>
+<li>乱序的，一定有移动的节点，其中可能包含新增或有删除的节点(此时一定有<code>i &lt;= e2</code>且<code>i &lt;= e1</code>)</li>
+</ul>
+<p><code>Vue</code>按处理的简易程度，<code>Vue</code>先对前两种情况进行了单独的处理，再对三种混有的情况进行了处理。</p>
+<h4 id="3-1-处理新增的节点的单独情况"><a href="#3-1-处理新增的节点的单独情况" class="headerlink" title="3.1 处理新增的节点的单独情况"></a>3.1 处理新增的节点的单独情况</h4><p>判断新增的节点是以旧队列为基准，那么此时的情况是这样的：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527230120660.png" alt="image-20230527230120660"></p>
+<p>或新增的节点在首部：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527230226562.png" alt="image-20230527230226562"></p>
+<p>此时会存在这样的情况<code>e1 &lt; i</code>且<code>e2 &gt;= i</code>，那么我们只需要更新<code>e1 =&gt; i</code>间的节点即可，于是有了这些代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3. common sequence + mount</span></span><br><span class="line"><span class="comment">// 3. 有新增的节点时</span></span><br><span class="line"><span class="comment">// (a b)</span></span><br><span class="line"><span class="comment">// (a b) c</span></span><br><span class="line"><span class="comment">// i = 2, e1 = 1, e2 = 2</span></span><br><span class="line"><span class="comment">// (a b)</span></span><br><span class="line"><span class="comment">// c (a b)</span></span><br><span class="line"><span class="comment">// i = 0, e1 = -1, e2 = 0</span></span><br><span class="line"><span class="keyword">if</span> (i &lt;= e2) &#123;</span><br><span class="line">  <span class="keyword">if</span> (i &gt; e1) &#123;</span><br><span class="line">    <span class="comment">//  当前节点后面的节点</span></span><br><span class="line">    <span class="keyword">const</span> nextPos = e2 + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我们要以这个节点为锚点在其之前添加元素，没有则添加到父节点最后</span></span><br><span class="line">    <span class="keyword">const</span> anchor = nextPos &lt; l2 ? c2[nextPos].<span class="property">el</span> : parentAnchor</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= e2) &#123;</span><br><span class="line">      <span class="title function_">patch</span>(<span class="literal">null</span>, c2[i])</span><br><span class="line">      i++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-处理删除节点的单独情况"><a href="#3-2-处理删除节点的单独情况" class="headerlink" title="3.2 处理删除节点的单独情况"></a>3.2 处理删除节点的单独情况</h4><p>如果没有存在仅有新增节点的情况，那么其会判断是否是仅进行删除节点的情况，此时可能出现下图的两种情况：</p>
+<p>删除节点在尾部：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527230416959.png"></p>
+<p>删除节点在尾部：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527230458558.png" alt="image-20230527230458558"></p>
+<p>此时<code>i &gt; e2</code>，那么我们只需要将旧节点数组中<code>i =&gt; e1</code>之间的所有节点删除即可(下面的<code>else if</code>语句承接上面)：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">js复制代码<span class="comment">// 4. common sequence + unmount</span></span><br><span class="line"><span class="comment">// 4. 节点移除</span></span><br><span class="line"><span class="comment">// (a b) c</span></span><br><span class="line"><span class="comment">// (a b)</span></span><br><span class="line"><span class="comment">// i = 2, e1 = 2, e2 = 1</span></span><br><span class="line"><span class="comment">// a (b c)</span></span><br><span class="line"><span class="comment">// (b c)</span></span><br><span class="line"><span class="comment">// i = 0, e1 = 0, e2 = -1</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (i &gt; e2) &#123;</span><br><span class="line">  <span class="keyword">while</span> (i &lt;= e1) &#123;</span><br><span class="line">    <span class="comment">// 移除原节点</span></span><br><span class="line">    <span class="title function_">unmount</span>(c1[i])</span><br><span class="line">    i++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-乱序，但一定有移动的节点的情况"><a href="#3-3-乱序，但一定有移动的节点的情况" class="headerlink" title="3.3 乱序，但一定有移动的节点的情况"></a>3.3 乱序，但一定有移动的节点的情况</h4><p>最后一种情况就是比较复杂的情况，此时<code>Vue</code>做的处理是，先查看旧节点序列在变为新节点序列后，旧节点序列中是否有些节点还是按现在的顺序排列的(可以间断)，此时只对其余变更的节点进行操作，就能进行最小幅度的<code>DOM</code>操作了。</p>
+<blockquote>
+<p>此时相对于求旧节点的最长递增序列，这里你可以会想到为什么不求最小编辑距离，因为最小编辑距离的时间复杂度在大多数情况下比它高</p>
+</blockquote>
+<h5 id="3-3-1-建立新节点-key-与其下标的映射"><a href="#3-3-1-建立新节点-key-与其下标的映射" class="headerlink" title="3.3.1 建立新节点 key 与其下标的映射"></a>3.3.1 建立新节点 key 与其下标的映射</h5><p>首先，<code>Vue</code>先将新节点数组进行遍历，将它们有<code>key</code>值的节点与其在新节点数组中的下标建立映射，存储在<code>keyToNewIndexMap</code>中，方便在复用时查找：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s1 = i <span class="comment">// prev starting index</span></span><br><span class="line"><span class="keyword">const</span> s2 = i <span class="comment">// next starting index</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.1 build key:index map for newChildren</span></span><br><span class="line"><span class="comment">// 5.1 生成一个key map</span></span><br><span class="line"><span class="keyword">const</span> keyToNewIndexMap = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历新节点，乱序的部分，将这些具有key的节点存入map</span></span><br><span class="line"><span class="keyword">for</span> (i = s2; i &lt;= e2; i++) &#123;</span><br><span class="line">  <span class="keyword">const</span> nextChild = c2[i]</span><br><span class="line">  <span class="keyword">if</span> (nextChild.<span class="property">key</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">    keyToNewIndexMap.<span class="title function_">set</span>(nextChild.<span class="property">key</span>, i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-3-2-移除新节点队列中不存在的旧节点并更新复用节点"><a href="#3-3-2-移除新节点队列中不存在的旧节点并更新复用节点" class="headerlink" title="3.3.2 移除新节点队列中不存在的旧节点并更新复用节点"></a>3.3.2 移除新节点队列中不存在的旧节点并更新复用节点</h5><p>之后，遍历旧节点数组，通过刚刚建立的<code>Map</code>，如果当前旧节点在新节点数组中已经不存在了，那么说明要移除了。</p>
+<p>整个过程比较复杂，因为要预先做处理，为后续是否需要移动节点做准备：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 5.2 loop through old children left to be patched and try to patch</span></span><br><span class="line"><span class="comment">// matching nodes &amp; remove nodes that are no longer present</span></span><br><span class="line"><span class="comment">// 5.2 遍历旧节点，patch匹配的节点，移除不再在节点</span></span><br><span class="line"><span class="keyword">let</span> j</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前处理过的节点数</span></span><br><span class="line"><span class="keyword">let</span> patched = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 需要patch的节点数</span></span><br><span class="line"><span class="keyword">const</span> toBePatched = e2 - s2 + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 是否需要移动节点</span></span><br><span class="line"><span class="keyword">let</span> moved = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// used to track whether any node has moved</span></span><br><span class="line"><span class="comment">// 记录节点是否已经移动</span></span><br><span class="line"><span class="keyword">let</span> maxNewIndexSoFar = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// works as Map&lt;newIndex, oldIndex&gt;</span></span><br><span class="line"><span class="comment">// Note that oldIndex is offset by +1</span></span><br><span class="line"><span class="comment">// and oldIndex = 0 is a special value indicating the new node has</span></span><br><span class="line"><span class="comment">// no corresponding old node.</span></span><br><span class="line"><span class="comment">// 注意旧下标的值都会+1，因为0表示没有对应的旧节点</span></span><br><span class="line"><span class="comment">// used for determining longest stable subsequence</span></span><br><span class="line"><span class="comment">// 新下标与旧下标的map</span></span><br><span class="line"><span class="comment">// 这里的新下标以s2位置为0下标，而旧下标为旧下标值 +１</span></span><br><span class="line"><span class="keyword">const</span> newIndexToOldIndexMap = <span class="keyword">new</span> <span class="title class_">Array</span>(toBePatched)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化值为0</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; toBePatched; i++) newIndexToOldIndexMap[i] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>这里我说明下三个变量，首先是<code>newIndexToOldIndexMap</code>，其用来记录节点的新坐标到旧坐标的映射(当然是节点可复用的情况下)。为了后续计算最长递增子序列，所以其新坐标以<code>s2</code>为起点，长度为当前需要处理的节点总数，并且其存入的旧节点下标要在原值的基础上<code>+ 1</code>(因为<code>0</code>表示当前节点没有对应的旧节点)。举个例子，有如下图一样的更新序列：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230527230956800.png" alt="image-20230527230956800"></p>
+<p>那么节点<code>e</code>存入<code>newIndexToOldIndexMap</code>后为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 展示，不是赋值语句</span></span><br><span class="line">newIndexToOldIndexMap = [<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其余全部节点存入后为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 展示，不是赋值语句</span></span><br><span class="line">newIndexToOldIndexMap = [<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p><code>moved</code>变量则是表示是否有节点需要移动，其判定要基于<code>maxNewIndexSoFar</code>的值。</p>
+<p><code>maxNewIndexSoFar</code>表示当前可复用节点距离<code>s2</code>(即第一个乱序节点的最远距离)。如果有对应可以复用的节点，那么在每次迭代处理节点时，如果当前节点所处位置距离<code>s2</code>距离超过<code>maxNewIndexSoFar</code>，那么<code>maxNewIndexSoFar</code>会更新为当前节点在新队列中的下标；当其小于<code>maxNewIndexSoFar</code>时，就会标记<code>moved = true</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否需要移动当前节点，想象一下，如果每个节点都按序递增，</span></span><br><span class="line"><span class="comment">// 那么每次都会进入该if语句</span></span><br><span class="line"><span class="keyword">if</span> (newIndex &gt;= maxNewIndexSoFar) &#123;</span><br><span class="line">  <span class="comment">// 当前节点未移动，更新下标</span></span><br><span class="line">  maxNewIndexSoFar = newIndex</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果进入该else语句说明有节点之前节点交叉了</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  moved = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>想象一下，如果节点在新旧序列中，都是按照相同的顺序递增，那么<code>maxNewIndexSoFar</code>也会一直递增，即每次迭代<code>newIndex &gt;= maxNewIndexSoFar</code>，那么就不需要移动节点；但是如果某次迭代，<code>newIndex &lt; maxNewIndexSoFar</code>，那么说明当前节点由之前靠后的位置移动了现在靠前的位置。</p>
+<p>就拿刚刚乱序的图举例，第一次迭代<code>c</code>节点的<code>newIndex = 4</code>，则<code>maxNewIndexSoFar = 4</code>；第二次迭代<code>d</code>节点时，其<code>newIndex = 3</code>，此时<code>newIndex &lt; maxNewIndexSoFar</code>，说明<code>c/d</code>节点之间的位置在新旧发生了交叉，所以我们至少需要移动它们其中一个节点。</p>
+<p>理解了这个道理，现在我们可以正式看看这段代码了。由于要卸载节点，那么本次遍历要以<code>s1 &lt;-&gt; e1</code>之间的节点为基准进行遍历，整体遍历代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 遍历旧节点</span></span><br><span class="line"><span class="keyword">for</span> (i = s1; i &lt;= e1; i++) &#123;</span><br><span class="line">  <span class="comment">// 当前下标的旧节点</span></span><br><span class="line">  <span class="keyword">const</span> prevChild = c1[i]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当前patch的节点数超过新节点中要patch的总数时，执行unmount操作</span></span><br><span class="line">  <span class="comment">// 直接进行卸载操作，因为多余的节点不需要了</span></span><br><span class="line">  <span class="keyword">if</span> (patched &gt;= toBePatched) &#123;</span><br><span class="line">    <span class="comment">// all new children have been patched so this can only be a removal</span></span><br><span class="line">    <span class="title function_">unmount</span>(prevChild)</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 尝试寻找是否有对应的新节点</span></span><br><span class="line">  <span class="keyword">let</span> newIndex</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 旧节点具有key时，获取相同key值节点所处的下标</span></span><br><span class="line">  <span class="keyword">if</span> (prevChild.<span class="property">key</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">    newIndex = keyToNewIndexMap.<span class="title function_">get</span>(prevChild.<span class="property">key</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 没有key时则找相同类型的节点是否存在</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// key-less node, try to locate a key-less node of the same type</span></span><br><span class="line">    <span class="comment">// 当前查找范围为新节点中需要patch的节点之间</span></span><br><span class="line">    <span class="keyword">for</span> (j = s2; j &lt;= e2; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (</span><br><span class="line">        <span class="comment">// 0表示对应下标下当前还未有节点(注意当前是以s2为0下标基准)</span></span><br><span class="line">        <span class="comment">// 这里确认当前新下标位置未有对应的旧下标，防止是已在map中的节点</span></span><br><span class="line"></span><br><span class="line">        newIndexToOldIndexMap[j - s2] === <span class="number">0</span> &amp;&amp;</span><br><span class="line">        <span class="title function_">isSameVNodeType</span>(prevChild, c2[j])</span><br><span class="line">      ) &#123;</span><br><span class="line">        newIndex = j</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 没找到对应节点时说明该节点已经不存在了，直接进行unmount</span></span><br><span class="line">  <span class="keyword">if</span> (newIndex === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    <span class="title function_">unmount</span>(prevChild)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 找到时进行位置移动操作，并patch</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 将旧节点位置下标+1后存入，新节点以s2为起点，即0坐标</span></span><br><span class="line">    newIndexToOldIndexMap[newIndex - s2] = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断是否需要移动当前节点，想象一下，如果每个节点都按序递增，</span></span><br><span class="line">    <span class="comment">// 那么每次都会进入该if语句</span></span><br><span class="line">    <span class="keyword">if</span> (newIndex &gt;= maxNewIndexSoFar) &#123;</span><br><span class="line">      <span class="comment">// 当前节点未移动，更新下标</span></span><br><span class="line">      maxNewIndexSoFar = newIndex</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 如果进入该else语句说明有节点之前节点交叉了</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      moved = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// patch该节点</span></span><br><span class="line">    <span class="title function_">patch</span>(prevChild, c2[newIndex])</span><br><span class="line">    patched++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先当当前可复用的节点复用时，会使<code>patched</code>值<code>+1</code>，当复用的节点超过乱序的新节点长度时，那么其余的节点肯定是要卸载的节点(因为新节点序列都处理完毕了)：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (patched &gt;= toBePatched) &#123;</span><br><span class="line">    <span class="comment">// all new children have been patched so this can only be a removal</span></span><br><span class="line">    <span class="title function_">unmount</span>(prevChild)</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后，<code>Vue</code>尝试寻找一下当前旧节点是否被复用，即它被移动到了新节点序列的其他位置。首先如果当前节点有<code>key</code>值，那么其会尝试直接从刚刚的<code>keyToNewIndexMap</code>中查找；如果没有找到，那么其会遍历当前所有的新节点序列，依次对比是否与当前节点相同，在复合同类型节点时对其进行复用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 尝试寻找是否有对应的新节点</span></span><br><span class="line"><span class="keyword">let</span> newIndex</span><br><span class="line"></span><br><span class="line"><span class="comment">// 旧节点具有 key 时，获取相同 key 值节点所处的下标</span></span><br><span class="line"><span class="keyword">if</span> (prevChild.<span class="property">key</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">  newIndex = keyToNewIndexMap.<span class="title function_">get</span>(prevChild.<span class="property">key</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 没有key时则找相同类型的节点是否存在</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// key-less node, try to locate a key-less node of the same type</span></span><br><span class="line">  <span class="comment">// 当前查找范围为新节点中需要 patch 的节点之间</span></span><br><span class="line">  <span class="keyword">for</span> (j = s2; j &lt;= e2; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      <span class="comment">// 0 表示对应下标下当前还未有节点(注意当前是以 s2 为 0 下标基准)</span></span><br><span class="line">      <span class="comment">// 这里确认当前新下标位置未有对应的旧下标，防止是已在 map 中的节点</span></span><br><span class="line">      newIndexToOldIndexMap[j - s2] === <span class="number">0</span> &amp;&amp;</span><br><span class="line">      <span class="title function_">isSameVNodeType</span>(prevChild, c2[j])</span><br><span class="line">    ) &#123;</span><br><span class="line">      newIndex = j</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在直接通过类型查找复用节点时，其存在一个<code>newIndexToOldIndexMap[j - s2] === 0</code>条件，它表示当前新节点下标未有对应的旧节点(<code>0</code>表示没有，在之后的代码中，如果查找到对应的<code>newIndex</code>，其会存入<code>newIndexToOldIndexMap</code>中)。这样可以防止新旧节点被重复复用或已被处理再次被处理。</p>
+<p>到此，对于旧节点的<code>newIndex</code>是否被查找到就会出现两种情况了：</p>
+<ol>
+<li>没有，说明当前节点已删除了，移除该<code>DOM</code>节点</li>
+<li>有，复用，<strong>更新节点属性</strong></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 没找到对应节点时说明该节点已经不存在了，直接进行unmount</span></span><br><span class="line"><span class="keyword">if</span> (newIndex === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="title function_">unmount</span>(prevChild)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 找到时进行位置移动操作，并patch</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 将旧节点位置下标+1后存入，新节点以s2为起点，即0坐标</span></span><br><span class="line">  newIndexToOldIndexMap[newIndex - s2] = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断是否需要移动当前节点，想象一下，如果每个节点都按序递增，</span></span><br><span class="line">  <span class="comment">// 那么每次都会进入该if语句</span></span><br><span class="line">  <span class="keyword">if</span> (newIndex &gt;= maxNewIndexSoFar) &#123;</span><br><span class="line">    <span class="comment">// 当前节点未移动，更新下标</span></span><br><span class="line">    maxNewIndexSoFar = newIndex</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果进入该else语句说明有节点之前节点交叉了</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    moved = <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// patch该节点</span></span><br><span class="line">  <span class="title function_">patch</span>(prevChild, c2[newIndex])</span><br><span class="line">  patched++</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在复用的情况下，有我们刚刚提到的<a href="#332-%E7%A7%BB%E9%99%A4%E6%96%B0%E8%8A%82%E7%82%B9%E9%98%9F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E6%97%A7%E8%8A%82%E7%82%B9%E5%B9%B6%E6%9B%B4%E6%96%B0%E5%A4%8D%E7%94%A8%E8%8A%82%E7%82%B9">计算节点交叉(是否需要移动)</a>的场景：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否需要移动当前节点，想象一下，如果每个节点都按序递增，</span></span><br><span class="line"><span class="comment">// 那么每次都会进入该if语句</span></span><br><span class="line"><span class="keyword">if</span> (newIndex &gt;= maxNewIndexSoFar) &#123;</span><br><span class="line">  <span class="comment">// 当前节点未移动，更新下标</span></span><br><span class="line">  maxNewIndexSoFar = newIndex</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果进入该else语句说明有节点之前节点交叉了</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  moved = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就不赘述了。</p>
+<blockquote>
+<p>注意，这里对复用的节点进行了<code>patch()</code>更新，那么后面就只用进行移动即可，而不需要更新了。</p>
+</blockquote>
+<h4 id="3-3-3-处理新增节点与移动的节点"><a href="#3-3-3-处理新增节点与移动的节点" class="headerlink" title="3.3.3 处理新增节点与移动的节点"></a>3.3.3 处理新增节点与移动的节点</h4><p>到此为止，就只有新增节点与移动节点的情况没有处理了。</p>
+<p>首先其会需要移动节点时(<code>moved = true</code>)根据刚刚创建的<code>newIndexToOldIndexMap</code>生成一个最长递增的新节点序列<code>increasingNewIndexSequence</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">js复制代码<span class="comment">// 5.3 move and mount</span></span><br><span class="line"><span class="comment">// 5.3 移动与mount</span></span><br><span class="line"><span class="comment">// generate longest stable subsequence only when nodes have moved</span></span><br><span class="line"><span class="comment">// 有节点需要移动，生成长期稳定的子序列，仅对移动过的节点处理</span></span><br><span class="line"><span class="keyword">const</span> increasingNewIndexSequence = moved</span><br><span class="line">  ? <span class="comment">// 获取最长递增子序列的下标数组</span></span><br><span class="line">    <span class="title function_">getSequence</span>(newIndexToOldIndexMap)</span><br><span class="line">  : <span class="variable constant_">EMPTY_ARR</span></span><br></pre></td></tr></table></figure>
+
+<p>那么这个序列的作用是什么？它就是用来<strong>辅助移动节点</strong>，而且是在最小次数下移动节点。由于<code>newIndexToOldIndexMap</code>是根据新旧节点之间的映射创建的，其<strong>下标天然代表乱序的新节点数组的顺序</strong>，而且其对应下标中存储的元素也代表该新节点复用的旧节点的下标，那么这里我们就可以看到两个序列：</p>
+<ol>
+<li>新节点下标组成的序列(<strong>递增</strong>的，因为我们以它为基准创建的数组)</li>
+<li><code>newIndexToOldIndexMap</code>中旧节点下标组成的序列，可能递增也可能乱序</li>
+</ol>
+<blockquote>
+<p>关于如何求<a href="https://link.juejin.cn/?target=https://en.wikipedia.org/wiki/Longest_increasing_subsequence">最长递增子序列</a>，请单独自行学习，这里就不说明了。</p>
+</blockquote>
+<p>此时倘若旧节点下标组成的序列<strong>也</strong>呈现递增趋势，那么我们便可以操作那些非递增的节点来达到变更为新节点序列的目的。并且这个递增的序列越长，那么我们要操作(移动)的节点就越少。比如下图的情况：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528124733993.png" alt="image-20230528124733993"></p>
+<p>从图中观察，我们可以清楚的看到<code>c/d</code>两个节点在前后都保持了递增的关系，那么此时我们只需要移动<code>e</code>节点与创建<code>h</code>节点即可。</p>
+<p>此时其<code>newIndexToOldIndexMap</code>为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">js复制代码newIndexToOldIndexMap = [<span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 该数组返回的是对应的元素在newIndexToOldIndexMap的下标</span></span><br><span class="line"><span class="comment">// 而并非实际的旧节点下标</span></span><br><span class="line">increasingNewIndexSequence = [<span class="number">1</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到<code>2、3</code>节点与新节点的下标的<strong>递增关系保持一致</strong>，其最长递增子序列(<code>increasingNewIndexSequence</code>)为<code>[1, 2]</code>，此时我们只需要操作<code>4/0</code>两个节点即可。</p>
+<blockquote>
+<p><code>increasingNewIndexSequence</code>返回的结果为对应的元素在 <code>newIndexToOldIndexMap</code>的下标而并非实际的旧节点下标</p>
+</blockquote>
+<p>明白了这个现在我们来看其具体处理的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取递增序列的尾坐标</span></span><br><span class="line">j = increasingNewIndexSequence.<span class="property">length</span> - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// looping backwards so that we can use last patched node as anchor</span></span><br><span class="line"><span class="comment">// 向后循环，这样我们可以用上一个patch过了的节点做锚点</span></span><br><span class="line"><span class="keyword">for</span> (i = toBePatched - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">  <span class="comment">// 当前要处理的新节点下标及其节点</span></span><br><span class="line">  <span class="keyword">const</span> nextIndex = s2 + i</span><br><span class="line">  <span class="keyword">const</span> nextChild = c2[nextIndex]</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取其后一个节点，如果没有则获取其父节点</span></span><br><span class="line">  <span class="keyword">const</span> anchor = nextIndex + <span class="number">1</span> &lt; l2 ? c2[nextIndex + <span class="number">1</span>].<span class="property">el</span> : parentAnchor</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果当前新旧节点Map中未找到当前位置新节点的旧节点信息，</span></span><br><span class="line">  <span class="comment">// 说明是新增节点</span></span><br><span class="line">  <span class="keyword">if</span> (newIndexToOldIndexMap[i] === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// mount new</span></span><br><span class="line">    <span class="title function_">patch</span>(<span class="literal">null</span>, nextChild)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// moved说明有节点需要移动，通过塑造一个递增序列，处于递增序列的节点就可以</span></span><br><span class="line">    <span class="comment">// 不进行移动，只移动其余节点，这样就减少了节点的移动</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (moved) &#123;</span><br><span class="line">    <span class="comment">// 如果存在以下情况则移动：</span></span><br><span class="line">    <span class="comment">// 1. 没有稳定的子序列</span></span><br><span class="line">    <span class="comment">// 2. 当前节点不在这个稳定的子序列中</span></span><br><span class="line">    <span class="comment">// move if:</span></span><br><span class="line">    <span class="comment">// There is no stable subsequence (e.g. a reverse)</span></span><br><span class="line">    <span class="comment">// OR current node is not among the stable sequence</span></span><br><span class="line">    <span class="keyword">if</span> (j &lt; <span class="number">0</span> || i !== increasingNewIndexSequence[j]) &#123;</span><br><span class="line">      <span class="title function_">move</span>(nextChild, container, anchor)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      j--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本次遍历以新节点的乱序序列(<code>s2 &lt;-&gt; e2</code>)为基准，逆向进行遍历。逆向的原因是因为其在新增节点或更新节点时，可以以后面已经操作过的节点为锚点进行更新(想象一下<code>Node.insertBefore()/Node.appendChild()</code>的参数)。</p>
+<p>每次遍历会出现三种情况：</p>
+<ul>
+<li>当前节点未有对应的旧节点下标，则说明是新增节点</li>
+<li>该节点需要移动，进行移动</li>
+<li>该节点与旧节点序列都保持递增顺序，直接跳过即可(实际反应在代码里面就是没做任何处理)</li>
+</ul>
+<blockquote>
+<p>情况<code>2</code>与<code>3</code>在完整的迭代中是互斥的，两者不会同时出现在整个迭代流程中。</p>
+</blockquote>
+<p>第一种情况，比较简单，这里就不解释了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果当前新旧节点Map中未找到当前位置新节点的旧节点信息，</span></span><br><span class="line"><span class="comment">// 说明是新增节点</span></span><br><span class="line"><span class="keyword">if</span> (newIndexToOldIndexMap[i] === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="comment">// mount new</span></span><br><span class="line">  <span class="title function_">patch</span>(<span class="literal">null</span>, nextChild</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种情况要判定<code>moved = true</code>，它的原理<a href="#332-%E7%A7%BB%E9%99%A4%E6%96%B0%E8%8A%82%E7%82%B9%E9%98%9F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E6%97%A7%E8%8A%82%E7%82%B9%E5%B9%B6%E6%9B%B4%E6%96%B0%E5%A4%8D%E7%94%A8%E8%8A%82%E7%82%B9">之前我们已经解释过了</a>。这里我们要关注的是它的函数体。根据我们刚刚对递增子序列的理解，那么其应该会在以下情况移动或不移动节点：</p>
+<ul>
+<li>当前节点处于最长递增子序列中 —— 跳过</li>
+<li>当前节点不存在最长递增子序列中 —— 移动<ul>
+<li>递增序列已经没有需要跳过的节点了但任存在节点需要更新(实际和不存在的情况一样)</li>
+<li>当前节点不存在最长递增子序列</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果存在以下情况则移动：</span></span><br><span class="line"><span class="comment">// 1. 没有稳定的子序列(实际和情况2一致，反序时会返回任意一个节点作为最长序列)</span></span><br><span class="line"><span class="comment">// 2. 当前节点不在这个稳定的子序列中</span></span><br><span class="line"><span class="comment">// move if:</span></span><br><span class="line"><span class="comment">// There is no stable subsequence (e.g. a reverse)</span></span><br><span class="line"><span class="comment">// OR current node is not among the stable sequence</span></span><br><span class="line"><span class="keyword">if</span> (j &lt; <span class="number">0</span> || i !== increasingNewIndexSequence[j]) &#123;</span><br><span class="line">  <span class="comment">// 将当前节点移动到锚点节点前或容器节点最后(没有锚点时)</span></span><br><span class="line">  <span class="title function_">move</span>(nextChild, container, anchor)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  j--</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528124834143.png" alt="image-20230528124834143"></p>
+<p>在第二次更新中，发现<code>d</code>节点存在于单调增序列中，所以本次更新可以跳过：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528124910205.png" alt="image-20230528124910205"></p>
+<p>同理<code>c</code>节点也一样，这里就不放图了，处理完<code>c</code>节点后此时为这样</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528124931580.png" alt="image-20230528124931580"></p>
+<p>此时<code>e</code>节点可复用，则将其移动到新<code>c</code>节点前即可。</p>
+<p>到此为止，上图的<code>diff</code>就结束了。</p>
+<p>对于第三种情况，由于复用的节点在前后都保持了递增的关系，所以此时我们不需要再重复对节点进行处理，所以遇到复用的节点时直接跳过即可：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/image-20230528125006064.png" alt="image-20230528125006064"></p>
+<p>到此为止全部节点的更新就已经完毕了。</p>
+<h3 id="为什么组件中的-data-是一个函数？"><a href="#为什么组件中的-data-是一个函数？" class="headerlink" title="为什么组件中的 data 是一个函数？"></a>为什么组件中的 data 是一个函数？</h3><p>在 new Vue() 中，可以是函数也可以是对象，因为根实例只有一个，不会产生数据污染。</p>
+<p>在组件中，data 必须为函数，目的是为了防止多个组件实例对象之间共用一个 data，产生数据污染；而采用函数的形式，initData 时会将其作为工厂函数都会返回全新的 data 对象。</p>
+<h3 id="Vue-中组件间的通信方式？"><a href="#Vue-中组件间的通信方式？" class="headerlink" title="Vue 中组件间的通信方式？"></a>Vue 中组件间的通信方式？</h3><ol>
+<li><p>父子组件通信：</p>
+<p>父向子传递数据是通过<code>props</code>，子向父是通过<code>$emit</code>触发事件；通过父链/子链也可以通信（<code>$parent</code>/<code>$children</code>）；<code>ref</code>也可以访问组件实例；<code>provide</code>/<code>inject</code>；<code>$attrs</code>/<code>$listeners</code>。</p>
+</li>
+<li><p>兄弟组件通信：</p>
+<p>全局事件总线<code>EventBus</code>、<code>Vuex</code>。</p>
+</li>
+<li><p>跨层级组件通信：</p>
+<p>全局事件总线<code>EventBus</code>、<code>Vuex</code>、<code>provide</code>/<code>inject</code>。</p>
+</li>
+</ol>
+<h3 id="v-show-和-v-if-的区别？"><a href="#v-show-和-v-if-的区别？" class="headerlink" title="v-show 和 v-if 的区别？"></a>v-show 和 v-if 的区别？</h3><ol>
+<li>控制手段不同。<code>v-show</code>是通过给元素添加 css 属性<code>display: none</code>，但元素仍然存在；而<code>v-if</code>控制元素显示或隐藏是将元素整个添加或删除。</li>
+<li>编译过程不同。<code>v-if</code>切换有一个局部编译/卸载的过程，切换过程中合适的销毁和重建内部的事件监听和子组件；<code>v-show</code>只是简单的基于 css 切换。</li>
+<li>编译条件不同。<code>v-if</code>是真正的条件渲染，它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建，渲染条件为假时，并不做操作，直到为真才渲染。</li>
+<li>触发生命周期不同。<code>v-show</code>由 false 变为 true 的时候不会触发组件的生命周期；<code>v-if</code>由 false 变为 true 的时候，触发组件的<code>beforeCreate</code>、<code>created</code>、<code>beforeMount</code>、<code>mounted</code>钩子，由 true 变为 false 的时候触发组件的<code>beforeDestory</code>、<code>destoryed</code>钩子。</li>
+<li>性能消耗不同。<code>v-if</code>有更高的切换消耗；<code>v-show</code>有更高的初始渲染消耗。</li>
+</ol>
+<p>使用场景：<br> 如果需要非常频繁地切换，则使用<code>v-show</code>较好，如：手风琴菜单，tab 页签等； 如果在运行时条件很少改变，则使用<code>v-if</code>较好，如：用户登录之后，根据权限不同来显示不同的内容。</p>
+<h3 id="computed-和-watch-的区别？"><a href="#computed-和-watch-的区别？" class="headerlink" title="computed 和 watch 的区别？"></a>computed 和 watch 的区别？</h3><ul>
+<li><code>computed</code>计算属性，依赖其它属性计算值，内部任一依赖项的变化都会重新执行该函数，计算属性有缓存，多次重复使用计算属性时会从缓存中获取返回值，计算属性必须要有<code>return</code>关键词。</li>
+<li><code>watch</code>侦听到某一数据的变化从而触发函数。当数据为对象类型时，对象中的属性值变化时需要使用深度侦听<code>deep</code>属性，也可在页面第一次加载时使用立即侦听<code>immdiate</code>属性。</li>
+</ul>
+<p>运用场景：<br> 计算属性一般用在模板渲染中，某个值是依赖其它响应对象甚至是计算属性而来；而侦听属性适用于观测某个值的变化去完成一段复杂的业务逻辑。</p>
+<h3 id="v-if-和-v-for-为什么不建议放在一起使用？"><a href="#v-if-和-v-for-为什么不建议放在一起使用？" class="headerlink" title="v-if 和 v-for 为什么不建议放在一起使用？"></a>v-if 和 v-for 为什么不建议放在一起使用？</h3><p>Vue 2 中，<code>v-for</code>的优先级比<code>v-if</code>高，这意味着<code>v-if</code>将分别重复运行于每一个<code>v-for</code>循环中。如果要遍历的数组很大，而真正要展示的数据很少时，将造成很大的性能浪费。</p>
+<p>Vue 3 中，则完全相反，<code>v-if</code>的优先级高于<code>v-for</code>，所以<code>v-if</code>执行时，它调用的变量还不存在，会导致异常。</p>
+<p>通常有两种情况导致要这样做：</p>
+<ul>
+<li>为了过滤列表中的项目，比如：<code>v-for = &quot;user in users&quot; v-if = &quot;user.active&quot;</code>。这种情况，可以定义一个计算属性，让其返回过滤后的列表即可。</li>
+<li>为了避免渲染本该被隐藏的列表，比如<code>v-for = &quot;user in users&quot;  v-if = &quot;showUsersFlag&quot;</code>。这种情况，可以将<code>v-if</code>移至容器元素上或在外面包一层<code>template</code>即可。</li>
+</ul>
+<h3 id="Vue-2中的set方法？"><a href="#Vue-2中的set方法？" class="headerlink" title="Vue 2中的set方法？"></a>Vue 2中的set方法？</h3><p><a href="https://link.juejin.cn/?target=https://v2.cn.vuejs.org/v2/api/%23Vue-set"><code>set</code>是Vue 2中的一个全局API</a>。可手动添加响应式数据，解决数据变化视图未更新问题。当在项目中直接设置数组的某一项的值，或者直接设置对象的某个属性值，会发现页面并没有更新。这是因为<code>Object.defineProperty()</code>的限制，监听不到数据变化，可通过<code>this.$set(数组或对象，数组下标或对象的属性名，更新后的值)</code>解决。</p>
+<h3 id="keep-alive-是什么？"><a href="#keep-alive-是什么？" class="headerlink" title="keep-alive 是什么？"></a>keep-alive 是什么？</h3><ul>
+<li>作用：实现组件缓存，保持组件的状态，避免反复渲染导致的性能问题。</li>
+<li>工作原理：Vue.js 内部将 DOM 节点，抽象成了一个个的 VNode 节点，<code>keep-alive</code>组件的缓存也是基于 VNode 节点的。它将满足条件的组件在 cache 对象中缓存起来，重新渲染的时候再将 VNode 节点从 cache 对象中取出并渲染。</li>
+<li>可以设置以下属性：<br> ① <code>include</code>：字符串或正则，只有名称匹配的组件会被缓存。<br> ② <code>exclude</code>：字符串或正则，任何名称匹配的组件都不会被缓存。<br> ③ <code>max</code>：数字，最多可以缓存多少组件实例。<br> 匹配首先检查组件的<code>name</code>选项，如果<code>name</code>选项不可用，则匹配它的局部注册名称（父组件 components选项的键值），匿名组件不能被匹配。</li>
+</ul>
+<p>如果同时使用了<code>include</code>、<code>exclude</code>，那么<code>exclude</code>的优先级高于<code>include</code>。</p>
+<p>设置了<code>keep-alive</code>缓存的组件，会多出两个生命周期钩子：<code>activated</code>、<code>deactivated</code>。<br> 首次进入组件时：beforeCreate –&gt; created –&gt; beforeMount –&gt; mounted –&gt; activated –&gt; beforeUpdate –&gt; updated –&gt; deactivated<br> 再次进入组件时：activated –&gt; beforeUpdate –&gt; updated –&gt; deactivated</p>
+<h3 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h3><p><code>mixin</code>（混入）， 它提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。</p>
+<p>使用场景： 不同组件中经常会用到一些相同或相似的代码，这些代码的功能相对独立。可以通过mixin 将相同或相似的代码提出来。</p>
+<p>缺点：</p>
+<ol>
+<li>变量来源不明确</li>
+<li>多 mixin 可能会造成命名冲突（解决方式：Vue 3的组合API）</li>
+<li>mixin 和组件出现多对多的关系，使项目复杂度变高。</li>
+</ol>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p><code>slot</code>插槽，一般在组件内部使用，封装组件时，在组件内部不确定该位置是以何种形式的元素展示时，可以通过<code>slot</code>占据这个位置，该位置的元素需要父组件以内容形式传递过来。<code>slot</code>分为：</p>
+<ul>
+<li><code>默认插槽</code>：子组件用<code>&lt;slot&gt;</code>标签来确定渲染的位置，标签里面可以放<code>DOM</code>结构作为后备内容，当父组件在使用的时候，可以直接在子组件的标签内写入内容，该部分内容将插入子组件的<code>&lt;slot&gt;</code>标签位置。如果父组件使用的时候没有往插槽传入内容，后备内容就会显示在页面。</li>
+<li><code>具名插槽</code>：子组件用<code>name</code>属性来表示插槽的名字，没有指定<code>name</code>的插槽，会有隐含的名称叫做 <code>default</code>。父组件中在使用时在默认插槽的基础上通过<code>v-slot</code>指令指定元素需要放在哪个插槽中，<code>v-slot</code>值为子组件插槽<code>name</code>属性值。使用<code>v-slot</code>指令指定元素放在哪个插槽中，必须配合<code>&lt;template&gt;</code>元素，且一个<code>&lt;template&gt;</code>元素只能对应一个预留的插槽，即不能多个<code>&lt;template&gt;</code> 元素都使用<code>v-slot</code>指令指定相同的插槽。<code>v-slot</code>的简写是<code>#</code>，例如<code>v-slot:header</code>可以简写为<code>#header</code>。</li>
+<li>作用域插槽：子组件在<slot>标签上绑定props数据，以将子组件数据传给父组件使用。父组件获取插槽绑定 props 数据的方法：<ol>
+<li>scope=”接收的变量名”：<code>&lt;template scope=&quot;接收的变量名&quot;&gt;</code></li>
+<li>slot-scope=”接收的变量名”：<code>&lt;template slot-scope=&quot;接收的变量名&quot;&gt;</code></li>
+<li>v-slot:插槽名=”接收的变量名”：<code>&lt;template v-slot:插槽名=&quot;接收的变量名&quot;&gt;</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="Vue-中的修饰符有哪些？"><a href="#Vue-中的修饰符有哪些？" class="headerlink" title="Vue 中的修饰符有哪些？"></a>Vue 中的修饰符有哪些？</h3><p>在Vue 中，修饰符处理了许多 DOM 事件的细节，让我们不再需要花大量的时间去处理这些烦恼的事情，而能有更多的精力专注于程序的逻辑处理。Vue中修饰符分为以下几种：</p>
+<ol>
+<li><p>表单修饰符<br> <code>lazy</code> 填完信息，光标离开标签的时候，才会将值赋予给value，也就是在<code>change</code>事件之后再进行信息同步。<br> <code>number</code> 自动将用户输入值转化为数值类型，但如果这个值无法被<code>parseFloat</code>解析，则会返回原来的值。<br> <code>trim</code> 自动过滤用户输入的首尾空格，而中间的空格不会被过滤。</p>
+</li>
+<li><p>事件修饰符<br> <code>stop</code> 阻止了事件冒泡，相当于调用了<code>event.stopPropagation</code>方法。<br> <code>prevent</code> 阻止了事件的默认行为，相当于调用了<code>event.preventDefault</code>方法。<br> <code>self</code> 只当在 <code>event.target</code> 是当前元素自身时触发处理函数。<br> <code>once</code> 绑定了事件以后只能触发一次，第二次就不会触发。<br> <code>capture</code> 使用事件捕获模式，即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理。<br> <code>passive</code> 告诉浏览器你不想阻止事件的默认行为。<br> <code>native</code> 让组件变成像<code>html</code>内置标签那样监听根元素的原生事件，否则组件上使用 <code>v-on</code> 只会监听自定义事件。</p>
+</li>
+<li><p>鼠标按键修饰符<br> <code>left</code> 左键点击。<br> <code>right</code> 右键点击。<br> <code>middle</code> 中键点击。</p>
+</li>
+<li><p>键值修饰符</p>
+<p>键盘修饰符是用来修饰键盘事件（onkeyup，onkeydown）的，有如下：keyCode</p>
+<p>存在很多，但vue为我们提供了别名，分为以下两种：</p>
+<ul>
+<li>普通键（enter、tab、delete、space、esc、up…）</li>
+<li>系统修饰键（ctrl、alt、meta、shift…）</li>
+</ul>
+</li>
+</ol>
+<h3 id="对-SPA-的理解？"><a href="#对-SPA-的理解？" class="headerlink" title="对 SPA 的理解？"></a>对 SPA 的理解？</h3><ol>
+<li><p>概念：<br> <code>SPA（Single-page  application）</code>，即单页面应用，它是一种网络应用程序或网站的模型，通过动态重写当前页面来与用户交互，这种方法避免了页面之间切换时打断用户体验。在<code>SPA</code>中，所有必要的代码（HTML、JavaScript 和 CSS）都通过单个页面的加载而检索，或者根据需要（通常是响应用户操作）动态装载适当的资源并添加到页面。页面在任何时间点都不会重新加载，也不会将控制转移到其他页面。举个例子，就像一个杯子，上午装的是牛奶，中午装的是咖啡，下午装的是茶，变得始终是内容，杯子始终不变。</p>
+</li>
+<li><p><code>SPA</code>与<code>MPA</code>的区别：<br> <code>MPA（Muti-page application）</code>，即多页面应用。在<code>MPA</code>中，每个页面都是一个主页面，都是独立的，每当访问一个页面时，都需要重新加载 Html、CSS、JS 文件，公共文件则根据需求按需加载。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SPA</th>
+<th>MPA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组成</td>
+<td>一个主页面和多个页面片段</td>
+<td>多个主页面</td>
+</tr>
+<tr>
+<td>url模式</td>
+<td>hash模式</td>
+<td>history模式</td>
+</tr>
+<tr>
+<td>SEO搜索引擎优化</td>
+<td>难实现，可使用SSR方式改善</td>
+<td>容易实现</td>
+</tr>
+<tr>
+<td>数据传递</td>
+<td>容易</td>
+<td>通过url、cookie、localStorage等传递</td>
+</tr>
+<tr>
+<td>页面切换</td>
+<td>速度快，用户体验良好</td>
+<td>切换加载资源，速度慢，用户体验差</td>
+</tr>
+<tr>
+<td>维护成本</td>
+<td>相对容易</td>
+<td>相对复杂</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>SPA</code>的优缺点：<br> 优点：</p>
+<ul>
+<li>具有桌面应用的即时性、网站的可移植性和可访问性</li>
+<li>用户体验好、快，内容的改变不需要重新加载整个页面</li>
+<li>良好的前后端分离，分工更明确</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>不利于搜索引擎的抓取</li>
+<li>首次渲染速度相对较慢</li>
+</ul>
+</li>
+</ol>
+<h3 id="双向绑定？"><a href="#双向绑定？" class="headerlink" title="双向绑定？"></a>双向绑定？</h3><ol>
+<li>概念：<br> Vue 中双向绑定是一个指令<code>v-model</code>，可以绑定一个响应式数据到视图，同时视图的变化能改变该值。<code>v-model</code>是语法糖，默认情况下相当于<code>:value</code>和<code>@input</code>，使用<code>v-model</code>可以减少大量繁琐的事件处理代码，提高开发效率。</li>
+<li>使用：<br> 通常在表单项上使用<code>v-model</code>，还可以在自定义组件上使用，表示某个值的输入和输出控制。</li>
+<li>原理：<br> <code>v-model</code>是一个指令，双向绑定实际上是Vue 的编译器完成的，通过输出包含<code>v-model</code>模版的组件渲染函数，实际上还是<code>value</code>属性的绑定及<code>input</code>事件监听，事件回调函数中会做相应变量的更新操作。</li>
+</ol>
+<h3 id="子组件是否可以直接改变父组件的数据？"><a href="#子组件是否可以直接改变父组件的数据？" class="headerlink" title="子组件是否可以直接改变父组件的数据？"></a>子组件是否可以直接改变父组件的数据？</h3><ol>
+<li>所有的<code>prop</code>都遵循着单项绑定原则，<code>props</code>因父组件的更新而变化，自然地将新状态向下流往子组件，而不会逆向传递。这避免了子组件意外修改父组件的状态的情况，不然应用的数据流将很容易变得混乱而难以理解。<br> 另外，每次父组件更新后，所有的子组件中的<code>props</code>都会被更新为最新值，这就意味着不应该子组件中去修改一个<code>prop</code>，若这么做了，Vue 会在控制台上抛出警告。</li>
+<li>实际开发过程中通常有两个场景导致要修改prop：<ul>
+<li><code>prop</code>被用于传入初始值，而子组件想在之后将其作为一个局部数据属性。这种情况下，最好是新定义一个局部数据属性，从<code>props</code>获取初始值即可。</li>
+<li>需要对传入的<code>prop</code>值做进一步转换。最好是基于该<code>prop</code>值定义一个计算属性。</li>
+</ul>
+</li>
+<li>实践中，如果确实要更改父组件属性，应<code>emit</code>一个事件让父组件变更。当对象或数组作为<code>props</code>被传入时，虽然子组件无法更改<code>props</code>绑定，但仍然<strong>可以</strong>更改对象或数组内部的值。这是因为JS的对象和数组是按引用传递，而对于 Vue 来说，禁止这样的改动虽然可能，但是有很大的性能损耗，比较得不偿失。</li>
+</ol>
+<h3 id="router-和-route-的区别？"><a href="#router-和-route-的区别？" class="headerlink" title="router 和 route 的区别？"></a>router 和 route 的区别？</h3><ol>
+<li><code>$router</code>是VueRouter的实例对象，是一个全局的路由对象，包含了所有路由的对象和属性。</li>
+<li><code>$route</code>是一个跳转的路由对象，可以认为是当前组件的路由管理，指当前激活的路由对象，包含当前url解析得到的数据，可以从对象里获取一些数据，如：name，path，params，query等。</li>
+</ol>
+<h3 id="vue-router-的路由传参方式？"><a href="#vue-router-的路由传参方式？" class="headerlink" title="vue-router 的路由传参方式？"></a>vue-router 的路由传参方式？</h3><ol>
+<li>声明式导航 <code>router-link</code>：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to=<span class="string">&quot;&#x27;/users?userId:1&#x27;&quot;</span>&gt;&lt;/router-link&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; name: &#x27;users&#x27;, params: &#123; userId: 1 &#125; &#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; path: &#x27;/users&#x27;, query: &#123; userId: 1 &#125; &#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>编程式导航 router-push：</p>
+<ul>
+<li>通过<code>params</code>传参</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;users&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>: &#123;</span><br><span class="line">        <span class="attr">userId</span>: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/users&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;users&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">User</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 跳转后获取路由参数</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">userId</span> <span class="comment">// 为 1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过<code>query</code>传参</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">this.<span class="variable">$router</span>.<span class="title function_ invoke__">push</span>(&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/users&#x27;</span>,</span><br><span class="line">    <span class="attr">query</span>: &#123;</span><br><span class="line">        <span class="attr">userId</span>: <span class="number">1</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line">&#123;</span><br><span class="line">    path: <span class="string">&#x27;/users&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;users&#x27;</span>,</span><br><span class="line">    component: User</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 跳转后获取路由参数</span></span><br><span class="line">this.<span class="variable">$route</span>.query.userId</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>动态路由</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(<span class="string">&#x27;/users/$&#123;userId&#125;&#x27;</span>);</span><br><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/users/:userId&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;users&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">User</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 跳转后获取路由参数</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">userId</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Vue-Router中的常用路由模式和原理？"><a href="#Vue-Router中的常用路由模式和原理？" class="headerlink" title="Vue Router中的常用路由模式和原理？"></a>Vue Router中的常用路由模式和原理？</h3><ol>
+<li>hash 模式：</li>
+</ol>
+<ul>
+<li><code>location.hash</code>的值就是url中 <code>#</code> 后面的东西。它的特点在于：hash虽然出现url中，但不会被包含在HTTP请求中，对后端完全没有影响，因此改变hash不会重新加载页面。</li>
+<li>可以为hash的改变添加监听事件<code>window.addEventListener(&quot;hashchange&quot;, funcRef, false)</code>，每一次改变<code>hash (window.location.hash)</code>，都会在浏览器的访问历史中增加一个记录，利用hash的以上特点，就可以实现<strong>前端路由更新视图但不重新请求页面</strong>的功能了。<br> 特点：兼容性好但是不美观</li>
+</ul>
+<ol>
+<li>history 模式：<br> 利用 HTML5 History Interface 中新增的<code>pushState()</code>和<code>replaceState()</code>方法。<br> 这两个方法应用于浏览器的历史记录栈，在当前已有的<code>back</code>、<code>forward</code>、<code>go</code> 的基础上(使用<code>popState()</code>方法)，他们提供了对历史记录进行修改的功能。<br> 这两个方法有个共同点：当调用他们修改浏览器历史记录栈后，虽然当前url改变了，但浏览器不会刷新页面，这就为单页面应用前端路由“更新视图但不重新请求页面”提供了基础<br> 特点：虽然美观，但是刷新会出现 404 需要后端进行配置。</li>
+</ol>
+<h3 id="动态路由？"><a href="#动态路由？" class="headerlink" title="动态路由？"></a>动态路由？</h3><p>很多时候，我们需要将给定匹配模式的路由映射到同一个组件，这种情况就需要定义动态路由。例如，我们有一个 User组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染。那么，我们可以在 vue-router 的路由路径中使用<code>动态路径参数（dynamic segment）</code>来达到这个效果：<code>&#123;path: &#39;/user/:id&#39;, compenent: User&#125;</code>，其中<code>:id</code>就是动态路径参数。</p>
+<h3 id="对Vuex的理解？"><a href="#对Vuex的理解？" class="headerlink" title="对Vuex的理解？"></a>对Vuex的理解？</h3><ol>
+<li>概念：<br> Vuex 是 Vue 专用的状态管理库，它以全局方式集中管理应用的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</li>
+<li>解决的问题：<br> Vuex 主要解决的问题是多组件之间状态共享。利用各种通信方式，虽然也能够实现状态共享，但是往往需要在多个组件之间保持状态的一致性，这种模式很容易出问题，也会使程序逻辑变得复杂。Vuex 通过把组件的共享状态抽取出来，以全局单例模式管理，这样任何组件都能用一致的方式获取和修改状态，响应式的数据也能够保证简洁的单向流动，使代码变得更具结构化且易于维护。</li>
+<li>什么时候用:<br> Vuex 并非是必须的，它能够管理状态，但同时也带来更多的概念和框架。如果我们不打算开发大型单页应用或应用里没有大量全局的状态需要维护，完全没有使用Vuex的必要，一个简单的 store 模式就够了。反之，Vuex将是自然而然的选择。</li>
+<li>用法：<br> Vuex 将全局状态放入<code>state</code>对象中，它本身是一颗状态树，组件中使用<code>store</code>实例的<code>state</code>访问这些状态；然后用配套的<code>mutation</code>方法修改这些状态，并且只能用<code>mutation</code>修改状态，在组件中调用<code>commit</code>方法提交<code>mutation</code>；如果应用中有异步操作或复杂逻辑组合，需要编写<code>action</code>，执行结束如果有状态修改仍需提交<code>mutation</code>，组件中通过<code>dispatch</code>派发<code>action</code>。最后是模块化，通过<code>modules</code>选项组织拆分出去的各个子模块，在访问状态（state）时需注意添加子模块的名称，如果子模块有设置<code>namespace</code>，那么提交<code>mutation</code>和派发<code>action</code>时还需要额外的命名空间前缀。</li>
+</ol>
+<h3 id="页面刷新后Vuex-状态丢失怎么解决？"><a href="#页面刷新后Vuex-状态丢失怎么解决？" class="headerlink" title="页面刷新后Vuex 状态丢失怎么解决？"></a>页面刷新后Vuex 状态丢失怎么解决？</h3><p>Vuex 只是在内存中保存状态，刷新后就会丢失，如果要持久化就需要保存起来。</p>
+<p><code>localStorage</code>就很合适，提交<code>mutation</code>的时候同时存入<code>localStorage</code>，在<code>store</code>中把值取出来作为<code>state</code>的初始值即可。</p>
+<p>也可以使用第三方插件，推荐使用<code>vuex-persist</code>插件，它是为 Vuex 持久化储存而生的一个插件，不需要你手动存取<code>storage</code>，而是直接将状态保存至 <code>cookie</code> 或者 <code>localStorage</code>中。</p>
+<h3 id="关于-Vue-SSR-的理解？"><a href="#关于-Vue-SSR-的理解？" class="headerlink" title="关于 Vue SSR 的理解？"></a>关于 Vue SSR 的理解？</h3><p><code>SSR</code>即<code>服务端渲染（Server Side Render）</code>，就是将 Vue 在客户端把标签渲染成 html 的工作放在服务端完成，然后再把 html 直接返回给客户端。</p>
+<ul>
+<li>优点：<br> 有着更好的 SEO，并且首屏加载速度更快。</li>
+<li>缺点：<br> 开发条件会受限制，服务器端渲染只支持 beforeCreate 和 created 两个钩子，当我们需要一些外部扩展库时需要特殊处理，服务端渲染应用程序也需要处于 Node.js 的运行环境。服务器会有更大的负载需求。</li>
+</ul>
+<h3 id="了解哪些-Vue-的性能优化方法？"><a href="#了解哪些-Vue-的性能优化方法？" class="headerlink" title="了解哪些 Vue 的性能优化方法？"></a>了解哪些 Vue 的性能优化方法？</h3><ul>
+<li>路由懒加载。有效拆分应用大小，访问时才异步加载。</li>
+<li><code>keep-alive</code>缓存页面。避免重复创建组件实例，且能保留缓存组件状态。</li>
+<li><code>v-for</code>遍历避免同时使用<code>v-if</code>。实际上在 Vue 3 中已经是一个错误用法了。</li>
+<li>长列表性能优化，可采用虚拟列表。</li>
+<li><code>v-once</code>。不再变化的数据使用<code>v-once</code>。</li>
+<li>事件销毁。组件销毁后把全局变量和定时器销毁。</li>
+<li>图片懒加载。</li>
+<li>第三方插件按需引入。</li>
+<li>子组件分割。较重的状态组件适合拆分。</li>
+<li>服务端渲染。</li>
+</ul>
+</article><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/09/NuQ3V6fehArJl2E.webp" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">王海运</div><div class="business-section">862555625</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">06/06/1995</span></div><div class="business-card-holder">13011477115</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>初次来到人间</label><div><a target="_blank" rel="noopener" href="https://https://why862555625.github.io/">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a></div></div><div class="business-terms"><p>如果上天不给你机会，那你就自己创造机会，杀出重围 .</p><p>再厉害的英雄也需要夫人的陪伴，所以我很爱我的夫人.</p></div></div></div></div></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://why862555625.github.io">王海运</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://why862555625.github.io/posts/c9a941a3.html">https://why862555625.github.io/posts/c9a941a3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://why862555625.github.io" target="_blank">biubiu</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a><a class="post-meta__tags" href="/tags/vue/">vue</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/why862555625/images/main/images/15.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-tools-left"><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul><a class="reward-main-btn" href="/about/" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/d9795f88.html"><img class="prev-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/16.png" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vela运行时</div></div></a></div><div class="next-post pull-right"><a href="/posts/ab232981.html"><img class="next-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">前端安全问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/667b4089.html" title="react复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">react复习</div></div></a></div><div><a href="/posts/d9795d86.html" title="JS复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-23</div><div class="title">JS复习</div></div></a></div><div><a href="/posts/ab232981.html" title="前端安全问题"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">前端安全问题</div></div></a></div><div><a href="/posts/1213ac56.html" title="算法总结"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">算法总结</div></div></a></div><div><a href="/posts/fa264d8c.html" title="算法复习"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-31</div><div class="title">算法复习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="status-bar">&nbsp;<div class="fa fa-signal xiayi"></div><div id="camera"></div><div class="status-bar_clock">GPS  &nbsp;<div class="fakaozuo fa fa-wifi"> &nbsp;</div><div class="fa fa-battery-full"></div></div></div><div class="is-center"><div class="avatar-img"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="author-info__name">王海运</div><div class="author-info__description">众里寻他千百度</div></div><a id="card-info-btn" href="https://why862555625.github.io/about/"><i class="fab fa-github"></i><span>about me</span></a><div class="card-info-data site-data is-center"><a class="biaotou" href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a> <a class="biaotou" href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a> <a class="biaotou" href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="浏览器"><i class="iconfont icon-liulanqi1"></i></a><a class="social-icon" href="/862555625@qq.com" target="_blank" title="邮箱"><i class="iconfont icon-email"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=862555625" target="_blank" title="QQ"><i class="iconfont icon-QQ"></i></a><a class="social-icon" href="/about/" target="_blank" title="微信"><i class="iconfont icon-weixin"></i></a><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="抖音"><i class="iconfont icon-douyin"></i></a></div><div class="home-indicator"></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div class="about-statistic author-content-item2"><div class="card-content"><div class="lightning"><div class="lightning1"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://drfs.ctcontents.com/file/14237530/755647870/e44191/img/index/swordsmen.webp"></div><div class="lightning2"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://www.jiangweishan.com/demo/lightning2.png"></div></div><span class="author-content-item-title">文章归档  </span><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/archives/&quot;)" data-pjax-state="data-pjax-state"><span class="banner-button-text">文章隧道</span></a></div></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MVVM%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">MVVM模型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.</span> <span class="toc-text">Vue的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-nextTick"><span class="toc-number">3.</span> <span class="toc-text">Vue.$nextTick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">Vue 实例挂载过程中发生了什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E7%9A%84%E6%A8%A1%E7%89%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">Vue 的模版编译原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">Vue 的响应式原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9FDOM"><span class="toc-number">7.</span> <span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#diff-%E7%AE%97%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">diff 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#diff-%E6%9B%B4%E6%96%B0"><span class="toc-number">8.1.</span> <span class="toc-text">diff 更新</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#VUE2"><span class="toc-number">8.1.1.</span> <span class="toc-text">VUE2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#VUE3"><span class="toc-number">8.1.2.</span> <span class="toc-text">VUE3</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AF%B9%E6%AF%94%E5%A4%B4%E9%83%A8%E7%AD%89%E4%BD%8D%E6%8C%87%E9%92%88%E8%8A%82%E7%82%B9"><span class="toc-number">8.2.</span> <span class="toc-text">1. 对比头部等位指针节点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%B9%E6%AF%94%E5%B0%BE%E9%83%A8%E7%AD%89%E4%BD%8D%E6%8C%87%E9%92%88%E8%8A%82%E7%82%B9"><span class="toc-number">9.</span> <span class="toc-text">2. 对比尾部等位指针节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E5%A4%84%E7%90%86%E6%96%B0%E5%A2%9E%E7%9A%84%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E7%8B%AC%E6%83%85%E5%86%B5"><span class="toc-number">9.1.</span> <span class="toc-text">3.1 处理新增的节点的单独情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E5%A4%84%E7%90%86%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E7%8B%AC%E6%83%85%E5%86%B5"><span class="toc-number">9.2.</span> <span class="toc-text">3.2 处理删除节点的单独情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E4%B9%B1%E5%BA%8F%EF%BC%8C%E4%BD%86%E4%B8%80%E5%AE%9A%E6%9C%89%E7%A7%BB%E5%8A%A8%E7%9A%84%E8%8A%82%E7%82%B9%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">9.3.</span> <span class="toc-text">3.3 乱序，但一定有移动的节点的情况</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-1-%E5%BB%BA%E7%AB%8B%E6%96%B0%E8%8A%82%E7%82%B9-key-%E4%B8%8E%E5%85%B6%E4%B8%8B%E6%A0%87%E7%9A%84%E6%98%A0%E5%B0%84"><span class="toc-number">9.3.1.</span> <span class="toc-text">3.3.1 建立新节点 key 与其下标的映射</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-2-%E7%A7%BB%E9%99%A4%E6%96%B0%E8%8A%82%E7%82%B9%E9%98%9F%E5%88%97%E4%B8%AD%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E6%97%A7%E8%8A%82%E7%82%B9%E5%B9%B6%E6%9B%B4%E6%96%B0%E5%A4%8D%E7%94%A8%E8%8A%82%E7%82%B9"><span class="toc-number">9.3.2.</span> <span class="toc-text">3.3.2 移除新节点队列中不存在的旧节点并更新复用节点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-%E5%A4%84%E7%90%86%E6%96%B0%E5%A2%9E%E8%8A%82%E7%82%B9%E4%B8%8E%E7%A7%BB%E5%8A%A8%E7%9A%84%E8%8A%82%E7%82%B9"><span class="toc-number">9.4.</span> <span class="toc-text">3.3.3 处理新增节点与移动的节点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84-data-%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">为什么组件中的 data 是一个函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E4%B8%AD%E7%BB%84%E4%BB%B6%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">Vue 中组件间的通信方式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-show-%E5%92%8C-v-if-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">12.</span> <span class="toc-text">v-show 和 v-if 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#computed-%E5%92%8C-watch-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">computed 和 watch 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-if-%E5%92%8C-v-for-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%BB%BA%E8%AE%AE%E6%94%BE%E5%9C%A8%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">v-if 和 v-for 为什么不建议放在一起使用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-2%E4%B8%AD%E7%9A%84set%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">Vue 2中的set方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keep-alive-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">keep-alive 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mixin"><span class="toc-number">17.</span> <span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E6%A7%BD"><span class="toc-number">18.</span> <span class="toc-text">插槽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E4%B8%AD%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">19.</span> <span class="toc-text">Vue 中的修饰符有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9-SPA-%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">20.</span> <span class="toc-text">对 SPA 的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%EF%BC%9F"><span class="toc-number">21.</span> <span class="toc-text">双向绑定？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BB%84%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%94%B9%E5%8F%98%E7%88%B6%E7%BB%84%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%9F"><span class="toc-number">22.</span> <span class="toc-text">子组件是否可以直接改变父组件的数据？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-%E5%92%8C-route-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">23.</span> <span class="toc-text">router 和 route 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-router-%E7%9A%84%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">24.</span> <span class="toc-text">vue-router 的路由传参方式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-Router%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-number">25.</span> <span class="toc-text">Vue Router中的常用路由模式和原理？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%EF%BC%9F"><span class="toc-number">26.</span> <span class="toc-text">动态路由？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9Vuex%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">27.</span> <span class="toc-text">对Vuex的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E5%90%8EVuex-%E7%8A%B6%E6%80%81%E4%B8%A2%E5%A4%B1%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="toc-number">28.</span> <span class="toc-text">页面刷新后Vuex 状态丢失怎么解决？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-Vue-SSR-%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="toc-number">29.</span> <span class="toc-text">关于 Vue SSR 的理解？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%93%AA%E4%BA%9B-Vue-%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-number">30.</span> <span class="toc-text">了解哪些 Vue 的性能优化方法？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/a09ef191.html" title="js面试手写"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="js面试手写"/></a><div class="content"><a class="title" href="/posts/a09ef191.html" title="js面试手写">js面试手写</a><time datetime="2023-06-07T05:58:38.000Z" title="发表于 2023-06-07 13:58:38">2023-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8857f1a4.html" title="加油"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="加油"/></a><div class="content"><a class="title" href="/posts/8857f1a4.html" title="加油">加油</a><time datetime="2023-06-06T04:56:20.000Z" title="发表于 2023-06-06 12:56:20">2023-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1213ac56.html" title="算法总结"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="算法总结"/></a><div class="content"><a class="title" href="/posts/1213ac56.html" title="算法总结">算法总结</a><time datetime="2023-05-31T12:18:34.000Z" title="发表于 2023-05-31 20:18:34">2023-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/fa264d8c.html" title="算法复习"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="算法复习"/></a><div class="content"><a class="title" href="/posts/fa264d8c.html" title="算法复习">算法复习</a><time datetime="2023-05-31T12:18:34.000Z" title="发表于 2023-05-31 20:18:34">2023-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7db00131.html" title="前端工程化"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="前端工程化"/></a><div class="content"><a class="title" href="/posts/7db00131.html" title="前端工程化">前端工程化</a><time datetime="2023-05-26T07:59:17.000Z" title="发表于 2023-05-26 15:59:17">2023-05-26</time></div></div></div></div></div></div></main><div id="footer_deal"><a class="deal_link" href="" title="mail"><i class="fa-solid fa-envelope"></i></a><a class="deal_link" href="" title="qq" target="_blank"><i class="fa-brands fa-qq"></i></a><a class="deal_link" href="" title="微博" target="_blank"><i class="fa-brands fa-weibo"></i></a><a class="deal_link" href="https://github.com/jayhrn" title="github" target="_blank"><i class="fa-brands fa-github"></i></a><img class="footer_mini_logo entered loading" style="border-radius:50%" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://img.zhheo.com/i/2022/08/31/630ef3b505ef5.webp" onclick="btf.scrollToDest(0,500)" title="返回顶部"/><a class="deal_link" href="" title="dribbble"><i class="fa-brands fa-dribbble"></i></a><a class="deal_link" href="" title="微信" target="_blank"><i class="fa-brands fa-weixin"></i></a><a class="deal_link" href="" title="抖音" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a class="deal_link" href="" title="设置"><i class="fa-solid fa-bars"></i></a></div><div id="Jay-footer"><div class="footer-group"><h3 class="footer-title">直达</h3><div class="footer-links"><a class="footer-item" href="https://why862555625.github.io/" target="_blank">我的主页</a><a class="footer-item" href="/music">音乐欣赏</a><a class="footer-item" href="/about">关于我</a><a class="footer-item" onclick="toRandomPost()">随机文章</a></div></div><div class="footer-group"><h3 class="footer-title">分类</h3><div class="footer-links"><a class="footer-item" href="/categories/css/">css笔记</a><a class="footer-item" href="/categories/魔改/">魔改教程</a><a class="footer-item" href="/categories/辅助/">hexo工具</a><a class="footer-item" href="/categories/Docs文檔/">Docs文檔</a></div></div><div class="footer-group"><h3 class="footer-title">关于</h3><div class="footer-links"><a class="footer-item" href="/about/">关于我</a><a class="footer-item" href="/charts/">博客统计</a><a class="footer-item" href="/archives">文章归档</a><a class="footer-item" href="/update">更新记录</a></div></div><div class="footer-group"><h3 class="footer-title">友链</h3><div class="footer-links" id="friend-links-in-footer"><a class="footer-item" href="https://blog.zhheo.com/" target="_blank">张洪Heo</a><a class="footer-item" href="https://anzhiy.cn/" target="_blank">安知鱼</a><a class="footer-item" href="https://akilar.top/" target="_blank">Akilar</a><a class="footer-item" onclick="toRandomFlink()">随机友情</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/privacy/">隐私协议</a><a class="footer-item" href="/cookies/">Cookie</a><a class="footer-item" href="/cc/">版权协议</a></div></div></div><footer id="footer" style="background: var(--heo-theme);"><div id="footer-wrap"><div class="copyright">&copy;1993 - 2023 By 王海运</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button type="button" title="切换背景" onclick="toggleWinbox()"><i class="fas fa-display"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="https://npm.elemecdn.com/blog2023@1.0.2/utils.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://npm.elemecdn.com/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.1/instantsearch.production.min.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/algolia.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhheo.com',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script charset="utf-8" data-pjax="" src="/js/watchWorker.js"></script><script charset="utf-8" data-pjax="" src="/js/copy.js"></script><script defer src="https://npm.elemecdn.com/blog12.8@1.0.1/categoryBar.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/sun_moon.js" async></script><script src="https://unpkg.com/plasxhexo@1.0.2/js/winbox.bundle.min.js"></script><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?98d6c60617ee763b4f6708fedd7f50e5";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script><script charset="utf-8" data-pjax="" src="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.js"></script><script src="/zhheo/random.js"></script><script async src="https://at.alicdn.com/t/c/font_3855261_r5lzgvwjjsm.js"></script><script id="click-show-text" src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="我,喜,欢,你,你,喜,欢,我,不" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.js"></script><script src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show","#web_bg",".js-pjax",".video"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/video/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html><script>var flinks=["https://akilar.top/","https://blog.zhheo.com/","https://anzhiy.cn/","https://www.chuckle.top/","https://ichika.cc/","https://blog.leonus.cn/","https://sianx.com","https://www.fomal.cc/","https://www.webxc.ml","https://daiyu-233.top/","https://tzy1997.com/","https://www.qingyi1220.cn/","https://www.xiaozhuzi.xyz/","https://blog.xiaohua927.top/","https://wyblog1.eu.org","https://ezgx.tk/","https://wsbblog.cn","https://www.lyshark.com"];function toRandomFlink(){window.open(flinks[Math.floor(Math.random()*flinks.length)]);};</script>
