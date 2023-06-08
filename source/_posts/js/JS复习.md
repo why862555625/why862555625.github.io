@@ -3,12 +3,12 @@ title: JS复习
 tags:
   - 前端
   - JS
-categories: JS
+categories: 面试
 keywords: '前端,面试,JS'
 description: JS复习记录
-top_img: 设置false不显示顶部图片
+top_img: 'https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg'
 sticky: 数值越大越靠前
-cover: 首页封面
+cover: 'https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg'
 comments: false评论
 abbrlink: d9795d86
 date: 2023-05-23 15:21:13

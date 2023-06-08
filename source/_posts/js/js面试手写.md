@@ -2,12 +2,12 @@
 title: js面试手写
 tags:
   - 面试
-categories: 类别
+categories: 面试
 keywords: 面试，JS
 description: js面试手写
-top_img: 设置false不显示顶部图片
+top_img: 'https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg'
 sticky: 数值越大越靠前
-cover: 首页封面
+cover: 'https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg'
 comments: false评论
 abbrlink: a09ef191
 date: 2023-06-07 13:58:38

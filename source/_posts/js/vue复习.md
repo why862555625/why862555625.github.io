@@ -3,7 +3,7 @@ title: vue复习
 tags:
   - vue
   - JS
-categories: JS
+categories: 面试
 keywords: vue复习
 description: vue复习
 top_img: 设置false不显示顶部图片
