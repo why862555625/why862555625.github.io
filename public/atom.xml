@@ -6,7 +6,7 @@
   <link href="https://why862555625.github.io/atom.xml" rel="self"/>
   
   <link href="https://why862555625.github.io/"/>
-  <updated>2023-06-07T05:58:38.000Z</updated>
+  <updated>2023-06-08T06:36:25.000Z</updated>
   <id>https://why862555625.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css复习</title>
+    <link href="https://why862555625.github.io/posts/ed9fe6ee.html"/>
+    <id>https://why862555625.github.io/posts/ed9fe6ee.html</id>
+    <published>2023-06-08T06:36:25.000Z</published>
+    <updated>2023-06-08T06:36:25.000Z</updated>
+    
+    
+    <summary type="html">css复习</summary>
+    
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="css" scheme="https://why862555625.github.io/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>js面试手写</title>
@@ -28,7 +47,7 @@
     
     
     
-    <category term="类别" scheme="https://why862555625.github.io/categories/%E7%B1%BB%E5%88%AB/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="面试" scheme="https://why862555625.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
@@ -66,7 +85,7 @@
     
     
     
-    <category term="JS" scheme="https://why862555625.github.io/categories/JS/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
@@ -85,7 +104,7 @@
     
     
     
-    <category term="JS" scheme="https://why862555625.github.io/categories/JS/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
@@ -104,7 +123,7 @@
     
     
     
-    <category term="前端" scheme="https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="前端" scheme="https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
@@ -123,7 +142,7 @@
     
     
     
-    <category term="前端" scheme="https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="前端" scheme="https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
@@ -144,7 +163,7 @@
     
     
     
-    <category term="网络" scheme="https://why862555625.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="网络" scheme="https://why862555625.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
@@ -163,7 +182,7 @@
     
     
     
-    <category term="JS" scheme="https://why862555625.github.io/categories/JS/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="前端" scheme="https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
@@ -184,7 +203,7 @@
     
     
     
-    <category term="JS" scheme="https://why862555625.github.io/categories/JS/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
@@ -238,7 +257,7 @@
   </entry>
   
   <entry>
-    <title>HTML &amp; CSS复习</title>
+    <title>HTML复习</title>
     <link href="https://why862555625.github.io/posts/d9795d88.html"/>
     <id>https://why862555625.github.io/posts/d9795d88.html</id>
     <published>2023-05-23T07:21:13.000Z</published>
@@ -249,10 +268,10 @@
     
     
     
-    <category term="HTML" scheme="https://why862555625.github.io/categories/HTML/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
-    <category term="前端" scheme="https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="面试" scheme="https://why862555625.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
     <category term="HTML" scheme="https://why862555625.github.io/tags/HTML/"/>
     
@@ -270,7 +289,7 @@
     
     
     
-    <category term="JS" scheme="https://why862555625.github.io/categories/JS/"/>
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
     
     
     <category term="前端" scheme="https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
