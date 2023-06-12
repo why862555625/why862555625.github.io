@@ -17,16 +17,6 @@
 如果这两个软件都不会安装你就放弃吧
 
 ----
-# 感谢
-- [主题：](https://github.com/jerryc127/hexo-theme-butterfly)https://github.com/jerryc127/hexo-theme-butterfly
-- [内核：](https://hexo.io/zh-cn/index.html)https://hexo.io/zh-cn/index.html
-- 魔改教程 -安知鱼https://anzhiy.cn/
-           - heo张 https://akilar.top/
-           -糖果屋 https://blog.zhheo.com/
- # 群聊
- ![](https://butterfly.zhheo.com/img/qrcode.jpg)
-
-
 # 安装
 如果你是小白你就使用安装工具按数字就行
 5秒搭建部署完成
@@ -89,4 +79,4 @@ npm install hexo-lazyload-image --save
 ~~~
 npm install hexo-generator-search --save
 ~~~
-![](https://s2.loli.net/2022/11/14/thB3auFOdvHJWEU.webp)
+
