@@ -22,6 +22,7 @@ vela系统quickjs对接devtools
 <!-- more -->
 
 ## vela快应用调试功能概览
+[cdp协议]: https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#event-highlightNode
 
 ![image-20230525102147522](https://raw.githubusercontent.com/why862555625/images/main/image-20230525102147522.png)
 
