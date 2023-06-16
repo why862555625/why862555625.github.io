@@ -122,14 +122,13 @@ updated: 2023-06-11 21:43:54
 1. 当声明一个 `script`标签类型为 `module` 时,如
 
 ```xml
-xml
-复制代码  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 ```
 
 1. 当浏览器解析资源时，会往当前域名发起一个`GET`请求`main.js`文件
 
 ```javascript
-javascript复制代码// main.js
+// main.js
 import { createApp } from 'vue'
 import App from './App.vue'
 createApp(App).mount('#app')
@@ -184,7 +183,7 @@ createApp(App).mount('#app')
 > 源码位置：packages/vite/src/node/server/index.ts
 
 ```javascript
-javascript复制代码export async function createServer(
+export async function createServer(
   inlineConfig: InlineConfig = {}
 ): Promise<ViteDevServer> {
   ....
@@ -219,7 +218,7 @@ javascript复制代码export async function createServer(
 > 源码位置：packages/vite/src/node/server/ws.ts
 
 ```javascript
-javascript复制代码export function createWebSocketServer(
+export function createWebSocketServer(
   server: Server | null,
   config: ResolvedConfig,
   httpsOptions?: HttpsServerOptions
@@ -272,7 +271,7 @@ javascript复制代码export function createWebSocketServer(
 > 源码位置：packages/vite/src/node/server/index.ts
 
 ```scss
-scss复制代码 watcher.on('change', async (file) => {
+watcher.on('change', async (file) => {
     file = normalizePath(file)
     if (file.endsWith('/package.json')) {
       return invalidatePackageData(packageCache, file)
@@ -309,7 +308,7 @@ scss复制代码 watcher.on('change', async (file) => {
 > 源码位置：packages/vite/src/node/server/moduleGraph.ts
 
 ```typescript
-typescript复制代码onFileChange(file: string): void {
+onFileChange(file: string): void {
     const mods = this.getModulesByFile(file)
     if (mods) {
       const seen = new Set<ModuleNode>()
@@ -356,8 +355,7 @@ typescript复制代码onFileChange(file: string): void {
 若需要对依赖代码模块做改动可手动操作使缓存失效:
 
 ```css
-css
-复制代码vite --force
+vite --force
 ```
 
 或者手动删除 `node_modules/.``vite` 中的缓存文件。
@@ -415,7 +413,7 @@ css
 1. `runOptimize()`调用`optimizeDeps()`和`createMissingImporterRegisterFn()`方法
 
 ```typescript
-typescript复制代码const runOptimize = async () => {
+const runOptimize = async () => {
     if (config.cacheDir) {
       server._isRunningOptimizer = true
       try {
@@ -534,7 +532,7 @@ Vite` 从 `preact` 的 `WMR` 中得到了启发，将`Vite Plugins`继承`Rollup
 - 编写插件代码
 
 ```javascript
-javascript复制代码export default function myVitePlugin () {
+export default function myVitePlugin () {
   // 定义vite插件唯一id
   const virtualFileId = '@my-vite-plugin'
   // 返回的整个插件对象
@@ -565,7 +563,7 @@ javascript复制代码export default function myVitePlugin () {
 - 引入插件：`vite.config.js/ts` 中引用
 
 ```javascript
-javascript复制代码// vite.config.js/ts
+// vite.config.js/ts
 import myVitePlugin from '...'
 export default defineConfig{
     plugins:[vue(),myVitePlugin()]
