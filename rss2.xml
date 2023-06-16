@@ -15,8 +15,29 @@
     <atom:link href="https://why862555625.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>王海运的博客</description>
-    <pubDate>Sun, 11 Jun 2023 13:43:54 GMT</pubDate>
+    <pubDate>Wed, 14 Jun 2023 14:05:30 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>交叉熵</title>
+      <link>https://why862555625.github.io/posts/ea101373.html</link>
+      <guid>https://why862555625.github.io/posts/ea101373.html</guid>
+      <pubDate>Wed, 14 Jun 2023 14:05:30 GMT</pubDate>
+      
+      <description>交叉熵</description>
+      
+      
+      
+      
+      <category domain="https://why862555625.github.io/categories/AI/">AI</category>
+      
+      
+      <category domain="https://why862555625.github.io/tags/AI/">AI</category>
+      
+      
+      <comments>https://why862555625.github.io/posts/ea101373.html#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>vite</title>
@@ -430,29 +451,6 @@
       
       
       <comments>https://why862555625.github.io/posts/d9795d86.html#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>vela快应用框架</title>
-      <link>https://why862555625.github.io/posts/d9795d89.html</link>
-      <guid>https://why862555625.github.io/posts/d9795d89.html</guid>
-      <pubDate>Tue, 25 Apr 2023 07:27:56 GMT</pubDate>
-      
-      <description>quickjs对接devtools</description>
-      
-      
-      
-      
-      <category domain="https://why862555625.github.io/categories/C/">C</category>
-      
-      
-      <category domain="https://why862555625.github.io/tags/quickjs/">quickjs</category>
-      
-      <category domain="https://why862555625.github.io/tags/devtools/">devtools</category>
-      
-      
-      <comments>https://why862555625.github.io/posts/d9795d89.html#disqus_thread</comments>
       
     </item>
     
