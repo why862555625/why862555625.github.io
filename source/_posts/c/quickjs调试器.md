@@ -7,7 +7,7 @@ categories: C
 keywords: '前端,面试,C'
 description: quickjs调试工具
 top_img: 设置false不显示顶部图片
-sticky: 数值越大越靠前
+sticky: 101
 cover: "https://raw.githubusercontent.com/why862555625/images/main/images/18.jpg"
 comments: false评论
 abbrlink: d9795d10

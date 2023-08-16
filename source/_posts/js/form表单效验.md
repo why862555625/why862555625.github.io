@@ -2,14 +2,14 @@
 title: form表单效验
 tags:
   - JS
-
 categories: 前端
-keywords: "hexo,butterfly,主題,doc,教程,文檔"
+keywords: 'hexo,butterfly,主題,doc,教程,文檔'
 description: 描述 Butterfly安裝文檔-快速開始
-top_img: "https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg"
+top_img: 'https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg'
 sticky: 数值越大越靠前
-cover: "https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg"
+cover: 'https://raw.githubusercontent.com/why862555625/images/main/images/444.jpg'
 comments: false评论
+abbrlink: f44a0d63
 date: 2023-07-20 08:31:35
 updated: 2023-07-20 08:31:35
 ---

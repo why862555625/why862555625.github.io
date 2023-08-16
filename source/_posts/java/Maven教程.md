@@ -5,9 +5,9 @@ tags:
 categories: java
 keywords: Maven教程
 description: Maven教程
-top_img: 设置false不显示顶部图片
+top_img: 'https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg'
 sticky: 数值越大越靠前
-cover: 首页封面
+cover: 'https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg'
 comments: false评论
 abbrlink: 21effdcf
 date: 2023-07-18 16:16:45
