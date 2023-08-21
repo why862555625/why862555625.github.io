@@ -4,12 +4,13 @@ tags:
   - java基础
   - java
 categories: java
-keywords: "Java 基础 - 泛型机制详解"
+keywords: Java 基础 - 泛型机制详解
 description: Java 基础 - 泛型机制详解
-top_img: "https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg"
+top_img: 'https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg'
 sticky: 数值越大越靠前
-cover: "https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg"
+cover: 'https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg'
 comments: false评论
+abbrlink: 35d92ef6
 date: 2023-08-16 11:49:48
 updated: 2023-08-16 11:49:48
 ---
