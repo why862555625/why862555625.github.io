@@ -1,0 +1,892 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>http2升级 | 王海运</title><meta name="author" content="王海运"><meta name="copyright" content="王海运"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="http2升级">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http2升级">
+<meta property="og:url" content="https://why862555625.github.io/posts/df7a5d88.html">
+<meta property="og:site_name" content="王海运">
+<meta property="og:description" content="http2升级">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://why862555625.github.io/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2">
+<meta property="article:published_time" content="2023-10-07T06:48:54.000Z">
+<meta property="article:modified_time" content="2023-10-07T06:48:54.000Z">
+<meta property="article:author" content="王海运">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://why862555625.github.io/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2"><link rel="shortcut icon" href="https://unpkg.com/plasx@1.0.3/img/favicon.webp"><link rel="canonical" href="https://why862555625.github.io/posts/df7a5d88"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="https://npm.elemecdn.com/blog2023@1.0.2/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/swiper@8.4.2/swiper-bundle.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"KPAKI5YHZ8","apiKey":"031790ee5a399a40981430251606ff78","indexName":"hexo","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":150},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":2000,"languages":{"author":"作者: 王海运","link":"链接: ","source":"来源: 王海运","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"rgb(0 199 255 / 70%)","bgDark":"rgb(0 199 255 / 70%)","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'http2升级',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-07 14:48:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preload" href="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.css" as="style" onload="this.rel='stylesheet'"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="王海运" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="王海运" type="application/rss+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img iconfont icon-apple-fill"><div class="loading-image-dot iconfont icon-jiazai"></div></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://unpkg.com/plasx@1.0.3/css/progress_bar.css"/><script src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: 设置false不显示顶部图片"><nav id="nav"><span id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon fas fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="主线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/GcgMjo5lNUfbrFW.webp"/><span class="back-menu-item-text">主线路</span></a><a class="back-menu-item" href="https://why862555625.github.io/" rel="external nofollow" title="备用线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/XxmYTFzsacq9EbL.webp"/><span class="back-menu-item-text">备用线路</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">biubiu</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="biubiu" target="_blank" rel="noopener nofollow" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/12/YBMzJhbXEPprU87.webp"/><span class="back-menu-item-text">biubiu</span></a></div></div></div></div><a id="site-name" href="/"><div class="title">王海运</div><i class="fa-solid fa-house"></i></a></span><div class="mask-name-container"><center id="name-container"><a id="page-name" href="javascript:btf.scrollToDest(0,500)">PAGE_NAME</a></center></div><div id="menus"><div class="nav-button" id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" title="浅色和深色模式转换" onclick="switchNightMode()"><i class="fas fa-adjust"></i></a></div><div class="nav-button" id="modeicon"><a class="darkmode_switchbutton" type="button" title="切换壁纸" onclick="toggleWinbox()"><i class="fa-solid fa-image"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn"><i class="fas fa-arrow-up"></i><span id="percent" onclick="btf.scrollToDest(0,500)">0</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><div id="post-meta"><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a></div><h1 class="post-title">http2升级</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-07T06:48:54.000Z" title="发表于 2023-10-07 14:48:54">2023-10-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-07T06:48:54.000Z" title="更新于 2023-10-07 14:48:54">2023-10-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BD%91%E7%BB%9C/">网络</a></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231008102528048.png" alt="image-20231008102528048"></p>
+<span id="more"></span>
+
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p><strong>使用http1时的情况：</strong></p>
+<p>假设我们有36个请求需要发送（真实情况160+），由于浏览器的tcp链接限制，最多只能建立6个链接。也就是一次只能发送6个请求，那剩下的30个请求都需要在请求队列中等待。如果这6个请求都是较为耗时的任务（资源大，server处理耗时较长等），那请求队列中的请求等待时间会进一步加长。（项目中累计队列等待时间约为9秒）</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231007153433034.png" alt="6"></p>
+<p><strong>使用http2时的情况：</strong></p>
+<p>使用http2会对tcp链接进行复用，可以通过一个tcp链接同时发送多个请求。并且可以通过 请求头<code>weight</code>、 <code>depends-on</code>、<code>X-Priority</code>等字段确定优先级，让服务器根据请求头来调整处理顺序。</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231007155045429.png" alt="image-20231007155045429"></p>
+<blockquote>
+<p>http2优势：</p>
+<ol>
+<li><strong>多路复用（Multiplexing）</strong>：HTTP/2 支持在同一个连接上同时传输多个请求和响应。这样，多个请求可以并行处理，不需要等待之前的请求响应完成，大幅提高了页面加载速度。</li>
+<li><strong>头部压缩（Header Compression）</strong>：HTTP/2 使用 HPACK 算法对头部信息进行压缩，减小了数据包的大小，降低了网络传输的延迟。这种压缩机制减少了带宽的使用，尤其对于大型网页或者请求头很大的场景效果显著。</li>
+<li><strong>二进制分帧（Binary Framing）</strong>：HTTP/2 将所有的传输信息分割为更小的帧（Frames），并且每个帧都被赋予一个唯一的标识符，这种二进制分帧的机制使得协议更加高效，也更容易实现。</li>
+<li><strong>服务器推送（Server Push）</strong>：HTTP/2 允许服务器在客户端请求之前将额外的响应数据推送给客户端，提高了页面加载的速度。这种特性可以避免客户端发送了一个请求后，服务器又返回一个推送的资源。</li>
+<li><strong>优先级（Priority）</strong>：HTTP/2 允许客户端为每个请求设置优先级，确保关键资源首先被传输，提高了页面的渲染速度和用户体验。</li>
+<li><strong>流量控制（Flow Control）</strong>：HTTP/2 支持流量控制，可以防止高速的生产者压倒了较慢的消费者，确保了资源的合理利用。</li>
+<li><strong>支持请求和响应的取消（Request and Response Cancellation）</strong>：HTTP/2 允许取消不需要的请求和响应，提高了灵活性和效率。</li>
+</ol>
+</blockquote>
+<h1 id="计算机网络基本知识"><a href="#计算机网络基本知识" class="headerlink" title="计算机网络基本知识"></a>计算机网络基本知识</h1><h2 id="经典的网络7层协议"><a href="#经典的网络7层协议" class="headerlink" title="经典的网络7层协议"></a>经典的网络7层协议</h2><p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/MBXY-CR-f2718999645d536b524ca3aaefb9de86.png" alt="img"></p>
+<h2 id="数据传输过程"><a href="#数据传输过程" class="headerlink" title="数据传输过程"></a><strong>数据传输过程</strong></h2><p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231007150948424.png" alt="image-20231007150948424"></p>
+<p><strong>（1）应用层传输过程（将其他信息翻译成二进制数据）</strong></p>
+<p>在应用层，数据被”翻译”为网络世界使用的语言——二进制编码数据。大家可以试想一下，人们需要通过计算机传输的数据形式千变万化、各式各样，有字母、数字汉字、图片、声音等。这些信息对于单纯通过弱电流传输的计算机来说太过于”复杂”，因此这些方便人类识别的信息被应用层通过各种特殊的编码过程转换成二进制数据。这就是上面所描述的”翻译”过程，也是应用层在网络数据传输过程中最为核心的贡献。</p>
+<p><strong>（2）传输层传输过程（分割：避免出错代价；标识应用层端口：找到对应应用）</strong></p>
+<p>在传输层，上层数据被分割成小的数据段，并为每个分段后的数据封装TCP报文头部。应用层将人们需要传输的信息转换成计算机能够识别的二进制数据后，这些数据往往都是海量的。例如，一张高清晰的图片转换成二进制数据可能会有几百万甚至几千万位比特，一次性传输如此庞大的数据，一旦网络出现问题而导致数据出错就要重新传输，数据量过大也会增加出错的概率，最终可能导致网络资源耗尽。因此，将数据先分割成小段再逐段传输，一旦数据传输出现错误只需重传这一小段数据即可。</p>
+<p>在TCP头部有一个关键的字段信息——端口号，它用于标识上层的协议或应用程序，确保上层应用数据的正常通信。计算机是可以多进程并发运行的，在通过QQ发送信息的同时也可以通过IE浏览Web页面。但是对于传输层而言，它是不可能”看懂”应用层传输数据的具体内容的，因此只能借助一种标识来确定接收到的数据对应的应用程序，这种标识就是端口号。</p>
+<p><strong>（3）网络层传输过程（寻址ip,标识自己ip）</strong></p>
+<p>在网络层，上层数据被封装上新的报文头部——IP头部。值得注意的是，这里所说的上层数据包括TCP头部，也就是说，这里的上层是指传输层。对于网络层而言，它是”看不懂”TCP包头中的内容的，无论是应用层的应用数据，还是TCP头部信息都属于上层数据。　　　　</p>
+<p>在IP头部中有一个关键的字段信息——IP地址，它是由一组32位的二进制数组成的，用于标识网络的逻辑地址。回想刚才寄信的例子，我们在信封上填写了对方的详细地址和本地的详细地址，以保证收件人能够顺利收到信件。网络层的传输过程与其类似，在IP头部中包含目标IP地址和源IP地址，在网络传输过程中的一些中间设备，如路由器，会根据目标IP地址来进行逻辑寻址，找到正确的路径将数据转发到目的端主机。如果中间的路由设备发现目标的IP地址是不可能到达的，它将会把该消息传回发送端主机，因此在网络层需要同时封装目标 IP和源IP。</p>
+<p><strong>（4）数据链路层传输过程（标识唯一主机）</strong></p>
+<p>在数据链路层，上层数据被封装一个MAC头部，其内部有一个关键的字段信息——MAC地址，它由一组48位的二进制数组成。在目前阶段，我们可以先把它理解为固化在硬件设备中的物理地址，具有全球唯一性。例如，之前讲解的网卡就有属于自己的唯一的MAC地址。和IP头部类似，在MAC头部也同时封装着目标MAC地址和源MAC 地址。</p>
+<p><strong>（5）物理层传输过程（转换成好传输的介质）</strong></p>
+<p>无论在之前封装的报文头部还是上层的数据信息都是由二进制数组成的，在物理层，将这些二进制数字组成的比特流转换成电信号在网络中传输。</p>
+<h2 id="TCP链接建立过程"><a href="#TCP链接建立过程" class="headerlink" title="TCP链接建立过程"></a>TCP链接建立过程</h2><p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/dev-network-tcpip-4.jpg" alt="img"></p>
+<blockquote>
+<p>一般来说，SYN报文的格式如下：</p>
+<ul>
+<li>源端口号：用于标识发送方的端口号。</li>
+<li>目标端口号：用于标识接收方的端口号。</li>
+<li>序列号（Sequence Number）：用于标识报文的顺序，SYN报文中的序列号表示数据起始位置。</li>
+<li>确认号（Acknowledgment Number）：用于确认已经收到的数据，SYN报文中的确认号表示期望收到的下一个数据的位置。</li>
+<li>数据偏移和保留位（Data Offset and Reserved）：用于指示TCP头部的长度和保留字段，通常为20字节。</li>
+<li>标志位（Flags）：用于标识TCP报文的类型和属性，SYN报文中的SYN标志被置为1。</li>
+<li>窗口大小（Window Size）：用于指示发送方的接收窗口大小。</li>
+<li>校验和（Checksum）：用于校验TCP头部和数据的完整性。</li>
+<li>紧急指针（Urgent Pointer）：用于指示紧急数据的末尾位置。</li>
+<li>选项（Options）：可选字段，包含TCP的一些额外信息。</li>
+</ul>
+</blockquote>
+<p><strong>为什么要四次挥手：因为可能还有数据没有发完。</strong></p>
+<h3 id="TCP协议的慢启动"><a href="#TCP协议的慢启动" class="headerlink" title="TCP协议的慢启动"></a>TCP协议的慢启动</h3><blockquote>
+<p>TCP慢启动（Slow Start）是一种TCP拥塞控制算法，用于在TCP连接刚刚建立或者在拥塞发生后进行连接恢复时，逐渐增加发送窗口大小，以有效地利用网络带宽并避免拥塞引起的数据丢失。</p>
+<p>当一个TCP连接建立时，初始时发送窗口大小（即允许发送的数据量）会被设置为一个较小的值，以避免在网络刚开始使用时可能出现的拥塞。具体而言，TCP慢启动的机制如下：</p>
+<ol>
+<li><strong>初始拥塞窗口（Congestion Window）：</strong> 在TCP连接刚建立时，初始拥塞窗口被设置为一个较小的值，通常为1个或几个段（Segment）的大小。这是为了避免在网络刚开始使用时就发送大量数据，可能引发拥塞。</li>
+<li><strong>指数增长：</strong> 在慢启动阶段，每次接收到一个确认（ACK）时，发送方的拥塞窗口会指数增长。具体地说，拥塞窗口的大小会加倍。例如，如果初始拥塞窗口为1个段，每次接收到一个确认后，窗口大小会变成2，然后4，8，依此类推。这种指数增长的方式使得发送方可以逐渐增加发送的数据量。</li>
+<li><strong>拥塞窗口的调整：</strong> 当拥塞窗口达到一个阈值（通常由网络延迟和带宽决定）或者检测到网络拥塞时，TCP发送方会转入拥塞避免（Congestion Avoidance）阶段，此时拥塞窗口的增长将变得线性而不再是指数增长。</li>
+</ol>
+<p>TCP慢启动的目的是在网络刚开始使用时，逐渐增加发送窗口，测试网络的容量，确保不会引发拥塞。一旦连接稳定，TCP的拥塞窗口逐渐增大，以更好地利用可用带宽，提高数据传输效率。</p>
+</blockquote>
+<p><strong>为什么会慢启动</strong></p>
+<blockquote>
+<p>发送大的窗口在高带宽高延迟网络环境中可以提高数据传输的效率，但如果不合理地设置，可能导致网络拥塞，引发一系列问题。网络拥塞通常发生在网络容量无法满足当前数据传输需求的情况下。以下是发送大的窗口可能引发的问题：</p>
+<ol>
+<li><strong>数据包丢失：</strong> 在网络拥塞时，路由器或交换机可能会丢弃数据包，导致数据传输中断或者丢失部分数据。这会引发需要重新传输数据的情况，增加了网络的负担。</li>
+<li><strong>队头阻塞：</strong> 在网络拥塞时，数据包可能会在网络中形成堆积，这种情况被称为队头阻塞。这会导致后续的数据包等待在队列中，延迟传输，影响了实时性要求高的应用，如在线游戏、语音通话等。</li>
+<li><strong>延迟增加：</strong> 网络拥塞会导致数据包在网络中的传输延迟增加。当发送方没有及时收到确认信息时，它会认为数据包丢失，触发重传机制，这会引起更大的延迟。</li>
+<li><strong>吞吐量下降：</strong> 当网络拥塞发生时，各个连接之间的竞争增加，导致每个连接的吞吐量减少。这意味着网络上的所有数据传输都变慢，影响用户体验。</li>
+<li><strong>不公平性：</strong> 在网络拥塞时，可能会出现不公平性，即某些连接的数据传输速度较快，而其他连接的数据传输速度较慢。这可能会导致某些用户或应用受到不公平待遇。</li>
+</ol>
+</blockquote>
+<h1 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h1><p>超文本传输协议（HTTP）用于通过超文本链接加载网页。HTTP是应用层协议的一种，在联网设备之间传输信息，并在网络协议堆栈的其他层之上运行。HTTP是基于TCP / IP的通信协议，默认端口是TCP 80，但也可以使用其他端口。</p>
+<h2 id="1-基本特性"><a href="#1-基本特性" class="headerlink" title="1. 基本特性"></a>1. 基本特性</h2><p>HTTP 协议基本特性：</p>
+<ul>
+<li><strong>HTTP 是无连接的：</strong> HTTP客户端，即浏览器发出请求后，客户端等待响应。服务器处理该请求并发送回响应，然后客户端断开连接。客户端和服务器仅在当次请求中互相了解，至于上一次是否有连接或者连接的信息是无从得知的。</li>
+<li><strong>HTTP是独立于媒体的：</strong> 这意味着，只要客户端和服务器都知道如何处理数据内容，任何类型的数据都可以通过HTTP发送。客户端和服务器都需要使用适当的 MIME(多用途互联网邮件扩展) 类型 指定内容类型。</li>
+<li><strong>HTTP是无状态的：</strong> 如上所述，HTTP 是无连接的，这是 HTTP 是无状态协议的直接结果。服务器和客户端仅在当前请求期间彼此知道，之后他们俩彼此忘记。由于协议的这种性质，客户端和浏览器都无法在整个网页的不同请求之间保留信息。</li>
+</ul>
+<h2 id="2-http协议的发展过程"><a href="#2-http协议的发展过程" class="headerlink" title="2. http协议的发展过程"></a>2. <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP">http协议的发展过程</a></h2><h4 id="万维网的发明"><a href="#万维网的发明" class="headerlink" title="万维网的发明"></a>万维网的发明</h4><p>1989 年，当时在 CERN 工作的 Tim Berners-Lee 博士写了一份关于建立一个通过网络传输超文本系统的报告。这个系统起初被命名为 <em>Mesh</em>，在随后的 1990 年项目实施期间被更名为<em>万维网</em>（World Wide Web）。它在现有的 TCP 和 IP 协议基础之上建立，由四个部分组成：</p>
+<ul>
+<li>一个用来表示超文本文档的文本格式，*<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">超文本标记语言</a>*（HTML）。</li>
+<li>一个用来交换超文本文档的简单协议，超文本传输协议（HTTP）。</li>
+<li>一个显示（以及编辑）超文本文档的客户端，即网络浏览器。第一个网络浏览器被称为 <em>WorldWideWeb。</em></li>
+<li>一个服务器用于提供可访问的文档，即 <em>httpd</em> 的前身。</li>
+</ul>
+<p>这四个部分完成于 1990 年底，且第一批服务器已经在 1991 年初在 CERN 以外的地方运行了。1991 年 8 月 16 日，Tim Berners-Lee 在公开的超文本新闻组上<a target="_blank" rel="noopener" href="https://www.w3.org/People/Berners-Lee/1991/08/art-6484.txt">发表</a>的文章被视为是万维网公共项目的开始。</p>
+<p>HTTP 在应用的早期阶段非常简单，后来被称为 HTTP/0.9，有时也叫做单行（one-line）协议。</p>
+<h4 id="HTTP-0-9——单行协议"><a href="#HTTP-0-9——单行协议" class="headerlink" title="HTTP/0.9——单行协议"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#http0.9%E2%80%94%E2%80%94%E5%8D%95%E8%A1%8C%E5%8D%8F%E8%AE%AE">HTTP/0.9——单行协议</a></h4><p>最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET"><code>GET</code></a> 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /mypage.html</span><br></pre></td></tr></table></figure>
+
+<p>响应也极其简单的：只包含响应文档本身。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  这是一个非常简单的 HTML 页面</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>跟后来的版本不同，HTTP/0.9 的响应内容并不包含 HTTP 头。这意味着只有 HTML 文件可以传送，无法传输其他类型的文件。也没有状态码或错误代码。一旦出现问题，一个特殊的包含问题描述信息的 HTML 文件将被发回，供人们查看。</p>
+<h4 id="HTTP-1-0——构建可扩展性"><a href="#HTTP-1-0——构建可扩展性" class="headerlink" title="HTTP/1.0——构建可扩展性"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#http1.0%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7">HTTP/1.0——构建可扩展性</a></h4><p>由于 HTTP/0.9 协议的应用十分有限，浏览器和服务器迅速扩展内容使其用途更广：</p>
+<ul>
+<li>协议版本信息现在会随着每个请求发送（<code>HTTP/1.0</code> 被追加到了 <code>GET</code> 行）。</li>
+<li>状态码会在响应开始时发送，使浏览器能了解请求执行成功或失败，并相应调整行为（如更新或使用本地缓存）。</li>
+<li>引入了 HTTP 标头的概念，无论是对于请求还是响应，允许传输元数据，使协议变得非常灵活，更具扩展性。</li>
+<li>在新 HTTP 标头的帮助下，具备了传输除纯文本 HTML 文件以外其他类型文档的能力（凭借 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a> 标头）。</li>
+</ul>
+<h4 id="HTTP-1-1——标准化的协议"><a href="#HTTP-1-1——标准化的协议" class="headerlink" title="HTTP/1.1——标准化的协议"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#http1.1%E2%80%94%E2%80%94%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E5%8D%8F%E8%AE%AE">HTTP/1.1——标准化的协议</a></h4><p>HTTP/1.1 消除了大量歧义内容并引入了多项改进：</p>
+<ul>
+<li>连接可以复用，节省了多次打开 TCP 连接加载网页文档资源的时间。</li>
+<li>支持响应分块。</li>
+<li>引入额外的缓存控制机制。</li>
+<li>引入内容协商机制，包括语言、编码、类型等。并允许客户端和服务器之间约定以最合适的内容进行交换。</li>
+<li>凭借 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Host"><code>Host</code></a> 标头，能够使不同域名配置在同一个 IP 地址的服务器上。</li>
+</ul>
+<h4 id="HTTP-2——为了更优异的表现"><a href="#HTTP-2——为了更优异的表现" class="headerlink" title="HTTP/2——为了更优异的表现"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#http2%E2%80%94%E2%80%94%E4%B8%BA%E4%BA%86%E6%9B%B4%E4%BC%98%E5%BC%82%E7%9A%84%E8%A1%A8%E7%8E%B0">HTTP/2——为了更优异的表现</a></h4><p>这些年来，网页愈渐变得的复杂，甚至演变成了独有的应用，可见媒体的播放量，增进交互的脚本大小也增加了许多：更多的数据通过 HTTP 请求被传输。HTTP/1.1 链接需要请求以正确的顺序发送，理论上可以用一些并行的链接（尤其是 5 到 8 个），带来的成本和复杂性堪忧。比如，HTTP 管线化（pipelining）就成为了 Web 开发的负担。为此，在 2010 年早期，谷歌通过实践了一个实验性的 SPDY 协议。这种在客户端和服务器端交换数据的替代方案引起了在浏览器和服务器上工作的开发人员的兴趣。明确了响应数量的增加和解决复杂的数据传输，SPDY 成为了 HTTP/2 协议的基础。</p>
+<p>HTTP/2 在 HTTP/1.1 有几处基本的不同：</p>
+<ul>
+<li>HTTP/2 是二进制协议而不是文本协议。不再可读，也不可无障碍的手动创建，改善的优化技术现在可被实施。</li>
+<li>这是一个多路复用协议。并行的请求能在同一个链接中处理，移除了 HTTP/1.x 中顺序和阻塞的约束。</li>
+<li>压缩了标头。因为标头在一系列请求中常常是相似的，其移除了重复和传输重复数据的成本。</li>
+<li>其允许服务器在客户端缓存中填充数据，通过一个叫服务器推送的机制来提前请求。</li>
+</ul>
+<p>在 2015 年 5 月正式标准化后，HTTP/2 取得了极大的成功，在 2022 年 1 月达到峰值，占所有网站的 46.9%（见<a target="_blank" rel="noopener" href="https://w3techs.com/technologies/details/ce-http2">这些统计数据</a>）。高流量的站点最迅速的普及，在数据传输上节省了可观的成本和支出。</p>
+<p>这种迅速的普及率很可能是因为 HTTP2 不需要站点和应用做出改变：使用 HTTP/1.1 和 HTTP/2 对他们来说是透明的。拥有一个最新的服务器和新点的浏览器进行交互就足够了。只有一小部分群体需要做出改变，而且随着陈旧的浏览器和服务器的更新，而不需 Web 开发者做什么，用的人自然就增加了。</p>
+<h2 id="3-协议头"><a href="#3-协议头" class="headerlink" title="3. 协议头"></a>3. 协议头</h2><p><strong>协议头的重要性（协议头的大小通常在几K到数十K之间）：</strong></p>
+<blockquote>
+<p>HTTP协议头具有以下几个重要的作用：</p>
+<ol>
+<li><strong>传递元数据：</strong> 协议头中可以包含各种元数据，如数据类型、字符编码、内容长度、响应状态等。这些信息有助于客户端和服务器了解所传输数据的特性，以正确地解析和处理数据。</li>
+<li><strong>控制缓存和缓存策略：</strong> 协议头中的Cache-Control、Expires等字段可以指示浏览器或代理服务器如何缓存响应数据，以及缓存的有效期。这些信息有助于提高性能，减少不必要的网络请求。</li>
+<li><strong>进行身份验证：</strong> HTTP协议头中的Authorization字段允许客户端向服务器发送身份验证信息，例如用户名和密码，以便访问受保护的资源。</li>
+<li><strong>处理请求方法：</strong> 请求中的HTTP方法（GET、POST、PUT、DELETE等）通常通过HTTP头部中的请求行指定，告诉服务器客户端希望执行的操作。</li>
+<li><strong>重定向：</strong> 通过HTTP响应头的Location字段，服务器可以告知客户端进行重定向，将请求重定向到其他URL。</li>
+<li><strong>传递Cookie信息：</strong> HTTP请求头中的Cookie字段可以用于传递客户端的身份认证信息，服务器可以根据这些信息识别用户。</li>
+<li><strong>提供安全性：</strong> HTTP头部中的一些字段，例如Strict-Transport-Security（严格传输安全性策略）等，可以增强通信的安全性。</li>
+</ol>
+</blockquote>
+<h3 id="报文示例："><a href="#报文示例：" class="headerlink" title="报文示例："></a>报文示例：</h3><p><strong>请求头报文</strong>（<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903745004765198">常见请求头响应头</a>）</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/20180926095056907" alt="img"></p>
+<p><strong>响应头报文</strong></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/20180926113041788" alt="img"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="4-详解HTTP2"><a href="#4-详解HTTP2" class="headerlink" title="4. 详解HTTP2"></a>4. 详解HTTP2</h2><blockquote>
+<p>http2优势：</p>
+<ol>
+<li><strong>多路复用（Multiplexing）</strong>：HTTP/2 支持在同一个连接上同时传输多个请求和响应。这样，多个请求可以并行处理，不需要等待之前的请求响应完成，大幅提高了页面加载速度。</li>
+<li><strong>头部压缩（Header Compression）</strong>：HTTP/2 使用 HPACK 算法对头部信息进行压缩，减小了数据包的大小，降低了网络传输的延迟。这种压缩机制减少了带宽的使用，尤其对于大型网页或者请求头很大的场景效果显著。</li>
+<li><strong>二进制分帧（Binary Framing）</strong>：HTTP/2 将所有的传输信息分割为更小的帧（Frames），并且每个帧都被赋予一个唯一的标识符，这种二进制分帧的机制使得协议更加高效，也更容易实现。</li>
+<li><strong>服务器推送（Server Push）</strong>：HTTP/2 允许服务器在客户端请求之前将额外的响应数据推送给客户端，提高了页面加载的速度。这种特性可以避免客户端发送了一个请求后，服务器又返回一个推送的资源。</li>
+<li><strong>优先级（Priority）</strong>：HTTP/2 允许客户端为每个请求设置优先级，确保关键资源首先被传输，提高了页面的渲染速度和用户体验。</li>
+<li><strong>流量控制（Flow Control）</strong>：HTTP/2 支持流量控制，可以防止高速的生产者压倒了较慢的消费者，确保了资源的合理利用。</li>
+<li><strong>支持请求和响应的取消（Request and Response Cancellation）</strong>：HTTP/2 允许取消不需要的请求和响应，提高了灵活性和效率。</li>
+</ol>
+</blockquote>
+<h3 id="1、二进制分帧层-Binary-Framing-Layer"><a href="#1、二进制分帧层-Binary-Framing-Layer" class="headerlink" title="1、二进制分帧层 (Binary Framing Layer)"></a>1、二进制分帧层 (Binary Framing Layer)</h3><blockquote>
+<p>优点：</p>
+<ol>
+<li><strong>更高的效率：</strong> 二进制帧的结构更加紧凑，相比于文本协议更加高效。这减少了在网络上传输的数据量，特别是在带宽受限的情况下，可以提高传输速度。</li>
+<li><strong>多路复用（Multiplexing）：</strong> HTTP/2 支持多路复用，即可以在一个连接上同时传输多个请求和响应，而不需要按照顺序等待前一个请求的响应。这是通过在一个连接上使用二进制帧实现的，每个帧都被标识为属于哪个流（Stream），从而实现了并发传输，提高了网络利用率。</li>
+<li><strong>头部压缩（Header Compression）：</strong> HTTP/2 使用 HPACK 算法对请求和响应的头部进行压缩，减小了每个帧的头部大小，节省了带宽。因为二进制帧的结构更加紧凑，压缩后的数据传输效率更高。</li>
+<li><strong>优先级和依赖关系（Priority and Dependency）：</strong> HTTP/2 允许在帧中设置优先级和依赖关系，使得服务器和客户端可以更好地控制数据流的优先级，确保关键资源的优先传输。</li>
+<li><strong>更好的错误处理：</strong> HTTP/2 的二进制帧结构允许更细致地标识错误，例如在一个响应的头部中指定错误码，而不必等到整个响应体传输完毕才能得知错误</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>二进制帧更加紧凑的原因：</p>
+<ol>
+<li><strong>固定长度的帧头：</strong> 在 HTTP/2 中，帧头的长度是固定的，相比于 HTTP/1.x 的文本头部，这种结构更加简单，减少了额外的信息传输。每个帧的帧头固定占用9个字节（8字节的帧长度和1字节的帧类型），相较于 HTTP/1.x 的文本头部，这是一个很小的开销。</li>
+<li><strong>二进制压缩：</strong> HTTP/2 使用了 HPACK 算法对请求和响应的头部进行二进制压缩，将头部字段名和字段值映射为索引，用更小的二进制表示，减少了传输的数据量。这种二进制压缩的头部信息更加紧凑，节省了带宽。</li>
+<li><strong>优先级和依赖关系：</strong> HTTP/2 允许在帧中设置优先级和依赖关系，这样服务器和客户端可以更精细地控制数据流的传输顺序。这种信息也可以更紧凑地编码，避免了传输额外的文本信息。</li>
+<li><strong>数据帧和头部帧分离：</strong> 在 HTTP/2 中，请求和响应的数据（Data）和头部（Headers）被分开传输，每种类型的帧专注于传输特定类型的数据。这样的分离可以提高帧的结构紧凑性，因为每个帧只需要携带特定类型的信息。</li>
+</ol>
+</blockquote>
+<h5 id="帧-Frame（选读）"><a href="#帧-Frame（选读）" class="headerlink" title="帧 - Frame（选读）"></a>帧 - Frame（选读）</h5><p>所有帧都是一个固定的 9 字节头部 (payload 之前) 跟一个指定长度的负载 (payload):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-----------------------------------------------+</span><br><span class="line">|                 Length (24)                   |</span><br><span class="line">+---------------+---------------+---------------+</span><br><span class="line">|   Type (8)    |   Flags (8)   |</span><br><span class="line">+-+-------------+---------------+-------------------------------+</span><br><span class="line">|R|                 Stream Identifier (31)                      |</span><br><span class="line">+=+=============================================================+</span><br><span class="line">|                   Frame Payload (0...)                      ...</span><br><span class="line">+---------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><code>Length</code> 代表整个 frame 的长度，用一个 24 位无符号整数表示。除非接收者在 SETTINGS_MAX_FRAME_SIZE 设置了更大的值 (大小可以是 2^14(16384) 字节到 2^24-1(16777215) 字节之间的任意值)，否则数据长度不应超过 2^14(16384) 字节。头部的 9 字节不算在这个长度里</li>
+<li><code>Type</code> 定义 frame 的类型，用 8 bits 表示。帧类型决定了帧主体的格式和语义，如果 type 为 unknown 应该忽略或抛弃。</li>
+<li><code>Flags</code> 是为帧类型相关而预留的布尔标识。标识对于不同的帧类型赋予了不同的语义。如果该标识对于某种帧类型没有定义语义，则它必须被忽略且发送的时候应该赋值为 (0x0)</li>
+<li><code>R</code> 是一个保留的比特位。这个比特的语义没有定义，发送时它必须被设置为 (0x0), 接收时需要忽略。</li>
+<li><a href="https://link.juejin.cn/?target=https://httpwg.org/specs/rfc7540.html%23StreamIdentifiers">Stream Identifier</a> 用作流控制，用 31 位无符号整数表示。客户端建立的 sid 必须为奇数，服务端建立的 sid 必须为偶数，值 (0x0) 保留给与整个连接相关联的帧 (连接控制消息)，而不是单个流</li>
+<li><code>Frame Payload</code> 是主体内容，由帧类型决定</li>
+</ul>
+</blockquote>
+<p>共分为十种类型的帧:</p>
+<blockquote>
+<ul>
+<li><code>HEADERS</code>: 报头帧 (type=0x1)，用来打开一个流或者携带一个首部块片段</li>
+<li><code>DATA</code>: 数据帧 (type=0x0)，装填主体信息，可以用一个或多个 DATA 帧来返回一个请求的响应主体</li>
+<li><code>PRIORITY</code>: 优先级帧 (type=0x2)，指定发送者建议的流优先级，可以在任何流状态下发送 PRIORITY 帧，包括空闲 (idle) 和关闭 (closed) 的流</li>
+<li><code>RST_STREAM</code>: 流终止帧 (type=0x3)，用来请求取消一个流，或者表示发生了一个错误，payload 带有一个 32 位无符号整数的错误码 (<a href="https://link.juejin.cn/?target=https://httpwg.org/specs/rfc7540.html%23ErrorCodes">Error Codes</a>)，不能在处于空闲 (idle) 状态的流上发送 RST_STREAM 帧</li>
+<li><code>SETTINGS</code>: 设置帧 (type=0x4)，设置此 <code>连接</code> 的参数，作用于整个连接</li>
+<li><code>PUSH_PROMISE</code>: 推送帧 (type=0x5)，服务端推送，客户端可以返回一个 RST_STREAM 帧来选择拒绝推送的流</li>
+<li><code>PING</code>: PING 帧 (type=0x6)，判断一个空闲的连接是否仍然可用，也可以测量最小往返时间 (RTT)</li>
+<li><code>GOAWAY</code>: GOWAY 帧 (type=0x7)，用于发起关闭连接的请求，或者警示严重错误。GOAWAY 会停止接收新流，并且关闭连接前会处理完先前建立的流</li>
+<li><code>WINDOW_UPDATE</code>: 窗口更新帧 (type=0x8)，用于执行流量控制功能，可以作用在单独某个流上 (指定具体 Stream Identifier) 也可以作用整个连接 (Stream Identifier 为 0x0)，只有 DATA 帧受流量控制影响。初始化流量窗口后，发送多少负载，流量窗口就减少多少，如果流量窗口不足就无法发送，WINDOW_UPDATE 帧可以增加流量窗口大小</li>
+<li><code>CONTINUATION</code>: 延续帧 (type=0x9)，用于继续传送首部块片段序列</li>
+</ul>
+</blockquote>
+<p><strong>DATA 帧格式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+---------------+</span><br><span class="line">|Pad Length? (8)|</span><br><span class="line">+---------------+-----------------------------------------------+</span><br><span class="line">|                            Data (*)                         ...</span><br><span class="line">+---------------------------------------------------------------+</span><br><span class="line">|                           Padding (*)                       ...</span><br><span class="line">+---------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><code>Pad Length</code>: ? 表示此字段的出现时有条件的，需要设置相应标识 (set flag)，指定 Padding 长度，存在则代表 PADDING flag 被设置</li>
+<li><code>Data</code>: 传递的数据，其长度上限等于帧的 payload 长度减去其他出现的字段长度</li>
+<li><code>Padding</code>: 填充字节，没有具体语义，发送时必须设为 0，作用是混淆报文长度，与 TLS 中 CBC 块加密类似</li>
+</ul>
+</blockquote>
+<p>DATA 帧有如下标识 (flags):</p>
+<blockquote>
+<ul>
+<li>END_STREAM: bit 0 设为 1 代表当前流的最后一帧</li>
+<li>PADDED: bit 3 设为 1 代表存在 Padding</li>
+</ul>
+</blockquote>
+<p><strong>HEADERS 帧格式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+</span><br><span class="line"> |Pad Length? (8)|</span><br><span class="line"> +-+-------------+-----------------------------------------------+</span><br><span class="line"> |E|                 Stream Dependency? (31)                     |</span><br><span class="line"> +-+-------------+-----------------------------------------------+</span><br><span class="line"> |  Weight? (8)  |</span><br><span class="line"> +-+-------------+-----------------------------------------------+</span><br><span class="line"> |                   Header Block Fragment (*)                 ...</span><br><span class="line"> +---------------------------------------------------------------+</span><br><span class="line"> |                           Padding (*)                       ...</span><br><span class="line"> +---------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><code>Pad Length</code>: 指定 Padding 长度，存在则代表 PADDING flag 被设置</li>
+<li><code>E</code>: 一个比特位声明流的依赖性是否是排他的，存在则代表 PRIORITY flag 被设置</li>
+<li><code>Stream Dependency</code>: 指定一个 stream identifier，代表当前流所依赖的流的 id，存在则代表 PRIORITY flag 被设置</li>
+<li><code>Weight</code>: 一个无符号 8 为整数，代表当前流的优先级权重值 (1~256)，存在则代表 PRIORITY flag 被设置</li>
+<li><code>Header Block Fragment</code>: header 块片段</li>
+<li><code>Padding</code>: 填充字节，没有具体语义，作用与 DATA 的 Padding 一样，存在则代表 PADDING flag 被设置</li>
+</ul>
+</blockquote>
+<p>HEADERS 帧有以下标识 (flags):</p>
+<blockquote>
+<ul>
+<li>END_STREAM: bit 0 设为 1 代表当前 header 块是发送的最后一块，但是带有 END_STREAM 标识的 HEADERS 帧后面还可以跟 CONTINUATION 帧 (这里可以把 CONTINUATION 看作 HEADERS 的一部分)</li>
+<li>END_HEADERS: bit 2 设为 1 代表 header 块结束</li>
+<li>PADDED: bit 3 设为 1 代表 Pad 被设置，存在 Pad Length 和 Padding</li>
+<li>PRIORITY: bit 5 设为 1 表示存在 Exclusive Flag (E), Stream Dependency, 和 Weight</li>
+</ul>
+</blockquote>
+<h3 id="2-Header-压缩-HPACK"><a href="#2-Header-压缩-HPACK" class="headerlink" title="2. Header 压缩 (HPACK)"></a>2. Header 压缩 (HPACK)</h3><p>HTTP/2 中的头部压缩是指使用 HPACK 算法对请求和响应的头部信息进行压缩，从而减小传输的数据量。在传统的 HTTP/1.x 中，每次请求和响应都要携带大量的头部信息，这些信息包括请求方法、URL、Cookie、User-Agent 等等。在 HTTP/1.x 中，这些头部信息通常是文本形式，相对繁琐，而且重复的信息较多。</p>
+<p>HTTP/2 引入了头部压缩的机制，通过以下步骤来减小头部信息的传输量：</p>
+<ol>
+<li><strong>索引（Indexing）：</strong> HTTP/2 的头部压缩使用了索引的概念。在通信的双方维护一个头部字段表（Header Table），每个字段都有一个唯一的整数索引号（KEY,value,都在表中）。当发送方需要发送一个头部字段时，如果该字段在表中已经存在，发送的只是这个字段的索引号，而不是完整的字段名和字段值。接收方根据索引号在本地的表中查找对应的字段，从而还原出完整的头部信息。</li>
+<li><strong>字面量和索引结合（Literal with Incremental Indexing）：</strong> 如果头部字段不在表中，发送方可以选择将字段的字面量（Literal）和索引号同时发送给接收方，接收方将字段添加到本地的头部字段表中，以备将来的引用。</li>
+<li><strong>去除冗余字段（Duplicate Fields Elimination）：</strong> 在 HTTP/2 中，相同字段名的多个字段值可以合并成一个字段，这样就避免了重复传输相同字段名的问题。</li>
+<li><strong>动态表大小调整（Dynamic Table Size Update）：</strong> 头部字段表的大小是可以动态调整的。发送方可以通过发送特定帧（SETTINGS Frame）来通知接收方动态表的最大大小，接收方根据这个信息来调整本地的头部字段表大小。</li>
+</ol>
+<p>通过以上机制，HTTP/2 的头部压缩有效地减小了头部信息的传输量，提高了性能。这种压缩机制在实际应用中，特别是对于带宽受限的移动网络环境，显著减少了请求和响应的传输时间，提高了页面加载速度和用户体验。</p>
+<h5 id="-1"><a href="#-1" class="headerlink" title=""></a></h5><h3 id="3-多路复用-MultiPlexing-（最重要：解决队列堵塞问题，提高网络利用率）"><a href="#3-多路复用-MultiPlexing-（最重要：解决队列堵塞问题，提高网络利用率）" class="headerlink" title="3. 多路复用 (MultiPlexing)（最重要：解决队列堵塞问题，提高网络利用率）"></a>3. 多路复用 (MultiPlexing)（最重要：解决队列堵塞问题，提高网络利用率）</h3><p>在一个 TCP 连接上，我们可以向对方不断发送帧，每帧的 stream identifier 的标明这一帧属于哪个流，然后在对方接收时，根据 stream identifier 拼接每个流的所有帧组成一整块数据。 把 HTTP/1.1 每个请求都当作一个流，那么多个请求变成多个流，请求响应数据分成多个帧，不同流中的帧交错地发送给对方，这就是 HTTP/2 中的多路复用。</p>
+<h4 id="流-Stream（选读）"><a href="#流-Stream（选读）" class="headerlink" title="流 - Stream（选读）"></a>流 - Stream（选读）</h4><p>流只是一个逻辑上的概念，代表 HTTP/2 连接中在客户端和服务器之间交换的独立双向帧序列，每个帧的 Stream Identifier 字段指明了它属于哪个流。</p>
+<p>流有以下特性:</p>
+<ul>
+<li>单个 h2 连接可以包含多个并发的流，两端之间可以交叉发送不同流的帧</li>
+<li>流可以由客户端或服务器来单方面地建立和使用，或者共享</li>
+<li>流可以由任一方关闭</li>
+<li>帧在流上发送的顺序非常重要，最后接收方会把相同 Stream Identifier (同一个流) 的帧重新组装成完整消息报文</li>
+</ul>
+<p><strong>流的状态</strong></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc4f199f3191%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
+<blockquote>
+<p>注意图中的 send 和 recv 对象是指端点，不是指当前的流</p>
+</blockquote>
+<p><strong>idle</strong></p>
+<p>所有流以“空闲”状态开始。在这种状态下，没有任何帧的交换</p>
+<p>其状态转换:</p>
+<ul>
+<li><p>发送或者接收一个 HEADERS 帧会使空闲 <code>idle</code> 流变成打开 <code>open</code> 状态，其中 HEADERS 帧的 Stream Identifier 字段指明了流 id。同样的 HEADERS 帧(带有 END_STREAM )也可以使一个流立即进入 half-closed 状态。</p>
+</li>
+<li><p>服务端必须在一个打开 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open</span><br></pre></td></tr></table></figure>
+
+<p> 或者半关闭 (远端) </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">half-closed(remote)</span><br></pre></td></tr></table></figure>
+
+<p> 状态的流 (由客户端发起的) 上发送 PUSH_PROMISE 帧，其中 PUSH_PROMISE 帧的 Promised Stream ID 字段指定了一个预示的新流 (由服务端发起)，</p>
+<ul>
+<li>在服务端该新流会由空闲 <code>idle</code> 状态进入被保留的 (本地) <code>reserved(local)</code> 状态</li>
+<li>在客户端该新流会由空闲 <code>idle</code> 状态进入被保留的 (远端) <code>reserved(remote)</code> 状态</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在 <a href="https://link.juejin.cn/?target=https://httpwg.org/specs/rfc7540.html%23discover-http">3.2 - Starting HTTP/2 for “http” URIs</a> 中介绍了一种特殊情况:</p>
+<blockquote>
+<p>客户端发起一个 HTTP/1.1 请求，请求带有 Upgrade 机制，想创建 h2c 连接，服务端同意升级返回 101 响应。 升级之前发送的 HTTP/1.1 请求被分配一个流标识符 0x1，并被赋予默认优先级值。从客户端到服务端这个流 1 隐式地转为 “half-closed” 状态，因为作为 HTTP/1.1 请求它已经完成了。HTTP/2 连接开始后，流 1 用于响应。详细过程可以看下文的 <a href="#HTTP-2-%E7%9A%84%E5%8D%8F%E8%AE%AE%E5%8D%8F%E5%95%86%E6%9C%BA%E5%88%B6">HTTP/2 的协议协商机制</a></p>
+</blockquote>
+</blockquote>
+<p>此状态下接收到 HEADERS 和 PRIORITY 以外的帧被视为 PROTOCOL_ERROR</p>
+<p>状态图中 <code>send PP</code> 和 <code>recv PP</code> 是指连接的双方端点发送或接收了 PUSH_PROMISE，不是指某个空闲流发送或接收了 PUSH_PROMISE，是 PUSH_PROMISE 的出现促使一个预示的流从 <code>idle</code> 状态转为 <code>reserved</code></p>
+<blockquote>
+<p>在下文 <a href="#Server-Push">Server-Push</a> 中会详细介绍服务端推送的内容和 PUSH_PROMISE 的使用情形</p>
+</blockquote>
+<p><strong>reserved (local) / reserved (remote)</strong></p>
+<p>PUSH_PROMISE 预示的流由 <code>idle</code> 状态进入此状态，代表准备进行 Server push</p>
+<p>其状态转换:</p>
+<ul>
+<li>PUSH_PROMISE 帧预示的流的响应以 HEADERS 帧开始，这会立即将该流在服务端置于半关闭 (远端) <code>half-closed(remote)</code> 状态，在客户端置于半关闭 (本地) <code>half-closed(local)</code> 状态，最后以携带 END_STREAM 的帧结束，这会将流置于关闭 <code>closed</code> 状态</li>
+<li>任一端点都可以发送 RST_STREAM 帧来终止这个流，其状态由 <code>reserved</code> 转为 <code>closed</code></li>
+</ul>
+<p><code>reserved(local)</code> 状态下的流不能发送 HEADERS、RST_STREAM、PRIORITY 以外的帧，接收到 RST_STREAM、PRIORITY、WINDOW_UPDATE 以外的帧被视为 PROTOCOL_ERROR</p>
+<p><code>reserved(remote)</code> 状态下的流不能发送 RST_STREAM、WINDOW_UPDATE、PRIORITY 以外的帧，接收到 HEADERS、RST_STREAM、PRIORITY 以外的帧被视为 PROTOCOL_ERROR</p>
+<p><strong>open</strong></p>
+<p>处于 <code>open</code> 状态的流可以被两个对端用来发送任何类型的帧</p>
+<p>其状态转换:</p>
+<ul>
+<li>任一端都可以发送带有 END_STREAM 标识的帧，发送方会转入 <code>half-closed(local)</code> 状态；接收方会转入 <code>half-closed(remote)</code> 状态</li>
+<li>任一端都可以发送 RST_STREAM 帧，这会使流立即进入 <code>closed</code> 状态</li>
+</ul>
+<p><strong>half-closed (local)</strong></p>
+<p>流是双向的，半关闭表示这个流单向关闭了，local 代表本端到对端的方向关闭了，remote 代表对端到本端的方向关闭了</p>
+<p>此状态下的流不能发送 WINDOW_UPDATE、PRIORITY、RST_STREAM 以外的帧</p>
+<p>当此状态下的流收到带有 END_STREAM 标识的帧或者任一方发送 RST_STREAM 帧，会转为 <code>closed</code> 状态</p>
+<p>此状态下的流收到的 PRIORITY 帧用以调整流的依赖关系顺序，可以看下文的流优先级</p>
+<p><strong>half-closed (remote)</strong></p>
+<p>此状态下的流不会被对端用于发送帧，执行流量控制的端点不再有义务维护接收方的流控制窗口。</p>
+<p>一个端点在此状态的流上接收到 WINDOW_UPDATE、PRIORITY、RST_STREAM 以外的帧，应该响应一个 STREAM_CLOSED 流错误</p>
+<p>此状态下的流可以被端点用于发送任意类型的帧，且此状态下该端点仍会观察流级别的流控制的限制</p>
+<p>当此状态下的流发送带有 END_STREAM 标识的帧或者任一方发送 RST_STREAM 帧，会转为 <code>closed</code> 状态</p>
+<p><strong>closed</strong></p>
+<p>代表流已关闭</p>
+<p>此状态下的流不能发送 PRIORITY 以外的帧，发送 PRIORITY 帧是调整那些依赖这个已关闭的流的流优先级，端点都应该处理 PRIORITY 帧，尽管如果该流从依赖关系树中移除了也可以忽略优先级帧</p>
+<p>此状态下在收到带有 END_STREAM 标识的 DATA 或 HEADERS 帧后的一小段时间内 (period) 仍可能接收到 WINDOW_UPDATE 或 RST_STREAM 帧，因为在远程对端接收并处理 RST_STREAM 或带有 END_STREAM 标志的帧之前，它可能会发送这些类型的帧。但是端点必须忽略接收到的 WINDOW_UPDATE 或 RST_STREAM</p>
+<p>如果一个流发送了 RST_STREAM 帧后转入此状态，而对端接收到 RST_STREAM 帧时可能已经发送了或者处在发送队列中，这些帧是不可撤销的，发送 RST_STREAM 帧的端点必须忽略这些帧。</p>
+<p>一个端点可以限制 period 的长短，在 period 内接受的帧会忽略，超出 period 的帧被视为错误。</p>
+<p>一个端点发送了 RST_STREAM 帧后接收到流控制帧(比如 DATA)，仍会计入流量窗口，即使这些帧会被忽略，因为对端肯定是在接收到 RST_STREAM 帧前发送的流控制帧，对端会认为流控制已生效</p>
+<p>一个端点可能会在发送了 RST_STREAM 帧后收到 PUSH_PROMISE 帧，即便预示的流已经被重置 (reset)，PUSH_PROMISE 帧也能使预示流变成 <code>reserved</code> 状态。因此，需要 RST_STREAM 来关闭一个不想要的预示流。</p>
+<blockquote>
+<p>PRIORITY 帧可以被任意状态的流发送和接收，未知类型的帧会被忽略</p>
+</blockquote>
+<p><strong>流状态的转换</strong></p>
+<p>下面看两个例子来理解流状态:</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc4f32767fb6%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
+<p>(1)、Server 在 Client 发起的一个流上发送 PUSH_PROMISE 帧，其 Promised Stream ID 指定一个预示流用于后续推送，send PP 后这个预示流在服务端从 idle 状态转为 reserve(local) 状态，客户端 recv PP 后这个流从 idle 状态转为 reserve(remote) 状态</p>
+<p>(2)(3)、此时预示流处于保留状态，客户端如果选择拒绝接受推送，可以发送 RST 帧关闭这个流；服务端如果此时出问题了也可以发送 RST 帧取消推送。不管哪一方发送或接收到 RST，此状态都转为 closed</p>
+<p>(4)、没有出现重置说明推送仍有效，则服务端开始推送，首先发送的肯定是响应的 HEADERS 首部块，此时流状态转为半关闭 half-closed(remote)；客户端接收到 HEADERS 后流状态转为半关闭 half-closed(local)</p>
+<p>(5)(6)、半关闭状态下的流应该还会继续推送诸如 DATA 帧、CONTINUATION 帧这样的数据帧，如果这个过程碰到任一方发起重置，则流会关闭进入 closed 状态</p>
+<p>(7)、如果一切顺利，资源随着数据帧响应完毕，最后一帧会带上 END_STREAM 标识代表这个流结束了，此时流转为 closed 状态</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc4f58e6679e%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
+<p>(1)、客户端发起请求，首先发送一个 HEADERS 帧，其 Stream Identifier 创建一个新流，此流从 idle 状态转为 open 状态</p>
+<p>(2)(3)、如果客户端取消请求可以发送 RST 帧，服务端出错也可以发送 RST 帧，不管哪一方接收或发送 RST，流关闭进入 closed 状态；</p>
+<p>(4)、如果请求结束(END_STREAM)，流转为半关闭状态。假如是 GET 请求，一般 HEADERS 帧就是最后一帧，send H 后流会立即进入半关闭状态。假如是 POST 请求，待数据传完，最后一帧带上 END_STREAM 标识，流转为半关闭</p>
+<p>(5)(6)、客户端半关闭后服务端开始返回响应，此时任一方接收或发送 RST，流关闭；</p>
+<p>(7)、如果一切顺利，等待响应结束(END_STREAM)，流关闭</p>
+<p><strong>流的标识符</strong></p>
+<p>流 ID 是 31 位无符号整数，客户端发起的流必须是奇数，服务端发起的流必须是偶数，0x0 保留为连接控制消息不能用于建立新流。</p>
+<p>HTTP/1.1 Upgrade to HTTP/2 时响应的流 ID 是 0x1，在升级完成之后，流 0x1 在客户端会转为 <code>half-closed (local)</code> 状态，因此这种情况下客户端不能用 0x1 初始化一个流</p>
+<p>新建立的流的 ID 必须大于所有已使用过的数字，接收到一个错误大小的 ID 应该返回 PROTOCOL_ERROR 响应</p>
+<p>使用一个新流时隐式地关闭了对端发起的 ID 小于当前流的且处于 <code>idle</code> 状态的流，比如一个流发送一个 HEADERS 帧打开了 ID 为 7 的流，但还从未向 ID 为 5 的流发送过帧，则流 0x5 会在 0x7 发送完或接收完第一帧后转为 <code>closed</code> 状态</p>
+<p>一个连接内的流 ID 不能重用</p>
+<p><strong>流的优先级</strong></p>
+<p>客户端可以通过 HEADERS 帧的 PRIORITY 信息指定一个新建立流的优先级，其他期间也可以发送 PRIORITY 帧调整流优先级</p>
+<p>设置优先级的目的是为了让端点表达它所期望对端在并发的多个流之间如何分配资源的行为。更重要的是，当发送容量有限时，可以使用优先级来选择用于发送帧的流。</p>
+<p>流可以被标记为依赖其他流，所依赖的流完成后再处理当前流。每个依赖 (dependency) 后都跟着一个权重 (weight)，这一数字是用来确定依赖于相同的流的可分配可用资源的相对比例</p>
+<p><strong>流依赖(Stream Dependencies)</strong></p>
+<p>每个流都可以显示地依赖另一个流，包含依赖关系表示优先将资源分配给指定的流(上层节点)而不是依赖流</p>
+<p>一个不依赖于其他流的流会指定 stream dependency 为 0x0 值，因为不存在的 0x0 流代表依赖树的根</p>
+<p>一个依赖于其他流的流叫做<strong>依赖流</strong>，被依赖的流是当前流的父级。如果被依赖的流不在当前依赖树中(比如状态为 <code>idle</code> 的流)，被依赖的流会使用一个默认优先级</p>
+<p>当依赖一个流时，该流会添加进父级的依赖关系中，共享相同父级的依赖流不会相对于彼此进行排序，比如 B 和 C 依赖 A，新添加一个依赖流 D，BCD 的顺序是不固定的:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  A                 A</span><br><span class="line"> / \      ==&gt;      /|\</span><br><span class="line">B   C             B D C</span><br></pre></td></tr></table></figure>
+
+<p>独占标识 (exclusive) 允许插入一个新层级(新的依赖关系)，独占标识导致该流成为父级的唯一依赖流，而其他依赖流变为其子级，比如同样插入一个新依赖流 E (带有 exclusive):</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">                    A</span><br><span class="line">  A                 |</span><br><span class="line"> /|\      ==&gt;       E</span><br><span class="line">B D C              /|\</span><br><span class="line">                  B D C</span><br></pre></td></tr></table></figure>
+
+<p>在依赖关系树中，只有当一个依赖流所依赖的所有流(父级最高为 0x0 的链)被关闭或者无法继续在上面执行，这个依赖流才应该被分配资源</p>
+<p><strong>依赖权重</strong></p>
+<p>所有依赖流都会分配一个 1~256 权重值</p>
+<p>相同父级的依赖流按权重比例分配资源，比如流 B 依赖于 A 且权重值为 4，流 C 依赖于 A 且权重值为 12，当 A 不再执行时，B 理论上能分配的资源只有 C 的三分之一</p>
+<p><strong>优先级调整 (Reprioritization)</strong></p>
+<p>使用 PRIORITY 帧可以调整流优先级</p>
+<p>PRIORITY 帧内容与 HEADERS 帧的优先级模块相同:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-+-------------------------------------------------------------+</span><br><span class="line">|E|                  Stream Dependency (31)                     |</span><br><span class="line">+-+-------------+-----------------------------------------------+</span><br><span class="line">|   Weight (8)  |</span><br><span class="line">+-+-------------+</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果父级重新设置了优先级，则依赖流会随其父级流一起移动。若调整优先级的流带有独占标识，会导致新的父流的所有子级依赖于这个流</li>
+<li>如果一个流调整为依赖自己的一个子级，则这个将被依赖的子级首先移至调整流的父级之下(即同一层)，再移动那个调整流的整棵子树，移动的依赖关系保持其权重</li>
+</ul>
+<p>看下面这个例子: 第一个图是初始关系树，现在 A 要调整为依赖 D，根据第二点，现将 D 移至 x 之下，再把 A 调整为 D 的子树(图 3)，如果 A 调整时带有独占标识根据第一点 F 也归为 A 子级(图 4)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  x                x                x                 x</span><br><span class="line">  |               / \               |                 |</span><br><span class="line">  A              D   A              D                 D</span><br><span class="line"> / \            /   / \            / \                |</span><br><span class="line">B   C     ==&gt;  F   B   C   ==&gt;    F   A       OR      A</span><br><span class="line">   / \                 |             / \             /|\</span><br><span class="line">  D   E                E            B   C           B C F</span><br><span class="line">  |                                     |             |</span><br><span class="line">  F                                     E             E</span><br><span class="line">             (intermediate)   (non-exclusive)    (exclusive)</span><br></pre></td></tr></table></figure>
+
+<p><strong>流优先级的状态管理</strong></p>
+<p>当一个流从依赖树中移除，它的子级可以调整为依赖被关闭流的父级(应该就是连接上一层节点)，新的依赖权重将根据关闭流的权重以及流自身的权重重新计算。</p>
+<p>从依赖树中移除流会导致某些优先级信息丢失。资源在具有相同父级的流之间共享，这意味着如果这个集合中的某个流关闭或者阻塞，任何空闲容量将分配给最近的相邻流。然而，如果此集合的共有依赖(即父级节点)从树中移除，这些子流将与更上一层的流共享资源</p>
+<p>一个例子: 流 A 和流 B 依赖相同父级节点，而流 C 和流 D 都依赖 A，在移除流 A 之前的一段时间内，A 和 D 都无法执行(可能任务阻塞了)，则 C 会分配到 A 的所有资源； 如果 A 被移除出树了，A 的权重按比重新计算分配给 C 和 D，此时 D 仍旧阻塞，C 分配的资源相较之前变少了。对于同等的初始权重，C 获取到的可用资源是三分之一而不是二分之一(为什么是三分之一?文档中没有说明细节，权重如何重新分配也不太清楚，下面是按我的理解解释的)</p>
+<p>X 的资源为 1，ABCD 初始权重均为 16，*号代表节点当前不可用，图一中 C 和 B 各占一半资源，而 A 移除后 CD 的权重重新分配变为 8，所以图二中 C 和 B 占比变为 1:2，R(C) 变为 1/3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        X(v:1.0)               X(v:1.0)</span><br><span class="line">        / \                    /|\</span><br><span class="line">       /   \                  / | \</span><br><span class="line">     *A     B       ==&gt;      /  |  \</span><br><span class="line">   (w:16) (w:16)            /   |   \</span><br><span class="line">     / \                   C   *D    B</span><br><span class="line">    /   \                (w:8)(w:8)(w:16)</span><br><span class="line">   C    *D</span><br><span class="line">(w:16) (w:16)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">R(C)=16/(16+16)=1/2 ==&gt;  R(C)=8/(8+16)=1/3</span><br></pre></td></tr></table></figure>
+
+<p>可能向一个流创建依赖关系的优先级信息还在传输中，那个流就已经关闭了。如果一个依赖流的依赖指向没有相关优先级信息(即父节点无效)，则这个依赖流会分配默认优先级，这可能会造成不理想的优先级，因为给流分配了不在预期的优先级。</p>
+<p>为了避免上述问题，一个端点应该在流关闭后的一段时间内保留流的优先级调整状态信息，此状态保留时间越长，流被分配错误的或者默认的优先级可能性越低。</p>
+<p>类似地，处于“空闲”状态的流可以被分配优先级或成为其他流的父节点。这允许在依赖关系树中创建分组节点，从而实现更灵活的优先级表达式。空闲流以默认优先级开始</p>
+<p>流优先级状态信息的保留可能增加终端的负担，因此这种状态可以被限制。终端可能根据负荷来决定保留的额外的状态的数目；在高负荷下，可以丢弃额外的优先级状态来限制资源的任务。在极端情况下，终端甚至可以丢弃激活或者保留状态流的优先级信息。如果使用了固定的限制，终端应当至少保留跟 SETTINGS_MAX_CONCURRENT_STREAMS 设置一样大小的流状态</p>
+<p><strong>默认优先级</strong></p>
+<p>所有流都是初始为非独占地依赖于流 0x0。</p>
+<p>Pushed 流初始依赖于相关的流(见 Server-Push)。</p>
+<p>以上两种情况，流的权重都指定为 16。</p>
+<h3 id="3-服务端推送-Server-Push"><a href="#3-服务端推送-Server-Push" class="headerlink" title="3. 服务端推送 (Server Push)"></a>3. 服务端推送 (Server Push)</h3><p>浏览器发送一个请求，服务器主动向浏览器推送与这个请求相关的资源，这样浏览器就不用发起后续请求。</p>
+<p>Server-Push 主要是针对资源内联做出的优化，相较于 http/1.1 资源内联的优势:</p>
+<ul>
+<li>客户端可以缓存推送的资源</li>
+<li>客户端可以拒收推送过来的资源</li>
+<li>推送资源可以由不同页面共享</li>
+<li>服务器可以按照优先级推送资源</li>
+</ul>
+<h5 id="Server-Push详解（选读）"><a href="#Server-Push详解（选读）" class="headerlink" title="Server Push详解（选读）"></a>Server Push详解（选读）</h5><p><strong>PUSH_PROMISE 帧格式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------------+</span><br><span class="line"> |Pad Length? (8)|</span><br><span class="line"> +-+-------------+-----------------------------------------------+</span><br><span class="line"> |R|                  Promised Stream ID (31)                    |</span><br><span class="line"> +-+-----------------------------+-------------------------------+</span><br><span class="line"> |                   Header Block Fragment (*)                 ...</span><br><span class="line"> +---------------------------------------------------------------+</span><br><span class="line"> |                           Padding (*)                       ...</span><br><span class="line"> +---------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><code>Pad Length</code>: 指定 Padding 长度，存在则代表 PADDING flag 被设置</li>
+<li><code>R</code>: 保留的1bit位</li>
+<li><code>Promised Stream ID</code>: 31 位的无符号整数，代表 PUSH_PROMISE 帧保留的流，对于发送者来说该流标识符必须是可用于下一个流的有效值</li>
+<li><code>Header Block Fragment</code>: 包含请求首部域的首部块片段</li>
+<li><code>Padding</code>: 填充字节，没有具体语义，作用与 DATA 的 Padding 一样，存在则代表 PADDING flag 被设置</li>
+</ul>
+</blockquote>
+<p>PUSH_PROMISE 帧有以下标识 (flags):</p>
+<blockquote>
+<ul>
+<li>END_HEADERS: bit 2 置 1 代表 header 块结束</li>
+<li>PADDED: bit 3 置 1 代表 Pad 被设置，存在 Pad Length 和 Padding</li>
+</ul>
+</blockquote>
+<p><strong>Push 的过程</strong></p>
+<p>结合上文关于 Server-Push 的流状态转换</p>
+<p>PUSH_PROMISE 帧只能在对端(客户端)发起的且流状态为 open 或者 half-closed (remote) 的流上发送</p>
+<p>PUSH_PROMISE 帧准备推送的响应总是和来自于客户端的请求相关联。服务端在该请求所在的流上发送 PUSH_PROMISE 帧。PUSH_PROMISE 帧包含一个 Promised Stream ID，该流标识符是从服务端可用的流标识符里选出来的。</p>
+<p>如果服务端收到了一个对文档的请求，该文档包含内嵌的指向多个图片文件的链接，且服务端选择向客户端推送那些额外的图片，那么在发送包含图片链接的 DATA 帧之前发送 PUSH_PROMISE 帧可以确保客户端在发现内嵌的链接之前，能够知道有一个资源将要被推送过来。同样地，如果服务端准备推送被首部块引用的响应 (比如，在 <a href="https://link.juejin.cn/?target=https://www.w3.org/wiki/LinkHeader">Link 首部字段</a> 里的)，在发送首部块之前发送一个 PUSH_PROMISE 帧，可以确保客户端不再请求那些资源</p>
+<p>一旦客户端收到了 PUSH_PROMISE 帧，并选择接收被推送的响应，客户端就不应该为准备推送的响应发起任何请求，直到预示的流被关闭以后。</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc4fef38d8bd%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc5033242dae%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
+<blockquote>
+<p>注意图中推送的四个资源各预示了一个流 (Promised Stream ID)，而发送 PUSH_PROMISE 帧的还是在客户端发起的请求流 (Stream Identifier = 1) 上，客户端收到 PUSH_PROMISE 帧并选择接收便不会对这四个资源发起请求，之后服务端会发起预示的流然后推送资源相关的响应</p>
+</blockquote>
+<p>不管出于什么原因，如果客户端决定不再从服务端接收准备推送的响应，或者如果服务端花费了太长时间准备发送被预示的响应，客户端可以发送一个 RST_STREAM 帧，该帧可以使用 CANCEL 或者 REFUSED_STEAM 码，并引用被推送的流标识符。</p>
+<p><strong>nginx 配置 Server-Push</strong></p>
+<blockquote>
+<p>server-push 需要服务端设置，并不是说浏览器发起请求，与此请求相关的资源服务端就会自动推送</p>
+</blockquote>
+<p>以 nginx 为例，从版本 1.13.9 开始正式支持 hppt2 serverpush 功能，</p>
+<p>在相应 server 或 location 模块中加入 <code>http2_push</code> 字段加上相对路径的文件即可在请求该资源时推送相关资源，比如我的博客设置如下，访问首页时有四个文件会由服务器主动推送过去而不需要客户端请求:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">复制代码  server_name  blog.wangriyu.wang;</span><br><span class="line">  root /blog;</span><br><span class="line">  index index.html index.htm;</span><br><span class="line"></span><br><span class="line">  location = /index.html &#123;</span><br><span class="line">    http2_push /css/style.css;</span><br><span class="line">    http2_push /js/main.js;</span><br><span class="line">    http2_push /img/yule.jpg;</span><br><span class="line">    http2_push /img/avatar.jpg;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过浏览器控制台可以查看 <code>Push</code> 响应:</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/8/31/1658dc510af263a8~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png" alt="image"></p>
+<p>也可以用 <code>nghttp</code> 测试 push 响应 (* 号代表是服务端推送的):</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/8/31/1658dc4fa7d18e24~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png" alt="image"></p>
+<p>上面 <code>http2_push</code> 的设置适合静态资源，服务端事先知道哪些文件是客户端需要的，然后选择性推送</p>
+<p>假如是后台应用动态生成的文件(比如 json 文件)，服务器事先不知道要推送什么，可以用 <code>Link</code> 响应头来做自动推送</p>
+<p>在 server 模块中添加 <code>http2_push_preload on;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server_name  blog.wangriyu.wang;</span><br><span class="line">  root /blog;</span><br><span class="line">  index index.html index.htm;</span><br><span class="line"></span><br><span class="line">  http2_push_preload on;</span><br></pre></td></tr></table></figure>
+
+<p>然后设置响应头 (add_header) 或者后台程序生成数据文件返回时带上响应头 Link 标签，比如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/style.css&gt;; as=style; rel=preload, &lt;/main.js&gt;; as=script; rel=preload, &lt;/image.jpg&gt;; as=image; rel=preload</span><br></pre></td></tr></table></figure>
+
+<p>nginx 会根据 Link 响应头主动推送这些资源</p>
+<h3 id="4-请求优先级设置"><a href="#4-请求优先级设置" class="headerlink" title="4. 请求优先级设置"></a>4. 请求优先级设置</h3><p>HTTP/2 里的每个 stream 都可以设置依赖 (Dependency) 和权重，可以按依赖树分配优先级，解决了关键请求被阻塞的问题</p>
+<h3 id="5-流量控制"><a href="#5-流量控制" class="headerlink" title="5. 流量控制"></a>5. 流量控制</h3><p>HTTP/2 使用流量控制（Flow Control）来确保在网络连接上传输的数据量不超出接收端的处理能力。流量控制的主要目标是防止发送者发送过多的数据，导致接收者无法及时处理，从而引发拥塞或性能下降。HTTP/2 中的流量控制是基于帧（Frames）的，每个流（Stream）都有一个关联的流量控制窗口（Flow Control Window）。</p>
+<blockquote>
+<p>以下是 HTTP/2 中流量控制的基本原理和机制：</p>
+<ol>
+<li><strong>流量控制窗口：</strong> 每个流都有一个流量控制窗口，用于表示该流上可以发送的数据量。初始时，流量控制窗口的大小是由 SETTINGS 帧中的初始窗口大小（Initial Window Size）指定的。接收方会定期向发送方发送 WINDOW_UPDATE 帧来扩大流量控制窗口的大小，通知发送方可以发送更多的数据。</li>
+<li><strong>连接级流量控制：</strong> HTTP/2 还定义了连接级的流量控制窗口，它用于限制整个连接上的数据流量。连接级窗口的大小也是由 SETTINGS 帧中的初始窗口大小指定，并可以通过 WINDOW_UPDATE 帧来调整。</li>
+<li><strong>帧的流量控制：</strong> 每个 DATA 帧（携带请求和响应的主体数据）都有一个与之关联的流量控制窗口。发送方必须确保发送的 DATA 帧的大小不超过流量控制窗口的大小，接收方在接收到 DATA 帧后，会相应地减小流量控制窗口的大小。</li>
+<li><strong>WINDOW_UPDATE 帧：</strong> 发送方可以发送 WINDOW_UPDATE 帧，来通知接收方可以扩大流量控制窗口的大小。WINDOW_UPDATE 帧携带了增加的窗口大小，可以是流量控制窗口或者连接级窗口的增量。</li>
+</ol>
+</blockquote>
+<p>通过以上机制，HTTP/2 中的流量控制确保了数据的有序传输，并防止了发送过多数据导致接收方无法处理的情况。流量控制的灵活性和精细度使得 HTTP/2 能够更好地适应不同网络条件和接收方处理能力，提高了网络性能和用户体验。</p>
+<h3 id="6-应用层的重置连接"><a href="#6-应用层的重置连接" class="headerlink" title="6. 应用层的重置连接"></a>6. 应用层的重置连接</h3><p>对于 HTTP/1 来说，是通过设置 tcp segment 里的 reset flag 来通知对端关闭连接的。这种方式会直接断开连接，下次再发请求就必须重新建立连接。HTTP/2 引入 RST_STREAM 类型的 frame，可以在不断开连接的前提下取消某个 request 的 stream，表现更好。</p>
+<h3 id="7-HTTP-1-的几种优化可以弃用"><a href="#7-HTTP-1-的几种优化可以弃用" class="headerlink" title="7. HTTP/1 的几种优化可以弃用"></a>7. HTTP/1 的几种优化可以弃用</h3><p>1、域名分片</p>
+<p>HTTP/2 对于同一域名使用一个 TCP 连接足矣，过多 TCP 连接浪费资源而且效果不见得一定好</p>
+<p>而且资源分域会破坏 HTTP/2 的优先级特性，还会降低头部压缩效果</p>
+<p>2、资源合并</p>
+<p>资源合并会不利于缓存机制，而且单文件过大对于 HTTP/2 的传输不好，尽量做到细粒化更有利于 HTTP/2 传输</p>
+<p>3、资源内联</p>
+<p>HTTP/2 支持 Server-Push，相比较内联优势更大效果更好</p>
+<p>而且内联的资源不能有效缓存</p>
+<p>如果有共用，多页面内联也会造成浪费</p>
+<h2 id="升级HTTP-2的优劣"><a href="#升级HTTP-2的优劣" class="headerlink" title="升级HTTP/2的优劣"></a>升级HTTP/2的优劣</h2><h2 id="劣"><a href="#劣" class="headerlink" title="劣"></a>劣</h2><p>升级到HTTP/2并不是一种适用于所有情况的通用解决方案。虽然HTTP/2在许多方面都提供了性能优势，但也有一些特定的情况，可能不适合升级到HTTP/2，或者需要谨慎考虑：</p>
+<ol>
+<li><strong>老旧的服务器和客户端：</strong> 一些老旧的服务器软件和客户端应用程序可能不支持HTTP/2协议。在这种情况下，升级可能会引发兼容性问题。</li>
+<li><strong>简单的静态网站：</strong> 如果网站内容非常简单，主要由静态文件组成，并且对性能要求不高，升级到HTTP/2的收益可能较小。HTTP/1.1对于简单的静态网站来说通常足够了。</li>
+<li><strong>资源优化不足：</strong> 如果网站的性能问题主要源于资源优化不足，例如未压缩的图片、未合并的脚本和样式表等，那么升级到HTTP/2并不会根本解决这些问题。在升级之前，应该先优化网站的资源。</li>
+<li><strong>服务器性能限制：</strong> 如果服务器的性能受限，无法处理大量的并发请求，那么HTTP/2的多路复用特性可能会导致服务器过载，反而降低性能。</li>
+<li><strong>特殊网络环境：</strong> 在某些网络环境下，例如高延迟、高丢包率的网络，HTTP/2的多路复用特性可能会导致丢失的数据包需要重新传输，从而增加了网络负担。</li>
+<li><strong>过于复杂的配置：</strong> 如果HTTP/2的配置比较复杂，或者在现有的基础设施中引入HTTP/2会带来很大的复杂性，那么在考虑升级时需要慎重评估成本和收益。</li>
+</ol>
+<p>在决定是否升级到HTTP/2时，需要综合考虑网站的性能需求、服务器和客户端的兼容性、网络环境以及现有基础设施的情况。在一些特定场景下，HTTP/1.1仍然可能是一个合适的选择。</p>
+<p>什么时候HTTP/2会比HTTP1.1慢</p>
+<blockquote>
+<ol>
+<li><strong>小文件的传输：</strong> 当需要传输大量非常小的文件时（1k&lt;），HTTP/2 的多路复用机制可能会导致头部信息在传输中占用较大比例，从而增加了总体的传输量。在这种情况下，HTTP/1.1 的多个并行连接可能更加高效。</li>
+<li><strong>连接复用受限：</strong> 在某些网络环境下，连接的复用可能受到限制，例如高延迟、高丢包率的网络。在这种情况下，HTTP/2 的连接复用特性可能会受到影响，甚至导致性能下降。</li>
+<li><strong>服务器性能不足：</strong> 如果服务器性能不足以处理大量并发的请求，HTTP/2 的多路复用可能导致服务器过载，从而增加了响应时间。HTTP/1.1 的多个连接可能分散了请求，减轻了服务器的负担。</li>
+<li><strong>头部压缩开销：</strong> HTTP/2 使用 HPACK 算法对头部信息进行压缩，但解压缩头部信息也需要计算资源。在某些情况下，特别是在移动设备上，解压缩可能会增加处理的复杂性和开销。</li>
+<li><strong>代理服务器和防火墙限制：</strong> 一些代理服务器和防火墙可能不正确地处理或者不支持HTTP/2，导致在这些设备上的传输性能下降。</li>
+</ol>
+</blockquote>
+<h2 id="优"><a href="#优" class="headerlink" title="优"></a>优</h2><ol>
+<li><strong>提高网站性能</strong>：HTTP/2引入了多路复用（Multiplexing）功能，可以同时传输多个请求和响应，减少了网络延迟，提高了网站加载速度。如果您的网站有很多资源（例如图片、样式表、脚本等），并且希望提供更快的加载时间，升级到HTTP/2可能是一个不错的选择。</li>
+<li><strong>支持移动设备</strong>：HTTP/2对于移动设备的性能优化效果显著。移动网络通常具有较高的延迟，HTTP/2的多路复用特性能够更好地利用网络带宽，提供更快的加载速度，从而提高了移动设备用户的体验。</li>
+<li><strong>提高SEO排名</strong>：Google已经确认，网站加载速度是搜索引擎排名的一个因素。更快的网站加载速度可能对SEO产生积极影响，因此，如果您关注网站的搜索引擎可见性，升级到HTTP/2可能是一个好的策略。</li>
+<li><strong>支持新的Web功能</strong>：一些现代的Web功能，例如服务端推送（Server Push），在HTTP/2中得到了良好的支持。如果您计划使用这些新功能，升级到HTTP/2是必要的。</li>
+<li><strong>提供更好的安全性</strong>：HTTP/2通常与TLS（HTTPS）一起使用，因此可以提供更好的数据安全性。如果您的网站处理用户敏感信息，使用HTTPS和HTTP/2可以增加数据传输的安全性。</li>
+</ol>
+<h1 id="升级方案"><a href="#升级方案" class="headerlink" title="升级方案"></a>升级方案</h1><p>目前我们网站的运行流程：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231008154140054.png" alt="image-20231008154140054"></p>
+<h2 id="1-哪些NG需要升级？"><a href="#1-哪些NG需要升级？" class="headerlink" title="1. 哪些NG需要升级？"></a>1. 哪些NG需要升级？</h2><p><strong>前端静态资源托管NG，目前前端首页资源请求超过160个,适合升级成http/2</strong></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231008155549620.png" alt="image-20231008155549620"></p>
+<p><strong>图片服务请求数量超30，适合升级成http/2</strong></p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231008160102350.png" alt="image-20231008160102350"></p>
+<p>后端请求较少，只有9个可以选择不升级</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/image-20231008160230467.png" alt="image-20231008160230467"></p>
+<h2 id="2-怎么升级"><a href="#2-怎么升级" class="headerlink" title="2. 怎么升级"></a>2. 怎么升级</h2><h3 id="前端静态资源托管NG升级HTTP-2"><a href="#前端静态资源托管NG升级HTTP-2" class="headerlink" title="前端静态资源托管NG升级HTTP/2"></a>前端静态资源托管NG升级HTTP/2</h3><p>要将Chrome浏览器的网站请求改为使用HTTP/2，需要确保网站支持HTTP/2，并且浏览器和服务器之间的连接是安全的（即使用HTTPS协议）。HTTP/2通常与TLS（Transport Layer Security）一起使用，以确保数据的安全传输。</p>
+<p>以下是确保Chrome浏览器请求网站使用HTTP/2的步骤：</p>
+<ol>
+<li><p><strong>确保您的网站支持HTTP/2</strong>：在服务器端配置中启用HTTP/2。大多数现代的Web服务器（例如Apache、Nginx）已经支持HTTP/2。请参考您所使用服务器的文档，以了解如何启用HTTP/2。</p>
+</li>
+<li><p><strong>使用HTTPS协议</strong>：HTTP/2通常与TLS（即HTTPS）一起使用。要启用HTTP/2，您的网站必须使用安全套接字层（SSL/TLS）加密。您需要在服务器上配置SSL证书。您可以从证书颁发机构（CA）获取SSL证书，或者使用免费的证书颁发机构，例如Let’s Encrypt。</p>
+</li>
+<li><p><strong>配置服务器</strong>：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vbnetCopy</span> codeserver &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /path/to/your/certificate.crt;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /path/to/your/private.key;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>验证设置</strong>：确保服务器已经配置正确，并且网站可以通过HTTPS访问。您可以使用在线工具，例如<a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssltest/">SSL Labs</a>，来检查您的SSL/TLS配置。</p>
+</li>
+</ol>
+<p>一旦您的网站已经配置为支持HTTP/2并且可以通过HTTPS访问，当用户使用Chrome浏览器访问该网站时，浏览器会自动使用HTTP/2进行请求。Chrome会自动选择使用最新的协议版本，而无需手动配置。Chrome会根据标准的协议选择HTTP/2来提高网站性能。</p>
+<h2 id="阿里图库升级HTTP2"><a href="#阿里图库升级HTTP2" class="headerlink" title="阿里图库升级HTTP2"></a>阿里图库升级HTTP2</h2><p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/65103.html">https://help.aliyun.com/document_detail/65103.html</a></p>
+</article><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/09/NuQ3V6fehArJl2E.webp" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">王海运</div><div class="business-section">862555625</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">06/06/1995</span></div><div class="business-card-holder">13011477115</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>初次来到人间</label><div><a target="_blank" rel="noopener" href="https://https://why862555625.github.io/">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a></div></div><div class="business-terms"><p>如果上天不给你机会，那你就自己创造机会，杀出重围 .</p><p>再厉害的英雄也需要夫人的陪伴，所以我很爱我的夫人.</p></div></div></div></div></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://why862555625.github.io">王海运</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://why862555625.github.io/posts/df7a5d88.html">https://why862555625.github.io/posts/df7a5d88.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://why862555625.github.io" target="_blank">王海运</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a></div><div class="post_share"><div class="social-share" data-image="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-tools-left"><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul><a class="reward-main-btn" href="/about/" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/3b5d9717.html"><img class="prev-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/77.jpg" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">js正则</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/50daec4.html" title="网络"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/14.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-26</div><div class="title">网络</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="status-bar">&nbsp;<div class="fa fa-signal xiayi"></div><div id="camera"></div><div class="status-bar_clock">GPS  &nbsp;<div class="fakaozuo fa fa-wifi"> &nbsp;</div><div class="fa fa-battery-full"></div></div></div><div class="is-center"><div class="avatar-img"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="author-info__name">王海运</div><div class="author-info__description">众里寻他千百度</div></div><a id="card-info-btn" href="https://why862555625.github.io/about/"><i class="fab fa-github"></i><span>about me</span></a><div class="card-info-data site-data is-center"><a class="biaotou" href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a> <a class="biaotou" href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a> <a class="biaotou" href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="浏览器"><i class="iconfont icon-liulanqi1"></i></a><a class="social-icon" href="/862555625@qq.com" target="_blank" title="邮箱"><i class="iconfont icon-email"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=862555625" target="_blank" title="QQ"><i class="iconfont icon-QQ"></i></a><a class="social-icon" href="/about/" target="_blank" title="微信"><i class="iconfont icon-weixin"></i></a><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="抖音"><i class="iconfont icon-douyin"></i></a></div><div class="home-indicator"></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div class="about-statistic author-content-item2"><div class="card-content"><div class="lightning"><div class="lightning1"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://drfs.ctcontents.com/file/14237530/755647870/e44191/img/index/swordsmen.webp"></div><div class="lightning2"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://www.jiangweishan.com/demo/lightning2.png"></div></div><span class="author-content-item-title">文章归档  </span><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/archives/&quot;)" data-pjax-state="data-pjax-state"><span class="banner-button-text">文章隧道</span></a></div></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">计算机网络基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E7%BD%91%E7%BB%9C7%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.1.</span> <span class="toc-text">经典的网络7层协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">数据传输过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E9%93%BE%E6%8E%A5%E5%BB%BA%E7%AB%8B%E8%BF%87%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">TCP链接建立过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E6%85%A2%E5%90%AF%E5%8A%A8"><span class="toc-number">2.3.1.</span> <span class="toc-text">TCP协议的慢启动</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">http协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">3.1.</span> <span class="toc-text">1. 基本特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-http%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8F%91%E5%B1%95%E8%BF%87%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">2. http协议的发展过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%87%E7%BB%B4%E7%BD%91%E7%9A%84%E5%8F%91%E6%98%8E"><span class="toc-number">3.2.0.1.</span> <span class="toc-text">万维网的发明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-0-9%E2%80%94%E2%80%94%E5%8D%95%E8%A1%8C%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.2.0.2.</span> <span class="toc-text">HTTP&#x2F;0.9——单行协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-0%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="toc-number">3.2.0.3.</span> <span class="toc-text">HTTP&#x2F;1.0——构建可扩展性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-1%E2%80%94%E2%80%94%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.2.0.4.</span> <span class="toc-text">HTTP&#x2F;1.1——标准化的协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-2%E2%80%94%E2%80%94%E4%B8%BA%E4%BA%86%E6%9B%B4%E4%BC%98%E5%BC%82%E7%9A%84%E8%A1%A8%E7%8E%B0"><span class="toc-number">3.2.0.5.</span> <span class="toc-text">HTTP&#x2F;2——为了更优异的表现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8D%8F%E8%AE%AE%E5%A4%B4"><span class="toc-number">3.3.</span> <span class="toc-text">3. 协议头</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">3.3.1.</span> <span class="toc-text">报文示例：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AF%A6%E8%A7%A3HTTP2"><span class="toc-number">3.5.</span> <span class="toc-text">4. 详解HTTP2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%88%86%E5%B8%A7%E5%B1%82-Binary-Framing-Layer"><span class="toc-number">3.5.1.</span> <span class="toc-text">1、二进制分帧层 (Binary Framing Layer)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%A7-Frame%EF%BC%88%E9%80%89%E8%AF%BB%EF%BC%89"><span class="toc-number">3.5.1.0.1.</span> <span class="toc-text">帧 - Frame（选读）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Header-%E5%8E%8B%E7%BC%A9-HPACK"><span class="toc-number">3.5.2.</span> <span class="toc-text">2. Header 压缩 (HPACK)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#-1"><span class="toc-number">3.5.2.0.1.</span> <span class="toc-text"></span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-MultiPlexing-%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%9A%E8%A7%A3%E5%86%B3%E9%98%9F%E5%88%97%E5%A0%B5%E5%A1%9E%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8F%90%E9%AB%98%E7%BD%91%E7%BB%9C%E5%88%A9%E7%94%A8%E7%8E%87%EF%BC%89"><span class="toc-number">3.5.3.</span> <span class="toc-text">3. 多路复用 (MultiPlexing)（最重要：解决队列堵塞问题，提高网络利用率）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81-Stream%EF%BC%88%E9%80%89%E8%AF%BB%EF%BC%89"><span class="toc-number">3.5.3.1.</span> <span class="toc-text">流 - Stream（选读）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8E%A8%E9%80%81-Server-Push"><span class="toc-number">3.5.4.</span> <span class="toc-text">3. 服务端推送 (Server Push)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Server-Push%E8%AF%A6%E8%A7%A3%EF%BC%88%E9%80%89%E8%AF%BB%EF%BC%89"><span class="toc-number">3.5.4.0.1.</span> <span class="toc-text">Server Push详解（选读）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%AF%B7%E6%B1%82%E4%BC%98%E5%85%88%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.5.5.</span> <span class="toc-text">4. 请求优先级设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">3.5.6.</span> <span class="toc-text">5. 流量控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E9%87%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5"><span class="toc-number">3.5.7.</span> <span class="toc-text">6. 应用层的重置连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-HTTP-1-%E7%9A%84%E5%87%A0%E7%A7%8D%E4%BC%98%E5%8C%96%E5%8F%AF%E4%BB%A5%E5%BC%83%E7%94%A8"><span class="toc-number">3.5.8.</span> <span class="toc-text">7. HTTP&#x2F;1 的几种优化可以弃用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7HTTP-2%E7%9A%84%E4%BC%98%E5%8A%A3"><span class="toc-number">3.6.</span> <span class="toc-text">升级HTTP&#x2F;2的优劣</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A3"><span class="toc-number">3.7.</span> <span class="toc-text">劣</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98"><span class="toc-number">3.8.</span> <span class="toc-text">优</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88"><span class="toc-number">4.</span> <span class="toc-text">升级方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%93%AA%E4%BA%9BNG%E9%9C%80%E8%A6%81%E5%8D%87%E7%BA%A7%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">1. 哪些NG需要升级？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%80%8E%E4%B9%88%E5%8D%87%E7%BA%A7"><span class="toc-number">4.2.</span> <span class="toc-text">2. 怎么升级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%89%98%E7%AE%A1NG%E5%8D%87%E7%BA%A7HTTP-2"><span class="toc-number">4.2.1.</span> <span class="toc-text">前端静态资源托管NG升级HTTP&#x2F;2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E5%9B%BE%E5%BA%93%E5%8D%87%E7%BA%A7HTTP2"><span class="toc-number">4.3.</span> <span class="toc-text">阿里图库升级HTTP2</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/df7a5d88.html" title="http2升级"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="http2升级"/></a><div class="content"><a class="title" href="/posts/df7a5d88.html" title="http2升级">http2升级</a><time datetime="2023-10-07T06:48:54.000Z" title="发表于 2023-10-07 14:48:54">2023-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3b5d9717.html" title="js正则"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/77.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="js正则"/></a><div class="content"><a class="title" href="/posts/3b5d9717.html" title="js正则">js正则</a><time datetime="2023-08-22T05:08:23.000Z" title="发表于 2023-08-22 13:08:23">2023-08-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6ed0bfbd.html" title="Java基础 - SPI机制详解"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="Java基础 - SPI机制详解"/></a><div class="content"><a class="title" href="/posts/6ed0bfbd.html" title="Java基础 - SPI机制详解">Java基础 - SPI机制详解</a><time datetime="2023-08-21T05:42:49.000Z" title="发表于 2023-08-21 13:42:49">2023-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/e78c9f55.html" title="Java 基础 - 反射机制详解"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="Java 基础 - 反射机制详解"/></a><div class="content"><a class="title" href="/posts/e78c9f55.html" title="Java 基础 - 反射机制详解">Java 基础 - 反射机制详解</a><time datetime="2023-08-16T08:37:01.000Z" title="发表于 2023-08-16 16:37:01">2023-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ad94428e.html" title="Java 基础 - 异常机制详解"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="Java 基础 - 异常机制详解"/></a><div class="content"><a class="title" href="/posts/ad94428e.html" title="Java 基础 - 异常机制详解">Java 基础 - 异常机制详解</a><time datetime="2023-08-16T08:31:06.000Z" title="发表于 2023-08-16 16:31:06">2023-08-16</time></div></div></div></div></div></div></main><div id="footer_deal"><a class="deal_link" href="" title="mail"><i class="fa-solid fa-envelope"></i></a><a class="deal_link" href="" title="qq" target="_blank"><i class="fa-brands fa-qq"></i></a><a class="deal_link" href="" title="微博" target="_blank"><i class="fa-brands fa-weibo"></i></a><a class="deal_link" href="https://github.com/jayhrn" title="github" target="_blank"><i class="fa-brands fa-github"></i></a><img class="footer_mini_logo entered loading" style="border-radius:50%" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://img.zhheo.com/i/2022/08/31/630ef3b505ef5.webp" onclick="btf.scrollToDest(0,500)" title="返回顶部"/><a class="deal_link" href="" title="dribbble"><i class="fa-brands fa-dribbble"></i></a><a class="deal_link" href="" title="微信" target="_blank"><i class="fa-brands fa-weixin"></i></a><a class="deal_link" href="" title="抖音" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a class="deal_link" href="" title="设置"><i class="fa-solid fa-bars"></i></a></div><div id="Jay-footer"><div class="footer-group"><h3 class="footer-title">直达</h3><div class="footer-links"><a class="footer-item" href="https://why862555625.github.io/" target="_blank">我的主页</a><a class="footer-item" href="/music">音乐欣赏</a><a class="footer-item" href="/about">关于我</a><a class="footer-item" onclick="toRandomPost()">随机文章</a></div></div><div class="footer-group"><h3 class="footer-title">分类</h3><div class="footer-links"><a class="footer-item" href="/categories/css/">css笔记</a><a class="footer-item" href="/categories/魔改/">魔改教程</a><a class="footer-item" href="/categories/辅助/">hexo工具</a><a class="footer-item" href="/categories/Docs文檔/">Docs文檔</a></div></div><div class="footer-group"><h3 class="footer-title">关于</h3><div class="footer-links"><a class="footer-item" href="/about/">关于我</a><a class="footer-item" href="/charts/">博客统计</a><a class="footer-item" href="/archives">文章归档</a><a class="footer-item" href="/update">更新记录</a></div></div><div class="footer-group"><h3 class="footer-title">友链</h3><div class="footer-links" id="friend-links-in-footer"><a class="footer-item" href="https://blog.zhheo.com/" target="_blank">张洪Heo</a><a class="footer-item" href="https://anzhiy.cn/" target="_blank">安知鱼</a><a class="footer-item" href="https://akilar.top/" target="_blank">Akilar</a><a class="footer-item" onclick="toRandomFlink()">随机友情</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/privacy/">隐私协议</a><a class="footer-item" href="/cookies/">Cookie</a><a class="footer-item" href="/cc/">版权协议</a></div></div></div><footer id="footer" style="background: var(--heo-theme);"><div id="footer-wrap"><div class="copyright">&copy;1993 - 2023 By 王海运</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button type="button" title="切换背景" onclick="toggleWinbox()"><i class="fas fa-display"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="https://npm.elemecdn.com/blog2023@1.0.2/utils.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://npm.elemecdn.com/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.1/instantsearch.production.min.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/algolia.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhheo.com',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script charset="utf-8" data-pjax="" src="/js/watchWorker.js"></script><script charset="utf-8" data-pjax="" src="/js/copy.js"></script><script defer src="https://npm.elemecdn.com/blog12.8@1.0.1/categoryBar.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/sun_moon.js" async></script><script src="https://unpkg.com/plasxhexo@1.0.2/js/winbox.bundle.min.js"></script><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?98d6c60617ee763b4f6708fedd7f50e5";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script><script charset="utf-8" data-pjax="" src="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.js"></script><script src="/zhheo/random.js"></script><script async src="https://at.alicdn.com/t/c/font_3855261_r5lzgvwjjsm.js"></script><script id="click-show-text" src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="我,喜,欢,你,你,喜,欢,我,不" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.js"></script><script src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show","#web_bg",".js-pjax",".video"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/video/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html><script>var flinks=["https://akilar.top/","https://blog.zhheo.com/","https://anzhiy.cn/","https://www.chuckle.top/","https://ichika.cc/","https://blog.leonus.cn/","https://sianx.com","https://www.fomal.cc/","https://www.webxc.ml","https://daiyu-233.top/","https://tzy1997.com/","https://www.qingyi1220.cn/","https://www.xiaozhuzi.xyz/","https://blog.xiaohua927.top/","https://wyblog1.eu.org","https://ezgx.tk/","https://wsbblog.cn","https://www.lyshark.com"];function toRandomFlink(){window.open(flinks[Math.floor(Math.random()*flinks.length)]);};</script>
