@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>王海运</title>
+  <icon>https://why862555625.github.io/icon.png</icon>
+  <subtitle>旭</subtitle>
+  <link href="https://why862555625.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://why862555625.github.io/"/>
+  <updated>2023-10-07T06:48:54.000Z</updated>
+  <id>https://why862555625.github.io/</id>
+  
+  <author>
+    <name>王海运</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>http2升级</title>
+    <link href="https://why862555625.github.io/posts/d9795d88.html"/>
+    <id>https://why862555625.github.io/posts/d9795d88.html</id>
+    <published>2023-10-07T06:48:54.000Z</published>
+    <updated>2023-10-07T06:48:54.000Z</updated>
+    
+    
+    <summary type="html">http2升级</summary>
+    
+    
+    
+    <category term="网络" scheme="https://why862555625.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="网络" scheme="https://why862555625.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js正则</title>
+    <link href="https://why862555625.github.io/posts/3b5d9717.html"/>
+    <id>https://why862555625.github.io/posts/3b5d9717.html</id>
+    <published>2023-08-22T05:08:23.000Z</published>
+    <updated>2023-08-22T05:08:23.000Z</updated>
+    
+    
+    <summary type="html">js正则</summary>
+    
+    
+    
+    <category term="js" scheme="https://why862555625.github.io/categories/js/"/>
+    
+    
+    <category term="js" scheme="https://why862555625.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java基础 - SPI机制详解</title>
+    <link href="https://why862555625.github.io/posts/6ed0bfbd.html"/>
+    <id>https://why862555625.github.io/posts/6ed0bfbd.html</id>
+    <published>2023-08-21T05:42:49.000Z</published>
+    <updated>2023-08-21T05:42:49.000Z</updated>
+    
+    
+    <summary type="html">Java基础 - SPI机制详解</summary>
+    
+    
+    
+    <category term="类别" scheme="https://why862555625.github.io/categories/%E7%B1%BB%E5%88%AB/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 反射机制详解</title>
+    <link href="https://why862555625.github.io/posts/e78c9f55.html"/>
+    <id>https://why862555625.github.io/posts/e78c9f55.html</id>
+    <published>2023-08-16T08:37:01.000Z</published>
+    <updated>2023-08-16T08:37:01.000Z</updated>
+    
+    
+    <summary type="html">Java 基础 - 反射机制详解</summary>
+    
+    
+    
+    <category term="类别" scheme="https://why862555625.github.io/categories/%E7%B1%BB%E5%88%AB/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+    <category term="java基础" scheme="https://why862555625.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 异常机制详解</title>
+    <link href="https://why862555625.github.io/posts/ad94428e.html"/>
+    <id>https://why862555625.github.io/posts/ad94428e.html</id>
+    <published>2023-08-16T08:31:06.000Z</published>
+    <updated>2023-08-16T08:31:06.000Z</updated>
+    
+    
+    <summary type="html">Java 基础 - 异常机制详解</summary>
+    
+    
+    
+    <category term="java基础" scheme="https://why862555625.github.io/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+    <category term="java基础" scheme="https://why862555625.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 注解机制详解</title>
+    <link href="https://why862555625.github.io/posts/fdfa8e87.html"/>
+    <id>https://why862555625.github.io/posts/fdfa8e87.html</id>
+    <published>2023-08-16T06:53:31.000Z</published>
+    <updated>2023-08-16T06:53:31.000Z</updated>
+    
+    
+    <summary type="html">Java 基础 - 注解机制详解</summary>
+    
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/categories/java/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+    <category term="java基础" scheme="https://why862555625.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 泛型机制详解</title>
+    <link href="https://why862555625.github.io/posts/35d92ef6.html"/>
+    <id>https://why862555625.github.io/posts/35d92ef6.html</id>
+    <published>2023-08-16T03:49:48.000Z</published>
+    <updated>2023-08-16T03:49:48.000Z</updated>
+    
+    
+    <summary type="html">Java 基础 - 泛型机制详解</summary>
+    
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/categories/java/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+    <category term="java基础" scheme="https://why862555625.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 基础 - 知识点</title>
+    <link href="https://why862555625.github.io/posts/d9795d88.html"/>
+    <id>https://why862555625.github.io/posts/d9795d88.html</id>
+    <published>2023-08-14T11:52:45.000Z</published>
+    <updated>2023-08-14T11:52:45.000Z</updated>
+    
+    
+    <summary type="html">java基础</summary>
+    
+    
+    
+    <category term="java基础" scheme="https://why862555625.github.io/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+    <category term="java基础" scheme="https://why862555625.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java面向对象</title>
+    <link href="https://why862555625.github.io/posts/ef5980bd.html"/>
+    <id>https://why862555625.github.io/posts/ef5980bd.html</id>
+    <published>2023-08-14T03:23:54.000Z</published>
+    <updated>2023-08-14T03:23:54.000Z</updated>
+    
+    
+    <summary type="html">java面向对象</summary>
+    
+    
+    
+    <category term="java基础" scheme="https://why862555625.github.io/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+    <category term="java基础" scheme="https://why862555625.github.io/tags/java%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>form表单效验</title>
+    <link href="https://why862555625.github.io/posts/f44a0d63.html"/>
+    <id>https://why862555625.github.io/posts/f44a0d63.html</id>
+    <published>2023-07-20T00:31:35.000Z</published>
+    <updated>2023-07-20T00:31:35.000Z</updated>
+    
+    
+    <summary type="html">描述 Butterfly安裝文檔-快速開始</summary>
+    
+    
+    
+    <category term="前端" scheme="https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven教程</title>
+    <link href="https://why862555625.github.io/posts/21effdcf.html"/>
+    <id>https://why862555625.github.io/posts/21effdcf.html</id>
+    <published>2023-07-18T08:16:45.000Z</published>
+    <updated>2023-07-18T08:16:45.000Z</updated>
+    
+    
+    <summary type="html">Maven教程</summary>
+    
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/categories/java/"/>
+    
+    
+    <category term="java" scheme="https://why862555625.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>交叉熵</title>
+    <link href="https://why862555625.github.io/posts/ea101373.html"/>
+    <id>https://why862555625.github.io/posts/ea101373.html</id>
+    <published>2023-06-14T14:05:30.000Z</published>
+    <updated>2023-06-14T14:05:30.000Z</updated>
+    
+    
+    <summary type="html">交叉熵</summary>
+    
+    
+    
+    <category term="AI" scheme="https://why862555625.github.io/categories/AI/"/>
+    
+    
+    <category term="AI" scheme="https://why862555625.github.io/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vite</title>
+    <link href="https://why862555625.github.io/posts/5e9df9d6.html"/>
+    <id>https://why862555625.github.io/posts/5e9df9d6.html</id>
+    <published>2023-06-11T13:43:54.000Z</published>
+    <updated>2023-06-11T13:43:54.000Z</updated>
+    
+    
+    <summary type="html">https://raw.githubusercontent.com/why862555625/images/main/images/222.jpg</summary>
+    
+    
+    
+    <category term="前端" scheme="https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微前端</title>
+    <link href="https://why862555625.github.io/posts/3b97e6.html"/>
+    <id>https://why862555625.github.io/posts/3b97e6.html</id>
+    <published>2023-06-11T12:55:22.000Z</published>
+    <updated>2023-06-11T12:55:22.000Z</updated>
+    
+    
+    <summary type="html">微前端</summary>
+    
+    
+    
+    <category term="前端" scheme="https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ts复习</title>
+    <link href="https://why862555625.github.io/posts/19f9951.html"/>
+    <id>https://why862555625.github.io/posts/19f9951.html</id>
+    <published>2023-06-11T11:12:18.000Z</published>
+    <updated>2023-06-11T11:12:18.000Z</updated>
+    
+    
+    <summary type="html">ts复习</summary>
+    
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器原理</title>
+    <link href="https://why862555625.github.io/posts/f1e02d11.html"/>
+    <id>https://why862555625.github.io/posts/f1e02d11.html</id>
+    <published>2023-06-11T05:51:57.000Z</published>
+    <updated>2023-06-11T05:51:57.000Z</updated>
+    
+    
+    <summary type="html">浏览器原理</summary>
+    
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>性能优化</title>
+    <link href="https://why862555625.github.io/posts/fc854d4d.html"/>
+    <id>https://why862555625.github.io/posts/fc854d4d.html</id>
+    <published>2023-06-11T05:27:12.000Z</published>
+    <updated>2023-06-11T05:27:12.000Z</updated>
+    
+    
+    <summary type="html">性能优化</summary>
+    
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="JS" scheme="https://why862555625.github.io/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css复习</title>
+    <link href="https://why862555625.github.io/posts/ed9fe6ee.html"/>
+    <id>https://why862555625.github.io/posts/ed9fe6ee.html</id>
+    <published>2023-06-08T06:36:25.000Z</published>
+    <updated>2023-06-08T06:36:25.000Z</updated>
+    
+    
+    <summary type="html">css复习</summary>
+    
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="css" scheme="https://why862555625.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js面试手写</title>
+    <link href="https://why862555625.github.io/posts/a09ef191.html"/>
+    <id>https://why862555625.github.io/posts/a09ef191.html</id>
+    <published>2023-06-07T05:58:38.000Z</published>
+    <updated>2023-06-07T05:58:38.000Z</updated>
+    
+    
+    <summary type="html">js面试手写</summary>
+    
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="面试" scheme="https://why862555625.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>加油</title>
+    <link href="https://why862555625.github.io/posts/8857f1a4.html"/>
+    <id>https://why862555625.github.io/posts/8857f1a4.html</id>
+    <published>2023-06-06T04:56:20.000Z</published>
+    <updated>2023-06-06T04:56:20.000Z</updated>
+    
+    
+    <summary type="html">鼓励自己的小句子</summary>
+    
+    
+    
+    <category term="加油" scheme="https://why862555625.github.io/categories/%E5%8A%A0%E6%B2%B9/"/>
+    
+    
+    <category term="加油" scheme="https://why862555625.github.io/tags/%E5%8A%A0%E6%B2%B9/"/>
+    
+  </entry>
+  
+</feed>

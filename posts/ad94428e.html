@@ -1,0 +1,764 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java 基础 - 异常机制详解 | 王海运</title><meta name="author" content="王海运"><meta name="copyright" content="王海运"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java 基础 - 异常机制详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基础 - 异常机制详解">
+<meta property="og:url" content="https://why862555625.github.io/posts/ad94428e.html">
+<meta property="og:site_name" content="王海运">
+<meta property="og:description" content="Java 基础 - 异常机制详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg">
+<meta property="article:published_time" content="2023-08-16T08:31:06.000Z">
+<meta property="article:modified_time" content="2023-08-16T08:31:06.000Z">
+<meta property="article:author" content="王海运">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="java基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg"><link rel="shortcut icon" href="https://unpkg.com/plasx@1.0.3/img/favicon.webp"><link rel="canonical" href="https://why862555625.github.io/posts/ad94428e"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="https://npm.elemecdn.com/blog2023@1.0.2/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/swiper@8.4.2/swiper-bundle.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"KPAKI5YHZ8","apiKey":"031790ee5a399a40981430251606ff78","indexName":"hexo","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":150},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":2000,"languages":{"author":"作者: 王海运","link":"链接: ","source":"来源: 王海运","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"rgb(0 199 255 / 70%)","bgDark":"rgb(0 199 255 / 70%)","position":"top-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 基础 - 异常机制详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-16 16:31:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="preload" href="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.css" as="style" onload="this.rel='stylesheet'"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="王海运" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="王海运" type="application/rss+xml">
+</head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img iconfont icon-apple-fill"><div class="loading-image-dot iconfont icon-jiazai"></div></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://unpkg.com/plasx@1.0.3/css/progress_bar.css"/><script src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: linear-gradient(to bottom, var(--heo-theme), var(--heo-zhuti)), url('https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg')"><nav id="nav"><span id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon fas fa-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="主线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/GcgMjo5lNUfbrFW.webp"/><span class="back-menu-item-text">主线路</span></a><a class="back-menu-item" href="https://why862555625.github.io/" rel="external nofollow" title="备用线路" target="_blank" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/16/XxmYTFzsacq9EbL.webp"/><span class="back-menu-item-text">备用线路</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">biubiu</div><div class="back-menu-list"><a class="back-menu-item" href="https://why862555625.github.io/" title="biubiu" target="_blank" rel="noopener nofollow" one-link-mark="yes"><img class="back-menu-item-icon" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/12/YBMzJhbXEPprU87.webp"/><span class="back-menu-item-text">biubiu</span></a></div></div></div></div><a id="site-name" href="/"><div class="title">王海运</div><i class="fa-solid fa-house"></i></a></span><div class="mask-name-container"><center id="name-container"><a id="page-name" href="javascript:btf.scrollToDest(0,500)">PAGE_NAME</a></center></div><div id="menus"><div class="nav-button" id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" title="浅色和深色模式转换" onclick="switchNightMode()"><i class="fas fa-adjust"></i></a></div><div class="nav-button" id="modeicon"><a class="darkmode_switchbutton" type="button" title="切换壁纸" onclick="toggleWinbox()"><i class="fa-solid fa-image"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn"><i class="fas fa-arrow-up"></i><span id="percent" onclick="btf.scrollToDest(0,500)">0</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-sitemap"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/xiance/"><i class="fa-fw fas fa-video"></i><span> 相册</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><div id="post-meta"><a class="post-meta__tags" href="/tags/java/">java</a><a class="post-meta__tags" href="/tags/java%E5%9F%BA%E7%A1%80/">java基础</a></div><h1 class="post-title">Java 基础 - 异常机制详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-16T08:31:06.000Z" title="发表于 2023-08-16 16:31:06">2023-08-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-08-16T08:31:06.000Z" title="更新于 2023-08-16 16:31:06">2023-08-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a></span></div><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Java 基础 - 异常机制详解</p>
+<span id="more"></span>
+
+<h2 id="异常的层次结构"><a href="#异常的层次结构" class="headerlink" title="异常的层次结构"></a>异常的层次结构</h2><p>异常指不期而至的各种状况，如：文件找不到、网络连接失败、非法参数等。异常是一个事件，它发生在程序运行期间，干扰了正常的指令流程。Java通 过API中Throwable类的众多子类描述各种不同的异常。因而，Java异常都是对象，是Throwable子类的实例，描述了出现在一段编码中的 错误条件。当条件生成时，错误将引发异常。</p>
+<p>Java异常类层次结构图：</p>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/imagesimage-20230816163410241.png" alt="image-20230816163410241"></p>
+<h3 id="Throwable"><a href="#Throwable" class="headerlink" title="# Throwable"></a><a href="#throwable">#</a> Throwable</h3><p>Throwable 是 Java 语言中所有错误与异常的超类。</p>
+<p>Throwable 包含两个子类：Error（错误）和 Exception（异常），它们通常用于指示发生了异常情况。</p>
+<p>Throwable 包含了其线程创建时线程执行堆栈的快照，它提供了 printStackTrace() 等接口用于获取堆栈跟踪数据等信息。</p>
+<h3 id="Error（错误）"><a href="#Error（错误）" class="headerlink" title="# Error（错误）"></a><a href="#error-%E9%94%99%E8%AF%AF">#</a> Error（错误）</h3><p>Error 类及其子类：程序中无法处理的错误，表示运行应用程序中出现了严重的错误。</p>
+<p>此类错误一般表示代码运行时 JVM 出现问题。通常有 Virtual MachineError（虚拟机运行错误）、NoClassDefFoundError（类定义错误）等。比如 OutOfMemoryError：内存不足错误；StackOverflowError：栈溢出错误。此类错误发生时，JVM 将终止线程。</p>
+<p>这些错误是不受检异常，非代码性错误。因此，当此类错误发生时，应用程序不应该去处理此类错误。按照Java惯例，我们是不应该实现任何新的Error子类的！</p>
+<h3 id="Exception（异常）"><a href="#Exception（异常）" class="headerlink" title="# Exception（异常）"></a><a href="#exception-%E5%BC%82%E5%B8%B8">#</a> Exception（异常）</h3><p>程序本身可以捕获并且可以处理的异常。Exception 这种异常又分为两类：运行时异常和编译时异常。</p>
+<ul>
+<li><strong>运行时异常</strong></li>
+</ul>
+<p>都是RuntimeException类及其子类异常，如NullPointerException(空指针异常)、IndexOutOfBoundsException(下标越界异常)等，这些异常是不检查异常，程序中可以选择捕获处理，也可以不处理。这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。</p>
+<p>运行时异常的特点是Java编译器不会检查它，也就是说，当程序中可能出现这类异常，即使没有用try-catch语句捕获它，也没有用throws子句声明抛出它，也会编译通过。</p>
+<ul>
+<li><strong>非运行时异常</strong> （编译异常）</li>
+</ul>
+<p>是RuntimeException以外的异常，类型上都属于Exception类及其子类。从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。如IOException、SQLException等以及用户自定义的Exception异常，一般情况下不自定义检查异常。</p>
+<h3 id="可查的异常（checked-exceptions）和不可查的异常（unchecked-exceptions）"><a href="#可查的异常（checked-exceptions）和不可查的异常（unchecked-exceptions）" class="headerlink" title="# 可查的异常（checked exceptions）和不可查的异常（unchecked exceptions）"></a><a href="#%E5%8F%AF%E6%9F%A5%E7%9A%84%E5%BC%82%E5%B8%B8-checked-exceptions-%E5%92%8C%E4%B8%8D%E5%8F%AF%E6%9F%A5%E7%9A%84%E5%BC%82%E5%B8%B8-unchecked-exceptions">#</a> 可查的异常（checked exceptions）和不可查的异常（unchecked exceptions）</h3><ul>
+<li><strong>可查异常</strong>（编译器要求必须处置的异常）：</li>
+</ul>
+<p>正确的程序在运行中，很容易出现的、情理可容的异常状况。可查异常虽然是异常状况，但在一定程度上它的发生是可以预计的，而且一旦发生这种异常状况，就必须采取某种方式进行处理。</p>
+<p>除了RuntimeException及其子类以外，其他的Exception类及其子类都属于可查异常。这种异常的特点是Java编译器会检查它，也就是说，当程序中可能出现这类异常，要么用try-catch语句捕获它，要么用throws子句声明抛出它，否则编译不会通过。</p>
+<ul>
+<li><strong>不可查异常</strong>(编译器不要求强制处置的异常)</li>
+</ul>
+<p>包括运行时异常（RuntimeException与其子类）和错误（Error）。</p>
+<h2 id="异常基础"><a href="#异常基础" class="headerlink" title="# 异常基础"></a><a href="#%E5%BC%82%E5%B8%B8%E5%9F%BA%E7%A1%80">#</a> 异常基础</h2><p>提示</p>
+<p>接下来我们看下异常使用的基础。</p>
+<h3 id="异常关键字"><a href="#异常关键字" class="headerlink" title="# 异常关键字"></a><a href="#%E5%BC%82%E5%B8%B8%E5%85%B3%E9%94%AE%E5%AD%97">#</a> 异常关键字</h3><ul>
+<li><strong>try</strong> – 用于监听。将要被监听的代码(可能抛出异常的代码)放在try语句块之内，当try语句块内发生异常时，异常就被抛出。</li>
+<li><strong>catch</strong> – 用于捕获异常。catch用来捕获try语句块中发生的异常。</li>
+<li><strong>finally</strong> – finally语句块总是会被执行。它主要用于回收在try块里打开的物力资源(如数据库连接、网络连接和磁盘文件)。只有finally块，执行完成之后，才会回来执行try或者catch块中的return或者throw语句，如果finally中使用了return或者throw等终止方法的语句，则就不会跳回执行，直接停止。</li>
+<li><strong>throw</strong> – 用于抛出异常。</li>
+<li><strong>throws</strong> – 用在方法签名中，用于声明该方法可能抛出的异常。</li>
+</ul>
+<h3 id="异常的申明-throws"><a href="#异常的申明-throws" class="headerlink" title="# 异常的申明(throws)"></a><a href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E7%94%B3%E6%98%8E-throws">#</a> 异常的申明(throws)</h3><p>在Java中，当前执行的语句必属于某个方法，Java解释器调用main方法执行开始执行程序。若方法中存在检查异常，如果不对其捕获，那必须在方法头中显式声明该异常，以便于告知方法调用者此方法有异常，需要进行处理。 在方法中声明一个异常，方法头中使用关键字throws，后面接上要声明的异常。若声明多个异常，则使用逗号分割。如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span> <span class="keyword">throws</span> IOException, FileNotFoundException&#123;</span><br><span class="line">    <span class="comment">//something statements</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：若是父类的方法没有声明异常，则子类继承方法后，也不能声明异常。</p>
+<p>通常，应该捕获那些知道如何处理的异常，将不知道如何处理的异常继续传递下去。传递异常可以在方法签名处使用 throws 关键字声明可能会抛出的异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">(String filePath)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(filePath);</span><br><span class="line">    String result;</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(file));</span><br><span class="line">    <span class="keyword">while</span>((result = reader.readLine())!=<span class="literal">null</span>) &#123;</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">    reader.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Throws抛出异常的规则：</p>
+<ul>
+<li>如果是不可查异常（unchecked exception），即Error、RuntimeException或它们的子类，那么可以不使用throws关键字来声明要抛出的异常，编译仍能顺利通过，但在运行时会被系统抛出。</li>
+<li>必须声明方法可抛出的任何可查异常（checked exception）。即如果一个方法可能出现受可查异常，要么用try-catch语句捕获，要么用throws子句声明将它抛出，否则会导致编译错误</li>
+<li>仅当抛出了异常，该方法的调用者才必须处理或者重新抛出该异常。当方法的调用者无力处理该异常的时候，应该继续抛出，而不是囫囵吞枣。</li>
+<li>调用方法必须遵循任何可查异常的处理和声明规则。若覆盖一个方法，则不能声明与覆盖方法不同的异常。声明的任何异常必须是被覆盖方法所声明异常的同类或子类。</li>
+</ul>
+<h3 id="异常的抛出-throw"><a href="#异常的抛出-throw" class="headerlink" title="# 异常的抛出(throw)"></a><a href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8A%9B%E5%87%BA-throw">#</a> 异常的抛出(throw)</h3><p>如果代码可能会引发某种错误，可以创建一个合适的异常类实例并抛出它，这就是抛出异常。如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">method</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(value == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">ArithmeticException</span>(<span class="string">&quot;参数不能为0&quot;</span>); <span class="comment">//抛出一个运行时异常</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5.0</span> / value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大部分情况下都不需要手动抛出异常，因为Java的大部分方法要么已经处理异常，要么已声明异常。所以一般都是捕获异常或者再往上抛。</p>
+<p>有时我们会从 catch 中抛出一个异常，目的是为了改变异常的类型。多用于在多系统集成时，当某个子系统故障，异常类型可能有多种，可以用统一的异常类型向外暴露，不需暴露太多内部异常细节。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">(String filePath)</span> <span class="keyword">throws</span> MyException &#123;    </span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// code</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="type">MyException</span> <span class="variable">ex</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyException</span>(<span class="string">&quot;read file failed.&quot;</span>);</span><br><span class="line">        ex.initCause(e);</span><br><span class="line">        <span class="keyword">throw</span> ex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常的自定义"><a href="#异常的自定义" class="headerlink" title="# 异常的自定义"></a><a href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89">#</a> 异常的自定义</h3><p>习惯上，定义一个异常类应包含两个构造函数，一个无参构造函数和一个带有详细描述信息的构造函数（Throwable 的 toString 方法会打印这些详细信息，调试时很有用）, 比如上面用到的自定义MyException：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyException</span> <span class="keyword">extends</span> <span class="title class_">Exception</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyException</span><span class="params">()</span>&#123; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyException</span><span class="params">(String msg)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(msg);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常的捕获"><a href="#异常的捕获" class="headerlink" title="# 异常的捕获"></a><a href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8D%95%E8%8E%B7">#</a> 异常的捕获</h3><p>异常捕获处理的方法通常有：</p>
+<ul>
+<li>try-catch</li>
+<li>try-catch-finally</li>
+<li>try-finally</li>
+<li>try-with-resource</li>
+</ul>
+<h4 id="try-catch"><a href="#try-catch" class="headerlink" title="# try-catch"></a><a href="#try-catch">#</a> try-catch</h4><p>在一个 try-catch 语句块中可以捕获多个异常类型，并对不同类型的异常做出不同的处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">(String filePath)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// code</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">        <span class="comment">// handle FileNotFoundException</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">        <span class="comment">// handle IOException</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同一个 catch 也可以捕获多种类型异常，用 | 隔开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">(String filePath)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// code</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException | UnknownHostException e) &#123;</span><br><span class="line">        <span class="comment">// handle FileNotFoundException or UnknownHostException</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">        <span class="comment">// handle IOException</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="# try-catch-finally"></a><a href="#try-catch-finally">#</a> try-catch-finally</h4><ul>
+<li>常规语法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;                        </span><br><span class="line">    <span class="comment">//执行程序代码，可能会出现异常                 </span></span><br><span class="line">&#125; <span class="keyword">catch</span>(Exception e) &#123;   </span><br><span class="line">    <span class="comment">//捕获异常并处理   </span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">//必执行的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行的顺序 <ul>
+<li>当try没有捕获到异常时：try语句块中的语句逐一被执行，程序将跳过catch语句块，执行finally语句块和其后的语句；</li>
+<li>当try捕获到异常，catch语句块里没有处理此异常的情况：当try语句块里的某条语句出现异常时，而没有处理此异常的catch语句块时，此异常将会抛给JVM处理，finally语句块里的语句还是会被执行，但finally语句块后的语句不会被执行；</li>
+<li>当try捕获到异常，catch语句块里有处理此异常的情况：在try语句块中是按照顺序来执行的，当执行到某一条语句出现异常时，程序将跳到catch语句块，并与catch语句块逐一匹配，找到与之对应的处理程序，其他的catch语句块将不会被执行，而try语句块中，出现异常之后的语句也不会被执行，catch语句块执行完后，执行finally语句块里的语句，最后执行finally语句块后的语句；</li>
+</ul>
+</li>
+</ul>
+<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="images/java/java-basic-exception-2.jpg" alt="img"></p>
+<ul>
+<li>一个完整的例子</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">(String filePath)</span> <span class="keyword">throws</span> MyException &#123;</span><br><span class="line">    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(filePath);</span><br><span class="line">    String result;</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        reader = <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(file));</span><br><span class="line">        <span class="keyword">while</span>((result = reader.readLine())!=<span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;readFile method catch block.&quot;</span>);</span><br><span class="line">        <span class="type">MyException</span> <span class="variable">ex</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyException</span>(<span class="string">&quot;read file failed.&quot;</span>);</span><br><span class="line">        ex.initCause(e);</span><br><span class="line">        <span class="keyword">throw</span> ex;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;readFile method finally block.&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">null</span> != reader) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                reader.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-finally"><a href="#try-finally" class="headerlink" title="# try-finally"></a><a href="#try-finally">#</a> try-finally</h4><blockquote>
+<p>可以直接用try-finally吗？ 可以。</p>
+</blockquote>
+<p>try块中引起异常，异常代码之后的语句不再执行，直接执行finally语句。 try块没有引发异常，则执行完try块就执行finally语句。</p>
+<p>try-finally可用在不需要捕获异常的代码，可以保证资源在使用后被关闭。例如IO流中执行完相应操作后，关闭相应资源；使用Lock对象保证线程同步，通过finally可以保证锁会被释放；数据库连接代码时，关闭连接操作等等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以Lock加锁为例，演示try-finally</span></span><br><span class="line"><span class="type">ReentrantLock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">//需要加锁的代码</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    lock.unlock(); <span class="comment">//保证锁一定被释放</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>finally遇见如下情况不会执行</p>
+<ul>
+<li>在前面的代码中用了System.exit()退出程序。</li>
+<li>finally语句块中发生了异常。</li>
+<li>程序所在的线程死亡。</li>
+<li>关闭CPU。</li>
+</ul>
+<h4 id="try-with-resource"><a href="#try-with-resource" class="headerlink" title="# try-with-resource"></a><a href="#try-with-resource">#</a> try-with-resource</h4><blockquote>
+<p>try-with-resource是Java 7中引入的，很容易被忽略。</p>
+</blockquote>
+<p>上面例子中，finally 中的 close 方法也可能抛出 IOException, 从而覆盖了原始异常。JAVA 7 提供了更优雅的方式来实现资源的自动释放，自动释放的资源需要是实现了 AutoCloseable 接口的类。</p>
+<ul>
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span>  <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">tryWithResourceTest</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (<span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;c:/abc&quot;</span>),<span class="string">&quot;UTF-8&quot;</span>))&#123;</span><br><span class="line">        <span class="comment">// code</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">        <span class="comment">// handle exception</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>看下Scanner</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Scanner</span> <span class="keyword">implements</span> <span class="title class_">Iterator</span>&lt;String&gt;, Closeable &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Closeable</span> <span class="keyword">extends</span> <span class="title class_">AutoCloseable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>try 代码块退出时，会自动调用 scanner.close 方法，和把 scanner.close 方法放在 finally 代码块中不同的是，若 scanner.close 抛出异常，则会被抑制，抛出的仍然为原始异常。被抑制的异常会由 addSusppressed 方法添加到原来的异常，如果想要获取被抑制的异常列表，可以调用 getSuppressed 方法来获取。</p>
+<h3 id="异常基础总结"><a href="#异常基础总结" class="headerlink" title="# 异常基础总结"></a><a href="#%E5%BC%82%E5%B8%B8%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93">#</a> 异常基础总结</h3><ul>
+<li>try、catch和finally都不能单独使用，只能是try-catch、try-finally或者try-catch-finally。</li>
+<li>try语句块监控代码，出现异常就停止执行下面的代码，然后将异常移交给catch语句块来处理。</li>
+<li>finally语句块中的代码一定会被执行，常用于回收资源 。</li>
+<li>throws：声明一个异常，告知方法调用者。</li>
+<li>throw ：抛出一个异常，至于该异常被捕获还是继续抛出都与它无关。</li>
+</ul>
+<p>Java编程思想一书中，对异常的总结。</p>
+<ul>
+<li>在恰当的级别处理问题。（在知道该如何处理的情况下了捕获异常。）</li>
+<li>解决问题并且重新调用产生异常的方法。</li>
+<li>进行少许修补，然后绕过异常发生的地方继续执行。</li>
+<li>用别的数据进行计算，以代替方法预计会返回的值。</li>
+<li>把当前运行环境下能做的事尽量做完，然后把相同的异常重抛到更高层。</li>
+<li>把当前运行环境下能做的事尽量做完，然后把不同的异常抛到更高层。</li>
+<li>终止程序。</li>
+<li>进行简化（如果你的异常模式使问题变得太复杂，那么用起来会非常痛苦）。</li>
+<li>让类库和程序更安全。</li>
+</ul>
+<h3 id="常用的异常"><a href="#常用的异常" class="headerlink" title="# 常用的异常"></a><a href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%BC%82%E5%B8%B8">#</a> 常用的异常</h3><p>在Java中提供了一些异常用来描述经常发生的错误，对于这些异常，有的需要程序员进行捕获处理或声明抛出，有的是由Java虚拟机自动进行捕获处理。Java中常见的异常类:</p>
+<ul>
+<li><strong>RuntimeException</strong><ul>
+<li>java.lang.ArrayIndexOutOfBoundsException 数组索引越界异常。当对数组的索引值为负数或大于等于数组大小时抛出。</li>
+<li>java.lang.ArithmeticException 算术条件异常。譬如：整数除零等。</li>
+<li>java.lang.NullPointerException 空指针异常。当应用试图在要求使用对象的地方使用了null时，抛出该异常。譬如：调用null对象的实例方法、访问null对象的属性、计算null对象的长度、使用throw语句抛出null等等</li>
+<li>java.lang.ClassNotFoundException 找不到类异常。当应用试图根据字符串形式的类名构造类，而在遍历CLASSPAH之后找不到对应名称的class文件时，抛出该异常。</li>
+<li>java.lang.NegativeArraySizeException 数组长度为负异常</li>
+<li>java.lang.ArrayStoreException 数组中包含不兼容的值抛出的异常</li>
+<li>java.lang.SecurityException 安全性异常</li>
+<li>java.lang.IllegalArgumentException 非法参数异常</li>
+</ul>
+</li>
+<li><strong>IOException</strong><ul>
+<li>IOException：操作输入流和输出流时可能出现的异常。</li>
+<li>EOFException 文件已结束异常</li>
+<li>FileNotFoundException 文件未找到异常</li>
+</ul>
+</li>
+<li><strong>其他</strong><ul>
+<li>ClassCastException 类型转换异常类</li>
+<li>ArrayStoreException 数组中包含不兼容的值抛出的异常</li>
+<li>SQLException 操作数据库异常类</li>
+<li>NoSuchFieldException 字段未找到异常</li>
+<li>NoSuchMethodException 方法未找到抛出的异常</li>
+<li>NumberFormatException 字符串转换为数字抛出的异常</li>
+<li>StringIndexOutOfBoundsException 字符串索引超出范围抛出的异常</li>
+<li>IllegalAccessException 不允许访问某类异常</li>
+<li>InstantiationException 当应用程序试图使用Class类中的newInstance()方法创建一个类的实例，而指定的类对象无法被实例化时，抛出该异常</li>
+</ul>
+</li>
+</ul>
+<h2 id="异常实践"><a href="#异常实践" class="headerlink" title="# 异常实践"></a><a href="#%E5%BC%82%E5%B8%B8%E5%AE%9E%E8%B7%B5">#</a> 异常实践</h2><p>提示</p>
+<p>在 Java 中处理异常并不是一个简单的事情。不仅仅初学者很难理解，即使一些有经验的开发者也需要花费很多时间来思考如何处理异常，包括需要处理哪些异常，怎样处理等等。这也是绝大多数开发团队都会制定一些规则来规范进行异常处理的原因。</p>
+<p>当你抛出或捕获异常的时候，有很多不同的情况需要考虑，而且大部分事情都是为了改善代码的可读性或者 API 的可用性。</p>
+<p>异常不仅仅是一个错误控制机制，也是一个通信媒介。因此，为了和同事更好的合作，一个团队必须要制定出一个最佳实践和规则，只有这样，团队成员才能理解这些通用概念，同时在工作中使用它。</p>
+<p>这里给出几个被很多团队使用的异常处理最佳实践。</p>
+<h3 id="只针对不正常的情况才使用异常"><a href="#只针对不正常的情况才使用异常" class="headerlink" title="# 只针对不正常的情况才使用异常"></a><a href="#%E5%8F%AA%E9%92%88%E5%AF%B9%E4%B8%8D%E6%AD%A3%E5%B8%B8%E7%9A%84%E6%83%85%E5%86%B5%E6%89%8D%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8">#</a> 只针对不正常的情况才使用异常</h3><blockquote>
+<p>异常只应该被用于不正常的条件，它们永远不应该被用于正常的控制流。《阿里手册》中：【强制】Java 类库中定义的可以通过预检查方式规避的RuntimeException异常不应该通过catch 的方式来处理，比如：NullPointerException，IndexOutOfBoundsException等等。</p>
+</blockquote>
+<p>比如，在解析字符串形式的数字时，可能存在数字格式错误，不得通过catch Exception来实现</p>
+<ul>
+<li>代码1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (obj != <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>代码2</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123; </span><br><span class="line">  obj.method(); </span><br><span class="line">&#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要原因有三点：</p>
+<ul>
+<li>异常机制的设计初衷是用于不正常的情况，所以很少会会JVM实现试图对它们的性能进行优化。所以，创建、抛出和捕获异常的开销是很昂贵的。</li>
+<li>把代码放在try-catch中返回阻止了JVM实现本来可能要执行的某些特定的优化。</li>
+<li>对数组进行遍历的标准模式并不会导致冗余的检查，有些现代的JVM实现会将它们优化掉。</li>
+</ul>
+<h3 id="在-finally-块中清理资源或者使用-try-with-resource-语句"><a href="#在-finally-块中清理资源或者使用-try-with-resource-语句" class="headerlink" title="# 在 finally 块中清理资源或者使用 try-with-resource 语句"></a><a href="#%E5%9C%A8-finally-%E5%9D%97%E4%B8%AD%E6%B8%85%E7%90%86%E8%B5%84%E6%BA%90%E6%88%96%E8%80%85%E4%BD%BF%E7%94%A8-try-with-resource-%E8%AF%AD%E5%8F%A5">#</a> 在 finally 块中清理资源或者使用 try-with-resource 语句</h3><p>当使用类似InputStream这种需要使用后关闭的资源时，一个常见的错误就是在try块的最后关闭资源。</p>
+<ul>
+<li>错误示例</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doNotCloseResourceInTry</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">FileInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;./tmp.txt&quot;</span>);</span><br><span class="line">        inputStream = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(file);</span><br><span class="line">        <span class="comment">// use the inputStream to read a file</span></span><br><span class="line">        <span class="comment">// do NOT do this</span></span><br><span class="line">        inputStream.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">        log.error(e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        log.error(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>问题就是，只有没有异常抛出的时候，这段代码才可以正常工作。try 代码块内代码会正常执行，并且资源可以正常关闭。但是，使用 try 代码块是有原因的，一般调用一个或多个可能抛出异常的方法，而且，你自己也可能会抛出一个异常，这意味着代码可能不会执行到 try 代码块的最后部分。结果就是，你并没有关闭资源。</p>
+<p>所以，你应该把清理工作的代码放到 finally 里去，或者使用 try-with-resource 特性。</p>
+<ul>
+<li>方法一：使用 finally 代码块</li>
+</ul>
+<p>与前面几行 try 代码块不同，finally 代码块总是会被执行。不管 try 代码块成功执行之后还是你在 catch 代码块中处理完异常后都会执行。因此，你可以确保你清理了所有打开的资源。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">closeResourceInFinally</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">FileInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;./tmp.txt&quot;</span>);</span><br><span class="line">        inputStream = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(file);</span><br><span class="line">        <span class="comment">// use the inputStream to read a file</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">        log.error(e);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (inputStream != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                log.error(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法二：Java 7 的 try-with-resource 语法</li>
+</ul>
+<p>如果你的资源实现了 AutoCloseable 接口，你可以使用这个语法。大多数的 Java 标准资源都继承了这个接口。当你在 try 子句中打开资源，资源会在 try 代码块执行后或异常处理后自动关闭。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">automaticallyCloseResource</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;./tmp.txt&quot;</span>);</span><br><span class="line">    <span class="keyword">try</span> (<span class="type">FileInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(file);) &#123;</span><br><span class="line">        <span class="comment">// use the inputStream to read a file</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">        log.error(e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        log.error(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="尽量使用标准的异常"><a href="#尽量使用标准的异常" class="headerlink" title="# 尽量使用标准的异常"></a><a href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E7%9A%84%E5%BC%82%E5%B8%B8">#</a> 尽量使用标准的异常</h3><blockquote>
+<p>代码重用是值得提倡的，这是一条通用规则，异常也不例外。</p>
+</blockquote>
+<p>重用现有的异常有几个好处：</p>
+<ul>
+<li>它使得你的API更加易于学习和使用，因为它与程序员原来已经熟悉的习惯用法是一致的。</li>
+<li>对于用到这些API的程序而言，它们的可读性更好，因为它们不会充斥着程序员不熟悉的异常。</li>
+<li>异常类越少，意味着内存占用越小，并且转载这些类的时间开销也越小。</li>
+</ul>
+<p>Java标准异常中有几个是经常被使用的异常。如下表格：</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>使用场合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IllegalArgumentException</td>
+<td>参数的值不合适</td>
+</tr>
+<tr>
+<td>IllegalStateException</td>
+<td>参数的状态不合适</td>
+</tr>
+<tr>
+<td>NullPointerException</td>
+<td>在null被禁止的情况下参数值为null</td>
+</tr>
+<tr>
+<td>IndexOutOfBoundsException</td>
+<td>下标越界</td>
+</tr>
+<tr>
+<td>ConcurrentModificationException</td>
+<td>在禁止并发修改的情况下，对象检测到并发修改</td>
+</tr>
+<tr>
+<td>UnsupportedOperationException</td>
+<td>对象不支持客户请求的方法</td>
+</tr>
+</tbody></table>
+<p>虽然它们是Java平台库迄今为止最常被重用的异常，但是，在许可的条件下，其它的异常也可以被重用。例如，如果你要实现诸如复数或者矩阵之类的算术对象，那么重用ArithmeticException和NumberFormatException将是非常合适的。如果一个异常满足你的需要，则不要犹豫，使用就可以，不过你一定要确保抛出异常的条件与该异常的文档中描述的条件一致。这种重用必须建立在语义的基础上，而不是名字的基础上。</p>
+<p>最后，一定要清楚，选择重用哪一种异常并没有必须遵循的规则。例如，考虑纸牌对象的情形，假设有一个用于发牌操作的方法，它的参数(handSize)是发一手牌的纸牌张数。假设调用者在这个参数中传递的值大于整副牌的剩余张数。那么这种情形既可以被解释为IllegalArgumentException(handSize的值太大)，也可以被解释为IllegalStateException(相对客户的请求而言，纸牌对象的纸牌太少)。</p>
+<h3 id="对异常进行文档说明"><a href="#对异常进行文档说明" class="headerlink" title="# 对异常进行文档说明"></a><a href="#%E5%AF%B9%E5%BC%82%E5%B8%B8%E8%BF%9B%E8%A1%8C%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E">#</a> 对异常进行文档说明</h3><blockquote>
+<p>当在方法上声明抛出异常时，也需要进行文档说明。目的是为了给调用者提供尽可能多的信息，从而可以更好地避免或处理异常。</p>
+</blockquote>
+<p>在 Javadoc 添加 @throws 声明，并且描述抛出异常的场景。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Method description</span></span><br><span class="line"><span class="comment">* </span></span><br><span class="line"><span class="comment">* <span class="doctag">@throws</span> MyBusinessException - businuess exception description</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">(String input)</span> <span class="keyword">throws</span> MyBusinessException &#123;</span><br><span class="line">   <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，在抛出MyBusinessException 异常时，需要尽可能精确地描述问题和相关信息，这样无论是打印到日志中还是在监控工具中，都能够更容易被人阅读，从而可以更好地定位具体错误信息、错误的严重程度等。</p>
+<h3 id="优先捕获最具体的异常"><a href="#优先捕获最具体的异常" class="headerlink" title="# 优先捕获最具体的异常"></a><a href="#%E4%BC%98%E5%85%88%E6%8D%95%E8%8E%B7%E6%9C%80%E5%85%B7%E4%BD%93%E7%9A%84%E5%BC%82%E5%B8%B8">#</a> 优先捕获最具体的异常</h3><blockquote>
+<p>大多数 IDE 都可以帮助你实现这个最佳实践。当你尝试首先捕获较不具体的异常时，它们会报告无法访问的代码块。</p>
+</blockquote>
+<p>但问题在于，只有匹配异常的第一个 catch 块会被执行。 因此，如果首先捕获 IllegalArgumentException ，则永远不会到达应该处理更具体的 NumberFormatException 的 catch 块，因为它是 IllegalArgumentException 的子类。</p>
+<p>总是优先捕获最具体的异常类，并将不太具体的 catch 块添加到列表的末尾。</p>
+<p>你可以在下面的代码片断中看到这样一个 try-catch 语句的例子。 第一个 catch 块处理所有 NumberFormatException 异常，第二个处理所有非 NumberFormatException 异常的IllegalArgumentException 异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">catchMostSpecificExceptionFirst</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        doSomething(<span class="string">&quot;A message&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        log.error(e);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalArgumentException e) &#123;</span><br><span class="line">        log.error(e)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不要捕获-Throwable-类"><a href="#不要捕获-Throwable-类" class="headerlink" title="# 不要捕获 Throwable 类"></a><a href="#%E4%B8%8D%E8%A6%81%E6%8D%95%E8%8E%B7-throwable-%E7%B1%BB">#</a> 不要捕获 Throwable 类</h3><blockquote>
+<p>Throwable 是所有异常和错误的超类。你可以在 catch 子句中使用它，但是你永远不应该这样做！</p>
+</blockquote>
+<p>如果在 catch 子句中使用 Throwable ，它不仅会捕获所有异常，也将捕获所有的错误。JVM 抛出错误，指出不应该由应用程序处理的严重问题。 典型的例子是 OutOfMemoryError 或者 StackOverflowError 。两者都是由应用程序控制之外的情况引起的，无法处理。</p>
+<p>所以，最好不要捕获 Throwable ，除非你确定自己处于一种特殊的情况下能够处理错误。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doNotCatchThrowable</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">        <span class="comment">// don&#x27;t do this!</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不要忽略异常"><a href="#不要忽略异常" class="headerlink" title="# 不要忽略异常"></a><a href="#%E4%B8%8D%E8%A6%81%E5%BF%BD%E7%95%A5%E5%BC%82%E5%B8%B8">#</a> 不要忽略异常</h3><blockquote>
+<p>很多时候，开发者很有自信不会抛出异常，因此写了一个catch块，但是没有做任何处理或者记录日志。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doNotIgnoreExceptions</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        <span class="comment">// this will never happen</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但现实是经常会出现无法预料的异常，或者无法确定这里的代码未来是不是会改动(删除了阻止异常抛出的代码)，而此时由于异常被捕获，使得无法拿到足够的错误信息来定位问题。</p>
+<p>合理的做法是至少要记录异常的信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logAnException</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        log.error(<span class="string">&quot;This should never happen: &quot;</span> + e); <span class="comment">// see this line</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不要记录并抛出异常"><a href="#不要记录并抛出异常" class="headerlink" title="# 不要记录并抛出异常"></a><a href="#%E4%B8%8D%E8%A6%81%E8%AE%B0%E5%BD%95%E5%B9%B6%E6%8A%9B%E5%87%BA%E5%BC%82%E5%B8%B8">#</a> 不要记录并抛出异常</h3><blockquote>
+<p>这可能是本文中最常被忽略的最佳实践。</p>
+</blockquote>
+<p>可以发现很多代码甚至类库中都会有捕获异常、记录日志并再次抛出的逻辑。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Long</span>(<span class="string">&quot;xyz&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">    log.error(e);</span><br><span class="line">    <span class="keyword">throw</span> e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个处理逻辑看着是合理的。但这经常会给同一个异常输出多条日志。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">17</span>:<span class="number">44</span>:<span class="number">28</span>,<span class="number">945</span> ERROR TestExceptionHandling:<span class="number">65</span> - java.lang.NumberFormatException: For input string: <span class="string">&quot;xyz&quot;</span></span><br><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> java.lang.NumberFormatException: For input string: <span class="string">&quot;xyz&quot;</span></span><br><span class="line">at java.lang.NumberFormatException.forInputString(NumberFormatException.java:<span class="number">65</span>)</span><br><span class="line">at java.lang.Long.parseLong(Long.java:<span class="number">589</span>)</span><br><span class="line">at java.lang.Long.(Long.java:<span class="number">965</span>)</span><br><span class="line">at com.stackify.example.TestExceptionHandling.logAndThrowException(TestExceptionHandling.java:<span class="number">63</span>)</span><br><span class="line">at com.stackify.example.TestExceptionHandling.main(TestExceptionHandling.java:<span class="number">58</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如上所示，后面的日志也没有附加更有用的信息。如果想要提供更加有用的信息，那么可以将异常包装为自定义异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">wrapException</span><span class="params">(String input)</span> <span class="keyword">throws</span> MyBusinessException &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyBusinessException</span>(<span class="string">&quot;A message that describes the error.&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此，仅仅当想要处理异常时才去捕获，否则只需要在方法签名中声明让调用者去处理。</p>
+<h3 id="包装异常时不要抛弃原始的异常"><a href="#包装异常时不要抛弃原始的异常" class="headerlink" title="# 包装异常时不要抛弃原始的异常"></a><a href="#%E5%8C%85%E8%A3%85%E5%BC%82%E5%B8%B8%E6%97%B6%E4%B8%8D%E8%A6%81%E6%8A%9B%E5%BC%83%E5%8E%9F%E5%A7%8B%E7%9A%84%E5%BC%82%E5%B8%B8">#</a> 包装异常时不要抛弃原始的异常</h3><p>捕获标准异常并包装为自定义异常是一个很常见的做法。这样可以添加更为具体的异常信息并能够做针对的异常处理。 在你这样做时，请确保将原始异常设置为原因（注：参考下方代码 NumberFormatException e 中的原始异常 e ）。Exception 类提供了特殊的构造函数方法，它接受一个 Throwable 作为参数。否则，你将会丢失堆栈跟踪和原始异常的消息，这将会使分析导致异常的异常事件变得困难。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">wrapException</span><span class="params">(String input)</span> <span class="keyword">throws</span> MyBusinessException &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyBusinessException</span>(<span class="string">&quot;A message that describes the error.&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不要使用异常控制程序的流程"><a href="#不要使用异常控制程序的流程" class="headerlink" title="# 不要使用异常控制程序的流程"></a><a href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%B5%81%E7%A8%8B">#</a> 不要使用异常控制程序的流程</h3><p>不应该使用异常控制应用的执行流程，例如，本应该使用if语句进行条件判断的情况下，你却使用异常处理，这是非常不好的习惯，会严重影响应用的性能。</p>
+<h3 id="不要在finally块中使用return。"><a href="#不要在finally块中使用return。" class="headerlink" title="# 不要在finally块中使用return。"></a><a href="#%E4%B8%8D%E8%A6%81%E5%9C%A8finally%E5%9D%97%E4%B8%AD%E4%BD%BF%E7%94%A8return%E3%80%82">#</a> 不要在finally块中使用return。</h3><p>try块中的return语句执行成功后，并不马上返回，而是继续执行finally块中的语句，如果此处存在return语句，则在此直接返回，无情丢弃掉try块中的返回点。</p>
+<p>如下是一个反例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">checkReturn</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// x等于1，此处不返回</span></span><br><span class="line">        <span class="keyword">return</span> ++x;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">// 返回的结果是2</span></span><br><span class="line">        <span class="keyword">return</span> ++x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="深入理解异常"><a href="#深入理解异常" class="headerlink" title="# 深入理解异常"></a><a href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%BC%82%E5%B8%B8">#</a> 深入理解异常</h2><p>提示</p>
+<p>我们再深入理解下异常，看下底层实现。</p>
+<h3 id="JVM处理异常的机制？"><a href="#JVM处理异常的机制？" class="headerlink" title="# JVM处理异常的机制？"></a><a href="#jvm%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%E7%9A%84%E6%9C%BA%E5%88%B6">#</a> JVM处理异常的机制？</h3><p>提到JVM处理异常的机制，就需要提及Exception Table，以下称为异常表。我们暂且不急于介绍异常表，先看一个简单的 Java 处理异常的小例子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">simpleTryCatch</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       testNPE();</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">       e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码是一个很简单的例子，用来捕获处理一个潜在的空指针异常。</p>
+<p>当然如果只是看简简单单的代码，我们很难看出什么高深之处，更没有了今天文章要谈论的内容。</p>
+<p>所以这里我们需要借助一把神兵利器，它就是javap,一个用来拆解class文件的工具，和javac一样由JDK提供。</p>
+<p>然后我们使用javap来分析这段代码（需要先使用javac编译）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javap -c Main</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">simpleTryCatch</span><span class="params">()</span>;</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: invokestatic  #<span class="number">3</span>                  <span class="comment">// Method testNPE:()V</span></span><br><span class="line">       <span class="number">3</span>: goto          <span class="number">11</span></span><br><span class="line">       <span class="number">6</span>: astore_0</span><br><span class="line">       <span class="number">7</span>: aload_0</span><br><span class="line">       <span class="number">8</span>: invokevirtual #<span class="number">5</span>                  <span class="comment">// Method java/lang/Exception.printStackTrace:()V</span></span><br><span class="line">      <span class="number">11</span>: <span class="keyword">return</span></span><br><span class="line">    Exception table:</span><br><span class="line">       from    to  target type</span><br><span class="line">           <span class="number">0</span>     <span class="number">3</span>     <span class="number">6</span>   Class java/lang/Exception</span><br></pre></td></tr></table></figure>
+
+<p>看到上面的代码，应该会有会心一笑，因为终于看到了Exception table，也就是我们要研究的异常表。</p>
+<p>异常表中包含了一个或多个异常处理者(Exception Handler)的信息，这些信息包含如下</p>
+<ul>
+<li><strong>from</strong> 可能发生异常的起始点</li>
+<li><strong>to</strong> 可能发生异常的结束点</li>
+<li><strong>target</strong> 上述from和to之前发生异常后的异常处理者的位置</li>
+<li><strong>type</strong> 异常处理者处理的异常的类信息</li>
+</ul>
+<p><strong>那么异常表用在什么时候呢</strong></p>
+<p>答案是异常发生的时候，当一个异常发生时</p>
+<ul>
+<li>1.JVM会在当前出现异常的方法中，查找异常表，是否有合适的处理者来处理</li>
+<li>2.如果当前方法异常表不为空，并且异常符合处理者的from和to节点，并且type也匹配，则JVM调用位于target的调用者来处理。</li>
+<li>3.如果上一条未找到合理的处理者，则继续查找异常表中的剩余条目</li>
+<li>4.如果当前方法的异常表无法处理，则向上查找（弹栈处理）刚刚调用该方法的调用处，并重复上面的操作。</li>
+<li>5.如果所有的栈帧被弹出，仍然没有处理，则抛给当前的Thread，Thread则会终止。</li>
+<li>6.如果当前Thread为最后一个非守护线程，且未处理异常，则会导致JVM终止运行。</li>
+</ul>
+<p>以上就是JVM处理异常的一些机制。</p>
+<p><strong>try catch -finally</strong></p>
+<p>除了简单的try-catch外，我们还常常和finally做结合使用。比如这样的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">simpleTryCatchFinally</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       testNPE();</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">       e.printStackTrace();</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Finally&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样我们使用javap分析一下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">simpleTryCatchFinally</span><span class="params">()</span>;</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: invokestatic  #<span class="number">3</span>                  <span class="comment">// Method testNPE:()V</span></span><br><span class="line">       <span class="number">3</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">       <span class="number">6</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Finally</span></span><br><span class="line">       <span class="number">8</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">11</span>: goto          <span class="number">41</span></span><br><span class="line">      <span class="number">14</span>: astore_0</span><br><span class="line">      <span class="number">15</span>: aload_0</span><br><span class="line">      <span class="number">16</span>: invokevirtual #<span class="number">5</span>                  <span class="comment">// Method java/lang/Exception.printStackTrace:()V</span></span><br><span class="line">      <span class="number">19</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">      <span class="number">22</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Finally</span></span><br><span class="line">      <span class="number">24</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">27</span>: goto          <span class="number">41</span></span><br><span class="line">      <span class="number">30</span>: astore_1</span><br><span class="line">      <span class="number">31</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">      <span class="number">34</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Finally</span></span><br><span class="line">      <span class="number">36</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">39</span>: aload_1</span><br><span class="line">      <span class="number">40</span>: athrow</span><br><span class="line">      <span class="number">41</span>: <span class="keyword">return</span></span><br><span class="line">    Exception table:</span><br><span class="line">       from    to  target type</span><br><span class="line">           <span class="number">0</span>     <span class="number">3</span>    <span class="number">14</span>   Class java/lang/Exception</span><br><span class="line">           <span class="number">0</span>     <span class="number">3</span>    <span class="number">30</span>   any</span><br><span class="line">          <span class="number">14</span>    <span class="number">19</span>    <span class="number">30</span>   any</span><br></pre></td></tr></table></figure>
+
+<p>和之前有所不同，这次异常表中，有三条数据，而我们仅仅捕获了一个Exception, 异常表的后两个item的type为any; 上面的三条异常表item的意思为:</p>
+<ul>
+<li>如果0到3之间，发生了Exception类型的异常，调用14位置的异常处理者。</li>
+<li>如果0到3之间，无论发生什么异常，都调用30位置的处理者</li>
+<li>如果14到19之间（即catch部分），不论发生什么异常，都调用30位置的处理者。</li>
+</ul>
+<p>再次分析上面的Java代码，finally里面的部分已经被提取到了try部分和catch部分。我们再次调一下代码来看一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">simpleTryCatchFinally</span><span class="params">()</span>;</span><br><span class="line">    Code:</span><br><span class="line">      <span class="comment">//try 部分提取finally代码，如果没有异常发生，则执行输出finally操作，直至goto到41位置，执行返回操作。  </span></span><br><span class="line"></span><br><span class="line">       <span class="number">0</span>: invokestatic  #<span class="number">3</span>                  <span class="comment">// Method testNPE:()V</span></span><br><span class="line">       <span class="number">3</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">       <span class="number">6</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Finally</span></span><br><span class="line">       <span class="number">8</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">11</span>: goto          <span class="number">41</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//catch部分提取finally代码，如果没有异常发生，则执行输出finally操作，直至执行got到41位置，执行返回操作。</span></span><br><span class="line">      <span class="number">14</span>: astore_0</span><br><span class="line">      <span class="number">15</span>: aload_0</span><br><span class="line">      <span class="number">16</span>: invokevirtual #<span class="number">5</span>                  <span class="comment">// Method java/lang/Exception.printStackTrace:()V</span></span><br><span class="line">      <span class="number">19</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">      <span class="number">22</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Finally</span></span><br><span class="line">      <span class="number">24</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">27</span>: goto          <span class="number">41</span></span><br><span class="line">      <span class="comment">//finally部分的代码如果被调用，有可能是try部分，也有可能是catch部分发生异常。</span></span><br><span class="line">      <span class="number">30</span>: astore_1</span><br><span class="line">      <span class="number">31</span>: getstatic     #<span class="number">6</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">      <span class="number">34</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String Finally</span></span><br><span class="line">      <span class="number">36</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">39</span>: aload_1</span><br><span class="line">      <span class="number">40</span>: athrow     <span class="comment">//如果异常没有被catch捕获，而是到了这里，执行完finally的语句后，仍然要把这个异常抛出去，传递给调用处。</span></span><br><span class="line">      <span class="number">41</span>: <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Catch先后顺序的问题</strong></p>
+<p>我们在代码中的catch的顺序决定了异常处理者在异常表的位置，所以，越是具体的异常要先处理，否则就会出现下面的问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">misuseCatchException</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       testNPE();</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Throwable t) &#123;</span><br><span class="line">       t.printStackTrace();</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123; <span class="comment">//error occurs during compilings with tips Exception Java.lang.Exception has already benn caught.</span></span><br><span class="line">       e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码会导致编译失败，因为先捕获Throwable后捕获Exception，会导致后面的catch永远无法被执行。</p>
+<p><strong>Return 和finally的问题</strong></p>
+<p>这算是我们扩展的一个相对比较极端的问题，就是类似这样的代码，既有return，又有finally，那么finally导致会不会执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">tryCatchReturn</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">       testNPE();</span><br><span class="line">       <span class="keyword">return</span>  <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;ERROR&quot;</span>;</span><br><span class="line">   &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;tryCatchReturn&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>答案是finally会执行，那么还是使用上面的方法，我们来看一下为什么finally会执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> java.lang.String <span class="title function_">tryCatchReturn</span><span class="params">()</span>;</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: invokestatic  #<span class="number">3</span>                  <span class="comment">// Method testNPE:()V</span></span><br><span class="line">       <span class="number">3</span>: ldc           #<span class="number">6</span>                  <span class="comment">// String OK</span></span><br><span class="line">       <span class="number">5</span>: astore_0</span><br><span class="line">       <span class="number">6</span>: getstatic     #<span class="number">7</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">       <span class="number">9</span>: ldc           #<span class="number">8</span>                  <span class="comment">// String tryCatchReturn</span></span><br><span class="line">      <span class="number">11</span>: invokevirtual #<span class="number">9</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">14</span>: aload_0</span><br><span class="line">      <span class="number">15</span>: areturn       返回OK字符串，areturn意思为<span class="keyword">return</span> a reference from a method</span><br><span class="line">      <span class="number">16</span>: astore_0</span><br><span class="line">      <span class="number">17</span>: ldc           #<span class="number">10</span>                 <span class="comment">// String ERROR</span></span><br><span class="line">      <span class="number">19</span>: astore_1</span><br><span class="line">      <span class="number">20</span>: getstatic     #<span class="number">7</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">      <span class="number">23</span>: ldc           #<span class="number">8</span>                  <span class="comment">// String tryCatchReturn</span></span><br><span class="line">      <span class="number">25</span>: invokevirtual #<span class="number">9</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">28</span>: aload_1</span><br><span class="line">      <span class="number">29</span>: areturn  <span class="comment">//返回ERROR字符串</span></span><br><span class="line">      <span class="number">30</span>: astore_2</span><br><span class="line">      <span class="number">31</span>: getstatic     #<span class="number">7</span>                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">      <span class="number">34</span>: ldc           #<span class="number">8</span>                  <span class="comment">// String tryCatchReturn</span></span><br><span class="line">      <span class="number">36</span>: invokevirtual #<span class="number">9</span>                  <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">      <span class="number">39</span>: aload_2</span><br><span class="line">      <span class="number">40</span>: athrow  如果<span class="keyword">catch</span>有未处理的异常，抛出去。</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常是否耗时？为什么会耗时？"><a href="#异常是否耗时？为什么会耗时？" class="headerlink" title="# 异常是否耗时？为什么会耗时？"></a><a href="#%E5%BC%82%E5%B8%B8%E6%98%AF%E5%90%A6%E8%80%97%E6%97%B6-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%80%97%E6%97%B6">#</a> 异常是否耗时？为什么会耗时？</h3><p>说用异常慢，首先来看看异常慢在哪里？有多慢？下面的测试用例简单的测试了建立对象、建立异常对象、抛出并接住异常对象三者的耗时对比：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionTest</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> testTimes;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ExceptionTest</span><span class="params">(<span class="type">int</span> testTimes)</span> &#123;  </span><br><span class="line">        <span class="built_in">this</span>.testTimes = testTimes;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">newObject</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="type">long</span> <span class="variable">l</span> <span class="operator">=</span> System.nanoTime();  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; testTimes; i++) &#123;  </span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Object</span>();  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(<span class="string">&quot;建立对象：&quot;</span> + (System.nanoTime() - l));  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">newException</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="type">long</span> <span class="variable">l</span> <span class="operator">=</span> System.nanoTime();  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; testTimes; i++) &#123;  </span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Exception</span>();  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(<span class="string">&quot;建立异常对象：&quot;</span> + (System.nanoTime() - l));  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">catchException</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="type">long</span> <span class="variable">l</span> <span class="operator">=</span> System.nanoTime();  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; testTimes; i++) &#123;  </span><br><span class="line">            <span class="keyword">try</span> &#123;  </span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>();  </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(<span class="string">&quot;建立、抛出并接住异常对象：&quot;</span> + (System.nanoTime() - l));  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="type">ExceptionTest</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExceptionTest</span>(<span class="number">10000</span>);  </span><br><span class="line">        test.newObject();  </span><br><span class="line">        test.newException();  </span><br><span class="line">        test.catchException();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">建立对象：<span class="number">575817</span>  </span><br><span class="line">建立异常对象：<span class="number">9589080</span>  </span><br><span class="line">建立、抛出并接住异常对象：<span class="number">47394475</span>  </span><br></pre></td></tr></table></figure>
+
+<p>建立一个异常对象，是建立一个普通Object耗时的约20倍（实际上差距会比这个数字更大一些，因为循环也占用了时间，追求精确的读者可以再测一下空循环的耗时然后在对比前减掉这部分），而抛出、接住一个异常对象，所花费时间大约是建立异常对象的4倍。</p>
+<p>那占用时间的“大头”：抛出、接住异常，系统到底做了什么事情？请参考这篇文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.iteye.com/blog/icyfenix-857722">https://www.iteye.com/blog/icyfenix-857722</a></li>
+</ul>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="# 参考文章"></a><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0">#</a> 参考文章</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/MacWx/article/details/90204111">https://blog.csdn.net/MacWx/article/details/90204111</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hguisu/article/details/6155636">https://blog.csdn.net/hguisu/article/details/6155636</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/ThinkWon/article/details/101681073">https://blog.csdn.net/ThinkWon/article/details/101681073</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skywang12345/p/3544287.html">https://www.cnblogs.com/skywang12345/p/3544287.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.codercto.com/a/33350.html">https://www.codercto.com/a/33350.html</a></li>
+</ul>
+</article><div class="business-center"><div class="business-card"><div class="business-flip"><div class="business-front"><div class="business-strip-bottom"></div><div class="business-strip-top"></div><img class="business-logo" width="80" height="80" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://s2.loli.net/2022/11/09/NuQ3V6fehArJl2E.webp" alt="cardcode"><div class="business-Invitation">Invitation</div><div class="business-chip"><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-line"></div><div class="business-chip-main"></div></div><svg class="business-wave" viewBox="0 3.71 26.959 38.787" width="26.959" height="38.787" fill="white"><path d="M19.709 3.719c.266.043.5.187.656.406 4.125 5.207 6.594 11.781 6.594 18.938 0 7.156-2.469 13.73-6.594 18.937-.195.336-.57.531-.957.492a.9946.9946 0 0 1-.851-.66c-.129-.367-.035-.777.246-1.051 3.855-4.867 6.156-11.023 6.156-17.718 0-6.696-2.301-12.852-6.156-17.719-.262-.317-.301-.762-.102-1.121.204-.36.602-.559 1.008-.504z"></path><path d="M13.74 7.563c.231.039.442.164.594.343 3.508 4.059 5.625 9.371 5.625 15.157 0 5.785-2.113 11.097-5.625 15.156-.363.422-1 .472-1.422.109-.422-.363-.472-1-.109-1.422 3.211-3.711 5.156-8.551 5.156-13.843 0-5.293-1.949-10.133-5.156-13.844-.27-.309-.324-.75-.141-1.114.188-.367.578-.582.985-.542h.093z"></path><path d="M7.584 11.438c.227.031.438.144.594.312 2.953 2.863 4.781 6.875 4.781 11.313 0 4.433-1.828 8.449-4.781 11.312-.398.387-1.035.383-1.422-.016-.387-.398-.383-1.035.016-1.421 2.582-2.504 4.187-5.993 4.187-9.875 0-3.883-1.605-7.372-4.187-9.875-.321-.282-.426-.739-.266-1.133.164-.395.559-.641.984-.617h.094zM1.178 15.531c.121.02.238.063.344.125 2.633 1.414 4.437 4.215 4.437 7.407 0 3.195-1.797 5.996-4.437 7.406-.492.258-1.102.07-1.36-.422-.257-.492-.07-1.102.422-1.359 2.012-1.075 3.375-3.176 3.375-5.625 0-2.446-1.371-4.551-3.375-5.625-.441-.204-.676-.692-.551-1.165.122-.468.567-.785 1.051-.742h.094z"></path></svg><div class="business-card-number"><div class="business-section">王海运</div><div class="business-section">862555625</div></div><div class="business-end"><span class="business-end-text">created:</span><span class="business-end-date">06/06/1995</span></div><div class="business-card-holder">13011477115</div><div class="business-master"><div class="business-circle business-master-red"></div><div class="business-circle business-master-yellow">   </div></div></div><div class="business-back"><div class="business-strip-black"></div><div class="business-ccv"><label>初次来到人间</label><div><a target="_blank" rel="noopener" href="https://https://why862555625.github.io/">银行卡签名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王海运</a></div></div><div class="business-terms"><p>如果上天不给你机会，那你就自己创造机会，杀出重围 .</p><p>再厉害的英雄也需要夫人的陪伴，所以我很爱我的夫人.</p></div></div></div></div></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://why862555625.github.io">王海运</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://why862555625.github.io/posts/ad94428e.html">https://why862555625.github.io/posts/ad94428e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://why862555625.github.io" target="_blank">王海运</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/">java</a><a class="post-meta__tags" href="/tags/java%E5%9F%BA%E7%A1%80/">java基础</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="post-tools-left"><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul><a class="reward-main-btn" href="/about/" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/fdfa8e87.html"><img class="prev-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java 基础 - 注解机制详解</div></div></a></div><div class="next-post pull-right"><a href="/posts/e78c9f55.html"><img class="next-cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="onerror=null;src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java 基础 - 反射机制详解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/fdfa8e87.html" title="Java 基础 - 注解机制详解"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-16</div><div class="title">Java 基础 - 注解机制详解</div></div></a></div><div><a href="/posts/35d92ef6.html" title="Java 基础 - 泛型机制详解"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-16</div><div class="title">Java 基础 - 泛型机制详解</div></div></a></div><div><a href="/posts/e78c9f55.html" title="Java 基础 - 反射机制详解"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-16</div><div class="title">Java 基础 - 反射机制详解</div></div></a></div><div><a href="/posts/ef5980bd.html" title="java面向对象"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-14</div><div class="title">java面向对象</div></div></a></div><div><a href="/posts/d9795d88.html" title="Java 基础 - 知识点"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-14</div><div class="title">Java 基础 - 知识点</div></div></a></div><div><a href="/posts/21effdcf.html" title="Maven教程"><img class="cover" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-18</div><div class="title">Maven教程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="status-bar">&nbsp;<div class="fa fa-signal xiayi"></div><div id="camera"></div><div class="status-bar_clock">GPS  &nbsp;<div class="fakaozuo fa fa-wifi"> &nbsp;</div><div class="fa fa-battery-full"></div></div></div><div class="is-center"><div class="avatar-img"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://unpkg.com/plasx@1.0.3/img/favicon.webp" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/bj.webp'" alt="avatar"/></div><div class="author-info__name">王海运</div><div class="author-info__description">众里寻他千百度</div></div><a id="card-info-btn" href="https://why862555625.github.io/about/"><i class="fab fa-github"></i><span>about me</span></a><div class="card-info-data site-data is-center"><a class="biaotou" href="/archives/"><div class="headline">文章</div><div class="length-num">30</div></a> <a class="biaotou" href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a> <a class="biaotou" href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="浏览器"><i class="iconfont icon-liulanqi1"></i></a><a class="social-icon" href="/862555625@qq.com" target="_blank" title="邮箱"><i class="iconfont icon-email"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=862555625" target="_blank" title="QQ"><i class="iconfont icon-QQ"></i></a><a class="social-icon" href="/about/" target="_blank" title="微信"><i class="iconfont icon-weixin"></i></a><a class="social-icon" href="https://why862555625.github.io/" target="_blank" title="抖音"><i class="iconfont icon-douyin"></i></a></div><div class="home-indicator"></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div class="about-statistic author-content-item2"><div class="card-content"><div class="lightning"><div class="lightning1"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://drfs.ctcontents.com/file/14237530/755647870/e44191/img/index/swordsmen.webp"></div><div class="lightning2"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://www.jiangweishan.com/demo/lightning2.png"></div></div><span class="author-content-item-title">文章归档  </span><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/archives/&quot;)" data-pjax-state="data-pjax-state"><span class="banner-button-text">文章隧道</span></a></div></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">异常的层次结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Throwable"><span class="toc-number">1.1.</span> <span class="toc-text"> Throwable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error%EF%BC%88%E9%94%99%E8%AF%AF%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text"> Error（错误）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exception%EF%BC%88%E5%BC%82%E5%B8%B8%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text"> Exception（异常）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E6%9F%A5%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%88checked-exceptions%EF%BC%89%E5%92%8C%E4%B8%8D%E5%8F%AF%E6%9F%A5%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%88unchecked-exceptions%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text"> 可查的异常（checked exceptions）和不可查的异常（unchecked exceptions）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text"> 异常基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.1.</span> <span class="toc-text"> 异常关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E7%94%B3%E6%98%8E-throws"><span class="toc-number">2.2.</span> <span class="toc-text"> 异常的申明(throws)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8A%9B%E5%87%BA-throw"><span class="toc-number">2.3.</span> <span class="toc-text"> 异常的抛出(throw)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="toc-number">2.4.</span> <span class="toc-text"> 异常的自定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8D%95%E8%8E%B7"><span class="toc-number">2.5.</span> <span class="toc-text"> 异常的捕获</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#try-catch"><span class="toc-number">2.5.1.</span> <span class="toc-text"> try-catch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try-catch-finally"><span class="toc-number">2.5.2.</span> <span class="toc-text"> try-catch-finally</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try-finally"><span class="toc-number">2.5.3.</span> <span class="toc-text"> try-finally</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#try-with-resource"><span class="toc-number">2.5.4.</span> <span class="toc-text"> try-with-resource</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93"><span class="toc-number">2.6.</span> <span class="toc-text"> 异常基础总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="toc-number">2.7.</span> <span class="toc-text"> 常用的异常</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%AE%9E%E8%B7%B5"><span class="toc-number">3.</span> <span class="toc-text"> 异常实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AA%E9%92%88%E5%AF%B9%E4%B8%8D%E6%AD%A3%E5%B8%B8%E7%9A%84%E6%83%85%E5%86%B5%E6%89%8D%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8"><span class="toc-number">3.1.</span> <span class="toc-text"> 只针对不正常的情况才使用异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-finally-%E5%9D%97%E4%B8%AD%E6%B8%85%E7%90%86%E8%B5%84%E6%BA%90%E6%88%96%E8%80%85%E4%BD%BF%E7%94%A8-try-with-resource-%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.2.</span> <span class="toc-text"> 在 finally 块中清理资源或者使用 try-with-resource 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%BD%E9%87%8F%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="toc-number">3.3.</span> <span class="toc-text"> 尽量使用标准的异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%BC%82%E5%B8%B8%E8%BF%9B%E8%A1%8C%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E"><span class="toc-number">3.4.</span> <span class="toc-text"> 对异常进行文档说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E6%8D%95%E8%8E%B7%E6%9C%80%E5%85%B7%E4%BD%93%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="toc-number">3.5.</span> <span class="toc-text"> 优先捕获最具体的异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E6%8D%95%E8%8E%B7-Throwable-%E7%B1%BB"><span class="toc-number">3.6.</span> <span class="toc-text"> 不要捕获 Throwable 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E5%BF%BD%E7%95%A5%E5%BC%82%E5%B8%B8"><span class="toc-number">3.7.</span> <span class="toc-text"> 不要忽略异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E8%AE%B0%E5%BD%95%E5%B9%B6%E6%8A%9B%E5%87%BA%E5%BC%82%E5%B8%B8"><span class="toc-number">3.8.</span> <span class="toc-text"> 不要记录并抛出异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E5%BC%82%E5%B8%B8%E6%97%B6%E4%B8%8D%E8%A6%81%E6%8A%9B%E5%BC%83%E5%8E%9F%E5%A7%8B%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="toc-number">3.9.</span> <span class="toc-text"> 包装异常时不要抛弃原始的异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E6%8E%A7%E5%88%B6%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">3.10.</span> <span class="toc-text"> 不要使用异常控制程序的流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E5%9C%A8finally%E5%9D%97%E4%B8%AD%E4%BD%BF%E7%94%A8return%E3%80%82"><span class="toc-number">3.11.</span> <span class="toc-text"> 不要在finally块中使用return。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%BC%82%E5%B8%B8"><span class="toc-number">4.</span> <span class="toc-text"> 深入理解异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%E7%9A%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text"> JVM处理异常的机制？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%98%AF%E5%90%A6%E8%80%97%E6%97%B6%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%80%97%E6%97%B6%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text"> 异常是否耗时？为什么会耗时？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">5.</span> <span class="toc-text"> 参考文章</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d9795d88.html" title="http2升级"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="/%E9%A6%96%E9%A1%B5%E5%B0%81%E9%9D%A2" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="http2升级"/></a><div class="content"><a class="title" href="/posts/d9795d88.html" title="http2升级">http2升级</a><time datetime="2023-10-07T06:48:54.000Z" title="发表于 2023-10-07 14:48:54">2023-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3b5d9717.html" title="js正则"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/77.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="js正则"/></a><div class="content"><a class="title" href="/posts/3b5d9717.html" title="js正则">js正则</a><time datetime="2023-08-22T05:08:23.000Z" title="发表于 2023-08-22 13:08:23">2023-08-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/6ed0bfbd.html" title="Java基础 - SPI机制详解"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="Java基础 - SPI机制详解"/></a><div class="content"><a class="title" href="/posts/6ed0bfbd.html" title="Java基础 - SPI机制详解">Java基础 - SPI机制详解</a><time datetime="2023-08-21T05:42:49.000Z" title="发表于 2023-08-21 13:42:49">2023-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/e78c9f55.html" title="Java 基础 - 反射机制详解"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="Java 基础 - 反射机制详解"/></a><div class="content"><a class="title" href="/posts/e78c9f55.html" title="Java 基础 - 反射机制详解">Java 基础 - 反射机制详解</a><time datetime="2023-08-16T08:37:01.000Z" title="发表于 2023-08-16 16:37:01">2023-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ad94428e.html" title="Java 基础 - 异常机制详解"><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/images/99.jpg" onerror="this.onerror=null;this.src='https://unpkg.com/plasx@1.0.3/img/404.webp'" alt="Java 基础 - 异常机制详解"/></a><div class="content"><a class="title" href="/posts/ad94428e.html" title="Java 基础 - 异常机制详解">Java 基础 - 异常机制详解</a><time datetime="2023-08-16T08:31:06.000Z" title="发表于 2023-08-16 16:31:06">2023-08-16</time></div></div></div></div></div></div></main><div id="footer_deal"><a class="deal_link" href="" title="mail"><i class="fa-solid fa-envelope"></i></a><a class="deal_link" href="" title="qq" target="_blank"><i class="fa-brands fa-qq"></i></a><a class="deal_link" href="" title="微博" target="_blank"><i class="fa-brands fa-weibo"></i></a><a class="deal_link" href="https://github.com/jayhrn" title="github" target="_blank"><i class="fa-brands fa-github"></i></a><img class="footer_mini_logo entered loading" style="border-radius:50%" src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://img.zhheo.com/i/2022/08/31/630ef3b505ef5.webp" onclick="btf.scrollToDest(0,500)" title="返回顶部"/><a class="deal_link" href="" title="dribbble"><i class="fa-brands fa-dribbble"></i></a><a class="deal_link" href="" title="微信" target="_blank"><i class="fa-brands fa-weixin"></i></a><a class="deal_link" href="" title="抖音" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a class="deal_link" href="" title="设置"><i class="fa-solid fa-bars"></i></a></div><div id="Jay-footer"><div class="footer-group"><h3 class="footer-title">直达</h3><div class="footer-links"><a class="footer-item" href="https://why862555625.github.io/" target="_blank">我的主页</a><a class="footer-item" href="/music">音乐欣赏</a><a class="footer-item" href="/about">关于我</a><a class="footer-item" onclick="toRandomPost()">随机文章</a></div></div><div class="footer-group"><h3 class="footer-title">分类</h3><div class="footer-links"><a class="footer-item" href="/categories/css/">css笔记</a><a class="footer-item" href="/categories/魔改/">魔改教程</a><a class="footer-item" href="/categories/辅助/">hexo工具</a><a class="footer-item" href="/categories/Docs文檔/">Docs文檔</a></div></div><div class="footer-group"><h3 class="footer-title">关于</h3><div class="footer-links"><a class="footer-item" href="/about/">关于我</a><a class="footer-item" href="/charts/">博客统计</a><a class="footer-item" href="/archives">文章归档</a><a class="footer-item" href="/update">更新记录</a></div></div><div class="footer-group"><h3 class="footer-title">友链</h3><div class="footer-links" id="friend-links-in-footer"><a class="footer-item" href="https://blog.zhheo.com/" target="_blank">张洪Heo</a><a class="footer-item" href="https://anzhiy.cn/" target="_blank">安知鱼</a><a class="footer-item" href="https://akilar.top/" target="_blank">Akilar</a><a class="footer-item" onclick="toRandomFlink()">随机友情</a></div></div><div class="footer-group"><h3 class="footer-title">协议</h3><div class="footer-links"><a class="footer-item" href="/privacy/">隐私协议</a><a class="footer-item" href="/cookies/">Cookie</a><a class="footer-item" href="/cc/">版权协议</a></div></div></div><footer id="footer" style="background: var(--heo-theme);"><div id="footer-wrap"><div class="copyright">&copy;1993 - 2023 By 王海运</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button type="button" title="切换背景" onclick="toggleWinbox()"><i class="fas fa-display"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div></div><div><script src="https://npm.elemecdn.com/blog2023@1.0.2/utils.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://npm.elemecdn.com/algoliasearch@4.14.3/dist/algoliasearch-lite.umd.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.49.1/instantsearch.production.min.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/algolia.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhheo.com',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.zhheo.com',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://npm.elemecdn.com/twikoo@1.6.8/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script charset="utf-8" data-pjax="" src="/js/watchWorker.js"></script><script charset="utf-8" data-pjax="" src="/js/copy.js"></script><script defer src="https://npm.elemecdn.com/blog12.8@1.0.1/categoryBar.js"></script><script src="https://npm.elemecdn.com/blog2023@1.0.2/sun_moon.js" async></script><script src="https://unpkg.com/plasxhexo@1.0.2/js/winbox.bundle.min.js"></script><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?98d6c60617ee763b4f6708fedd7f50e5";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script><script charset="utf-8" data-pjax="" src="https://npm.elemecdn.com/blog2023@1.0.2/nav_menu.js"></script><script src="/zhheo/random.js"></script><script async src="https://at.alicdn.com/t/c/font_3855261_r5lzgvwjjsm.js"></script><script id="click-show-text" src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="true" data-text="我,喜,欢,你,你,喜,欢,我,不" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-ms/aplayer/1.10.1/APlayer.min.js"></script><script src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script><script src="https://cdn.bootcdn.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show","#web_bg",".js-pjax",".video"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/video/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html><script>var flinks=["https://akilar.top/","https://blog.zhheo.com/","https://anzhiy.cn/","https://www.chuckle.top/","https://ichika.cc/","https://blog.leonus.cn/","https://sianx.com","https://www.fomal.cc/","https://www.webxc.ml","https://daiyu-233.top/","https://tzy1997.com/","https://www.qingyi1220.cn/","https://www.xiaozhuzi.xyz/","https://blog.xiaohua927.top/","https://wyblog1.eu.org","https://ezgx.tk/","https://wsbblog.cn","https://www.lyshark.com"];function toRandomFlink(){window.open(flinks[Math.floor(Math.random()*flinks.length)]);};</script>
