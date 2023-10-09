@@ -587,13 +587,6 @@ if (true) {
 <p>PUSH_PROMISE 帧只能在对端(客户端)发起的且流状态为 open 或者 half-closed (remote) 的流上发送</p>
 <p>PUSH_PROMISE 帧准备推送的响应总是和来自于客户端的请求相关联。服务端在该请求所在的流上发送 PUSH_PROMISE 帧。PUSH_PROMISE 帧包含一个 Promised Stream ID，该流标识符是从服务端可用的流标识符里选出来的。</p>
 <p>如果服务端收到了一个对文档的请求，该文档包含内嵌的指向多个图片文件的链接，且服务端选择向客户端推送那些额外的图片，那么在发送包含图片链接的 DATA 帧之前发送 PUSH_PROMISE 帧可以确保客户端在发现内嵌的链接之前，能够知道有一个资源将要被推送过来。同样地，如果服务端准备推送被首部块引用的响应 (比如，在 <a href="https://link.juejin.cn/?target=https://www.w3.org/wiki/LinkHeader">Link 首部字段</a> 里的)，在发送首部块之前发送一个 PUSH_PROMISE 帧，可以确保客户端不再请求那些资源</p>
-<p>一旦客户端收到了 PUSH_PROMISE 帧，并选择接收被推送的响应，客户端就不应该为准备推送的响应发起任何请求，直到预示的流被关闭以后。</p>
-<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc4fef38d8bd%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
-<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://raw.githubusercontent.com/why862555625/images/main/1658dc5033242dae%7Etplv-t2oaga2asx-jj-mark%3A3024%3A0%3A0%3A0%3Aq75.png" alt="image"></p>
-<blockquote>
-<p>注意图中推送的四个资源各预示了一个流 (Promised Stream ID)，而发送 PUSH_PROMISE 帧的还是在客户端发起的请求流 (Stream Identifier = 1) 上，客户端收到 PUSH_PROMISE 帧并选择接收便不会对这四个资源发起请求，之后服务端会发起预示的流然后推送资源相关的响应</p>
-</blockquote>
-<p>不管出于什么原因，如果客户端决定不再从服务端接收准备推送的响应，或者如果服务端花费了太长时间准备发送被预示的响应，客户端可以发送一个 RST_STREAM 帧，该帧可以使用 CANCEL 或者 REFUSED_STEAM 码，并引用被推送的流标识符。</p>
 <p><strong>nginx 配置 Server-Push</strong></p>
 <blockquote>
 <p>server-push 需要服务端设置，并不是说浏览器发起请求，与此请求相关的资源服务端就会自动推送</p>
