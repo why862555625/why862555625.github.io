@@ -597,17 +597,6 @@ if (true) {
 
 <p>通过浏览器控制台可以查看 <code>Push</code> 响应:</p>
 <p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/8/31/1658dc510af263a8~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png" alt="image"></p>
-<p>也可以用 <code>nghttp</code> 测试 push 响应 (* 号代表是服务端推送的):</p>
-<p><img src= "https://s2.loli.net/2022/11/09/95LaCNrd8BKXeSt.webp" data-lazy-src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/8/31/1658dc4fa7d18e24~tplv-t2oaga2asx-jj-mark:3024:0:0:0:q75.png" alt="image"></p>
-<p>上面 <code>http2_push</code> 的设置适合静态资源，服务端事先知道哪些文件是客户端需要的，然后选择性推送</p>
-<p>假如是后台应用动态生成的文件(比如 json 文件)，服务器事先不知道要推送什么，可以用 <code>Link</code> 响应头来做自动推送</p>
-<p>在 server 模块中添加 <code>http2_push_preload on;</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server_name  blog.wangriyu.wang;</span><br><span class="line">  root /blog;</span><br><span class="line">  index index.html index.htm;</span><br><span class="line"></span><br><span class="line">  http2_push_preload on;</span><br></pre></td></tr></table></figure>
-
-<p>然后设置响应头 (add_header) 或者后台程序生成数据文件返回时带上响应头 Link 标签，比如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Link: &lt;/style.css&gt;; as=style; rel=preload, &lt;/main.js&gt;; as=script; rel=preload, &lt;/image.jpg&gt;; as=image; rel=preload</span><br></pre></td></tr></table></figure>
-
-<p>nginx 会根据 Link 响应头主动推送这些资源</p>
 <h3 id="4-请求优先级设置"><a href="#4-请求优先级设置" class="headerlink" title="4. 请求优先级设置"></a>4. 请求优先级设置</h3><p>HTTP/2 里的每个 stream 都可以设置依赖 (Dependency) 和权重，可以按依赖树分配优先级，解决了关键请求被阻塞的问题</p>
 <h3 id="5-流量控制"><a href="#5-流量控制" class="headerlink" title="5. 流量控制"></a>5. 流量控制</h3><p>HTTP/2 使用流量控制（Flow Control）来确保在网络连接上传输的数据量不超出接收端的处理能力。流量控制的主要目标是防止发送者发送过多的数据，导致接收者无法及时处理，从而引发拥塞或性能下降。HTTP/2 中的流量控制是基于帧（Frames）的，每个流（Stream）都有一个关联的流量控制窗口（Flow Control Window）。</p>
 <blockquote>

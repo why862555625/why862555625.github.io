@@ -29,6 +29,15 @@
   </url>
   
   <url>
+    <loc>https://why862555625.github.io/xiance/index.html</loc>
+    
+    <lastmod>2023-09-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://why862555625.github.io/video/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
@@ -39,24 +48,6 @@
   
   <url>
     <loc>https://why862555625.github.io/tuku/index.html</loc>
-    
-    <lastmod>2023-09-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://why862555625.github.io/xiance/index.html</loc>
-    
-    <lastmod>2023-09-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://why862555625.github.io/talking/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
     
@@ -83,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/myself/index.html</loc>
+    <loc>https://why862555625.github.io/talking/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
     
@@ -92,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/music/index.html</loc>
+    <loc>https://why862555625.github.io/myself/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
     
@@ -110,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/link/index.html</loc>
+    <loc>https://why862555625.github.io/music/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
     
@@ -128,7 +119,7 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/about/index.html</loc>
+    <loc>https://why862555625.github.io/link/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
     
@@ -138,6 +129,15 @@
   
   <url>
     <loc>https://why862555625.github.io/categories/index.html</loc>
+    
+    <lastmod>2023-09-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://why862555625.github.io/about/index.html</loc>
     
     <lastmod>2023-09-21</lastmod>
     
@@ -416,6 +416,20 @@
 
   
   <url>
+    <loc>https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2023-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://why862555625.github.io/tags/C/</loc>
+    <lastmod>2023-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://why862555625.github.io/tags/AI/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -438,20 +452,6 @@
   
   <url>
     <loc>https://why862555625.github.io/tags/%E8%BF%90%E8%A1%8C%E6%97%B6/</loc>
-    <lastmod>2023-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://why862555625.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2023-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://why862555625.github.io/tags/C/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -507,7 +507,7 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/tags/java/</loc>
+    <loc>https://why862555625.github.io/tags/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -521,7 +521,7 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/tags/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://why862555625.github.io/tags/java/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -537,6 +537,13 @@
 
   
   <url>
+    <loc>https://why862555625.github.io/categories/C/</loc>
+    <lastmod>2023-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://why862555625.github.io/categories/AI/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -545,13 +552,6 @@
   
   <url>
     <loc>https://why862555625.github.io/categories/JS/</loc>
-    <lastmod>2023-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://why862555625.github.io/categories/C/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -572,14 +572,14 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/categories/js/</loc>
+    <loc>https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/categories/%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://why862555625.github.io/categories/js/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -593,14 +593,14 @@
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/categories/java%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://why862555625.github.io/categories/%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://why862555625.github.io/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://why862555625.github.io/categories/java%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
